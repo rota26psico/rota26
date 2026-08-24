@@ -1,0 +1,7298 @@
+{
+  "geradoPor": "scripts/baseline.ts",
+  "versaoInstrumento": "v1.0-piloto",
+  "versaoMatriz": "v2.0",
+  "totalQuestoes": 48,
+  "totalAlternativas": 192,
+  "individuais": [
+    {
+      "id": "C1",
+      "descricao": "Sempre a primeira alternativa apresentada",
+      "retrato": {
+        "perfilPredominante": "Te",
+        "perfilSecundario": "Se",
+        "atitude": "E",
+        "atitudeMargem": 27,
+        "funcaoDominante": "T",
+        "funcaoAuxiliar": "S",
+        "funcaoMenosRepresentada": "N",
+        "funcaoInferior": "F",
+        "ordemFuncoes": [
+          "T",
+          "S",
+          "F",
+          "N"
+        ],
+        "empateFuncoes": false,
+        "regraDesempate": null,
+        "escoresJungBruto": {
+          "E": 27,
+          "I": 0,
+          "T": 27,
+          "F": 0,
+          "S": 0,
+          "N": 0
+        },
+        "escoresJungRelativo": {
+          "E": 100,
+          "I": 0,
+          "T": 100,
+          "F": 0,
+          "S": 0,
+          "N": 0
+        },
+        "denominadores": {
+          "atitude": 27,
+          "funcao": 27
+        },
+        "eixosBruto": {
+          "EXP": 3,
+          "EXE": 0,
+          "AUT": 16,
+          "COO": 18,
+          "FLE": 7,
+          "EST": 10
+        },
+        "eixosRelativo": {
+          "EXP": 10.7,
+          "EXE": 0,
+          "AUT": 36.4,
+          "COO": 40,
+          "FLE": 31.8,
+          "EST": 23.8
+        },
+        "eixosAuxiliares": [
+          {
+            "par": [
+              "EXP",
+              "EXE"
+            ],
+            "polo": "EXP",
+            "a": 10.7,
+            "b": 0
+          },
+          {
+            "par": [
+              "AUT",
+              "COO"
+            ],
+            "polo": "COO",
+            "a": 36.4,
+            "b": 40
+          },
+          {
+            "par": [
+              "FLE",
+              "EST"
+            ],
+            "polo": "FLE",
+            "a": 31.8,
+            "b": 23.8
+          }
+        ],
+        "capacidadesBruto": {
+          "CRIAR": 7,
+          "EXPLORAR": 13,
+          "ANALISAR": 42,
+          "DECIDIR": 22,
+          "ORGANIZAR": 15,
+          "EXECUTAR": 3,
+          "RELACIONAR": 37,
+          "COORDENAR": 17,
+          "FINALIZAR": 5,
+          "ESPECIALIZAR": 5
+        },
+        "capacidades": {
+          "CRIAR": 11.1,
+          "EXPLORAR": 22.4,
+          "ANALISAR": 53.8,
+          "DECIDIR": 53.7,
+          "ORGANIZAR": 28.3,
+          "EXECUTAR": 5.5,
+          "RELACIONAR": 44,
+          "COORDENAR": 27.9,
+          "FINALIZAR": 10.6,
+          "ESPECIALIZAR": 10.2
+        },
+        "capacidadesOrdenadas": [
+          {
+            "id": "ANALISAR",
+            "nome": "Analisar",
+            "valor": 53.8,
+            "intensidade": "Alta"
+          },
+          {
+            "id": "DECIDIR",
+            "nome": "Decidir/Mobilizar",
+            "valor": 53.7,
+            "intensidade": "Alta"
+          },
+          {
+            "id": "RELACIONAR",
+            "nome": "Relacionar",
+            "valor": 44,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "ORGANIZAR",
+            "nome": "Organizar",
+            "valor": 28.3,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "COORDENAR",
+            "nome": "Coordenar",
+            "valor": 27.9,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "EXPLORAR",
+            "nome": "Explorar",
+            "valor": 22.4,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "CRIAR",
+            "nome": "Criar",
+            "valor": 11.1,
+            "intensidade": "Muito baixa"
+          },
+          {
+            "id": "FINALIZAR",
+            "nome": "Finalizar",
+            "valor": 10.6,
+            "intensidade": "Muito baixa"
+          },
+          {
+            "id": "ESPECIALIZAR",
+            "nome": "Especializar",
+            "valor": 10.2,
+            "intensidade": "Muito baixa"
+          },
+          {
+            "id": "EXECUTAR",
+            "nome": "Executar",
+            "valor": 5.5,
+            "intensidade": "Muito baixa"
+          }
+        ],
+        "belbinBruto": {
+          "PLANTA": 8,
+          "INV_RECURSOS": 17,
+          "COORDENADOR": 22,
+          "FORMADOR": 20,
+          "MONITOR": 43,
+          "IMPLEMENTADOR": 12,
+          "TRAB_EQUIPE": 27,
+          "FINALIZADOR": 5,
+          "ESPECIALISTA": 8
+        },
+        "belbin": {
+          "PLANTA": 10.8,
+          "INV_RECURSOS": 32.1,
+          "COORDENADOR": 39.3,
+          "FORMADOR": 48.8,
+          "MONITOR": 58.9,
+          "IMPLEMENTADOR": 16.7,
+          "TRAB_EQUIPE": 32.9,
+          "FINALIZADOR": 10,
+          "ESPECIALISTA": 13.8
+        },
+        "belbinOrdenado": [
+          {
+            "id": "MONITOR",
+            "nome": "Monitor Avaliador",
+            "valor": 58.9,
+            "intensidade": "Alta",
+            "posicao": 1
+          },
+          {
+            "id": "FORMADOR",
+            "nome": "Formador",
+            "valor": 48.8,
+            "intensidade": "Alta",
+            "posicao": 2
+          },
+          {
+            "id": "COORDENADOR",
+            "nome": "Coordenador",
+            "valor": 39.3,
+            "intensidade": "Moderada",
+            "posicao": 3
+          },
+          {
+            "id": "TRAB_EQUIPE",
+            "nome": "Trabalhador em Equipe",
+            "valor": 32.9,
+            "intensidade": "Moderada",
+            "posicao": 4
+          },
+          {
+            "id": "INV_RECURSOS",
+            "nome": "Investigador de Recursos",
+            "valor": 32.1,
+            "intensidade": "Moderada",
+            "posicao": 5
+          },
+          {
+            "id": "IMPLEMENTADOR",
+            "nome": "Implementador",
+            "valor": 16.7,
+            "intensidade": "Muito baixa",
+            "posicao": 6
+          },
+          {
+            "id": "ESPECIALISTA",
+            "nome": "Especialista",
+            "valor": 13.8,
+            "intensidade": "Muito baixa",
+            "posicao": 7
+          },
+          {
+            "id": "PLANTA",
+            "nome": "Planta",
+            "valor": 10.8,
+            "intensidade": "Muito baixa",
+            "posicao": 8
+          },
+          {
+            "id": "FINALIZADOR",
+            "nome": "Finalizador",
+            "valor": 10,
+            "intensidade": "Muito baixa",
+            "posicao": 9
+          }
+        ],
+        "top3Belbin": [
+          {
+            "id": "MONITOR",
+            "nome": "Monitor Avaliador",
+            "valor": 58.9,
+            "intensidade": "Alta",
+            "posicao": 1
+          },
+          {
+            "id": "FORMADOR",
+            "nome": "Formador",
+            "valor": 48.8,
+            "intensidade": "Alta",
+            "posicao": 2
+          },
+          {
+            "id": "COORDENADOR",
+            "nome": "Coordenador",
+            "valor": 39.3,
+            "intensidade": "Moderada",
+            "posicao": 3
+          }
+        ],
+        "versaoAlgoritmo": "v1.0-piloto",
+        "versaoMatriz": "v2.0",
+        "respostasValidas": 48,
+        "completo": true
+      }
+    },
+    {
+      "id": "C2",
+      "descricao": "Sempre a segunda alternativa",
+      "retrato": {
+        "perfilPredominante": "Fe",
+        "perfilSecundario": "Se",
+        "atitude": "E",
+        "atitudeMargem": 27,
+        "funcaoDominante": "F",
+        "funcaoAuxiliar": "S",
+        "funcaoMenosRepresentada": "N",
+        "funcaoInferior": "T",
+        "ordemFuncoes": [
+          "F",
+          "T",
+          "S",
+          "N"
+        ],
+        "empateFuncoes": false,
+        "regraDesempate": null,
+        "escoresJungBruto": {
+          "E": 27,
+          "I": 0,
+          "T": 0,
+          "F": 27,
+          "S": 0,
+          "N": 0
+        },
+        "escoresJungRelativo": {
+          "E": 100,
+          "I": 0,
+          "T": 0,
+          "F": 100,
+          "S": 0,
+          "N": 0
+        },
+        "denominadores": {
+          "atitude": 27,
+          "funcao": 27
+        },
+        "eixosBruto": {
+          "EXP": 6,
+          "EXE": 11,
+          "AUT": 0,
+          "COO": 27,
+          "FLE": 9,
+          "EST": 1
+        },
+        "eixosRelativo": {
+          "EXP": 21.4,
+          "EXE": 31.4,
+          "AUT": 0,
+          "COO": 60,
+          "FLE": 40.9,
+          "EST": 2.4
+        },
+        "eixosAuxiliares": [
+          {
+            "par": [
+              "EXP",
+              "EXE"
+            ],
+            "polo": "EXE",
+            "a": 21.4,
+            "b": 31.4
+          },
+          {
+            "par": [
+              "AUT",
+              "COO"
+            ],
+            "polo": "COO",
+            "a": 0,
+            "b": 60
+          },
+          {
+            "par": [
+              "FLE",
+              "EST"
+            ],
+            "polo": "FLE",
+            "a": 40.9,
+            "b": 2.4
+          }
+        ],
+        "capacidadesBruto": {
+          "CRIAR": 3,
+          "EXPLORAR": 16,
+          "ANALISAR": 1,
+          "DECIDIR": 20,
+          "ORGANIZAR": 0,
+          "EXECUTAR": 28,
+          "RELACIONAR": 51,
+          "COORDENAR": 46,
+          "FINALIZAR": 0,
+          "ESPECIALIZAR": 1
+        },
+        "capacidades": {
+          "CRIAR": 4.8,
+          "EXPLORAR": 27.6,
+          "ANALISAR": 1.3,
+          "DECIDIR": 48.8,
+          "ORGANIZAR": 0,
+          "EXECUTAR": 50.9,
+          "RELACIONAR": 60.7,
+          "COORDENAR": 75.4,
+          "FINALIZAR": 0,
+          "ESPECIALIZAR": 2
+        },
+        "capacidadesOrdenadas": [
+          {
+            "id": "COORDENAR",
+            "nome": "Coordenar",
+            "valor": 75.4,
+            "intensidade": "Muito alta"
+          },
+          {
+            "id": "RELACIONAR",
+            "nome": "Relacionar",
+            "valor": 60.7,
+            "intensidade": "Muito alta"
+          },
+          {
+            "id": "EXECUTAR",
+            "nome": "Executar",
+            "valor": 50.9,
+            "intensidade": "Alta"
+          },
+          {
+            "id": "DECIDIR",
+            "nome": "Decidir/Mobilizar",
+            "valor": 48.8,
+            "intensidade": "Alta"
+          },
+          {
+            "id": "EXPLORAR",
+            "nome": "Explorar",
+            "valor": 27.6,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "CRIAR",
+            "nome": "Criar",
+            "valor": 4.8,
+            "intensidade": "Muito baixa"
+          },
+          {
+            "id": "ESPECIALIZAR",
+            "nome": "Especializar",
+            "valor": 2,
+            "intensidade": "Muito baixa"
+          },
+          {
+            "id": "ANALISAR",
+            "nome": "Analisar",
+            "valor": 1.3,
+            "intensidade": "Muito baixa"
+          },
+          {
+            "id": "ORGANIZAR",
+            "nome": "Organizar",
+            "valor": 0,
+            "intensidade": "Muito baixa"
+          },
+          {
+            "id": "FINALIZAR",
+            "nome": "Finalizar",
+            "valor": 0,
+            "intensidade": "Muito baixa"
+          }
+        ],
+        "belbinBruto": {
+          "PLANTA": 3,
+          "INV_RECURSOS": 15,
+          "COORDENADOR": 37,
+          "FORMADOR": 23,
+          "MONITOR": 1,
+          "IMPLEMENTADOR": 25,
+          "TRAB_EQUIPE": 57,
+          "FINALIZADOR": 0,
+          "ESPECIALISTA": 1
+        },
+        "belbin": {
+          "PLANTA": 4.1,
+          "INV_RECURSOS": 28.3,
+          "COORDENADOR": 66.1,
+          "FORMADOR": 56.1,
+          "MONITOR": 1.4,
+          "IMPLEMENTADOR": 34.7,
+          "TRAB_EQUIPE": 69.5,
+          "FINALIZADOR": 0,
+          "ESPECIALISTA": 1.7
+        },
+        "belbinOrdenado": [
+          {
+            "id": "TRAB_EQUIPE",
+            "nome": "Trabalhador em Equipe",
+            "valor": 69.5,
+            "intensidade": "Muito alta",
+            "posicao": 1
+          },
+          {
+            "id": "COORDENADOR",
+            "nome": "Coordenador",
+            "valor": 66.1,
+            "intensidade": "Muito alta",
+            "posicao": 2
+          },
+          {
+            "id": "FORMADOR",
+            "nome": "Formador",
+            "valor": 56.1,
+            "intensidade": "Alta",
+            "posicao": 3
+          },
+          {
+            "id": "IMPLEMENTADOR",
+            "nome": "Implementador",
+            "valor": 34.7,
+            "intensidade": "Moderada",
+            "posicao": 4
+          },
+          {
+            "id": "INV_RECURSOS",
+            "nome": "Investigador de Recursos",
+            "valor": 28.3,
+            "intensidade": "Baixa",
+            "posicao": 5
+          },
+          {
+            "id": "PLANTA",
+            "nome": "Planta",
+            "valor": 4.1,
+            "intensidade": "Muito baixa",
+            "posicao": 6
+          },
+          {
+            "id": "ESPECIALISTA",
+            "nome": "Especialista",
+            "valor": 1.7,
+            "intensidade": "Muito baixa",
+            "posicao": 7
+          },
+          {
+            "id": "MONITOR",
+            "nome": "Monitor Avaliador",
+            "valor": 1.4,
+            "intensidade": "Muito baixa",
+            "posicao": 8
+          },
+          {
+            "id": "FINALIZADOR",
+            "nome": "Finalizador",
+            "valor": 0,
+            "intensidade": "Muito baixa",
+            "posicao": 9
+          }
+        ],
+        "top3Belbin": [
+          {
+            "id": "TRAB_EQUIPE",
+            "nome": "Trabalhador em Equipe",
+            "valor": 69.5,
+            "intensidade": "Muito alta",
+            "posicao": 1
+          },
+          {
+            "id": "COORDENADOR",
+            "nome": "Coordenador",
+            "valor": 66.1,
+            "intensidade": "Muito alta",
+            "posicao": 2
+          },
+          {
+            "id": "FORMADOR",
+            "nome": "Formador",
+            "valor": 56.1,
+            "intensidade": "Alta",
+            "posicao": 3
+          }
+        ],
+        "versaoAlgoritmo": "v1.0-piloto",
+        "versaoMatriz": "v2.0",
+        "respostasValidas": 48,
+        "completo": true
+      }
+    },
+    {
+      "id": "C3",
+      "descricao": "Rotação simples: i módulo 4",
+      "retrato": {
+        "perfilPredominante": "Te",
+        "perfilSecundario": "Se",
+        "atitude": "E",
+        "atitudeMargem": 3,
+        "funcaoDominante": "T",
+        "funcaoAuxiliar": "S",
+        "funcaoMenosRepresentada": "N",
+        "funcaoInferior": "F",
+        "ordemFuncoes": [
+          "T",
+          "S",
+          "F",
+          "N"
+        ],
+        "empateFuncoes": false,
+        "regraDesempate": null,
+        "escoresJungBruto": {
+          "E": 15,
+          "I": 12,
+          "T": 14,
+          "F": 0,
+          "S": 13,
+          "N": 0
+        },
+        "escoresJungRelativo": {
+          "E": 55.6,
+          "I": 44.4,
+          "T": 51.9,
+          "F": 0,
+          "S": 48.1,
+          "N": 0
+        },
+        "denominadores": {
+          "atitude": 27,
+          "funcao": 27
+        },
+        "eixosBruto": {
+          "EXP": 2,
+          "EXE": 20,
+          "AUT": 9,
+          "COO": 3,
+          "FLE": 4,
+          "EST": 16
+        },
+        "eixosRelativo": {
+          "EXP": 7.1,
+          "EXE": 57.1,
+          "AUT": 20.5,
+          "COO": 6.7,
+          "FLE": 18.2,
+          "EST": 38.1
+        },
+        "eixosAuxiliares": [
+          {
+            "par": [
+              "EXP",
+              "EXE"
+            ],
+            "polo": "EXE",
+            "a": 7.1,
+            "b": 57.1
+          },
+          {
+            "par": [
+              "AUT",
+              "COO"
+            ],
+            "polo": "AUT",
+            "a": 20.5,
+            "b": 6.7
+          },
+          {
+            "par": [
+              "FLE",
+              "EST"
+            ],
+            "polo": "EST",
+            "a": 18.2,
+            "b": 38.1
+          }
+        ],
+        "capacidadesBruto": {
+          "CRIAR": 5,
+          "EXPLORAR": 6,
+          "ANALISAR": 31,
+          "DECIDIR": 18,
+          "ORGANIZAR": 30,
+          "EXECUTAR": 28,
+          "RELACIONAR": 6,
+          "COORDENAR": 5,
+          "FINALIZAR": 21,
+          "ESPECIALIZAR": 16
+        },
+        "capacidades": {
+          "CRIAR": 7.9,
+          "EXPLORAR": 10.3,
+          "ANALISAR": 39.7,
+          "DECIDIR": 43.9,
+          "ORGANIZAR": 56.6,
+          "EXECUTAR": 50.9,
+          "RELACIONAR": 7.1,
+          "COORDENAR": 8.2,
+          "FINALIZAR": 44.7,
+          "ESPECIALIZAR": 32.7
+        },
+        "capacidadesOrdenadas": [
+          {
+            "id": "ORGANIZAR",
+            "nome": "Organizar",
+            "valor": 56.6,
+            "intensidade": "Alta"
+          },
+          {
+            "id": "EXECUTAR",
+            "nome": "Executar",
+            "valor": 50.9,
+            "intensidade": "Alta"
+          },
+          {
+            "id": "FINALIZAR",
+            "nome": "Finalizar",
+            "valor": 44.7,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "DECIDIR",
+            "nome": "Decidir/Mobilizar",
+            "valor": 43.9,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "ANALISAR",
+            "nome": "Analisar",
+            "valor": 39.7,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "ESPECIALIZAR",
+            "nome": "Especializar",
+            "valor": 32.7,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "EXPLORAR",
+            "nome": "Explorar",
+            "valor": 10.3,
+            "intensidade": "Muito baixa"
+          },
+          {
+            "id": "COORDENAR",
+            "nome": "Coordenar",
+            "valor": 8.2,
+            "intensidade": "Muito baixa"
+          },
+          {
+            "id": "CRIAR",
+            "nome": "Criar",
+            "valor": 7.9,
+            "intensidade": "Muito baixa"
+          },
+          {
+            "id": "RELACIONAR",
+            "nome": "Relacionar",
+            "valor": 7.1,
+            "intensidade": "Muito baixa"
+          }
+        ],
+        "belbinBruto": {
+          "PLANTA": 6,
+          "INV_RECURSOS": 5,
+          "COORDENADOR": 5,
+          "FORMADOR": 16,
+          "MONITOR": 29,
+          "IMPLEMENTADOR": 51,
+          "TRAB_EQUIPE": 5,
+          "FINALIZADOR": 24,
+          "ESPECIALISTA": 21
+        },
+        "belbin": {
+          "PLANTA": 8.1,
+          "INV_RECURSOS": 9.4,
+          "COORDENADOR": 8.9,
+          "FORMADOR": 39,
+          "MONITOR": 39.7,
+          "IMPLEMENTADOR": 70.8,
+          "TRAB_EQUIPE": 6.1,
+          "FINALIZADOR": 48,
+          "ESPECIALISTA": 36.2
+        },
+        "belbinOrdenado": [
+          {
+            "id": "IMPLEMENTADOR",
+            "nome": "Implementador",
+            "valor": 70.8,
+            "intensidade": "Muito alta",
+            "posicao": 1
+          },
+          {
+            "id": "FINALIZADOR",
+            "nome": "Finalizador",
+            "valor": 48,
+            "intensidade": "Alta",
+            "posicao": 2
+          },
+          {
+            "id": "MONITOR",
+            "nome": "Monitor Avaliador",
+            "valor": 39.7,
+            "intensidade": "Moderada",
+            "posicao": 3
+          },
+          {
+            "id": "FORMADOR",
+            "nome": "Formador",
+            "valor": 39,
+            "intensidade": "Moderada",
+            "posicao": 4
+          },
+          {
+            "id": "ESPECIALISTA",
+            "nome": "Especialista",
+            "valor": 36.2,
+            "intensidade": "Moderada",
+            "posicao": 5
+          },
+          {
+            "id": "INV_RECURSOS",
+            "nome": "Investigador de Recursos",
+            "valor": 9.4,
+            "intensidade": "Muito baixa",
+            "posicao": 6
+          },
+          {
+            "id": "COORDENADOR",
+            "nome": "Coordenador",
+            "valor": 8.9,
+            "intensidade": "Muito baixa",
+            "posicao": 7
+          },
+          {
+            "id": "PLANTA",
+            "nome": "Planta",
+            "valor": 8.1,
+            "intensidade": "Muito baixa",
+            "posicao": 8
+          },
+          {
+            "id": "TRAB_EQUIPE",
+            "nome": "Trabalhador em Equipe",
+            "valor": 6.1,
+            "intensidade": "Muito baixa",
+            "posicao": 9
+          }
+        ],
+        "top3Belbin": [
+          {
+            "id": "IMPLEMENTADOR",
+            "nome": "Implementador",
+            "valor": 70.8,
+            "intensidade": "Muito alta",
+            "posicao": 1
+          },
+          {
+            "id": "FINALIZADOR",
+            "nome": "Finalizador",
+            "valor": 48,
+            "intensidade": "Alta",
+            "posicao": 2
+          },
+          {
+            "id": "MONITOR",
+            "nome": "Monitor Avaliador",
+            "valor": 39.7,
+            "intensidade": "Moderada",
+            "posicao": 3
+          }
+        ],
+        "versaoAlgoritmo": "v1.0-piloto",
+        "versaoMatriz": "v2.0",
+        "respostasValidas": 48,
+        "completo": true
+      }
+    },
+    {
+      "id": "C4",
+      "descricao": "Rotação invertida: 3 menos (i módulo 4)",
+      "retrato": {
+        "perfilPredominante": "Ni",
+        "perfilSecundario": "Fi",
+        "atitude": "I",
+        "atitudeMargem": 3,
+        "funcaoDominante": "N",
+        "funcaoAuxiliar": "F",
+        "funcaoMenosRepresentada": "S",
+        "funcaoInferior": "S",
+        "ordemFuncoes": [
+          "N",
+          "F",
+          "T",
+          "S"
+        ],
+        "empateFuncoes": false,
+        "regraDesempate": null,
+        "escoresJungBruto": {
+          "E": 12,
+          "I": 15,
+          "T": 0,
+          "F": 13,
+          "S": 0,
+          "N": 14
+        },
+        "escoresJungRelativo": {
+          "E": 44.4,
+          "I": 55.6,
+          "T": 0,
+          "F": 48.1,
+          "S": 0,
+          "N": 51.9
+        },
+        "denominadores": {
+          "atitude": 27,
+          "funcao": 27
+        },
+        "eixosBruto": {
+          "EXP": 14,
+          "EXE": 0,
+          "AUT": 15,
+          "COO": 17,
+          "FLE": 7,
+          "EST": 1
+        },
+        "eixosRelativo": {
+          "EXP": 50,
+          "EXE": 0,
+          "AUT": 34.1,
+          "COO": 37.8,
+          "FLE": 31.8,
+          "EST": 2.4
+        },
+        "eixosAuxiliares": [
+          {
+            "par": [
+              "EXP",
+              "EXE"
+            ],
+            "polo": "EXP",
+            "a": 50,
+            "b": 0
+          },
+          {
+            "par": [
+              "AUT",
+              "COO"
+            ],
+            "polo": "COO",
+            "a": 34.1,
+            "b": 37.8
+          },
+          {
+            "par": [
+              "FLE",
+              "EST"
+            ],
+            "polo": "FLE",
+            "a": 31.8,
+            "b": 2.4
+          }
+        ],
+        "capacidadesBruto": {
+          "CRIAR": 32,
+          "EXPLORAR": 30,
+          "ANALISAR": 21,
+          "DECIDIR": 3,
+          "ORGANIZAR": 1,
+          "EXECUTAR": 3,
+          "RELACIONAR": 37,
+          "COORDENAR": 27,
+          "FINALIZAR": 1,
+          "ESPECIALIZAR": 9
+        },
+        "capacidades": {
+          "CRIAR": 50.8,
+          "EXPLORAR": 51.7,
+          "ANALISAR": 26.9,
+          "DECIDIR": 7.3,
+          "ORGANIZAR": 1.9,
+          "EXECUTAR": 5.5,
+          "RELACIONAR": 44,
+          "COORDENAR": 44.3,
+          "FINALIZAR": 2.1,
+          "ESPECIALIZAR": 18.4
+        },
+        "capacidadesOrdenadas": [
+          {
+            "id": "EXPLORAR",
+            "nome": "Explorar",
+            "valor": 51.7,
+            "intensidade": "Alta"
+          },
+          {
+            "id": "CRIAR",
+            "nome": "Criar",
+            "valor": 50.8,
+            "intensidade": "Alta"
+          },
+          {
+            "id": "COORDENAR",
+            "nome": "Coordenar",
+            "valor": 44.3,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "RELACIONAR",
+            "nome": "Relacionar",
+            "valor": 44,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "ANALISAR",
+            "nome": "Analisar",
+            "valor": 26.9,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "ESPECIALIZAR",
+            "nome": "Especializar",
+            "valor": 18.4,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "DECIDIR",
+            "nome": "Decidir/Mobilizar",
+            "valor": 7.3,
+            "intensidade": "Muito baixa"
+          },
+          {
+            "id": "EXECUTAR",
+            "nome": "Executar",
+            "valor": 5.5,
+            "intensidade": "Muito baixa"
+          },
+          {
+            "id": "FINALIZAR",
+            "nome": "Finalizar",
+            "valor": 2.1,
+            "intensidade": "Muito baixa"
+          },
+          {
+            "id": "ORGANIZAR",
+            "nome": "Organizar",
+            "valor": 1.9,
+            "intensidade": "Muito baixa"
+          }
+        ],
+        "belbinBruto": {
+          "PLANTA": 40,
+          "INV_RECURSOS": 23,
+          "COORDENADOR": 24,
+          "FORMADOR": 2,
+          "MONITOR": 20,
+          "IMPLEMENTADOR": 3,
+          "TRAB_EQUIPE": 39,
+          "FINALIZADOR": 1,
+          "ESPECIALISTA": 10
+        },
+        "belbin": {
+          "PLANTA": 54.1,
+          "INV_RECURSOS": 43.4,
+          "COORDENADOR": 42.9,
+          "FORMADOR": 4.9,
+          "MONITOR": 27.4,
+          "IMPLEMENTADOR": 4.2,
+          "TRAB_EQUIPE": 47.6,
+          "FINALIZADOR": 2,
+          "ESPECIALISTA": 17.2
+        },
+        "belbinOrdenado": [
+          {
+            "id": "PLANTA",
+            "nome": "Planta",
+            "valor": 54.1,
+            "intensidade": "Alta",
+            "posicao": 1
+          },
+          {
+            "id": "TRAB_EQUIPE",
+            "nome": "Trabalhador em Equipe",
+            "valor": 47.6,
+            "intensidade": "Alta",
+            "posicao": 2
+          },
+          {
+            "id": "INV_RECURSOS",
+            "nome": "Investigador de Recursos",
+            "valor": 43.4,
+            "intensidade": "Moderada",
+            "posicao": 3
+          },
+          {
+            "id": "COORDENADOR",
+            "nome": "Coordenador",
+            "valor": 42.9,
+            "intensidade": "Moderada",
+            "posicao": 4
+          },
+          {
+            "id": "MONITOR",
+            "nome": "Monitor Avaliador",
+            "valor": 27.4,
+            "intensidade": "Baixa",
+            "posicao": 5
+          },
+          {
+            "id": "ESPECIALISTA",
+            "nome": "Especialista",
+            "valor": 17.2,
+            "intensidade": "Muito baixa",
+            "posicao": 6
+          },
+          {
+            "id": "FORMADOR",
+            "nome": "Formador",
+            "valor": 4.9,
+            "intensidade": "Muito baixa",
+            "posicao": 7
+          },
+          {
+            "id": "IMPLEMENTADOR",
+            "nome": "Implementador",
+            "valor": 4.2,
+            "intensidade": "Muito baixa",
+            "posicao": 8
+          },
+          {
+            "id": "FINALIZADOR",
+            "nome": "Finalizador",
+            "valor": 2,
+            "intensidade": "Muito baixa",
+            "posicao": 9
+          }
+        ],
+        "top3Belbin": [
+          {
+            "id": "PLANTA",
+            "nome": "Planta",
+            "valor": 54.1,
+            "intensidade": "Alta",
+            "posicao": 1
+          },
+          {
+            "id": "TRAB_EQUIPE",
+            "nome": "Trabalhador em Equipe",
+            "valor": 47.6,
+            "intensidade": "Alta",
+            "posicao": 2
+          },
+          {
+            "id": "INV_RECURSOS",
+            "nome": "Investigador de Recursos",
+            "valor": 43.4,
+            "intensidade": "Moderada",
+            "posicao": 3
+          }
+        ],
+        "versaoAlgoritmo": "v1.0-piloto",
+        "versaoMatriz": "v2.0",
+        "respostasValidas": 48,
+        "completo": true
+      }
+    },
+    {
+      "id": "C5",
+      "descricao": "Alternância por blocos de três: floor(i/3) módulo 4",
+      "retrato": {
+        "perfilPredominante": "Te",
+        "perfilSecundario": "Se",
+        "atitude": "E",
+        "atitudeMargem": 3,
+        "funcaoDominante": "T",
+        "funcaoAuxiliar": "S",
+        "funcaoMenosRepresentada": "F",
+        "funcaoInferior": "F",
+        "ordemFuncoes": [
+          "T",
+          "S",
+          "N",
+          "F"
+        ],
+        "empateFuncoes": false,
+        "regraDesempate": null,
+        "escoresJungBruto": {
+          "E": 15,
+          "I": 12,
+          "T": 10,
+          "F": 4,
+          "S": 8,
+          "N": 5
+        },
+        "escoresJungRelativo": {
+          "E": 55.6,
+          "I": 44.4,
+          "T": 37,
+          "F": 14.8,
+          "S": 29.6,
+          "N": 18.5
+        },
+        "denominadores": {
+          "atitude": 27,
+          "funcao": 27
+        },
+        "eixosBruto": {
+          "EXP": 6,
+          "EXE": 13,
+          "AUT": 9,
+          "COO": 8,
+          "FLE": 5,
+          "EST": 13
+        },
+        "eixosRelativo": {
+          "EXP": 21.4,
+          "EXE": 37.1,
+          "AUT": 20.5,
+          "COO": 17.8,
+          "FLE": 22.7,
+          "EST": 31
+        },
+        "eixosAuxiliares": [
+          {
+            "par": [
+              "EXP",
+              "EXE"
+            ],
+            "polo": "EXE",
+            "a": 21.4,
+            "b": 37.1
+          },
+          {
+            "par": [
+              "AUT",
+              "COO"
+            ],
+            "polo": "AUT",
+            "a": 20.5,
+            "b": 17.8
+          },
+          {
+            "par": [
+              "FLE",
+              "EST"
+            ],
+            "polo": "EST",
+            "a": 22.7,
+            "b": 31
+          }
+        ],
+        "capacidadesBruto": {
+          "CRIAR": 14,
+          "EXPLORAR": 14,
+          "ANALISAR": 28,
+          "DECIDIR": 13,
+          "ORGANIZAR": 26,
+          "EXECUTAR": 23,
+          "RELACIONAR": 18,
+          "COORDENAR": 7,
+          "FINALIZAR": 14,
+          "ESPECIALIZAR": 11
+        },
+        "capacidades": {
+          "CRIAR": 22.2,
+          "EXPLORAR": 24.1,
+          "ANALISAR": 35.9,
+          "DECIDIR": 31.7,
+          "ORGANIZAR": 49.1,
+          "EXECUTAR": 41.8,
+          "RELACIONAR": 21.4,
+          "COORDENAR": 11.5,
+          "FINALIZAR": 29.8,
+          "ESPECIALIZAR": 22.4
+        },
+        "capacidadesOrdenadas": [
+          {
+            "id": "ORGANIZAR",
+            "nome": "Organizar",
+            "valor": 49.1,
+            "intensidade": "Alta"
+          },
+          {
+            "id": "EXECUTAR",
+            "nome": "Executar",
+            "valor": 41.8,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "ANALISAR",
+            "nome": "Analisar",
+            "valor": 35.9,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "DECIDIR",
+            "nome": "Decidir/Mobilizar",
+            "valor": 31.7,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "FINALIZAR",
+            "nome": "Finalizar",
+            "valor": 29.8,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "EXPLORAR",
+            "nome": "Explorar",
+            "valor": 24.1,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "ESPECIALIZAR",
+            "nome": "Especializar",
+            "valor": 22.4,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "CRIAR",
+            "nome": "Criar",
+            "valor": 22.2,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "RELACIONAR",
+            "nome": "Relacionar",
+            "valor": 21.4,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "COORDENAR",
+            "nome": "Coordenar",
+            "valor": 11.5,
+            "intensidade": "Muito baixa"
+          }
+        ],
+        "belbinBruto": {
+          "PLANTA": 15,
+          "INV_RECURSOS": 14,
+          "COORDENADOR": 8,
+          "FORMADOR": 16,
+          "MONITOR": 26,
+          "IMPLEMENTADOR": 38,
+          "TRAB_EQUIPE": 15,
+          "FINALIZADOR": 16,
+          "ESPECIALISTA": 14
+        },
+        "belbin": {
+          "PLANTA": 20.3,
+          "INV_RECURSOS": 26.4,
+          "COORDENADOR": 14.3,
+          "FORMADOR": 39,
+          "MONITOR": 35.6,
+          "IMPLEMENTADOR": 52.8,
+          "TRAB_EQUIPE": 18.3,
+          "FINALIZADOR": 32,
+          "ESPECIALISTA": 24.1
+        },
+        "belbinOrdenado": [
+          {
+            "id": "IMPLEMENTADOR",
+            "nome": "Implementador",
+            "valor": 52.8,
+            "intensidade": "Alta",
+            "posicao": 1
+          },
+          {
+            "id": "FORMADOR",
+            "nome": "Formador",
+            "valor": 39,
+            "intensidade": "Moderada",
+            "posicao": 2
+          },
+          {
+            "id": "MONITOR",
+            "nome": "Monitor Avaliador",
+            "valor": 35.6,
+            "intensidade": "Moderada",
+            "posicao": 3
+          },
+          {
+            "id": "FINALIZADOR",
+            "nome": "Finalizador",
+            "valor": 32,
+            "intensidade": "Moderada",
+            "posicao": 4
+          },
+          {
+            "id": "INV_RECURSOS",
+            "nome": "Investigador de Recursos",
+            "valor": 26.4,
+            "intensidade": "Baixa",
+            "posicao": 5
+          },
+          {
+            "id": "ESPECIALISTA",
+            "nome": "Especialista",
+            "valor": 24.1,
+            "intensidade": "Baixa",
+            "posicao": 6
+          },
+          {
+            "id": "PLANTA",
+            "nome": "Planta",
+            "valor": 20.3,
+            "intensidade": "Baixa",
+            "posicao": 7
+          },
+          {
+            "id": "TRAB_EQUIPE",
+            "nome": "Trabalhador em Equipe",
+            "valor": 18.3,
+            "intensidade": "Baixa",
+            "posicao": 8
+          },
+          {
+            "id": "COORDENADOR",
+            "nome": "Coordenador",
+            "valor": 14.3,
+            "intensidade": "Muito baixa",
+            "posicao": 9
+          }
+        ],
+        "top3Belbin": [
+          {
+            "id": "IMPLEMENTADOR",
+            "nome": "Implementador",
+            "valor": 52.8,
+            "intensidade": "Alta",
+            "posicao": 1
+          },
+          {
+            "id": "FORMADOR",
+            "nome": "Formador",
+            "valor": 39,
+            "intensidade": "Moderada",
+            "posicao": 2
+          },
+          {
+            "id": "MONITOR",
+            "nome": "Monitor Avaliador",
+            "valor": 35.6,
+            "intensidade": "Moderada",
+            "posicao": 3
+          }
+        ],
+        "versaoAlgoritmo": "v1.0-piloto",
+        "versaoMatriz": "v2.0",
+        "respostasValidas": 48,
+        "completo": true
+      }
+    }
+  ],
+  "populacao": {
+    "n": 96,
+    "setores": [
+      "AGSUS",
+      "ANTT",
+      "DAP",
+      "DH",
+      "FINANCEIRO",
+      "HUMAN POWER",
+      "INFRAESTRUTURA",
+      "JURÍDICO",
+      "MDHC",
+      "MEC",
+      "MM",
+      "MONITORIA",
+      "MS",
+      "PLANEJAMENTO",
+      "SESMT",
+      "TERRACAP"
+    ]
+  },
+  "coletivoGeral": {
+    "n": 96,
+    "idf": 84.2,
+    "idfFaixa": "alta",
+    "idfComponentes": {
+      "perfis": 98.2,
+      "funcoes": 98.9,
+      "dispersaoVetorial": 69.9
+    },
+    "icf": 62.7,
+    "icfFaixa": "moderada",
+    "complementaridade": {
+      "pct": 100,
+      "capacidadesCobertas": 10,
+      "total": 10
+    },
+    "concentracao": {
+      "hhi": 0.134,
+      "maiorPerfil": "Se",
+      "maiorPerfilPct": 17.7,
+      "perfisPresentes": 8
+    },
+    "distribuicaoPerfis": [
+      {
+        "perfil": "Te",
+        "animal": "Lobo",
+        "nome": "Pensamento Extrovertido",
+        "cor": "#2E6E8E",
+        "n": 13,
+        "pct": 13.5
+      },
+      {
+        "perfil": "Ti",
+        "animal": "Elefante",
+        "nome": "Pensamento Introvertido",
+        "cor": "#1C4A62",
+        "n": 13,
+        "pct": 13.5
+      },
+      {
+        "perfil": "Fe",
+        "animal": "Carneiro",
+        "nome": "Sentimento Extrovertido",
+        "cor": "#C1663A",
+        "n": 13,
+        "pct": 13.5
+      },
+      {
+        "perfil": "Fi",
+        "animal": "Baleia",
+        "nome": "Sentimento Introvertido",
+        "cor": "#8C3F33",
+        "n": 7,
+        "pct": 7.3
+      },
+      {
+        "perfil": "Se",
+        "animal": "Cavalo",
+        "nome": "Sensação Extrovertida",
+        "cor": "#6E8B3D",
+        "n": 17,
+        "pct": 17.7
+      },
+      {
+        "perfil": "Si",
+        "animal": "Urso",
+        "nome": "Sensação Introvertida",
+        "cor": "#47632B",
+        "n": 13,
+        "pct": 13.5
+      },
+      {
+        "perfil": "Ne",
+        "animal": "Raposa",
+        "nome": "Intuição Extrovertida",
+        "cor": "#8A5AA0",
+        "n": 13,
+        "pct": 13.5
+      },
+      {
+        "perfil": "Ni",
+        "animal": "Onça",
+        "nome": "Intuição Introvertida",
+        "cor": "#4E3163",
+        "n": 7,
+        "pct": 7.3
+      }
+    ],
+    "distribuicaoFuncoes": [
+      {
+        "funcao": "T",
+        "nome": "Pensamento",
+        "n": 26,
+        "pct": 27.1,
+        "media": 27.2
+      },
+      {
+        "funcao": "F",
+        "nome": "Sentimento",
+        "n": 20,
+        "pct": 20.8,
+        "media": 22.5
+      },
+      {
+        "funcao": "S",
+        "nome": "Sensação",
+        "n": 30,
+        "pct": 31.3,
+        "media": 28
+      },
+      {
+        "funcao": "N",
+        "nome": "Intuição",
+        "n": 20,
+        "pct": 20.8,
+        "media": 22.3
+      }
+    ],
+    "distribuicaoAtitudes": [
+      {
+        "atitude": "E",
+        "nome": "Extroversão",
+        "n": 56,
+        "pct": 58.3,
+        "media": 53.4
+      },
+      {
+        "atitude": "I",
+        "nome": "Introversão",
+        "n": 40,
+        "pct": 41.7,
+        "media": 46.6
+      }
+    ],
+    "distribuicaoEixos": [
+      {
+        "eixo": "EXP",
+        "nome": "Exploração",
+        "media": 23.2
+      },
+      {
+        "eixo": "EXE",
+        "nome": "Execução",
+        "media": 28.2
+      },
+      {
+        "eixo": "AUT",
+        "nome": "Autonomia",
+        "media": 24.9
+      },
+      {
+        "eixo": "COO",
+        "nome": "Cooperação",
+        "media": 24.8
+      },
+      {
+        "eixo": "FLE",
+        "nome": "Flexibilidade",
+        "media": 23.8
+      },
+      {
+        "eixo": "EST",
+        "nome": "Estrutura",
+        "media": 24.5
+      }
+    ],
+    "cobertura": [
+      {
+        "capacidade": "CRIAR",
+        "nome": "Criar",
+        "valor": 77.7,
+        "nivel": "forte",
+        "portadores": 17,
+        "media": 25.5,
+        "belbin": "Planta",
+        "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+      },
+      {
+        "capacidade": "EXPLORAR",
+        "nome": "Explorar",
+        "valor": 77.9,
+        "nivel": "forte",
+        "portadores": 13,
+        "media": 26.2,
+        "belbin": "Investigador de Recursos",
+        "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+      },
+      {
+        "capacidade": "ANALISAR",
+        "nome": "Analisar",
+        "valor": 80.5,
+        "nivel": "forte",
+        "portadores": 21,
+        "media": 35.1,
+        "belbin": "Monitor Avaliador",
+        "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+      },
+      {
+        "capacidade": "DECIDIR",
+        "nome": "Decidir/Mobilizar",
+        "valor": 56.3,
+        "nivel": "adequada",
+        "portadores": 8,
+        "media": 32.1,
+        "belbin": "Formador",
+        "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+      },
+      {
+        "capacidade": "ORGANIZAR",
+        "nome": "Organizar",
+        "valor": 43,
+        "nivel": "moderada",
+        "portadores": 6,
+        "media": 26.7,
+        "belbin": "Implementador",
+        "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+      },
+      {
+        "capacidade": "EXECUTAR",
+        "nome": "Executar",
+        "valor": 43.9,
+        "nivel": "moderada",
+        "portadores": 6,
+        "media": 29.8,
+        "belbin": "Implementador",
+        "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+      },
+      {
+        "capacidade": "RELACIONAR",
+        "nome": "Relacionar",
+        "valor": 60.6,
+        "nivel": "adequada",
+        "portadores": 9,
+        "media": 26.9,
+        "belbin": "Trabalhador em Equipe",
+        "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+      },
+      {
+        "capacidade": "COORDENAR",
+        "nome": "Coordenar",
+        "valor": 77.6,
+        "nivel": "forte",
+        "portadores": 16,
+        "media": 25.3,
+        "belbin": "Coordenador",
+        "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+      },
+      {
+        "capacidade": "FINALIZAR",
+        "nome": "Finalizar",
+        "valor": 78.2,
+        "nivel": "forte",
+        "portadores": 12,
+        "media": 27.2,
+        "belbin": "Finalizador",
+        "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+      },
+      {
+        "capacidade": "ESPECIALIZAR",
+        "nome": "Especializar",
+        "valor": 31.7,
+        "nivel": "baixa",
+        "portadores": 4,
+        "media": 27.9,
+        "belbin": "Especialista",
+        "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+      }
+    ],
+    "belbinEquipe": [
+      {
+        "id": "PLANTA",
+        "nome": "Planta",
+        "media": 25,
+        "intensidade": "Baixa",
+        "portadores": 17,
+        "dimensao": "tarefa"
+      },
+      {
+        "id": "INV_RECURSOS",
+        "nome": "Investigador de Recursos",
+        "media": 26.3,
+        "intensidade": "Baixa",
+        "portadores": 9,
+        "dimensao": "relacionamento"
+      },
+      {
+        "id": "COORDENADOR",
+        "nome": "Coordenador",
+        "media": 26.5,
+        "intensidade": "Baixa",
+        "portadores": 11,
+        "dimensao": "relacionamento"
+      },
+      {
+        "id": "FORMADOR",
+        "nome": "Formador",
+        "media": 30.6,
+        "intensidade": "Moderada",
+        "portadores": 8,
+        "dimensao": "tarefa"
+      },
+      {
+        "id": "MONITOR",
+        "nome": "Monitor Avaliador",
+        "media": 34.1,
+        "intensidade": "Moderada",
+        "portadores": 19,
+        "dimensao": "tarefa"
+      },
+      {
+        "id": "IMPLEMENTADOR",
+        "nome": "Implementador",
+        "media": 35.2,
+        "intensidade": "Moderada",
+        "portadores": 9,
+        "dimensao": "tarefa"
+      },
+      {
+        "id": "TRAB_EQUIPE",
+        "nome": "Trabalhador em Equipe",
+        "media": 26,
+        "intensidade": "Baixa",
+        "portadores": 14,
+        "dimensao": "relacionamento"
+      },
+      {
+        "id": "FINALIZADOR",
+        "nome": "Finalizador",
+        "media": 26.9,
+        "intensidade": "Baixa",
+        "portadores": 12,
+        "dimensao": "tarefa"
+      },
+      {
+        "id": "ESPECIALISTA",
+        "nome": "Especialista",
+        "media": 29.5,
+        "intensidade": "Baixa",
+        "portadores": 6,
+        "dimensao": "tarefa"
+      }
+    ]
+  },
+  "coletivoPorSetor": {
+    "AGSUS": {
+      "n": 5,
+      "idf": 51.3,
+      "idfFaixa": "moderada",
+      "idfComponentes": {
+        "perfis": 45.7,
+        "funcoes": 36.1,
+        "dispersaoVetorial": 61.8
+      },
+      "icf": 43.7,
+      "icfFaixa": "baixa",
+      "complementaridade": {
+        "pct": 50,
+        "capacidadesCobertas": 5,
+        "total": 10
+      },
+      "concentracao": {
+        "hhi": 0.44,
+        "maiorPerfil": "Si",
+        "maiorPerfilPct": 60,
+        "perfisPresentes": 3
+      },
+      "distribuicaoPerfis": [
+        {
+          "perfil": "Te",
+          "animal": "Lobo",
+          "nome": "Pensamento Extrovertido",
+          "cor": "#2E6E8E",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ti",
+          "animal": "Elefante",
+          "nome": "Pensamento Introvertido",
+          "cor": "#1C4A62",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Fe",
+          "animal": "Carneiro",
+          "nome": "Sentimento Extrovertido",
+          "cor": "#C1663A",
+          "n": 1,
+          "pct": 20
+        },
+        {
+          "perfil": "Fi",
+          "animal": "Baleia",
+          "nome": "Sentimento Introvertido",
+          "cor": "#8C3F33",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Se",
+          "animal": "Cavalo",
+          "nome": "Sensação Extrovertida",
+          "cor": "#6E8B3D",
+          "n": 1,
+          "pct": 20
+        },
+        {
+          "perfil": "Si",
+          "animal": "Urso",
+          "nome": "Sensação Introvertida",
+          "cor": "#47632B",
+          "n": 3,
+          "pct": 60
+        },
+        {
+          "perfil": "Ne",
+          "animal": "Raposa",
+          "nome": "Intuição Extrovertida",
+          "cor": "#8A5AA0",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ni",
+          "animal": "Onça",
+          "nome": "Intuição Introvertida",
+          "cor": "#4E3163",
+          "n": 0,
+          "pct": 0
+        }
+      ],
+      "distribuicaoFuncoes": [
+        {
+          "funcao": "T",
+          "nome": "Pensamento",
+          "n": 0,
+          "pct": 0,
+          "media": 8.9
+        },
+        {
+          "funcao": "F",
+          "nome": "Sentimento",
+          "n": 1,
+          "pct": 20,
+          "media": 20
+        },
+        {
+          "funcao": "S",
+          "nome": "Sensação",
+          "n": 4,
+          "pct": 80,
+          "media": 58.5
+        },
+        {
+          "funcao": "N",
+          "nome": "Intuição",
+          "n": 0,
+          "pct": 0,
+          "media": 12.6
+        }
+      ],
+      "distribuicaoAtitudes": [
+        {
+          "atitude": "E",
+          "nome": "Extroversão",
+          "n": 2,
+          "pct": 40,
+          "media": 40.7
+        },
+        {
+          "atitude": "I",
+          "nome": "Introversão",
+          "n": 3,
+          "pct": 60,
+          "media": 59.3
+        }
+      ],
+      "distribuicaoEixos": [
+        {
+          "eixo": "EXP",
+          "nome": "Exploração",
+          "media": 15
+        },
+        {
+          "eixo": "EXE",
+          "nome": "Execução",
+          "media": 48
+        },
+        {
+          "eixo": "AUT",
+          "nome": "Autonomia",
+          "media": 25
+        },
+        {
+          "eixo": "COO",
+          "nome": "Cooperação",
+          "media": 23.5
+        },
+        {
+          "eixo": "FLE",
+          "nome": "Flexibilidade",
+          "media": 12.7
+        },
+        {
+          "eixo": "EST",
+          "nome": "Estrutura",
+          "media": 20.5
+        }
+      ],
+      "cobertura": [
+        {
+          "capacidade": "CRIAR",
+          "nome": "Criar",
+          "valor": 5.4,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 18.1,
+          "belbin": "Planta",
+          "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+        },
+        {
+          "capacidade": "EXPLORAR",
+          "nome": "Explorar",
+          "valor": 5.2,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 17.2,
+          "belbin": "Investigador de Recursos",
+          "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+        },
+        {
+          "capacidade": "ANALISAR",
+          "nome": "Analisar",
+          "valor": 80.5,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 34.9,
+          "belbin": "Monitor Avaliador",
+          "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+        },
+        {
+          "capacidade": "DECIDIR",
+          "nome": "Decidir/Mobilizar",
+          "valor": 8,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 26.8,
+          "belbin": "Formador",
+          "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+        },
+        {
+          "capacidade": "ORGANIZAR",
+          "nome": "Organizar",
+          "valor": 7,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 23.4,
+          "belbin": "Implementador",
+          "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+        },
+        {
+          "capacidade": "EXECUTAR",
+          "nome": "Executar",
+          "valor": 82.5,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 41.8,
+          "belbin": "Implementador",
+          "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+        },
+        {
+          "capacidade": "RELACIONAR",
+          "nome": "Relacionar",
+          "valor": 6.9,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 22.8,
+          "belbin": "Trabalhador em Equipe",
+          "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+        },
+        {
+          "capacidade": "COORDENAR",
+          "nome": "Coordenar",
+          "valor": 77.2,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 23.9,
+          "belbin": "Coordenador",
+          "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+        },
+        {
+          "capacidade": "FINALIZAR",
+          "nome": "Finalizar",
+          "valor": 81.5,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 38.3,
+          "belbin": "Finalizador",
+          "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+        },
+        {
+          "capacidade": "ESPECIALIZAR",
+          "nome": "Especializar",
+          "valor": 82.7,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 42.5,
+          "belbin": "Especialista",
+          "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+        }
+      ],
+      "belbinEquipe": [
+        {
+          "id": "PLANTA",
+          "nome": "Planta",
+          "media": 18.4,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "INV_RECURSOS",
+          "nome": "Investigador de Recursos",
+          "media": 17.4,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "COORDENADOR",
+          "nome": "Coordenador",
+          "media": 24.3,
+          "intensidade": "Baixa",
+          "portadores": 1,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FORMADOR",
+          "nome": "Formador",
+          "media": 22.4,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "MONITOR",
+          "nome": "Monitor Avaliador",
+          "media": 31.2,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "IMPLEMENTADOR",
+          "nome": "Implementador",
+          "media": 43,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "TRAB_EQUIPE",
+          "nome": "Trabalhador em Equipe",
+          "media": 23.4,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FINALIZADOR",
+          "nome": "Finalizador",
+          "media": 36.8,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "ESPECIALISTA",
+          "nome": "Especialista",
+          "media": 43.1,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "tarefa"
+        }
+      ]
+    },
+    "ANTT": {
+      "n": 6,
+      "idf": 48.4,
+      "idfFaixa": "moderada",
+      "idfComponentes": {
+        "perfis": 59.7,
+        "funcoes": 45.9,
+        "dispersaoVetorial": 43.9
+      },
+      "icf": 29.7,
+      "icfFaixa": "baixa",
+      "complementaridade": {
+        "pct": 30,
+        "capacidadesCobertas": 3,
+        "total": 10
+      },
+      "concentracao": {
+        "hhi": 0.333,
+        "maiorPerfil": "Ti",
+        "maiorPerfilPct": 50,
+        "perfisPresentes": 4
+      },
+      "distribuicaoPerfis": [
+        {
+          "perfil": "Te",
+          "animal": "Lobo",
+          "nome": "Pensamento Extrovertido",
+          "cor": "#2E6E8E",
+          "n": 1,
+          "pct": 16.7
+        },
+        {
+          "perfil": "Ti",
+          "animal": "Elefante",
+          "nome": "Pensamento Introvertido",
+          "cor": "#1C4A62",
+          "n": 3,
+          "pct": 50
+        },
+        {
+          "perfil": "Fe",
+          "animal": "Carneiro",
+          "nome": "Sentimento Extrovertido",
+          "cor": "#C1663A",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Fi",
+          "animal": "Baleia",
+          "nome": "Sentimento Introvertido",
+          "cor": "#8C3F33",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Se",
+          "animal": "Cavalo",
+          "nome": "Sensação Extrovertida",
+          "cor": "#6E8B3D",
+          "n": 1,
+          "pct": 16.7
+        },
+        {
+          "perfil": "Si",
+          "animal": "Urso",
+          "nome": "Sensação Introvertida",
+          "cor": "#47632B",
+          "n": 1,
+          "pct": 16.7
+        },
+        {
+          "perfil": "Ne",
+          "animal": "Raposa",
+          "nome": "Intuição Extrovertida",
+          "cor": "#8A5AA0",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ni",
+          "animal": "Onça",
+          "nome": "Intuição Introvertida",
+          "cor": "#4E3163",
+          "n": 0,
+          "pct": 0
+        }
+      ],
+      "distribuicaoFuncoes": [
+        {
+          "funcao": "T",
+          "nome": "Pensamento",
+          "n": 4,
+          "pct": 66.7,
+          "media": 53.7
+        },
+        {
+          "funcao": "F",
+          "nome": "Sentimento",
+          "n": 0,
+          "pct": 0,
+          "media": 5.6
+        },
+        {
+          "funcao": "S",
+          "nome": "Sensação",
+          "n": 2,
+          "pct": 33.3,
+          "media": 32.1
+        },
+        {
+          "funcao": "N",
+          "nome": "Intuição",
+          "n": 0,
+          "pct": 0,
+          "media": 8.6
+        }
+      ],
+      "distribuicaoAtitudes": [
+        {
+          "atitude": "E",
+          "nome": "Extroversão",
+          "n": 2,
+          "pct": 33.3,
+          "media": 46.9
+        },
+        {
+          "atitude": "I",
+          "nome": "Introversão",
+          "n": 4,
+          "pct": 66.7,
+          "media": 53.1
+        }
+      ],
+      "distribuicaoEixos": [
+        {
+          "eixo": "EXP",
+          "nome": "Exploração",
+          "media": 7.1
+        },
+        {
+          "eixo": "EXE",
+          "nome": "Execução",
+          "media": 32.4
+        },
+        {
+          "eixo": "AUT",
+          "nome": "Autonomia",
+          "media": 33.3
+        },
+        {
+          "eixo": "COO",
+          "nome": "Cooperação",
+          "media": 17.4
+        },
+        {
+          "eixo": "FLE",
+          "nome": "Flexibilidade",
+          "media": 16.7
+        },
+        {
+          "eixo": "EST",
+          "nome": "Estrutura",
+          "media": 34.5
+        }
+      ],
+      "cobertura": [
+        {
+          "capacidade": "CRIAR",
+          "nome": "Criar",
+          "valor": 5.6,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 18.8,
+          "belbin": "Planta",
+          "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+        },
+        {
+          "capacidade": "EXPLORAR",
+          "nome": "Explorar",
+          "valor": 3.1,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 10.4,
+          "belbin": "Investigador de Recursos",
+          "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+        },
+        {
+          "capacidade": "ANALISAR",
+          "nome": "Analisar",
+          "valor": 85.6,
+          "nivel": "forte",
+          "portadores": 4,
+          "media": 52.1,
+          "belbin": "Monitor Avaliador",
+          "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+        },
+        {
+          "capacidade": "DECIDIR",
+          "nome": "Decidir/Mobilizar",
+          "valor": 11.2,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 37.4,
+          "belbin": "Formador",
+          "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+        },
+        {
+          "capacidade": "ORGANIZAR",
+          "nome": "Organizar",
+          "valor": 82.3,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 40.9,
+          "belbin": "Implementador",
+          "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+        },
+        {
+          "capacidade": "EXECUTAR",
+          "nome": "Executar",
+          "valor": 8.4,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 27.9,
+          "belbin": "Implementador",
+          "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+        },
+        {
+          "capacidade": "RELACIONAR",
+          "nome": "Relacionar",
+          "valor": 5.1,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 17.1,
+          "belbin": "Trabalhador em Equipe",
+          "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+        },
+        {
+          "capacidade": "COORDENAR",
+          "nome": "Coordenar",
+          "valor": 4.9,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 16.4,
+          "belbin": "Coordenador",
+          "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+        },
+        {
+          "capacidade": "FINALIZAR",
+          "nome": "Finalizar",
+          "valor": 80.5,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 35.1,
+          "belbin": "Finalizador",
+          "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+        },
+        {
+          "capacidade": "ESPECIALIZAR",
+          "nome": "Especializar",
+          "valor": 9.8,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 32.7,
+          "belbin": "Especialista",
+          "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+        }
+      ],
+      "belbinEquipe": [
+        {
+          "id": "PLANTA",
+          "nome": "Planta",
+          "media": 17.6,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "INV_RECURSOS",
+          "nome": "Investigador de Recursos",
+          "media": 11.9,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "COORDENADOR",
+          "nome": "Coordenador",
+          "media": 19.7,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FORMADOR",
+          "nome": "Formador",
+          "media": 34.6,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "MONITOR",
+          "nome": "Monitor Avaliador",
+          "media": 52.3,
+          "intensidade": "Alta",
+          "portadores": 4,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "IMPLEMENTADOR",
+          "nome": "Implementador",
+          "media": 42.3,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "TRAB_EQUIPE",
+          "nome": "Trabalhador em Equipe",
+          "media": 14.3,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FINALIZADOR",
+          "nome": "Finalizador",
+          "media": 35,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "ESPECIALISTA",
+          "nome": "Especialista",
+          "media": 33.9,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        }
+      ]
+    },
+    "DAP": {
+      "n": 4,
+      "idf": 37.1,
+      "idfFaixa": "baixa",
+      "idfComponentes": {
+        "perfis": 33.3,
+        "funcoes": 50,
+        "dispersaoVetorial": 32.5
+      },
+      "icf": 8.5,
+      "icfFaixa": "baixa",
+      "complementaridade": {
+        "pct": 0,
+        "capacidadesCobertas": 0,
+        "total": 10
+      },
+      "concentracao": {
+        "hhi": 0.5,
+        "maiorPerfil": "Fi",
+        "maiorPerfilPct": 50,
+        "perfisPresentes": 2
+      },
+      "distribuicaoPerfis": [
+        {
+          "perfil": "Te",
+          "animal": "Lobo",
+          "nome": "Pensamento Extrovertido",
+          "cor": "#2E6E8E",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ti",
+          "animal": "Elefante",
+          "nome": "Pensamento Introvertido",
+          "cor": "#1C4A62",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Fe",
+          "animal": "Carneiro",
+          "nome": "Sentimento Extrovertido",
+          "cor": "#C1663A",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Fi",
+          "animal": "Baleia",
+          "nome": "Sentimento Introvertido",
+          "cor": "#8C3F33",
+          "n": 2,
+          "pct": 50
+        },
+        {
+          "perfil": "Se",
+          "animal": "Cavalo",
+          "nome": "Sensação Extrovertida",
+          "cor": "#6E8B3D",
+          "n": 2,
+          "pct": 50
+        },
+        {
+          "perfil": "Si",
+          "animal": "Urso",
+          "nome": "Sensação Introvertida",
+          "cor": "#47632B",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ne",
+          "animal": "Raposa",
+          "nome": "Intuição Extrovertida",
+          "cor": "#8A5AA0",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ni",
+          "animal": "Onça",
+          "nome": "Intuição Introvertida",
+          "cor": "#4E3163",
+          "n": 0,
+          "pct": 0
+        }
+      ],
+      "distribuicaoFuncoes": [
+        {
+          "funcao": "T",
+          "nome": "Pensamento",
+          "n": 0,
+          "pct": 0,
+          "media": 14.8
+        },
+        {
+          "funcao": "F",
+          "nome": "Sentimento",
+          "n": 2,
+          "pct": 50,
+          "media": 38
+        },
+        {
+          "funcao": "S",
+          "nome": "Sensação",
+          "n": 2,
+          "pct": 50,
+          "media": 34.3
+        },
+        {
+          "funcao": "N",
+          "nome": "Intuição",
+          "n": 0,
+          "pct": 0,
+          "media": 13
+        }
+      ],
+      "distribuicaoAtitudes": [
+        {
+          "atitude": "E",
+          "nome": "Extroversão",
+          "n": 2,
+          "pct": 50,
+          "media": 49.1
+        },
+        {
+          "atitude": "I",
+          "nome": "Introversão",
+          "n": 2,
+          "pct": 50,
+          "media": 50.9
+        }
+      ],
+      "distribuicaoEixos": [
+        {
+          "eixo": "EXP",
+          "nome": "Exploração",
+          "media": 17.9
+        },
+        {
+          "eixo": "EXE",
+          "nome": "Execução",
+          "media": 30.8
+        },
+        {
+          "eixo": "AUT",
+          "nome": "Autonomia",
+          "media": 19.3
+        },
+        {
+          "eixo": "COO",
+          "nome": "Cooperação",
+          "media": 31.1
+        },
+        {
+          "eixo": "FLE",
+          "nome": "Flexibilidade",
+          "media": 23.9
+        },
+        {
+          "eixo": "EST",
+          "nome": "Estrutura",
+          "media": 25
+        }
+      ],
+      "cobertura": [
+        {
+          "capacidade": "CRIAR",
+          "nome": "Criar",
+          "valor": 5.1,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 17.1,
+          "belbin": "Planta",
+          "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+        },
+        {
+          "capacidade": "EXPLORAR",
+          "nome": "Explorar",
+          "valor": 7.9,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 26.3,
+          "belbin": "Investigador de Recursos",
+          "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+        },
+        {
+          "capacidade": "ANALISAR",
+          "nome": "Analisar",
+          "valor": 9,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 30.1,
+          "belbin": "Monitor Avaliador",
+          "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+        },
+        {
+          "capacidade": "DECIDIR",
+          "nome": "Decidir/Mobilizar",
+          "valor": 6,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 20.1,
+          "belbin": "Formador",
+          "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+        },
+        {
+          "capacidade": "ORGANIZAR",
+          "nome": "Organizar",
+          "valor": 8.6,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 28.8,
+          "belbin": "Implementador",
+          "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+        },
+        {
+          "capacidade": "EXECUTAR",
+          "nome": "Executar",
+          "valor": 9,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 30,
+          "belbin": "Implementador",
+          "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+        },
+        {
+          "capacidade": "RELACIONAR",
+          "nome": "Relacionar",
+          "valor": 9.6,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 32.2,
+          "belbin": "Trabalhador em Equipe",
+          "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+        },
+        {
+          "capacidade": "COORDENAR",
+          "nome": "Coordenar",
+          "valor": 10.4,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 34.8,
+          "belbin": "Coordenador",
+          "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+        },
+        {
+          "capacidade": "FINALIZAR",
+          "nome": "Finalizar",
+          "valor": 9.3,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 30.9,
+          "belbin": "Finalizador",
+          "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+        },
+        {
+          "capacidade": "ESPECIALIZAR",
+          "nome": "Especializar",
+          "valor": 10,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 33.2,
+          "belbin": "Especialista",
+          "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+        }
+      ],
+      "belbinEquipe": [
+        {
+          "id": "PLANTA",
+          "nome": "Planta",
+          "media": 14.9,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "INV_RECURSOS",
+          "nome": "Investigador de Recursos",
+          "media": 28.3,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "COORDENADOR",
+          "nome": "Coordenador",
+          "media": 33.1,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FORMADOR",
+          "nome": "Formador",
+          "media": 18.9,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "MONITOR",
+          "nome": "Monitor Avaliador",
+          "media": 29.1,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "IMPLEMENTADOR",
+          "nome": "Implementador",
+          "media": 37.5,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "TRAB_EQUIPE",
+          "nome": "Trabalhador em Equipe",
+          "media": 33.2,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FINALIZADOR",
+          "nome": "Finalizador",
+          "media": 32,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "ESPECIALISTA",
+          "nome": "Especialista",
+          "media": 31.5,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        }
+      ]
+    },
+    "DH": {
+      "n": 5,
+      "idf": 35.6,
+      "idfFaixa": "baixa",
+      "idfComponentes": {
+        "perfis": 24.1,
+        "funcoes": 36.1,
+        "dispersaoVetorial": 41.1
+      },
+      "icf": 22.2,
+      "icfFaixa": "baixa",
+      "complementaridade": {
+        "pct": 20,
+        "capacidadesCobertas": 2,
+        "total": 10
+      },
+      "concentracao": {
+        "hhi": 0.68,
+        "maiorPerfil": "Fe",
+        "maiorPerfilPct": 80,
+        "perfisPresentes": 2
+      },
+      "distribuicaoPerfis": [
+        {
+          "perfil": "Te",
+          "animal": "Lobo",
+          "nome": "Pensamento Extrovertido",
+          "cor": "#2E6E8E",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ti",
+          "animal": "Elefante",
+          "nome": "Pensamento Introvertido",
+          "cor": "#1C4A62",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Fe",
+          "animal": "Carneiro",
+          "nome": "Sentimento Extrovertido",
+          "cor": "#C1663A",
+          "n": 4,
+          "pct": 80
+        },
+        {
+          "perfil": "Fi",
+          "animal": "Baleia",
+          "nome": "Sentimento Introvertido",
+          "cor": "#8C3F33",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Se",
+          "animal": "Cavalo",
+          "nome": "Sensação Extrovertida",
+          "cor": "#6E8B3D",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Si",
+          "animal": "Urso",
+          "nome": "Sensação Introvertida",
+          "cor": "#47632B",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ne",
+          "animal": "Raposa",
+          "nome": "Intuição Extrovertida",
+          "cor": "#8A5AA0",
+          "n": 1,
+          "pct": 20
+        },
+        {
+          "perfil": "Ni",
+          "animal": "Onça",
+          "nome": "Intuição Introvertida",
+          "cor": "#4E3163",
+          "n": 0,
+          "pct": 0
+        }
+      ],
+      "distribuicaoFuncoes": [
+        {
+          "funcao": "T",
+          "nome": "Pensamento",
+          "n": 0,
+          "pct": 0,
+          "media": 11.1
+        },
+        {
+          "funcao": "F",
+          "nome": "Sentimento",
+          "n": 4,
+          "pct": 80,
+          "media": 62.2
+        },
+        {
+          "funcao": "S",
+          "nome": "Sensação",
+          "n": 0,
+          "pct": 0,
+          "media": 11.8
+        },
+        {
+          "funcao": "N",
+          "nome": "Intuição",
+          "n": 1,
+          "pct": 20,
+          "media": 14.8
+        }
+      ],
+      "distribuicaoAtitudes": [
+        {
+          "atitude": "E",
+          "nome": "Extroversão",
+          "n": 5,
+          "pct": 100,
+          "media": 62.3
+        },
+        {
+          "atitude": "I",
+          "nome": "Introversão",
+          "n": 0,
+          "pct": 0,
+          "media": 37.7
+        }
+      ],
+      "distribuicaoEixos": [
+        {
+          "eixo": "EXP",
+          "nome": "Exploração",
+          "media": 20.7
+        },
+        {
+          "eixo": "EXE",
+          "nome": "Execução",
+          "media": 24
+        },
+        {
+          "eixo": "AUT",
+          "nome": "Autonomia",
+          "media": 14.1
+        },
+        {
+          "eixo": "COO",
+          "nome": "Cooperação",
+          "media": 44.4
+        },
+        {
+          "eixo": "FLE",
+          "nome": "Flexibilidade",
+          "media": 26.4
+        },
+        {
+          "eixo": "EST",
+          "nome": "Estrutura",
+          "media": 18.6
+        }
+      ],
+      "cobertura": [
+        {
+          "capacidade": "CRIAR",
+          "nome": "Criar",
+          "valor": 5.3,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 17.8,
+          "belbin": "Planta",
+          "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+        },
+        {
+          "capacidade": "EXPLORAR",
+          "nome": "Explorar",
+          "valor": 6.9,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 23.1,
+          "belbin": "Investigador de Recursos",
+          "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+        },
+        {
+          "capacidade": "ANALISAR",
+          "nome": "Analisar",
+          "valor": 6.5,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 21.8,
+          "belbin": "Monitor Avaliador",
+          "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+        },
+        {
+          "capacidade": "DECIDIR",
+          "nome": "Decidir/Mobilizar",
+          "valor": 9.4,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 31.2,
+          "belbin": "Formador",
+          "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+        },
+        {
+          "capacidade": "ORGANIZAR",
+          "nome": "Organizar",
+          "valor": 6,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 20,
+          "belbin": "Implementador",
+          "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+        },
+        {
+          "capacidade": "EXECUTAR",
+          "nome": "Executar",
+          "valor": 9.6,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 32,
+          "belbin": "Implementador",
+          "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+        },
+        {
+          "capacidade": "RELACIONAR",
+          "nome": "Relacionar",
+          "valor": 83.4,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 44.8,
+          "belbin": "Trabalhador em Equipe",
+          "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+        },
+        {
+          "capacidade": "COORDENAR",
+          "nome": "Coordenar",
+          "valor": 85,
+          "nivel": "forte",
+          "portadores": 3,
+          "media": 49.9,
+          "belbin": "Coordenador",
+          "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+        },
+        {
+          "capacidade": "FINALIZAR",
+          "nome": "Finalizar",
+          "valor": 4.6,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 15.3,
+          "belbin": "Finalizador",
+          "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+        },
+        {
+          "capacidade": "ESPECIALIZAR",
+          "nome": "Especializar",
+          "valor": 5.7,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 19.2,
+          "belbin": "Especialista",
+          "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+        }
+      ],
+      "belbinEquipe": [
+        {
+          "id": "PLANTA",
+          "nome": "Planta",
+          "media": 17.3,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "INV_RECURSOS",
+          "nome": "Investigador de Recursos",
+          "media": 23.8,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "COORDENADOR",
+          "nome": "Coordenador",
+          "media": 45,
+          "intensidade": "Alta",
+          "portadores": 2,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FORMADOR",
+          "nome": "Formador",
+          "media": 31.7,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "MONITOR",
+          "nome": "Monitor Avaliador",
+          "media": 21.9,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "IMPLEMENTADOR",
+          "nome": "Implementador",
+          "media": 32.5,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "TRAB_EQUIPE",
+          "nome": "Trabalhador em Equipe",
+          "media": 49,
+          "intensidade": "Alta",
+          "portadores": 4,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FINALIZADOR",
+          "nome": "Finalizador",
+          "media": 14.4,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "ESPECIALISTA",
+          "nome": "Especialista",
+          "media": 20,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        }
+      ]
+    },
+    "FINANCEIRO": {
+      "n": 6,
+      "idf": 46.6,
+      "idfFaixa": "moderada",
+      "idfComponentes": {
+        "perfis": 48.6,
+        "funcoes": 50,
+        "dispersaoVetorial": 43.8
+      },
+      "icf": 29.6,
+      "icfFaixa": "baixa",
+      "complementaridade": {
+        "pct": 30,
+        "capacidadesCobertas": 3,
+        "total": 10
+      },
+      "concentracao": {
+        "hhi": 0.389,
+        "maiorPerfil": "Se",
+        "maiorPerfilPct": 50,
+        "perfisPresentes": 3
+      },
+      "distribuicaoPerfis": [
+        {
+          "perfil": "Te",
+          "animal": "Lobo",
+          "nome": "Pensamento Extrovertido",
+          "cor": "#2E6E8E",
+          "n": 2,
+          "pct": 33.3
+        },
+        {
+          "perfil": "Ti",
+          "animal": "Elefante",
+          "nome": "Pensamento Introvertido",
+          "cor": "#1C4A62",
+          "n": 1,
+          "pct": 16.7
+        },
+        {
+          "perfil": "Fe",
+          "animal": "Carneiro",
+          "nome": "Sentimento Extrovertido",
+          "cor": "#C1663A",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Fi",
+          "animal": "Baleia",
+          "nome": "Sentimento Introvertido",
+          "cor": "#8C3F33",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Se",
+          "animal": "Cavalo",
+          "nome": "Sensação Extrovertida",
+          "cor": "#6E8B3D",
+          "n": 3,
+          "pct": 50
+        },
+        {
+          "perfil": "Si",
+          "animal": "Urso",
+          "nome": "Sensação Introvertida",
+          "cor": "#47632B",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ne",
+          "animal": "Raposa",
+          "nome": "Intuição Extrovertida",
+          "cor": "#8A5AA0",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ni",
+          "animal": "Onça",
+          "nome": "Intuição Introvertida",
+          "cor": "#4E3163",
+          "n": 0,
+          "pct": 0
+        }
+      ],
+      "distribuicaoFuncoes": [
+        {
+          "funcao": "T",
+          "nome": "Pensamento",
+          "n": 3,
+          "pct": 50,
+          "media": 45.1
+        },
+        {
+          "funcao": "F",
+          "nome": "Sentimento",
+          "n": 0,
+          "pct": 0,
+          "media": 13.6
+        },
+        {
+          "funcao": "S",
+          "nome": "Sensação",
+          "n": 3,
+          "pct": 50,
+          "media": 36.4
+        },
+        {
+          "funcao": "N",
+          "nome": "Intuição",
+          "n": 0,
+          "pct": 0,
+          "media": 4.9
+        }
+      ],
+      "distribuicaoAtitudes": [
+        {
+          "atitude": "E",
+          "nome": "Extroversão",
+          "n": 5,
+          "pct": 83.3,
+          "media": 63
+        },
+        {
+          "atitude": "I",
+          "nome": "Introversão",
+          "n": 1,
+          "pct": 16.7,
+          "media": 37
+        }
+      ],
+      "distribuicaoEixos": [
+        {
+          "eixo": "EXP",
+          "nome": "Exploração",
+          "media": 12.5
+        },
+        {
+          "eixo": "EXE",
+          "nome": "Execução",
+          "media": 34.8
+        },
+        {
+          "eixo": "AUT",
+          "nome": "Autonomia",
+          "media": 25.8
+        },
+        {
+          "eixo": "COO",
+          "nome": "Cooperação",
+          "media": 20
+        },
+        {
+          "eixo": "FLE",
+          "nome": "Flexibilidade",
+          "media": 28.8
+        },
+        {
+          "eixo": "EST",
+          "nome": "Estrutura",
+          "media": 27.8
+        }
+      ],
+      "cobertura": [
+        {
+          "capacidade": "CRIAR",
+          "nome": "Criar",
+          "valor": 4.2,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 14,
+          "belbin": "Planta",
+          "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+        },
+        {
+          "capacidade": "EXPLORAR",
+          "nome": "Explorar",
+          "valor": 5.6,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 18.7,
+          "belbin": "Investigador de Recursos",
+          "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+        },
+        {
+          "capacidade": "ANALISAR",
+          "nome": "Analisar",
+          "valor": 83.2,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 44,
+          "belbin": "Monitor Avaliador",
+          "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+        },
+        {
+          "capacidade": "DECIDIR",
+          "nome": "Decidir/Mobilizar",
+          "valor": 82.9,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 43.1,
+          "belbin": "Formador",
+          "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+        },
+        {
+          "capacidade": "ORGANIZAR",
+          "nome": "Organizar",
+          "valor": 8.2,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 27.4,
+          "belbin": "Implementador",
+          "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+        },
+        {
+          "capacidade": "EXECUTAR",
+          "nome": "Executar",
+          "valor": 10.5,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 35.2,
+          "belbin": "Implementador",
+          "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+        },
+        {
+          "capacidade": "RELACIONAR",
+          "nome": "Relacionar",
+          "valor": 6.7,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 22.2,
+          "belbin": "Trabalhador em Equipe",
+          "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+        },
+        {
+          "capacidade": "COORDENAR",
+          "nome": "Coordenar",
+          "valor": 6.6,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 22.1,
+          "belbin": "Coordenador",
+          "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+        },
+        {
+          "capacidade": "FINALIZAR",
+          "nome": "Finalizar",
+          "valor": 80.7,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 35.8,
+          "belbin": "Finalizador",
+          "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+        },
+        {
+          "capacidade": "ESPECIALIZAR",
+          "nome": "Especializar",
+          "valor": 7.7,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 25.5,
+          "belbin": "Especialista",
+          "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+        }
+      ],
+      "belbinEquipe": [
+        {
+          "id": "PLANTA",
+          "nome": "Planta",
+          "media": 14,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "INV_RECURSOS",
+          "nome": "Investigador de Recursos",
+          "media": 21.1,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "COORDENADOR",
+          "nome": "Coordenador",
+          "media": 24.4,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FORMADOR",
+          "nome": "Formador",
+          "media": 42.7,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "MONITOR",
+          "nome": "Monitor Avaliador",
+          "media": 42.2,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "IMPLEMENTADOR",
+          "nome": "Implementador",
+          "media": 38.4,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "TRAB_EQUIPE",
+          "nome": "Trabalhador em Equipe",
+          "media": 20.3,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FINALIZADOR",
+          "nome": "Finalizador",
+          "media": 34.3,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "ESPECIALISTA",
+          "nome": "Especialista",
+          "media": 29.3,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        }
+      ]
+    },
+    "HUMAN POWER": {
+      "n": 6,
+      "idf": 56.3,
+      "idfFaixa": "moderada",
+      "idfComponentes": {
+        "perfis": 41.7,
+        "funcoes": 62.6,
+        "dispersaoVetorial": 60.5
+      },
+      "icf": 36.5,
+      "icfFaixa": "baixa",
+      "complementaridade": {
+        "pct": 40,
+        "capacidadesCobertas": 4,
+        "total": 10
+      },
+      "concentracao": {
+        "hhi": 0.5,
+        "maiorPerfil": "Ne",
+        "maiorPerfilPct": 66.7,
+        "perfisPresentes": 3
+      },
+      "distribuicaoPerfis": [
+        {
+          "perfil": "Te",
+          "animal": "Lobo",
+          "nome": "Pensamento Extrovertido",
+          "cor": "#2E6E8E",
+          "n": 1,
+          "pct": 16.7
+        },
+        {
+          "perfil": "Ti",
+          "animal": "Elefante",
+          "nome": "Pensamento Introvertido",
+          "cor": "#1C4A62",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Fe",
+          "animal": "Carneiro",
+          "nome": "Sentimento Extrovertido",
+          "cor": "#C1663A",
+          "n": 1,
+          "pct": 16.7
+        },
+        {
+          "perfil": "Fi",
+          "animal": "Baleia",
+          "nome": "Sentimento Introvertido",
+          "cor": "#8C3F33",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Se",
+          "animal": "Cavalo",
+          "nome": "Sensação Extrovertida",
+          "cor": "#6E8B3D",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Si",
+          "animal": "Urso",
+          "nome": "Sensação Introvertida",
+          "cor": "#47632B",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ne",
+          "animal": "Raposa",
+          "nome": "Intuição Extrovertida",
+          "cor": "#8A5AA0",
+          "n": 4,
+          "pct": 66.7
+        },
+        {
+          "perfil": "Ni",
+          "animal": "Onça",
+          "nome": "Intuição Introvertida",
+          "cor": "#4E3163",
+          "n": 0,
+          "pct": 0
+        }
+      ],
+      "distribuicaoFuncoes": [
+        {
+          "funcao": "T",
+          "nome": "Pensamento",
+          "n": 1,
+          "pct": 16.7,
+          "media": 17.9
+        },
+        {
+          "funcao": "F",
+          "nome": "Sentimento",
+          "n": 1,
+          "pct": 16.7,
+          "media": 18.5
+        },
+        {
+          "funcao": "S",
+          "nome": "Sensação",
+          "n": 0,
+          "pct": 0,
+          "media": 17.9
+        },
+        {
+          "funcao": "N",
+          "nome": "Intuição",
+          "n": 4,
+          "pct": 66.7,
+          "media": 45.7
+        }
+      ],
+      "distribuicaoAtitudes": [
+        {
+          "atitude": "E",
+          "nome": "Extroversão",
+          "n": 6,
+          "pct": 100,
+          "media": 66.1
+        },
+        {
+          "atitude": "I",
+          "nome": "Introversão",
+          "n": 0,
+          "pct": 0,
+          "media": 33.9
+        }
+      ],
+      "distribuicaoEixos": [
+        {
+          "eixo": "EXP",
+          "nome": "Exploração",
+          "media": 39.9
+        },
+        {
+          "eixo": "EXE",
+          "nome": "Execução",
+          "media": 23.8
+        },
+        {
+          "eixo": "AUT",
+          "nome": "Autonomia",
+          "media": 18.2
+        },
+        {
+          "eixo": "COO",
+          "nome": "Cooperação",
+          "media": 25.9
+        },
+        {
+          "eixo": "FLE",
+          "nome": "Flexibilidade",
+          "media": 29.5
+        },
+        {
+          "eixo": "EST",
+          "nome": "Estrutura",
+          "media": 19.8
+        }
+      ],
+      "cobertura": [
+        {
+          "capacidade": "CRIAR",
+          "nome": "Criar",
+          "valor": 82.1,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 40.2,
+          "belbin": "Planta",
+          "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+        },
+        {
+          "capacidade": "EXPLORAR",
+          "nome": "Explorar",
+          "valor": 82.4,
+          "nivel": "forte",
+          "portadores": 3,
+          "media": 41.4,
+          "belbin": "Investigador de Recursos",
+          "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+        },
+        {
+          "capacidade": "ANALISAR",
+          "nome": "Analisar",
+          "valor": 7.1,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 23.7,
+          "belbin": "Monitor Avaliador",
+          "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+        },
+        {
+          "capacidade": "DECIDIR",
+          "nome": "Decidir/Mobilizar",
+          "valor": 10.4,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 34.6,
+          "belbin": "Formador",
+          "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+        },
+        {
+          "capacidade": "ORGANIZAR",
+          "nome": "Organizar",
+          "valor": 6.6,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 22,
+          "belbin": "Implementador",
+          "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+        },
+        {
+          "capacidade": "EXECUTAR",
+          "nome": "Executar",
+          "valor": 8.8,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 29.4,
+          "belbin": "Implementador",
+          "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+        },
+        {
+          "capacidade": "RELACIONAR",
+          "nome": "Relacionar",
+          "valor": 78.3,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 27.8,
+          "belbin": "Trabalhador em Equipe",
+          "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+        },
+        {
+          "capacidade": "COORDENAR",
+          "nome": "Coordenar",
+          "valor": 77.1,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 23.5,
+          "belbin": "Coordenador",
+          "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+        },
+        {
+          "capacidade": "FINALIZAR",
+          "nome": "Finalizar",
+          "valor": 5.7,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 19.2,
+          "belbin": "Finalizador",
+          "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+        },
+        {
+          "capacidade": "ESPECIALIZAR",
+          "nome": "Especializar",
+          "valor": 6.5,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 21.8,
+          "belbin": "Especialista",
+          "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+        }
+      ],
+      "belbinEquipe": [
+        {
+          "id": "PLANTA",
+          "nome": "Planta",
+          "media": 38.3,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "INV_RECURSOS",
+          "nome": "Investigador de Recursos",
+          "media": 39.3,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "COORDENADOR",
+          "nome": "Coordenador",
+          "media": 26.8,
+          "intensidade": "Baixa",
+          "portadores": 1,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FORMADOR",
+          "nome": "Formador",
+          "media": 33.7,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "MONITOR",
+          "nome": "Monitor Avaliador",
+          "media": 23.3,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "IMPLEMENTADOR",
+          "nome": "Implementador",
+          "media": 32.4,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "TRAB_EQUIPE",
+          "nome": "Trabalhador em Equipe",
+          "media": 25.2,
+          "intensidade": "Baixa",
+          "portadores": 1,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FINALIZADOR",
+          "nome": "Finalizador",
+          "media": 18.7,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "ESPECIALISTA",
+          "nome": "Especialista",
+          "media": 23.6,
+          "intensidade": "Baixa",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        }
+      ]
+    },
+    "INFRAESTRUTURA": {
+      "n": 6,
+      "idf": 67.3,
+      "idfFaixa": "alta",
+      "idfComponentes": {
+        "perfis": 59.7,
+        "funcoes": 73,
+        "dispersaoVetorial": 68.3
+      },
+      "icf": 43.7,
+      "icfFaixa": "baixa",
+      "complementaridade": {
+        "pct": 50,
+        "capacidadesCobertas": 5,
+        "total": 10
+      },
+      "concentracao": {
+        "hhi": 0.333,
+        "maiorPerfil": "Si",
+        "maiorPerfilPct": 50,
+        "perfisPresentes": 4
+      },
+      "distribuicaoPerfis": [
+        {
+          "perfil": "Te",
+          "animal": "Lobo",
+          "nome": "Pensamento Extrovertido",
+          "cor": "#2E6E8E",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ti",
+          "animal": "Elefante",
+          "nome": "Pensamento Introvertido",
+          "cor": "#1C4A62",
+          "n": 1,
+          "pct": 16.7
+        },
+        {
+          "perfil": "Fe",
+          "animal": "Carneiro",
+          "nome": "Sentimento Extrovertido",
+          "cor": "#C1663A",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Fi",
+          "animal": "Baleia",
+          "nome": "Sentimento Introvertido",
+          "cor": "#8C3F33",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Se",
+          "animal": "Cavalo",
+          "nome": "Sensação Extrovertida",
+          "cor": "#6E8B3D",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Si",
+          "animal": "Urso",
+          "nome": "Sensação Introvertida",
+          "cor": "#47632B",
+          "n": 3,
+          "pct": 50
+        },
+        {
+          "perfil": "Ne",
+          "animal": "Raposa",
+          "nome": "Intuição Extrovertida",
+          "cor": "#8A5AA0",
+          "n": 1,
+          "pct": 16.7
+        },
+        {
+          "perfil": "Ni",
+          "animal": "Onça",
+          "nome": "Intuição Introvertida",
+          "cor": "#4E3163",
+          "n": 1,
+          "pct": 16.7
+        }
+      ],
+      "distribuicaoFuncoes": [
+        {
+          "funcao": "T",
+          "nome": "Pensamento",
+          "n": 1,
+          "pct": 16.7,
+          "media": 24.1
+        },
+        {
+          "funcao": "F",
+          "nome": "Sentimento",
+          "n": 0,
+          "pct": 0,
+          "media": 6.2
+        },
+        {
+          "funcao": "S",
+          "nome": "Sensação",
+          "n": 3,
+          "pct": 50,
+          "media": 38.3
+        },
+        {
+          "funcao": "N",
+          "nome": "Intuição",
+          "n": 2,
+          "pct": 33.3,
+          "media": 31.5
+        }
+      ],
+      "distribuicaoAtitudes": [
+        {
+          "atitude": "E",
+          "nome": "Extroversão",
+          "n": 1,
+          "pct": 16.7,
+          "media": 35.2
+        },
+        {
+          "atitude": "I",
+          "nome": "Introversão",
+          "n": 5,
+          "pct": 83.3,
+          "media": 64.8
+        }
+      ],
+      "distribuicaoEixos": [
+        {
+          "eixo": "EXP",
+          "nome": "Exploração",
+          "media": 28.6
+        },
+        {
+          "eixo": "EXE",
+          "nome": "Execução",
+          "media": 33.4
+        },
+        {
+          "eixo": "AUT",
+          "nome": "Autonomia",
+          "media": 28
+        },
+        {
+          "eixo": "COO",
+          "nome": "Cooperação",
+          "media": 10
+        },
+        {
+          "eixo": "FLE",
+          "nome": "Flexibilidade",
+          "media": 20.5
+        },
+        {
+          "eixo": "EST",
+          "nome": "Estrutura",
+          "media": 31
+        }
+      ],
+      "cobertura": [
+        {
+          "capacidade": "CRIAR",
+          "nome": "Criar",
+          "valor": 79.8,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 32.5,
+          "belbin": "Planta",
+          "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+        },
+        {
+          "capacidade": "EXPLORAR",
+          "nome": "Explorar",
+          "valor": 77.9,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 26.2,
+          "belbin": "Investigador de Recursos",
+          "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+        },
+        {
+          "capacidade": "ANALISAR",
+          "nome": "Analisar",
+          "valor": 81.9,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 39.5,
+          "belbin": "Monitor Avaliador",
+          "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+        },
+        {
+          "capacidade": "DECIDIR",
+          "nome": "Decidir/Mobilizar",
+          "valor": 7.8,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 26,
+          "belbin": "Formador",
+          "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+        },
+        {
+          "capacidade": "ORGANIZAR",
+          "nome": "Organizar",
+          "valor": 80.5,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 34.9,
+          "belbin": "Implementador",
+          "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+        },
+        {
+          "capacidade": "EXECUTAR",
+          "nome": "Executar",
+          "valor": 10,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 33.3,
+          "belbin": "Implementador",
+          "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+        },
+        {
+          "capacidade": "RELACIONAR",
+          "nome": "Relacionar",
+          "valor": 4.3,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 14.5,
+          "belbin": "Trabalhador em Equipe",
+          "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+        },
+        {
+          "capacidade": "COORDENAR",
+          "nome": "Coordenar",
+          "valor": 3,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 10.1,
+          "belbin": "Coordenador",
+          "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+        },
+        {
+          "capacidade": "FINALIZAR",
+          "nome": "Finalizar",
+          "valor": 80.5,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 35.1,
+          "belbin": "Finalizador",
+          "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+        },
+        {
+          "capacidade": "ESPECIALIZAR",
+          "nome": "Especializar",
+          "valor": 11.2,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 37.4,
+          "belbin": "Especialista",
+          "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+        }
+      ],
+      "belbinEquipe": [
+        {
+          "id": "PLANTA",
+          "nome": "Planta",
+          "media": 30.6,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "INV_RECURSOS",
+          "nome": "Investigador de Recursos",
+          "media": 25.2,
+          "intensidade": "Baixa",
+          "portadores": 1,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "COORDENADOR",
+          "nome": "Coordenador",
+          "media": 12.8,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FORMADOR",
+          "nome": "Formador",
+          "media": 23.6,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "MONITOR",
+          "nome": "Monitor Avaliador",
+          "media": 38.4,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "IMPLEMENTADOR",
+          "nome": "Implementador",
+          "media": 42.8,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "TRAB_EQUIPE",
+          "nome": "Trabalhador em Equipe",
+          "media": 13.2,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FINALIZADOR",
+          "nome": "Finalizador",
+          "media": 33.3,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "ESPECIALISTA",
+          "nome": "Especialista",
+          "media": 39.4,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        }
+      ]
+    },
+    "JURÍDICO": {
+      "n": 5,
+      "idf": 61.9,
+      "idfFaixa": "moderada",
+      "idfComponentes": {
+        "perfis": 64.1,
+        "funcoes": 48.5,
+        "dispersaoVetorial": 67.5
+      },
+      "icf": 36.3,
+      "icfFaixa": "baixa",
+      "complementaridade": {
+        "pct": 40,
+        "capacidadesCobertas": 4,
+        "total": 10
+      },
+      "concentracao": {
+        "hhi": 0.28,
+        "maiorPerfil": "Fe",
+        "maiorPerfilPct": 40,
+        "perfisPresentes": 4
+      },
+      "distribuicaoPerfis": [
+        {
+          "perfil": "Te",
+          "animal": "Lobo",
+          "nome": "Pensamento Extrovertido",
+          "cor": "#2E6E8E",
+          "n": 1,
+          "pct": 20
+        },
+        {
+          "perfil": "Ti",
+          "animal": "Elefante",
+          "nome": "Pensamento Introvertido",
+          "cor": "#1C4A62",
+          "n": 1,
+          "pct": 20
+        },
+        {
+          "perfil": "Fe",
+          "animal": "Carneiro",
+          "nome": "Sentimento Extrovertido",
+          "cor": "#C1663A",
+          "n": 2,
+          "pct": 40
+        },
+        {
+          "perfil": "Fi",
+          "animal": "Baleia",
+          "nome": "Sentimento Introvertido",
+          "cor": "#8C3F33",
+          "n": 1,
+          "pct": 20
+        },
+        {
+          "perfil": "Se",
+          "animal": "Cavalo",
+          "nome": "Sensação Extrovertida",
+          "cor": "#6E8B3D",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Si",
+          "animal": "Urso",
+          "nome": "Sensação Introvertida",
+          "cor": "#47632B",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ne",
+          "animal": "Raposa",
+          "nome": "Intuição Extrovertida",
+          "cor": "#8A5AA0",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ni",
+          "animal": "Onça",
+          "nome": "Intuição Introvertida",
+          "cor": "#4E3163",
+          "n": 0,
+          "pct": 0
+        }
+      ],
+      "distribuicaoFuncoes": [
+        {
+          "funcao": "T",
+          "nome": "Pensamento",
+          "n": 2,
+          "pct": 40,
+          "media": 31.9
+        },
+        {
+          "funcao": "F",
+          "nome": "Sentimento",
+          "n": 3,
+          "pct": 60,
+          "media": 54.1
+        },
+        {
+          "funcao": "S",
+          "nome": "Sensação",
+          "n": 0,
+          "pct": 0,
+          "media": 7.4
+        },
+        {
+          "funcao": "N",
+          "nome": "Intuição",
+          "n": 0,
+          "pct": 0,
+          "media": 6.7
+        }
+      ],
+      "distribuicaoAtitudes": [
+        {
+          "atitude": "E",
+          "nome": "Extroversão",
+          "n": 3,
+          "pct": 60,
+          "media": 51.9
+        },
+        {
+          "atitude": "I",
+          "nome": "Introversão",
+          "n": 2,
+          "pct": 40,
+          "media": 48.1
+        }
+      ],
+      "distribuicaoEixos": [
+        {
+          "eixo": "EXP",
+          "nome": "Exploração",
+          "media": 15.7
+        },
+        {
+          "eixo": "EXE",
+          "nome": "Execução",
+          "media": 16.6
+        },
+        {
+          "eixo": "AUT",
+          "nome": "Autonomia",
+          "media": 27.3
+        },
+        {
+          "eixo": "COO",
+          "nome": "Cooperação",
+          "media": 36.4
+        },
+        {
+          "eixo": "FLE",
+          "nome": "Flexibilidade",
+          "media": 21.8
+        },
+        {
+          "eixo": "EST",
+          "nome": "Estrutura",
+          "media": 25.2
+        }
+      ],
+      "cobertura": [
+        {
+          "capacidade": "CRIAR",
+          "nome": "Criar",
+          "valor": 4.8,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 15.9,
+          "belbin": "Planta",
+          "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+        },
+        {
+          "capacidade": "EXPLORAR",
+          "nome": "Explorar",
+          "valor": 5.7,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 19,
+          "belbin": "Investigador de Recursos",
+          "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+        },
+        {
+          "capacidade": "ANALISAR",
+          "nome": "Analisar",
+          "valor": 79.8,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 32.8,
+          "belbin": "Monitor Avaliador",
+          "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+        },
+        {
+          "capacidade": "DECIDIR",
+          "nome": "Decidir/Mobilizar",
+          "valor": 80.1,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 33.7,
+          "belbin": "Formador",
+          "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+        },
+        {
+          "capacidade": "ORGANIZAR",
+          "nome": "Organizar",
+          "valor": 7.4,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 24.5,
+          "belbin": "Implementador",
+          "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+        },
+        {
+          "capacidade": "EXECUTAR",
+          "nome": "Executar",
+          "valor": 8,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 26.6,
+          "belbin": "Implementador",
+          "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+        },
+        {
+          "capacidade": "RELACIONAR",
+          "nome": "Relacionar",
+          "valor": 80.9,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 36.4,
+          "belbin": "Trabalhador em Equipe",
+          "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+        },
+        {
+          "capacidade": "COORDENAR",
+          "nome": "Coordenar",
+          "valor": 83.3,
+          "nivel": "forte",
+          "portadores": 3,
+          "media": 44.3,
+          "belbin": "Coordenador",
+          "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+        },
+        {
+          "capacidade": "FINALIZAR",
+          "nome": "Finalizar",
+          "valor": 5.4,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 17.9,
+          "belbin": "Finalizador",
+          "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+        },
+        {
+          "capacidade": "ESPECIALIZAR",
+          "nome": "Especializar",
+          "valor": 7.1,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 23.7,
+          "belbin": "Especialista",
+          "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+        }
+      ],
+      "belbinEquipe": [
+        {
+          "id": "PLANTA",
+          "nome": "Planta",
+          "media": 15.7,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "INV_RECURSOS",
+          "nome": "Investigador de Recursos",
+          "media": 19.6,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "COORDENADOR",
+          "nome": "Coordenador",
+          "media": 41.1,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FORMADOR",
+          "nome": "Formador",
+          "media": 30.3,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "MONITOR",
+          "nome": "Monitor Avaliador",
+          "media": 34,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "IMPLEMENTADOR",
+          "nome": "Implementador",
+          "media": 32.2,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "TRAB_EQUIPE",
+          "nome": "Trabalhador em Equipe",
+          "media": 40,
+          "intensidade": "Moderada",
+          "portadores": 3,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FINALIZADOR",
+          "nome": "Finalizador",
+          "media": 18.4,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "ESPECIALISTA",
+          "nome": "Especialista",
+          "media": 25.2,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        }
+      ]
+    },
+    "MDHC": {
+      "n": 7,
+      "idf": 66.2,
+      "idfFaixa": "alta",
+      "idfComponentes": {
+        "perfis": 61.4,
+        "funcoes": 68.9,
+        "dispersaoVetorial": 67.3
+      },
+      "icf": 43.2,
+      "icfFaixa": "baixa",
+      "complementaridade": {
+        "pct": 50,
+        "capacidadesCobertas": 5,
+        "total": 10
+      },
+      "concentracao": {
+        "hhi": 0.306,
+        "maiorPerfil": "Fe",
+        "maiorPerfilPct": 42.9,
+        "perfisPresentes": 4
+      },
+      "distribuicaoPerfis": [
+        {
+          "perfil": "Te",
+          "animal": "Lobo",
+          "nome": "Pensamento Extrovertido",
+          "cor": "#2E6E8E",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ti",
+          "animal": "Elefante",
+          "nome": "Pensamento Introvertido",
+          "cor": "#1C4A62",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Fe",
+          "animal": "Carneiro",
+          "nome": "Sentimento Extrovertido",
+          "cor": "#C1663A",
+          "n": 3,
+          "pct": 42.9
+        },
+        {
+          "perfil": "Fi",
+          "animal": "Baleia",
+          "nome": "Sentimento Introvertido",
+          "cor": "#8C3F33",
+          "n": 1,
+          "pct": 14.3
+        },
+        {
+          "perfil": "Se",
+          "animal": "Cavalo",
+          "nome": "Sensação Extrovertida",
+          "cor": "#6E8B3D",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Si",
+          "animal": "Urso",
+          "nome": "Sensação Introvertida",
+          "cor": "#47632B",
+          "n": 1,
+          "pct": 14.3
+        },
+        {
+          "perfil": "Ne",
+          "animal": "Raposa",
+          "nome": "Intuição Extrovertida",
+          "cor": "#8A5AA0",
+          "n": 2,
+          "pct": 28.6
+        },
+        {
+          "perfil": "Ni",
+          "animal": "Onça",
+          "nome": "Intuição Introvertida",
+          "cor": "#4E3163",
+          "n": 0,
+          "pct": 0
+        }
+      ],
+      "distribuicaoFuncoes": [
+        {
+          "funcao": "T",
+          "nome": "Pensamento",
+          "n": 0,
+          "pct": 0,
+          "media": 11.6
+        },
+        {
+          "funcao": "F",
+          "nome": "Sentimento",
+          "n": 4,
+          "pct": 57.1,
+          "media": 43.4
+        },
+        {
+          "funcao": "S",
+          "nome": "Sensação",
+          "n": 1,
+          "pct": 14.3,
+          "media": 17.5
+        },
+        {
+          "funcao": "N",
+          "nome": "Intuição",
+          "n": 2,
+          "pct": 28.6,
+          "media": 27.5
+        }
+      ],
+      "distribuicaoAtitudes": [
+        {
+          "atitude": "E",
+          "nome": "Extroversão",
+          "n": 5,
+          "pct": 71.4,
+          "media": 59.3
+        },
+        {
+          "atitude": "I",
+          "nome": "Introversão",
+          "n": 2,
+          "pct": 28.6,
+          "media": 40.7
+        }
+      ],
+      "distribuicaoEixos": [
+        {
+          "eixo": "EXP",
+          "nome": "Exploração",
+          "media": 29.1
+        },
+        {
+          "eixo": "EXE",
+          "nome": "Execução",
+          "media": 21.2
+        },
+        {
+          "eixo": "AUT",
+          "nome": "Autonomia",
+          "media": 17.5
+        },
+        {
+          "eixo": "COO",
+          "nome": "Cooperação",
+          "media": 37.5
+        },
+        {
+          "eixo": "FLE",
+          "nome": "Flexibilidade",
+          "media": 26
+        },
+        {
+          "eixo": "EST",
+          "nome": "Estrutura",
+          "media": 19.4
+        }
+      ],
+      "cobertura": [
+        {
+          "capacidade": "CRIAR",
+          "nome": "Criar",
+          "valor": 78.5,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 28.3,
+          "belbin": "Planta",
+          "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+        },
+        {
+          "capacidade": "EXPLORAR",
+          "nome": "Explorar",
+          "valor": 79.2,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 30.8,
+          "belbin": "Investigador de Recursos",
+          "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+        },
+        {
+          "capacidade": "ANALISAR",
+          "nome": "Analisar",
+          "valor": 6.9,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 23.1,
+          "belbin": "Monitor Avaliador",
+          "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+        },
+        {
+          "capacidade": "DECIDIR",
+          "nome": "Decidir/Mobilizar",
+          "valor": 8.6,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 28.6,
+          "belbin": "Formador",
+          "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+        },
+        {
+          "capacidade": "ORGANIZAR",
+          "nome": "Organizar",
+          "valor": 6.1,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 20.2,
+          "belbin": "Implementador",
+          "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+        },
+        {
+          "capacidade": "EXECUTAR",
+          "nome": "Executar",
+          "valor": 7.7,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 25.7,
+          "belbin": "Implementador",
+          "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+        },
+        {
+          "capacidade": "RELACIONAR",
+          "nome": "Relacionar",
+          "valor": 81.8,
+          "nivel": "forte",
+          "portadores": 3,
+          "media": 39.3,
+          "belbin": "Trabalhador em Equipe",
+          "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+        },
+        {
+          "capacidade": "COORDENAR",
+          "nome": "Coordenar",
+          "valor": 81.9,
+          "nivel": "forte",
+          "portadores": 4,
+          "media": 39.6,
+          "belbin": "Coordenador",
+          "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+        },
+        {
+          "capacidade": "FINALIZAR",
+          "nome": "Finalizar",
+          "valor": 75.7,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 18.8,
+          "belbin": "Finalizador",
+          "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+        },
+        {
+          "capacidade": "ESPECIALIZAR",
+          "nome": "Especializar",
+          "valor": 6,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 20.1,
+          "belbin": "Especialista",
+          "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+        }
+      ],
+      "belbinEquipe": [
+        {
+          "id": "PLANTA",
+          "nome": "Planta",
+          "media": 28.8,
+          "intensidade": "Baixa",
+          "portadores": 2,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "INV_RECURSOS",
+          "nome": "Investigador de Recursos",
+          "media": 28.6,
+          "intensidade": "Baixa",
+          "portadores": 1,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "COORDENADOR",
+          "nome": "Coordenador",
+          "media": 39.3,
+          "intensidade": "Moderada",
+          "portadores": 3,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FORMADOR",
+          "nome": "Formador",
+          "media": 27.5,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "MONITOR",
+          "nome": "Monitor Avaliador",
+          "media": 23.1,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "IMPLEMENTADOR",
+          "nome": "Implementador",
+          "media": 29.6,
+          "intensidade": "Baixa",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "TRAB_EQUIPE",
+          "nome": "Trabalhador em Equipe",
+          "media": 40.4,
+          "intensidade": "Moderada",
+          "portadores": 3,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FINALIZADOR",
+          "nome": "Finalizador",
+          "media": 18.9,
+          "intensidade": "Baixa",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "ESPECIALISTA",
+          "nome": "Especialista",
+          "media": 20,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        }
+      ]
+    },
+    "MEC": {
+      "n": 11,
+      "idf": 66.1,
+      "idfFaixa": "alta",
+      "idfComponentes": {
+        "perfis": 70.6,
+        "funcoes": 77,
+        "dispersaoVetorial": 58.5
+      },
+      "icf": 43.4,
+      "icfFaixa": "baixa",
+      "complementaridade": {
+        "pct": 50,
+        "capacidadesCobertas": 5,
+        "total": 10
+      },
+      "concentracao": {
+        "hhi": 0.256,
+        "maiorPerfil": "Se",
+        "maiorPerfilPct": 36.4,
+        "perfisPresentes": 5
+      },
+      "distribuicaoPerfis": [
+        {
+          "perfil": "Te",
+          "animal": "Lobo",
+          "nome": "Pensamento Extrovertido",
+          "cor": "#2E6E8E",
+          "n": 3,
+          "pct": 27.3
+        },
+        {
+          "perfil": "Ti",
+          "animal": "Elefante",
+          "nome": "Pensamento Introvertido",
+          "cor": "#1C4A62",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Fe",
+          "animal": "Carneiro",
+          "nome": "Sentimento Extrovertido",
+          "cor": "#C1663A",
+          "n": 1,
+          "pct": 9.1
+        },
+        {
+          "perfil": "Fi",
+          "animal": "Baleia",
+          "nome": "Sentimento Introvertido",
+          "cor": "#8C3F33",
+          "n": 2,
+          "pct": 18.2
+        },
+        {
+          "perfil": "Se",
+          "animal": "Cavalo",
+          "nome": "Sensação Extrovertida",
+          "cor": "#6E8B3D",
+          "n": 4,
+          "pct": 36.4
+        },
+        {
+          "perfil": "Si",
+          "animal": "Urso",
+          "nome": "Sensação Introvertida",
+          "cor": "#47632B",
+          "n": 1,
+          "pct": 9.1
+        },
+        {
+          "perfil": "Ne",
+          "animal": "Raposa",
+          "nome": "Intuição Extrovertida",
+          "cor": "#8A5AA0",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ni",
+          "animal": "Onça",
+          "nome": "Intuição Introvertida",
+          "cor": "#4E3163",
+          "n": 0,
+          "pct": 0
+        }
+      ],
+      "distribuicaoFuncoes": [
+        {
+          "funcao": "T",
+          "nome": "Pensamento",
+          "n": 3,
+          "pct": 27.3,
+          "media": 27.6
+        },
+        {
+          "funcao": "F",
+          "nome": "Sentimento",
+          "n": 3,
+          "pct": 27.3,
+          "media": 25.9
+        },
+        {
+          "funcao": "S",
+          "nome": "Sensação",
+          "n": 5,
+          "pct": 45.5,
+          "media": 36
+        },
+        {
+          "funcao": "N",
+          "nome": "Intuição",
+          "n": 0,
+          "pct": 0,
+          "media": 10.4
+        }
+      ],
+      "distribuicaoAtitudes": [
+        {
+          "atitude": "E",
+          "nome": "Extroversão",
+          "n": 8,
+          "pct": 72.7,
+          "media": 65.3
+        },
+        {
+          "atitude": "I",
+          "nome": "Introversão",
+          "n": 3,
+          "pct": 27.3,
+          "media": 34.7
+        }
+      ],
+      "distribuicaoEixos": [
+        {
+          "eixo": "EXP",
+          "nome": "Exploração",
+          "media": 16.9
+        },
+        {
+          "eixo": "EXE",
+          "nome": "Execução",
+          "media": 33
+        },
+        {
+          "eixo": "AUT",
+          "nome": "Autonomia",
+          "media": 20.4
+        },
+        {
+          "eixo": "COO",
+          "nome": "Cooperação",
+          "media": 31.7
+        },
+        {
+          "eixo": "FLE",
+          "nome": "Flexibilidade",
+          "media": 23.1
+        },
+        {
+          "eixo": "EST",
+          "nome": "Estrutura",
+          "media": 22.3
+        }
+      ],
+      "cobertura": [
+        {
+          "capacidade": "CRIAR",
+          "nome": "Criar",
+          "valor": 4.9,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 16.4,
+          "belbin": "Planta",
+          "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+        },
+        {
+          "capacidade": "EXPLORAR",
+          "nome": "Explorar",
+          "valor": 6.6,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 22.1,
+          "belbin": "Investigador de Recursos",
+          "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+        },
+        {
+          "capacidade": "ANALISAR",
+          "nome": "Analisar",
+          "valor": 80.1,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 33.6,
+          "belbin": "Monitor Avaliador",
+          "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+        },
+        {
+          "capacidade": "DECIDIR",
+          "nome": "Decidir/Mobilizar",
+          "valor": 80.2,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 34.1,
+          "belbin": "Formador",
+          "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+        },
+        {
+          "capacidade": "ORGANIZAR",
+          "nome": "Organizar",
+          "valor": 7.2,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 24,
+          "belbin": "Implementador",
+          "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+        },
+        {
+          "capacidade": "EXECUTAR",
+          "nome": "Executar",
+          "valor": 79.6,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 32.1,
+          "belbin": "Implementador",
+          "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+        },
+        {
+          "capacidade": "RELACIONAR",
+          "nome": "Relacionar",
+          "valor": 80.2,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 34,
+          "belbin": "Trabalhador em Equipe",
+          "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+        },
+        {
+          "capacidade": "COORDENAR",
+          "nome": "Coordenar",
+          "valor": 79.2,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 30.7,
+          "belbin": "Coordenador",
+          "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+        },
+        {
+          "capacidade": "FINALIZAR",
+          "nome": "Finalizar",
+          "valor": 9.1,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 30.2,
+          "belbin": "Finalizador",
+          "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+        },
+        {
+          "capacidade": "ESPECIALIZAR",
+          "nome": "Especializar",
+          "valor": 7.2,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 23.9,
+          "belbin": "Especialista",
+          "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+        }
+      ],
+      "belbinEquipe": [
+        {
+          "id": "PLANTA",
+          "nome": "Planta",
+          "media": 16.5,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "INV_RECURSOS",
+          "nome": "Investigador de Recursos",
+          "media": 24.4,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "COORDENADOR",
+          "nome": "Coordenador",
+          "media": 32.3,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FORMADOR",
+          "nome": "Formador",
+          "media": 34.8,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "MONITOR",
+          "nome": "Monitor Avaliador",
+          "media": 30.6,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "IMPLEMENTADOR",
+          "nome": "Implementador",
+          "media": 34.1,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "TRAB_EQUIPE",
+          "nome": "Trabalhador em Equipe",
+          "media": 32.4,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FINALIZADOR",
+          "nome": "Finalizador",
+          "media": 30.4,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "ESPECIALISTA",
+          "nome": "Especialista",
+          "media": 27.4,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        }
+      ]
+    },
+    "MM": {
+      "n": 9,
+      "idf": 67.6,
+      "idfFaixa": "alta",
+      "idfComponentes": {
+        "perfis": 73.2,
+        "funcoes": 76.5,
+        "dispersaoVetorial": 60.3
+      },
+      "icf": 50.6,
+      "icfFaixa": "moderada",
+      "complementaridade": {
+        "pct": 60,
+        "capacidadesCobertas": 6,
+        "total": 10
+      },
+      "concentracao": {
+        "hhi": 0.235,
+        "maiorPerfil": "Se",
+        "maiorPerfilPct": 33.3,
+        "perfisPresentes": 5
+      },
+      "distribuicaoPerfis": [
+        {
+          "perfil": "Te",
+          "animal": "Lobo",
+          "nome": "Pensamento Extrovertido",
+          "cor": "#2E6E8E",
+          "n": 2,
+          "pct": 22.2
+        },
+        {
+          "perfil": "Ti",
+          "animal": "Elefante",
+          "nome": "Pensamento Introvertido",
+          "cor": "#1C4A62",
+          "n": 1,
+          "pct": 11.1
+        },
+        {
+          "perfil": "Fe",
+          "animal": "Carneiro",
+          "nome": "Sentimento Extrovertido",
+          "cor": "#C1663A",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Fi",
+          "animal": "Baleia",
+          "nome": "Sentimento Introvertido",
+          "cor": "#8C3F33",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Se",
+          "animal": "Cavalo",
+          "nome": "Sensação Extrovertida",
+          "cor": "#6E8B3D",
+          "n": 3,
+          "pct": 33.3
+        },
+        {
+          "perfil": "Si",
+          "animal": "Urso",
+          "nome": "Sensação Introvertida",
+          "cor": "#47632B",
+          "n": 1,
+          "pct": 11.1
+        },
+        {
+          "perfil": "Ne",
+          "animal": "Raposa",
+          "nome": "Intuição Extrovertida",
+          "cor": "#8A5AA0",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ni",
+          "animal": "Onça",
+          "nome": "Intuição Introvertida",
+          "cor": "#4E3163",
+          "n": 2,
+          "pct": 22.2
+        }
+      ],
+      "distribuicaoFuncoes": [
+        {
+          "funcao": "T",
+          "nome": "Pensamento",
+          "n": 3,
+          "pct": 33.3,
+          "media": 32.1
+        },
+        {
+          "funcao": "F",
+          "nome": "Sentimento",
+          "n": 0,
+          "pct": 0,
+          "media": 10.7
+        },
+        {
+          "funcao": "S",
+          "nome": "Sensação",
+          "n": 4,
+          "pct": 44.4,
+          "media": 33.8
+        },
+        {
+          "funcao": "N",
+          "nome": "Intuição",
+          "n": 2,
+          "pct": 22.2,
+          "media": 23.5
+        }
+      ],
+      "distribuicaoAtitudes": [
+        {
+          "atitude": "E",
+          "nome": "Extroversão",
+          "n": 5,
+          "pct": 55.6,
+          "media": 56.8
+        },
+        {
+          "atitude": "I",
+          "nome": "Introversão",
+          "n": 4,
+          "pct": 44.4,
+          "media": 43.2
+        }
+      ],
+      "distribuicaoEixos": [
+        {
+          "eixo": "EXP",
+          "nome": "Exploração",
+          "media": 24.6
+        },
+        {
+          "eixo": "EXE",
+          "nome": "Execução",
+          "media": 32.1
+        },
+        {
+          "eixo": "AUT",
+          "nome": "Autonomia",
+          "media": 26.3
+        },
+        {
+          "eixo": "COO",
+          "nome": "Cooperação",
+          "media": 19.8
+        },
+        {
+          "eixo": "FLE",
+          "nome": "Flexibilidade",
+          "media": 21.7
+        },
+        {
+          "eixo": "EST",
+          "nome": "Estrutura",
+          "media": 25.4
+        }
+      ],
+      "cobertura": [
+        {
+          "capacidade": "CRIAR",
+          "nome": "Criar",
+          "valor": 77.6,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 25.4,
+          "belbin": "Planta",
+          "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+        },
+        {
+          "capacidade": "EXPLORAR",
+          "nome": "Explorar",
+          "valor": 8.5,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 28.2,
+          "belbin": "Investigador de Recursos",
+          "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+        },
+        {
+          "capacidade": "ANALISAR",
+          "nome": "Analisar",
+          "valor": 81.4,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 38,
+          "belbin": "Monitor Avaliador",
+          "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+        },
+        {
+          "capacidade": "DECIDIR",
+          "nome": "Decidir/Mobilizar",
+          "valor": 80.3,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 34.4,
+          "belbin": "Formador",
+          "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+        },
+        {
+          "capacidade": "ORGANIZAR",
+          "nome": "Organizar",
+          "valor": 7.7,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 25.8,
+          "belbin": "Implementador",
+          "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+        },
+        {
+          "capacidade": "EXECUTAR",
+          "nome": "Executar",
+          "valor": 80.2,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 34.1,
+          "belbin": "Implementador",
+          "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+        },
+        {
+          "capacidade": "RELACIONAR",
+          "nome": "Relacionar",
+          "valor": 6.8,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 22.8,
+          "belbin": "Trabalhador em Equipe",
+          "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+        },
+        {
+          "capacidade": "COORDENAR",
+          "nome": "Coordenar",
+          "valor": 5.4,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 18,
+          "belbin": "Coordenador",
+          "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+        },
+        {
+          "capacidade": "FINALIZAR",
+          "nome": "Finalizar",
+          "valor": 79.1,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 30.3,
+          "belbin": "Finalizador",
+          "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+        },
+        {
+          "capacidade": "ESPECIALIZAR",
+          "nome": "Especializar",
+          "valor": 78.6,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 28.8,
+          "belbin": "Especialista",
+          "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+        }
+      ],
+      "belbinEquipe": [
+        {
+          "id": "PLANTA",
+          "nome": "Planta",
+          "media": 24.2,
+          "intensidade": "Baixa",
+          "portadores": 2,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "INV_RECURSOS",
+          "nome": "Investigador de Recursos",
+          "media": 28.9,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "COORDENADOR",
+          "nome": "Coordenador",
+          "media": 21.2,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FORMADOR",
+          "nome": "Formador",
+          "media": 32.5,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "MONITOR",
+          "nome": "Monitor Avaliador",
+          "media": 36.7,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "IMPLEMENTADOR",
+          "nome": "Implementador",
+          "media": 37.6,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "TRAB_EQUIPE",
+          "nome": "Trabalhador em Equipe",
+          "media": 20.6,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FINALIZADOR",
+          "nome": "Finalizador",
+          "media": 30,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "ESPECIALISTA",
+          "nome": "Especialista",
+          "media": 30.7,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        }
+      ]
+    },
+    "MONITORIA": {
+      "n": 4,
+      "idf": 37.6,
+      "idfFaixa": "baixa",
+      "idfComponentes": {
+        "perfis": 27,
+        "funcoes": 40.6,
+        "dispersaoVetorial": 41.5
+      },
+      "icf": 36.6,
+      "icfFaixa": "baixa",
+      "complementaridade": {
+        "pct": 40,
+        "capacidadesCobertas": 4,
+        "total": 10
+      },
+      "concentracao": {
+        "hhi": 0.625,
+        "maiorPerfil": "Ti",
+        "maiorPerfilPct": 75,
+        "perfisPresentes": 2
+      },
+      "distribuicaoPerfis": [
+        {
+          "perfil": "Te",
+          "animal": "Lobo",
+          "nome": "Pensamento Extrovertido",
+          "cor": "#2E6E8E",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ti",
+          "animal": "Elefante",
+          "nome": "Pensamento Introvertido",
+          "cor": "#1C4A62",
+          "n": 3,
+          "pct": 75
+        },
+        {
+          "perfil": "Fe",
+          "animal": "Carneiro",
+          "nome": "Sentimento Extrovertido",
+          "cor": "#C1663A",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Fi",
+          "animal": "Baleia",
+          "nome": "Sentimento Introvertido",
+          "cor": "#8C3F33",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Se",
+          "animal": "Cavalo",
+          "nome": "Sensação Extrovertida",
+          "cor": "#6E8B3D",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Si",
+          "animal": "Urso",
+          "nome": "Sensação Introvertida",
+          "cor": "#47632B",
+          "n": 1,
+          "pct": 25
+        },
+        {
+          "perfil": "Ne",
+          "animal": "Raposa",
+          "nome": "Intuição Extrovertida",
+          "cor": "#8A5AA0",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ni",
+          "animal": "Onça",
+          "nome": "Intuição Introvertida",
+          "cor": "#4E3163",
+          "n": 0,
+          "pct": 0
+        }
+      ],
+      "distribuicaoFuncoes": [
+        {
+          "funcao": "T",
+          "nome": "Pensamento",
+          "n": 3,
+          "pct": 75,
+          "media": 54.7
+        },
+        {
+          "funcao": "F",
+          "nome": "Sentimento",
+          "n": 0,
+          "pct": 0,
+          "media": 6.5
+        },
+        {
+          "funcao": "S",
+          "nome": "Sensação",
+          "n": 1,
+          "pct": 25,
+          "media": 31.5
+        },
+        {
+          "funcao": "N",
+          "nome": "Intuição",
+          "n": 0,
+          "pct": 0,
+          "media": 7.4
+        }
+      ],
+      "distribuicaoAtitudes": [
+        {
+          "atitude": "E",
+          "nome": "Extroversão",
+          "n": 0,
+          "pct": 0,
+          "media": 19.4
+        },
+        {
+          "atitude": "I",
+          "nome": "Introversão",
+          "n": 4,
+          "pct": 100,
+          "media": 80.6
+        }
+      ],
+      "distribuicaoEixos": [
+        {
+          "eixo": "EXP",
+          "nome": "Exploração",
+          "media": 8.9
+        },
+        {
+          "eixo": "EXE",
+          "nome": "Execução",
+          "media": 25
+        },
+        {
+          "eixo": "AUT",
+          "nome": "Autonomia",
+          "media": 49.5
+        },
+        {
+          "eixo": "COO",
+          "nome": "Cooperação",
+          "media": 8.9
+        },
+        {
+          "eixo": "FLE",
+          "nome": "Flexibilidade",
+          "media": 7.9
+        },
+        {
+          "eixo": "EST",
+          "nome": "Estrutura",
+          "media": 36.3
+        }
+      ],
+      "cobertura": [
+        {
+          "capacidade": "CRIAR",
+          "nome": "Criar",
+          "valor": 7.1,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 23.8,
+          "belbin": "Planta",
+          "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+        },
+        {
+          "capacidade": "EXPLORAR",
+          "nome": "Explorar",
+          "valor": 3,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 9.9,
+          "belbin": "Investigador de Recursos",
+          "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+        },
+        {
+          "capacidade": "ANALISAR",
+          "nome": "Analisar",
+          "valor": 87.7,
+          "nivel": "forte",
+          "portadores": 4,
+          "media": 59,
+          "belbin": "Monitor Avaliador",
+          "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+        },
+        {
+          "capacidade": "DECIDIR",
+          "nome": "Decidir/Mobilizar",
+          "valor": 9,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 29.9,
+          "belbin": "Formador",
+          "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+        },
+        {
+          "capacidade": "ORGANIZAR",
+          "nome": "Organizar",
+          "valor": 84.3,
+          "nivel": "forte",
+          "portadores": 3,
+          "media": 47.6,
+          "belbin": "Implementador",
+          "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+        },
+        {
+          "capacidade": "EXECUTAR",
+          "nome": "Executar",
+          "valor": 6.3,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 20.9,
+          "belbin": "Implementador",
+          "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+        },
+        {
+          "capacidade": "RELACIONAR",
+          "nome": "Relacionar",
+          "valor": 3.3,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 11,
+          "belbin": "Trabalhador em Equipe",
+          "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+        },
+        {
+          "capacidade": "COORDENAR",
+          "nome": "Coordenar",
+          "valor": 2.7,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 9,
+          "belbin": "Coordenador",
+          "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+        },
+        {
+          "capacidade": "FINALIZAR",
+          "nome": "Finalizar",
+          "valor": 79.7,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 32.5,
+          "belbin": "Finalizador",
+          "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+        },
+        {
+          "capacidade": "ESPECIALIZAR",
+          "nome": "Especializar",
+          "valor": 82.7,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 42.4,
+          "belbin": "Especialista",
+          "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+        }
+      ],
+      "belbinEquipe": [
+        {
+          "id": "PLANTA",
+          "nome": "Planta",
+          "media": 24.7,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "INV_RECURSOS",
+          "nome": "Investigador de Recursos",
+          "media": 8.9,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "COORDENADOR",
+          "nome": "Coordenador",
+          "media": 10.3,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FORMADOR",
+          "nome": "Formador",
+          "media": 26.2,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "MONITOR",
+          "nome": "Monitor Avaliador",
+          "media": 57.9,
+          "intensidade": "Alta",
+          "portadores": 3,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "IMPLEMENTADOR",
+          "nome": "Implementador",
+          "media": 39.6,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "TRAB_EQUIPE",
+          "nome": "Trabalhador em Equipe",
+          "media": 10.7,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FINALIZADOR",
+          "nome": "Finalizador",
+          "media": 35,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "ESPECIALISTA",
+          "nome": "Especialista",
+          "media": 44,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        }
+      ]
+    },
+    "MS": {
+      "n": 8,
+      "idf": 53.1,
+      "idfFaixa": "moderada",
+      "idfComponentes": {
+        "perfis": 58.3,
+        "funcoes": 40.6,
+        "dispersaoVetorial": 56.7
+      },
+      "icf": 36.2,
+      "icfFaixa": "baixa",
+      "complementaridade": {
+        "pct": 40,
+        "capacidadesCobertas": 4,
+        "total": 10
+      },
+      "concentracao": {
+        "hhi": 0.344,
+        "maiorPerfil": "Ne",
+        "maiorPerfilPct": 50,
+        "perfisPresentes": 4
+      },
+      "distribuicaoPerfis": [
+        {
+          "perfil": "Te",
+          "animal": "Lobo",
+          "nome": "Pensamento Extrovertido",
+          "cor": "#2E6E8E",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ti",
+          "animal": "Elefante",
+          "nome": "Pensamento Introvertido",
+          "cor": "#1C4A62",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Fe",
+          "animal": "Carneiro",
+          "nome": "Sentimento Extrovertido",
+          "cor": "#C1663A",
+          "n": 1,
+          "pct": 12.5
+        },
+        {
+          "perfil": "Fi",
+          "animal": "Baleia",
+          "nome": "Sentimento Introvertido",
+          "cor": "#8C3F33",
+          "n": 1,
+          "pct": 12.5
+        },
+        {
+          "perfil": "Se",
+          "animal": "Cavalo",
+          "nome": "Sensação Extrovertida",
+          "cor": "#6E8B3D",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Si",
+          "animal": "Urso",
+          "nome": "Sensação Introvertida",
+          "cor": "#47632B",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ne",
+          "animal": "Raposa",
+          "nome": "Intuição Extrovertida",
+          "cor": "#8A5AA0",
+          "n": 4,
+          "pct": 50
+        },
+        {
+          "perfil": "Ni",
+          "animal": "Onça",
+          "nome": "Intuição Introvertida",
+          "cor": "#4E3163",
+          "n": 2,
+          "pct": 25
+        }
+      ],
+      "distribuicaoFuncoes": [
+        {
+          "funcao": "T",
+          "nome": "Pensamento",
+          "n": 0,
+          "pct": 0,
+          "media": 6.9
+        },
+        {
+          "funcao": "F",
+          "nome": "Sentimento",
+          "n": 2,
+          "pct": 25,
+          "media": 22.7
+        },
+        {
+          "funcao": "S",
+          "nome": "Sensação",
+          "n": 0,
+          "pct": 0,
+          "media": 9.7
+        },
+        {
+          "funcao": "N",
+          "nome": "Intuição",
+          "n": 6,
+          "pct": 75,
+          "media": 60.7
+        }
+      ],
+      "distribuicaoAtitudes": [
+        {
+          "atitude": "E",
+          "nome": "Extroversão",
+          "n": 5,
+          "pct": 62.5,
+          "media": 60.2
+        },
+        {
+          "atitude": "I",
+          "nome": "Introversão",
+          "n": 3,
+          "pct": 37.5,
+          "media": 39.8
+        }
+      ],
+      "distribuicaoEixos": [
+        {
+          "eixo": "EXP",
+          "nome": "Exploração",
+          "media": 51.3
+        },
+        {
+          "eixo": "EXE",
+          "nome": "Execução",
+          "media": 16.1
+        },
+        {
+          "eixo": "AUT",
+          "nome": "Autonomia",
+          "media": 19
+        },
+        {
+          "eixo": "COO",
+          "nome": "Cooperação",
+          "media": 27.5
+        },
+        {
+          "eixo": "FLE",
+          "nome": "Flexibilidade",
+          "media": 34.7
+        },
+        {
+          "eixo": "EST",
+          "nome": "Estrutura",
+          "media": 13.4
+        }
+      ],
+      "cobertura": [
+        {
+          "capacidade": "CRIAR",
+          "nome": "Criar",
+          "valor": 85.7,
+          "nivel": "forte",
+          "portadores": 6,
+          "media": 52.4,
+          "belbin": "Planta",
+          "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+        },
+        {
+          "capacidade": "EXPLORAR",
+          "nome": "Explorar",
+          "valor": 85.1,
+          "nivel": "forte",
+          "portadores": 5,
+          "media": 50.4,
+          "belbin": "Investigador de Recursos",
+          "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+        },
+        {
+          "capacidade": "ANALISAR",
+          "nome": "Analisar",
+          "valor": 5.8,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 19.2,
+          "belbin": "Monitor Avaliador",
+          "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+        },
+        {
+          "capacidade": "DECIDIR",
+          "nome": "Decidir/Mobilizar",
+          "valor": 7.8,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 25.9,
+          "belbin": "Formador",
+          "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+        },
+        {
+          "capacidade": "ORGANIZAR",
+          "nome": "Organizar",
+          "valor": 5.2,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 17.5,
+          "belbin": "Implementador",
+          "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+        },
+        {
+          "capacidade": "EXECUTAR",
+          "nome": "Executar",
+          "valor": 6.5,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 21.6,
+          "belbin": "Implementador",
+          "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+        },
+        {
+          "capacidade": "RELACIONAR",
+          "nome": "Relacionar",
+          "valor": 79.2,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 30.6,
+          "belbin": "Trabalhador em Equipe",
+          "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+        },
+        {
+          "capacidade": "COORDENAR",
+          "nome": "Coordenar",
+          "valor": 78.6,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 28.7,
+          "belbin": "Coordenador",
+          "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+        },
+        {
+          "capacidade": "FINALIZAR",
+          "nome": "Finalizar",
+          "valor": 3.3,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 10.9,
+          "belbin": "Finalizador",
+          "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+        },
+        {
+          "capacidade": "ESPECIALIZAR",
+          "nome": "Especializar",
+          "valor": 5.1,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 17.1,
+          "belbin": "Especialista",
+          "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+        }
+      ],
+      "belbinEquipe": [
+        {
+          "id": "PLANTA",
+          "nome": "Planta",
+          "media": 52.2,
+          "intensidade": "Alta",
+          "portadores": 6,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "INV_RECURSOS",
+          "nome": "Investigador de Recursos",
+          "media": 45.7,
+          "intensidade": "Alta",
+          "portadores": 3,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "COORDENADOR",
+          "nome": "Coordenador",
+          "media": 31.3,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FORMADOR",
+          "nome": "Formador",
+          "media": 24.4,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "MONITOR",
+          "nome": "Monitor Avaliador",
+          "media": 18.7,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "IMPLEMENTADOR",
+          "nome": "Implementador",
+          "media": 26.2,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "TRAB_EQUIPE",
+          "nome": "Trabalhador em Equipe",
+          "media": 28.1,
+          "intensidade": "Baixa",
+          "portadores": 1,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FINALIZADOR",
+          "nome": "Finalizador",
+          "media": 12.5,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "ESPECIALISTA",
+          "nome": "Especialista",
+          "media": 17,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        }
+      ]
+    },
+    "PLANEJAMENTO": {
+      "n": 6,
+      "idf": 56,
+      "idfFaixa": "moderada",
+      "idfComponentes": {
+        "perfis": 63.9,
+        "funcoes": 50,
+        "dispersaoVetorial": 55.1
+      },
+      "icf": 36.4,
+      "icfFaixa": "baixa",
+      "complementaridade": {
+        "pct": 40,
+        "capacidadesCobertas": 4,
+        "total": 10
+      },
+      "concentracao": {
+        "hhi": 0.278,
+        "maiorPerfil": "Te",
+        "maiorPerfilPct": 33.3,
+        "perfisPresentes": 4
+      },
+      "distribuicaoPerfis": [
+        {
+          "perfil": "Te",
+          "animal": "Lobo",
+          "nome": "Pensamento Extrovertido",
+          "cor": "#2E6E8E",
+          "n": 2,
+          "pct": 33.3
+        },
+        {
+          "perfil": "Ti",
+          "animal": "Elefante",
+          "nome": "Pensamento Introvertido",
+          "cor": "#1C4A62",
+          "n": 1,
+          "pct": 16.7
+        },
+        {
+          "perfil": "Fe",
+          "animal": "Carneiro",
+          "nome": "Sentimento Extrovertido",
+          "cor": "#C1663A",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Fi",
+          "animal": "Baleia",
+          "nome": "Sentimento Introvertido",
+          "cor": "#8C3F33",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Se",
+          "animal": "Cavalo",
+          "nome": "Sensação Extrovertida",
+          "cor": "#6E8B3D",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Si",
+          "animal": "Urso",
+          "nome": "Sensação Introvertida",
+          "cor": "#47632B",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ne",
+          "animal": "Raposa",
+          "nome": "Intuição Extrovertida",
+          "cor": "#8A5AA0",
+          "n": 1,
+          "pct": 16.7
+        },
+        {
+          "perfil": "Ni",
+          "animal": "Onça",
+          "nome": "Intuição Introvertida",
+          "cor": "#4E3163",
+          "n": 2,
+          "pct": 33.3
+        }
+      ],
+      "distribuicaoFuncoes": [
+        {
+          "funcao": "T",
+          "nome": "Pensamento",
+          "n": 3,
+          "pct": 50,
+          "media": 40.1
+        },
+        {
+          "funcao": "F",
+          "nome": "Sentimento",
+          "n": 0,
+          "pct": 0,
+          "media": 11.7
+        },
+        {
+          "funcao": "S",
+          "nome": "Sensação",
+          "n": 0,
+          "pct": 0,
+          "media": 7.4
+        },
+        {
+          "funcao": "N",
+          "nome": "Intuição",
+          "n": 3,
+          "pct": 50,
+          "media": 40.8
+        }
+      ],
+      "distribuicaoAtitudes": [
+        {
+          "atitude": "E",
+          "nome": "Extroversão",
+          "n": 3,
+          "pct": 50,
+          "media": 44.4
+        },
+        {
+          "atitude": "I",
+          "nome": "Introversão",
+          "n": 3,
+          "pct": 50,
+          "media": 55.6
+        }
+      ],
+      "distribuicaoEixos": [
+        {
+          "eixo": "EXP",
+          "nome": "Exploração",
+          "media": 31.6
+        },
+        {
+          "eixo": "EXE",
+          "nome": "Execução",
+          "media": 11.4
+        },
+        {
+          "eixo": "AUT",
+          "nome": "Autonomia",
+          "media": 32.2
+        },
+        {
+          "eixo": "COO",
+          "nome": "Cooperação",
+          "media": 16.6
+        },
+        {
+          "eixo": "FLE",
+          "nome": "Flexibilidade",
+          "media": 30.3
+        },
+        {
+          "eixo": "EST",
+          "nome": "Estrutura",
+          "media": 30.6
+        }
+      ],
+      "cobertura": [
+        {
+          "capacidade": "CRIAR",
+          "nome": "Criar",
+          "valor": 80.8,
+          "nivel": "forte",
+          "portadores": 3,
+          "media": 36,
+          "belbin": "Planta",
+          "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+        },
+        {
+          "capacidade": "EXPLORAR",
+          "nome": "Explorar",
+          "valor": 80.3,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 34.5,
+          "belbin": "Investigador de Recursos",
+          "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+        },
+        {
+          "capacidade": "ANALISAR",
+          "nome": "Analisar",
+          "valor": 82.4,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 41.2,
+          "belbin": "Monitor Avaliador",
+          "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+        },
+        {
+          "capacidade": "DECIDIR",
+          "nome": "Decidir/Mobilizar",
+          "valor": 79.6,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 32.1,
+          "belbin": "Formador",
+          "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+        },
+        {
+          "capacidade": "ORGANIZAR",
+          "nome": "Organizar",
+          "valor": 9.2,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 30.8,
+          "belbin": "Implementador",
+          "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+        },
+        {
+          "capacidade": "EXECUTAR",
+          "nome": "Executar",
+          "valor": 5.9,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 19.7,
+          "belbin": "Implementador",
+          "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+        },
+        {
+          "capacidade": "RELACIONAR",
+          "nome": "Relacionar",
+          "valor": 6.5,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 21.6,
+          "belbin": "Trabalhador em Equipe",
+          "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+        },
+        {
+          "capacidade": "COORDENAR",
+          "nome": "Coordenar",
+          "valor": 4.2,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 13.9,
+          "belbin": "Coordenador",
+          "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+        },
+        {
+          "capacidade": "FINALIZAR",
+          "nome": "Finalizar",
+          "valor": 6.2,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 20.5,
+          "belbin": "Finalizador",
+          "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+        },
+        {
+          "capacidade": "ESPECIALIZAR",
+          "nome": "Especializar",
+          "valor": 9.1,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 30.3,
+          "belbin": "Especialista",
+          "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+        }
+      ],
+      "belbinEquipe": [
+        {
+          "id": "PLANTA",
+          "nome": "Planta",
+          "media": 36.3,
+          "intensidade": "Moderada",
+          "portadores": 3,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "INV_RECURSOS",
+          "nome": "Investigador de Recursos",
+          "media": 32.1,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "COORDENADOR",
+          "nome": "Coordenador",
+          "media": 16.1,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FORMADOR",
+          "nome": "Formador",
+          "media": 31.3,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "MONITOR",
+          "nome": "Monitor Avaliador",
+          "media": 43.8,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "IMPLEMENTADOR",
+          "nome": "Implementador",
+          "media": 29.2,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "TRAB_EQUIPE",
+          "nome": "Trabalhador em Equipe",
+          "media": 20.5,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FINALIZADOR",
+          "nome": "Finalizador",
+          "media": 17.7,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "ESPECIALISTA",
+          "nome": "Especialista",
+          "media": 30.5,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        }
+      ]
+    },
+    "SESMT": {
+      "n": 3,
+      "idf": 46.5,
+      "idfFaixa": "moderada",
+      "idfComponentes": {
+        "perfis": 52.8,
+        "funcoes": 45.9,
+        "dispersaoVetorial": 43.6
+      },
+      "icf": 29.7,
+      "icfFaixa": "baixa",
+      "complementaridade": {
+        "pct": 30,
+        "capacidadesCobertas": 3,
+        "total": 10
+      },
+      "concentracao": {
+        "hhi": 0.333,
+        "maiorPerfil": "Te",
+        "maiorPerfilPct": 33.3,
+        "perfisPresentes": 3
+      },
+      "distribuicaoPerfis": [
+        {
+          "perfil": "Te",
+          "animal": "Lobo",
+          "nome": "Pensamento Extrovertido",
+          "cor": "#2E6E8E",
+          "n": 1,
+          "pct": 33.3
+        },
+        {
+          "perfil": "Ti",
+          "animal": "Elefante",
+          "nome": "Pensamento Introvertido",
+          "cor": "#1C4A62",
+          "n": 1,
+          "pct": 33.3
+        },
+        {
+          "perfil": "Fe",
+          "animal": "Carneiro",
+          "nome": "Sentimento Extrovertido",
+          "cor": "#C1663A",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Fi",
+          "animal": "Baleia",
+          "nome": "Sentimento Introvertido",
+          "cor": "#8C3F33",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Se",
+          "animal": "Cavalo",
+          "nome": "Sensação Extrovertida",
+          "cor": "#6E8B3D",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Si",
+          "animal": "Urso",
+          "nome": "Sensação Introvertida",
+          "cor": "#47632B",
+          "n": 1,
+          "pct": 33.3
+        },
+        {
+          "perfil": "Ne",
+          "animal": "Raposa",
+          "nome": "Intuição Extrovertida",
+          "cor": "#8A5AA0",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ni",
+          "animal": "Onça",
+          "nome": "Intuição Introvertida",
+          "cor": "#4E3163",
+          "n": 0,
+          "pct": 0
+        }
+      ],
+      "distribuicaoFuncoes": [
+        {
+          "funcao": "T",
+          "nome": "Pensamento",
+          "n": 2,
+          "pct": 66.7,
+          "media": 45.7
+        },
+        {
+          "funcao": "F",
+          "nome": "Sentimento",
+          "n": 0,
+          "pct": 0,
+          "media": 12.3
+        },
+        {
+          "funcao": "S",
+          "nome": "Sensação",
+          "n": 1,
+          "pct": 33.3,
+          "media": 35.8
+        },
+        {
+          "funcao": "N",
+          "nome": "Intuição",
+          "n": 0,
+          "pct": 0,
+          "media": 6.2
+        }
+      ],
+      "distribuicaoAtitudes": [
+        {
+          "atitude": "E",
+          "nome": "Extroversão",
+          "n": 1,
+          "pct": 33.3,
+          "media": 50.6
+        },
+        {
+          "atitude": "I",
+          "nome": "Introversão",
+          "n": 2,
+          "pct": 66.7,
+          "media": 49.4
+        }
+      ],
+      "distribuicaoEixos": [
+        {
+          "eixo": "EXP",
+          "nome": "Exploração",
+          "media": 9.5
+        },
+        {
+          "eixo": "EXE",
+          "nome": "Execução",
+          "media": 34.3
+        },
+        {
+          "eixo": "AUT",
+          "nome": "Autonomia",
+          "media": 31.8
+        },
+        {
+          "eixo": "COO",
+          "nome": "Cooperação",
+          "media": 17.8
+        },
+        {
+          "eixo": "FLE",
+          "nome": "Flexibilidade",
+          "media": 24.2
+        },
+        {
+          "eixo": "EST",
+          "nome": "Estrutura",
+          "media": 28.6
+        }
+      ],
+      "cobertura": [
+        {
+          "capacidade": "CRIAR",
+          "nome": "Criar",
+          "valor": 5.4,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 18,
+          "belbin": "Planta",
+          "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+        },
+        {
+          "capacidade": "EXPLORAR",
+          "nome": "Explorar",
+          "valor": 4.5,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 14.9,
+          "belbin": "Investigador de Recursos",
+          "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+        },
+        {
+          "capacidade": "ANALISAR",
+          "nome": "Analisar",
+          "valor": 84,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 46.6,
+          "belbin": "Monitor Avaliador",
+          "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+        },
+        {
+          "capacidade": "DECIDIR",
+          "nome": "Decidir/Mobilizar",
+          "valor": 83.2,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 43.9,
+          "belbin": "Formador",
+          "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+        },
+        {
+          "capacidade": "ORGANIZAR",
+          "nome": "Organizar",
+          "valor": 9.8,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 32.7,
+          "belbin": "Implementador",
+          "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+        },
+        {
+          "capacidade": "EXECUTAR",
+          "nome": "Executar",
+          "valor": 9.1,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 30.3,
+          "belbin": "Implementador",
+          "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+        },
+        {
+          "capacidade": "RELACIONAR",
+          "nome": "Relacionar",
+          "valor": 5.5,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 18.2,
+          "belbin": "Trabalhador em Equipe",
+          "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+        },
+        {
+          "capacidade": "COORDENAR",
+          "nome": "Coordenar",
+          "valor": 5.3,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 17.5,
+          "belbin": "Coordenador",
+          "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+        },
+        {
+          "capacidade": "FINALIZAR",
+          "nome": "Finalizar",
+          "valor": 79.8,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 32.6,
+          "belbin": "Finalizador",
+          "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+        },
+        {
+          "capacidade": "ESPECIALIZAR",
+          "nome": "Especializar",
+          "valor": 10,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 33.3,
+          "belbin": "Especialista",
+          "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+        }
+      ],
+      "belbinEquipe": [
+        {
+          "id": "PLANTA",
+          "nome": "Planta",
+          "media": 17.1,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "INV_RECURSOS",
+          "nome": "Investigador de Recursos",
+          "media": 18.2,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "COORDENADOR",
+          "nome": "Coordenador",
+          "media": 18.5,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FORMADOR",
+          "nome": "Formador",
+          "media": 42.3,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "MONITOR",
+          "nome": "Monitor Avaliador",
+          "media": 45.2,
+          "intensidade": "Alta",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "IMPLEMENTADOR",
+          "nome": "Implementador",
+          "media": 38,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "TRAB_EQUIPE",
+          "nome": "Trabalhador em Equipe",
+          "media": 16.7,
+          "intensidade": "Muito baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FINALIZADOR",
+          "nome": "Finalizador",
+          "media": 33.3,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "ESPECIALISTA",
+          "nome": "Especialista",
+          "media": 36.8,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        }
+      ]
+    },
+    "TERRACAP": {
+      "n": 5,
+      "idf": 41.5,
+      "idfFaixa": "moderada",
+      "idfComponentes": {
+        "perfis": 45.7,
+        "funcoes": 36.1,
+        "dispersaoVetorial": 42.1
+      },
+      "icf": 29.6,
+      "icfFaixa": "baixa",
+      "complementaridade": {
+        "pct": 30,
+        "capacidadesCobertas": 3,
+        "total": 10
+      },
+      "concentracao": {
+        "hhi": 0.44,
+        "maiorPerfil": "Se",
+        "maiorPerfilPct": 60,
+        "perfisPresentes": 3
+      },
+      "distribuicaoPerfis": [
+        {
+          "perfil": "Te",
+          "animal": "Lobo",
+          "nome": "Pensamento Extrovertido",
+          "cor": "#2E6E8E",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ti",
+          "animal": "Elefante",
+          "nome": "Pensamento Introvertido",
+          "cor": "#1C4A62",
+          "n": 1,
+          "pct": 20
+        },
+        {
+          "perfil": "Fe",
+          "animal": "Carneiro",
+          "nome": "Sentimento Extrovertido",
+          "cor": "#C1663A",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Fi",
+          "animal": "Baleia",
+          "nome": "Sentimento Introvertido",
+          "cor": "#8C3F33",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Se",
+          "animal": "Cavalo",
+          "nome": "Sensação Extrovertida",
+          "cor": "#6E8B3D",
+          "n": 3,
+          "pct": 60
+        },
+        {
+          "perfil": "Si",
+          "animal": "Urso",
+          "nome": "Sensação Introvertida",
+          "cor": "#47632B",
+          "n": 1,
+          "pct": 20
+        },
+        {
+          "perfil": "Ne",
+          "animal": "Raposa",
+          "nome": "Intuição Extrovertida",
+          "cor": "#8A5AA0",
+          "n": 0,
+          "pct": 0
+        },
+        {
+          "perfil": "Ni",
+          "animal": "Onça",
+          "nome": "Intuição Introvertida",
+          "cor": "#4E3163",
+          "n": 0,
+          "pct": 0
+        }
+      ],
+      "distribuicaoFuncoes": [
+        {
+          "funcao": "T",
+          "nome": "Pensamento",
+          "n": 1,
+          "pct": 20,
+          "media": 23.7
+        },
+        {
+          "funcao": "F",
+          "nome": "Sentimento",
+          "n": 0,
+          "pct": 0,
+          "media": 13.3
+        },
+        {
+          "funcao": "S",
+          "nome": "Sensação",
+          "n": 4,
+          "pct": 80,
+          "media": 48.2
+        },
+        {
+          "funcao": "N",
+          "nome": "Intuição",
+          "n": 0,
+          "pct": 0,
+          "media": 14.8
+        }
+      ],
+      "distribuicaoAtitudes": [
+        {
+          "atitude": "E",
+          "nome": "Extroversão",
+          "n": 3,
+          "pct": 60,
+          "media": 53.3
+        },
+        {
+          "atitude": "I",
+          "nome": "Introversão",
+          "n": 2,
+          "pct": 40,
+          "media": 46.7
+        }
+      ],
+      "distribuicaoEixos": [
+        {
+          "eixo": "EXP",
+          "nome": "Exploração",
+          "media": 18.6
+        },
+        {
+          "eixo": "EXE",
+          "nome": "Execução",
+          "media": 40
+        },
+        {
+          "eixo": "AUT",
+          "nome": "Autonomia",
+          "media": 24.5
+        },
+        {
+          "eixo": "COO",
+          "nome": "Cooperação",
+          "media": 19.6
+        },
+        {
+          "eixo": "FLE",
+          "nome": "Flexibilidade",
+          "media": 22.7
+        },
+        {
+          "eixo": "EST",
+          "nome": "Estrutura",
+          "media": 24.3
+        }
+      ],
+      "cobertura": [
+        {
+          "capacidade": "CRIAR",
+          "nome": "Criar",
+          "valor": 5.8,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 19.4,
+          "belbin": "Planta",
+          "desc": "Gerar ideias e soluções; desafiar as formas convencionais de fazer as coisas."
+        },
+        {
+          "capacidade": "EXPLORAR",
+          "nome": "Explorar",
+          "valor": 7.9,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 26.2,
+          "belbin": "Investigador de Recursos",
+          "desc": "Buscar oportunidades e recursos; configurar contatos externos e realizar negociações."
+        },
+        {
+          "capacidade": "ANALISAR",
+          "nome": "Analisar",
+          "valor": 81.9,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 39.8,
+          "belbin": "Monitor Avaliador",
+          "desc": "Avaliar criticamente ideias e problemas; ponderar as opções pró e contra."
+        },
+        {
+          "capacidade": "DECIDIR",
+          "nome": "Decidir/Mobilizar",
+          "valor": 9.4,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 31.2,
+          "belbin": "Formador",
+          "desc": "Impulsionar a ação e enfrentar obstáculos; exigir decisões rápidas sob pressão."
+        },
+        {
+          "capacidade": "ORGANIZAR",
+          "nome": "Organizar",
+          "valor": 6.6,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 21.9,
+          "belbin": "Implementador",
+          "desc": "Estruturar e transformar ideias em processos práticos e aplicáveis."
+        },
+        {
+          "capacidade": "EXECUTAR",
+          "nome": "Executar",
+          "valor": 80.6,
+          "nivel": "forte",
+          "portadores": 1,
+          "media": 35.3,
+          "belbin": "Implementador",
+          "desc": "Colocar decisões em prática de forma confiável e disciplinada."
+        },
+        {
+          "capacidade": "RELACIONAR",
+          "nome": "Relacionar",
+          "valor": 6.8,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 22.6,
+          "belbin": "Trabalhador em Equipe",
+          "desc": "Favorecer cooperação e equilíbrio interpessoal; resolver problemas interpessoais."
+        },
+        {
+          "capacidade": "COORDENAR",
+          "nome": "Coordenar",
+          "valor": 5.1,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 17.1,
+          "belbin": "Coordenador",
+          "desc": "Integrar pessoas e objetivos; detectar talentos e usá-los em busca dos objetivos do grupo."
+        },
+        {
+          "capacidade": "FINALIZAR",
+          "nome": "Finalizar",
+          "valor": 82.5,
+          "nivel": "forte",
+          "portadores": 2,
+          "media": 41.7,
+          "belbin": "Finalizador",
+          "desc": "Garantir qualidade, detalhes e conclusão; concentração e padrões elevados."
+        },
+        {
+          "capacidade": "ESPECIALIZAR",
+          "nome": "Especializar",
+          "valor": 9.7,
+          "nivel": "baixa",
+          "portadores": 0,
+          "media": 32.3,
+          "belbin": "Especialista",
+          "desc": "Fornecer conhecimento técnico aprofundado e orientar os demais."
+        }
+      ],
+      "belbinEquipe": [
+        {
+          "id": "PLANTA",
+          "nome": "Planta",
+          "media": 19.5,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "INV_RECURSOS",
+          "nome": "Investigador de Recursos",
+          "media": 29.8,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "COORDENADOR",
+          "nome": "Coordenador",
+          "media": 18.9,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FORMADOR",
+          "nome": "Formador",
+          "media": 30.3,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "MONITOR",
+          "nome": "Monitor Avaliador",
+          "media": 35.1,
+          "intensidade": "Moderada",
+          "portadores": 1,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "IMPLEMENTADOR",
+          "nome": "Implementador",
+          "media": 35,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "TRAB_EQUIPE",
+          "nome": "Trabalhador em Equipe",
+          "media": 20.3,
+          "intensidade": "Baixa",
+          "portadores": 0,
+          "dimensao": "relacionamento"
+        },
+        {
+          "id": "FINALIZADOR",
+          "nome": "Finalizador",
+          "media": 40,
+          "intensidade": "Moderada",
+          "portadores": 2,
+          "dimensao": "tarefa"
+        },
+        {
+          "id": "ESPECIALISTA",
+          "nome": "Especialista",
+          "media": 36.9,
+          "intensidade": "Moderada",
+          "portadores": 0,
+          "dimensao": "tarefa"
+        }
+      ]
+    }
+  }
+}

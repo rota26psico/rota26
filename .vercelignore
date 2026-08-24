@@ -1,0 +1,15 @@
+# O que NÃO sobe para a Vercel.
+#
+# Isto é segurança, não arrumação: docker/.env guarda o JWT_SECRET e a
+# SERVICE_KEY da pilha local. Nada aqui é usado em tempo de execução — o
+# runtime precisa apenas de src/, public/, next.config.mjs, package.json e
+# tsconfig.json.
+docker
+demo
+dist
+scripts
+supabase
+baseline.json
+*.md
+RELATORIO_*.txt
+.idea

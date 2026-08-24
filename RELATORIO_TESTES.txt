@@ -1,0 +1,116 @@
+══════════════════════════════════════════════════════════════════════════════
+BATERIA DE TESTES — v2.0 (duas trilhas independentes)
+══════════════════════════════════════════════════════════════════════════════
+
+1. Consistência — as três regras fundamentais do item 73
+────────────────────────────────────────────────────────
+  ✓ mesmas respostas ⇒ mesmos escores
+  ✓ mesmos escores ⇒ mesmo resultado Jung
+  ✓ mesmo perfil Jung + respostas diferentes ⇒ Belbin diferente (44/44)
+  ✓ ordem do top-3 Belbin também varia dentro do mesmo perfil (41/44)
+  ✓ 150 execuções repetidas: nenhuma variação
+  ✓ ordem das respostas não altera o resultado
+
+2. Independência entre as duas trilhas
+──────────────────────────────────────
+  ✓ a trilha funcional não consulta o perfil junguiano
+  ✓ perfis com mais de uma configuração de capacidades: 8/8
+  ✓ trilha Jung preservada: perfil = atitude + função dominante
+  ✓ função auxiliar vem sempre do outro par de opostos
+  ✓ função inferior é sempre a oposta da dominante
+
+3. Invariantes de escore e matriz de pontuação
+──────────────────────────────────────────────
+  ✓ E + I = 27 em todas as avaliações
+  ✓ T + F + S + N = 27 em todas as avaliações
+  ✓ E + I é ímpar → empate de atitude impossível
+  ✓ todos os escores relativos ficam entre 0 e 100
+  ✓ matriz cobre as 192 alternativas
+  ✓ todas as 10 capacidades são alcançáveis
+  ✓ todos os 9 papéis Belbin são alcançáveis
+  ✓ rótulos de intensidade cobrem toda a escala
+
+4. Robustez, salvamento incremental e retomada
+──────────────────────────────────────────────
+  ✓ lista vazia não quebra e é marcada incompleta
+  ✓ alternativa inexistente é ignorada
+  ✓ alternativa de outra questão é rejeitada
+  ✓ resposta duplicada não conta duas vezes
+  ✓ avaliação parcial é aceita e sinalizada
+  ✓ retomar e concluir produz o mesmo resultado de responder de uma vez
+  ✓ conclusão só é válida com as 48 respostas
+
+5. Agregação por vetores completos
+──────────────────────────────────
+  ✓ IDF homogênea (0) < IDF diversa (85.4)
+  ✓ IDF usa dispersão real dos escores, não só rótulos
+  ✓ mesmos rótulos com escores idênticos ⇒ IDF menor que com escores dispersos
+  ✓ ICF diversa (71.5) > ICF homogênea (23)
+  ✓ IDF e ICF entre 0 e 100
+  ✓ equipe vazia não quebra
+  ✓ grupo pequeno dispara aviso (item 46)
+  ✓ Belbin da equipe é calculado das respostas
+  ✓ sombra coletiva é sempre derivada de uma força
+  ✓ recomendações nunca concluem contratação automaticamente
+  ✓ ações de liderança são condicionadas aos dados
+  ✓ leitura Belbin é texto interpretado, não apenas números
+
+6. Comparação individual com a equipe e privacidade
+───────────────────────────────────────────────────
+  ✓ comparação disponível com amostra suficiente
+  ✓ mostra quantidade e percentual do mesmo perfil
+  ✓ mostra posição relativa do perfil
+  ✓ mostra mesma função dominante
+  ✓ mostra distribuição de atitudes
+  ✓ produz interpretação de contribuição
+  ✓ não usa linguagem de raridade especial
+  ✓ grupo com menos de 5 não expõe distribuição (item 29)
+  ✓ comparação nunca devolve nomes ou matrículas de colegas
+
+7. Interpretação individual
+───────────────────────────
+  ✓ as 10 leituras de "como você funciona" são geradas
+  ✓ todas as leituras usam escores reais
+  ✓ luz apresenta entre 4 e 6 manifestações
+  ✓ cada manifestação de luz tem evidência
+  ✓ sombra traz força, equilíbrio e excesso
+  ✓ Belbin individual detalha as 3 maiores proximidades
+  ✓ cada proximidade traz contribuição, uso, excesso e complementaridade
+  ✓ contribuição funcional traz significado e uso
+  ✓ leitura executiva individual difere da devolutiva do participante
+  ✓ leitura executiva não prescreve cargo nem decisão de emprego
+  ✓ leitura executiva da equipe tem os 5 blocos
+  ✓ blocos seguem a ordem exigida
+
+8. Exportação Excel
+───────────────────
+  ✓ Excel completo tem 13 abas (13)
+  ✓ inclui as abas exigidas pelo item 59
+  ✓ aba de respostas brutas tem 4608 linhas
+  ✓ Excel e dashboard mostram o MESMO n para MEC
+  ✓ Excel e dashboard mostram o MESMO IDF para MEC
+  ✓ Excel e dashboard mostram o MESMO ICF para MEC
+  ✓ Excel anonimizado remove nome e matrícula
+  ✓ Excel anonimizado usa IDs P00001, P00002…
+  ✓ nenhum nome vaza na exportação anonimizada
+  ✓ exportação por equipe filtra corretamente
+  ✓ exportação metodológica traz a matriz de pontuação completa
+
+9. Coorte simulada e comparativo
+────────────────────────────────
+  ✓ geração da coorte é determinística
+  ✓ coorte com 96 participantes em 16 equipes
+  ✓ todos responderam as 48 questões
+  ✓ todas as respostas têm chave válida
+  ✓ coorte cobre os 8 perfis
+  ✓ comparativo cobre as 16 equipes
+  ✓ comparativo traz capacidades e Belbin por equipe
+  ✓ equipes pequenas são sinalizadas
+  ✓ nenhum ranking de melhor equipe é produzido
+  ✓ IDF organizacional calculado (84.2)
+  ✓ ICF organizacional calculado (62.7)
+  ✓ mapa de lacunas produzido com interpretação
+
+══════════════════════════════════════════════════════════════════════════════
+RESULTADO: 82/82 testes aprovados.
+══════════════════════════════════════════════════════════════════════════════

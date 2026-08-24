@@ -1,0 +1,10 @@
+node_modules/
+.next/
+dist/
+demo/.bundle.js
+.env
+.env.local
+*.tsbuildinfo
+docker/.env
+src/app/api/dev-login/
+docker/next-cache/

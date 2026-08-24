@@ -1,0 +1,45 @@
+══════════════════════════════════════════════════════════════════════════════
+AUDITORIA DA MATRIZ DE PONTUAÇÃO — v2.0
+══════════════════════════════════════════════════════════════════════════════
+
+INDEPENDÊNCIA ENTRE AS DUAS TRILHAS
+  polo Jung → assinaturas funcionais distintas entre as alternativas daquele polo
+   E: 48 alternativas → 16 combinações de capacidades, 16 de papéis
+   I: 48 alternativas → 15 combinações de capacidades, 10 de papéis
+   T: 24 alternativas → 8 combinações de capacidades, 8 de papéis
+   F: 24 alternativas → 4 combinações de capacidades, 4 de papéis
+   S: 24 alternativas → 14 combinações de capacidades, 9 de papéis
+   N: 24 alternativas → 4 combinações de capacidades, 4 de papéis
+   → nenhum polo colapsa a trilha funcional. Independência preservada.
+  14 de 19 pares (Jung, eixo) produzem mais de uma configuração funcional.
+
+OPORTUNIDADE MÁXIMA POR CAPACIDADE (denominador do escore relativo)
+  Criar               63  ▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+  Explorar            58  ▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+  Analisar            78  ▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+  Decidir/Mobilizar   41  ▪▪▪▪▪▪▪▪▪▪
+  Organizar           53  ▪▪▪▪▪▪▪▪▪▪▪▪▪
+  Executar            55  ▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+  Relacionar          84  ▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+  Coordenar           61  ▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+  Finalizar           47  ▪▪▪▪▪▪▪▪▪▪▪▪
+  Especializar        49  ▪▪▪▪▪▪▪▪▪▪▪▪
+
+OPORTUNIDADE MÁXIMA POR PAPEL DE BELBIN
+  Planta                      74  ▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+  Investigador de Recursos    53  ▪▪▪▪▪▪▪▪▪▪▪▪▪
+  Coordenador                 56  ▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+  Formador                    41  ▪▪▪▪▪▪▪▪▪▪
+  Monitor Avaliador           73  ▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+  Implementador               72  ▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+  Trabalhador em Equipe       82  ▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+  Finalizador                 50  ▪▪▪▪▪▪▪▪▪▪▪▪▪
+  Especialista                58  ▪▪▪▪▪▪▪▪▪▪▪▪▪▪▪
+
+ACHADOS
+  Nenhum achado.
+
+──────────────────────────────────────────────────────────────────────────────
+VEREDITO: 0 erro(s), 0 alerta(s).
+MATRIZ APROVADA para uso no algoritmo.
+──────────────────────────────────────────────────────────────────────────────

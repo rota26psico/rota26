@@ -1,0 +1,488 @@
+/**
+ * ETAPA 2 — MATRIZ TEÓRICA: JUNG × ANIMAIS × LUZ × SOMBRA
+ * ---------------------------------------------------------------------------
+ * FONTE ÚNICA DE VERDADE. O SQL de seed, a aplicação, a demo e o documento de
+ * especificação são todos gerados a partir deste arquivo.
+ *
+ * Camadas (mantidas separadas conforme exigido):
+ *  - `jung`    : camada 2 — reduções fiéis do cap. 16.5 de "Teorias da
+ *                Personalidade: Freud, Reich, Jung" (seções 16.5.1 a 16.5.8).
+ *  - `livro`   : camada 1 — material de "Os animais e a psique", vol. 1
+ *                (Ramos et al., Summus). [ETO] etológico / [SIM] simbólico.
+ *  - `luz`, `sombra`, `trabalho` : camada 3 — INTERPRETAÇÃO construída no
+ *                cruzamento. Não consta em nenhuma das duas obras.
+ *
+ * A sombra é sempre derivada da própria força (item 21 do prompt-mestre) e da
+ * FUNÇÃO INFERIOR junguiana — nunca é uma lista de defeitos morais.
+ */
+
+export type Atitude = 'E' | 'I';
+export type Funcao = 'T' | 'F' | 'S' | 'N';
+export type PerfilId = 'Te' | 'Ti' | 'Fe' | 'Fi' | 'Se' | 'Si' | 'Ne' | 'Ni';
+
+export interface Perfil {
+  id: PerfilId;
+  ordem: number;
+  atitude: Atitude;
+  funcao: Funcao;
+  nomeJung: string;
+  animal: string;
+  cor: string;
+  /** Função inferior = oposta à dominante. Base de toda a seção "sombra". */
+  funcaoInferior: Funcao;
+  funcaoInferiorNome: string;
+  /** Uma frase: o modo de funcionamento. */
+  sintese: string;
+  /** Camada 2 — descrição junguiana do tipo. */
+  jung: string;
+  /** Camada 1 — ancoragem no livro. */
+  livro: string;
+  /** Camada 3 — como o perfil percebe / decide / se relaciona. */
+  estrutura: { percebe: string; decide: string; relaciona: string };
+  /** 4 a 6 potências (item 25). */
+  potencias: string[];
+  /** Luz e sombra pareadas: a sombra é o excesso da MESMA força (item 21). */
+  luzSombra: { forca: string; equilibrada: string; excessiva: string }[];
+  /** Texto corrido de luz e de sombra. */
+  luz: string;
+  sombra: string;
+  /** 3 a 6 contribuições para a equipe (item 25). */
+  contribuicoes: string[];
+  /** Recursos menos espontâneos — nunca chamados de fraquezas (item 25). */
+  menosEspontaneos: string[];
+  /** Características complementares, não "tipos de pessoas ideais" (item 25). */
+  complementaridade: string;
+  /** Item 20 — o animal no trabalho, por dimensão. */
+  trabalho: {
+    decisao: string; comunicacao: string; execucao: string; mudanca: string;
+    conflitos: string; relacionamento: string; pressao: string;
+    inovacao: string; organizacao: string;
+  };
+}
+
+export const PERFIS: Perfil[] = [
+  {
+    id: 'Te', ordem: 1, atitude: 'E', funcao: 'T',
+    nomeJung: 'Pensamento Extrovertido', animal: 'Lobo', cor: '#2E6E8E',
+    funcaoInferior: 'F', funcaoInferiorNome: 'Sentimento',
+    sintese: 'Organiza a realidade externa por critério lógico e espera que o sistema seja seguido.',
+    jung: 'Estabelece ordem lógica entre coisas externas; preocupa-se com situações externas; tende a submeter a própria conduta e a dos outros a um determinado sistema de ideias. Ponto fraco: o sentimento, o que pode levar a dificuldade de ligações afetivas profundas.',
+    livro: '[ETO] Ao amadurecer, "passa a participar das atividades, obedecendo a leis e hierarquias bem definidas"; "armam situações astutas para atrair a presa"; anda em fila indiana "para não deixar pegadas"; a coesão grupal "é um agente de cooperação e facilitação nas caçadas". [SIM] Ysengrin, "ira de ferro", age "com frieza e determinação férreas".',
+    estrutura: {
+      percebe: 'Lê o campo como terreno operacional: posições, papéis, sequências e pontos de falha. Vê primeiro a estrutura, depois as pessoas.',
+      decide: 'Por critério explícito e antecipado. Planeja a rota antes de andar e escolhe o caminho de menor exposição, não o mais rápido. Revisa diante de dado novo, não diante de pressão afetiva.',
+      relaciona: 'Vincula-se pela função e pela confiabilidade. A lealdade é real e sustentada, mas se expressa em provisão e proteção, não em manifestação afetiva.'
+    },
+    potencias: [
+      'Transforma intenção difusa em processo executável',
+      'Cria clareza de papéis e reduz retrabalho',
+      'Sustenta padrão de qualidade e cobra o combinado',
+      'Coordena esforços coletivos com naturalidade',
+      'Persiste em esforço longo quando enxerga a lógica dele'
+    ],
+    luzSombra: [
+      { forca: 'Clareza de critério', equilibrada: 'Decisões auditáveis que a equipe consegue reproduzir sozinha', excessiva: 'Rigidez: exceção legítima passa a ser lida como corrupção do sistema' },
+      { forca: 'Objetividade', equilibrada: 'Separa o problema da pessoa e despersonaliza o conflito', excessiva: 'Desconsideração: o custo humano do que é tecnicamente correto deixa de ser registrado' },
+      { forca: 'Capacidade de organizar os outros', equilibrada: 'Coordenação que multiplica o esforço coletivo', excessiva: 'Autoritarismo: o próprio sistema é aplicado a quem não o compartilha' },
+      { forca: 'Orientação a resultado', equilibrada: 'Foco sustentado que atravessa o cansaço da equipe', excessiva: 'Voracidade — "obter tudo sem considerar os meios" — em que a própria inteligência tática se degrada' }
+    ],
+    luz: 'Equilibrado, é a função que torna o esforço coletivo possível: transforma intenção difusa em operação, distribui papéis, sustenta padrão e protege quem está fragilizado dentro do sistema que construiu. No livro esse polo aparece como guardião, guia e psicopompo — "um animal que conhece a agressividade e a crueldade" e é forte o bastante para afastá-la. A firmeza é serviço, não domínio.',
+    sombra: 'A sombra é o sentimento inferior e aparece de duas formas opostas. Na primeira, o valor do outro não é registrado: vence "sem dar ouvidos à sua argumentação lógica", e o rigor vira desconsideração. Na segunda, o afeto recalcado retorna cru — a frieza que carrega raiva reprimida por trás. Não é um perfil pior: é o mesmo perfil com a função inferior no comando.',
+    contribuicoes: [
+      'Converte decisão coletiva em operação que sobrevive à semana seguinte',
+      'Define papéis, limites e sequência quando o escopo está difuso',
+      'Sustenta o padrão combinado sem depender de vigilância externa',
+      'Protege a equipe de decisões arbitrárias exigindo critério explícito'
+    ],
+    menosEspontaneos: [
+      'Registrar o efeito das decisões sobre as pessoas envolvidas',
+      'Reconhecer contribuições informais que não aparecem em processo',
+      'Sustentar ambiguidade sem apressar uma estrutura'
+    ],
+    complementaridade: 'Complementa-se com recursos voltados ao valor humano da decisão e à leitura do clima — quem pergunta "quem é afetado por isto?" antes de o critério fechar. E com recursos de percepção de possibilidade, que evitam que o sistema construído se torne o único horizonte considerado.',
+    trabalho: {
+      decisao: 'Rápida quando o critério está claro; travada quando não está. Muda diante de argumento, não diante de pressão emocional.',
+      comunicacao: 'Direta, impessoal e orientada ao problema. Argumenta por dado, precedente e consistência. Faz perguntas de verificação que soam como interrogatório sem essa intenção.',
+      execucao: 'Organiza antes de executar. Com escopo e limite explícitos, preenche o resto sozinho.',
+      mudanca: 'Aceita mudança bem fundamentada e resiste à anunciada sem critério. O que rejeita não é o novo — é o arbitrário.',
+      conflitos: 'Enfrenta pelo mérito e despersonaliza, o que ajuda no conteúdo e machuca na forma. Frequentemente não percebe que houve conflito.',
+      relacionamento: 'Confiável e protetor com quem está dentro do sistema. Pouca manifestação afetiva, muita provisão concreta.',
+      pressao: 'Endurece: aumenta controle, encurta prazos e reduz consulta.',
+      inovacao: 'Inova por otimização e redesenho, raramente por ruptura. Melhora o que existe até uma ordem de grandeza.',
+      organizacao: 'Alta. É frequentemente a infraestrutura organizacional invisível da equipe.'
+    }
+  },
+  {
+    id: 'Ti', ordem: 2, atitude: 'I', funcao: 'T',
+    nomeJung: 'Pensamento Introvertido', animal: 'Elefante', cor: '#1C4A62',
+    funcaoInferior: 'F', funcaoInferiorNome: 'Sentimento',
+    sintese: 'Constrói e guarda a arquitetura conceitual do trabalho; move-se devagar e com muito peso.',
+    jung: 'Atraído pela organização e clarificação de ideias; interessa-se mais pelas abstrações teóricas do que pelos fatos em si; produz novas hipóteses originais. O sentimento inferior é "intenso e pouco diferenciado" e pode irromper como explosões repentinas de afeto que espantam quem conhece apenas o lado racional.',
+    livro: '[ETO] "Inteligência notável e ótima memória"; "reduzido poder visual, mas olfato apurado"; dorme em pé; o musth traz "períodos de intensa virilidade, excitação e agressividade" em animal de rotina plácida. [SIM] Ganesha, "Deus da sabedoria, do conhecimento e da aprendizagem"; "energias físicas que, embora devastadoras, se sujeitam à lei".',
+    estrutura: {
+      percebe: 'Por sondagem e a distância, não pelo imediatamente visível. Registra o padrão de fundo e a memória do que já ocorreu.',
+      decide: 'Devagar e por coerência interna, não por consenso nem urgência. "Achou justo o pedido e encontrou outro acesso ao lago": julga por princípio e refaz a rota inteira se o princípio exigir.',
+      relaciona: 'Poucos vínculos, profundos e duradouros. A autossuficiência é estrutural — e o livro a critica: "embora possa sustentar o peso de todos, não é sustentado por ninguém".'
+    },
+    potencias: [
+      'Antecipa a falha de arquitetura que ninguém viu',
+      'É a memória institucional viva da equipe',
+      'Eleva o padrão intelectual da discussão',
+      'Produz o modelo ou padrão que outros usarão por anos',
+      'Submete a própria força a um princípio — poder que aceita limite'
+    ],
+    luzSombra: [
+      { forca: 'Profundidade analítica', equilibrada: 'Evita o retrabalho caro identificando o erro estrutural cedo', excessiva: 'Sobre-análise: a versão boa o suficiente nunca chega' },
+      { forca: 'Memória longa', equilibrada: 'Impede que a organização repita decisões já testadas', excessiva: 'Precedente usado como veto: "já tentamos" bloqueia o que mudou de contexto' },
+      { forca: 'Autonomia intelectual', equilibrada: 'Pensa por conta própria e não cede a pressão de moda', excessiva: 'Isolamento estrutural: sustenta todos e não é sustentado por ninguém' },
+      { forca: 'Exigência de coerência', equilibrada: 'Padrão elevado que puxa o time inteiro', excessiva: 'Arrogância — o "ser arrogante e onipotente" de La Fontaine — e persona inflada como defesa' }
+    ],
+    luz: 'Equilibrado, é o guardião do que sustenta o resto: a arquitetura conceitual, a memória do porquê das regras, o padrão que outros usarão por anos. Ganesha condensa esse polo — aquele que "abre caminhos e supera obstáculos". E a formulação decisiva do livro descreve o que ele oferece a uma organização: força que aceita limite, e por isso confiável.',
+    sombra: 'A sombra tem o nome que o próprio livro dá: autossuficiência unilateral. Começa como virtude — pensar por conta própria — e termina como isolamento, sustentando todos sem ser sustentado. Daí a arrogância e a persona inflada, "que quando usada como mecanismo de defesa pode se mostrar inútil". E há a irrupção: o musth, "fúria devastadora similar ao comportamento intempestivo das pessoas habitualmente pacatas" — descrição literal do sentimento inferior deste tipo.',
+    contribuicoes: [
+      'Identifica o erro de arquitetura antes que ele custe caro',
+      'Guarda e recupera o histórico das decisões e seus motivos',
+      'Produz documentação e padrões que sobrevivem a mudanças de equipe',
+      'Sustenta o rigor conceitual quando a pressa quer atalho'
+    ],
+    menosEspontaneos: [
+      'Traduzir a própria análise para quem não compartilha o repertório',
+      'Entregar uma versão parcial dentro de um prazo curto',
+      'Sinalizar desacordo cedo, em pequeno grau, antes que vire posição definitiva'
+    ],
+    complementaridade: 'Complementa-se com recursos de execução concreta e de tradução — quem converte modelo em passo verificável e leva o conteúdo à circulação. E com recursos de leitura do clima, que reduzem o custo relacional de sua exigência de coerência.',
+    trabalho: {
+      decisao: 'Lenta e por coerência interna. Precisa reconstruir o raciocínio inteiro para concordar; uma vez decidido, dificilmente reabre.',
+      comunicacao: 'Fala pouco e denso; quando fala, a discussão muda de nível. Prefere texto a reunião. Não disputa espaço de fala.',
+      execucao: 'Em profundidade e em ritmo próprio. Precisa de blocos longos; agenda fragmentada destrói sua contribuição principal.',
+      mudanca: 'Resistente à mudança de forma, receptivo à mudança de fundamento. Recusa ajuste cosmético.',
+      conflitos: 'Evita o atrito enquanto pode e depois sustenta a posição com peso desproporcional. O conflito irrompe já grande.',
+      relacionamento: 'Generoso com quem pede ajuda; invisível para o resto. Vínculos poucos e duradouros.',
+      pressao: 'Retrai-se e aprofunda, o que agrava o atraso. Períodos raros de irritação intensa em alguém habitualmente plácido.',
+      inovacao: 'No nível do modelo, não do produto. Sua contribuição costuma ser reconhecida anos depois, quando já virou infraestrutura.',
+      organizacao: 'Alta no plano conceitual, baixa no plano operacional cotidiano.'
+    }
+  },
+  {
+    id: 'Fe', ordem: 3, atitude: 'E', funcao: 'F',
+    nomeJung: 'Sentimento Extrovertido', animal: 'Carneiro', cor: '#C1663A',
+    funcaoInferior: 'T', funcaoInferiorNome: 'Pensamento',
+    sintese: 'Orienta-se pelos valores compartilhados do grupo e trabalha para manter o vínculo coletivo íntegro.',
+    jung: 'Mantém relação adequada com os objetos exteriores por meio de avaliação afetiva; guiado por valores e ideais coletivos; expansivo e afetuoso, costuma ter muitos amigos, capta o que os outros necessitam e é capaz de se sacrificar por eles. O pensamento inferior volta-se contra o sujeito e é "muitas vezes negativista".',
+    livro: '[ETO] A criação é incentivada "pela docilidade, disciplina e forte instinto gregário"; adapta-se "a qualquer tipo de terreno"; isola-se "apenas quando ferido, doente ou desgarrado"; no doméstico, "fica totalmente inerte ao ser atacado". [SIM] Vítima sacrificial; obediência que permite adaptar-se "não só às exigências externas, sociais, mas também à autoridade do Self".',
+    estrutura: {
+      percebe: 'Pelo estado do vínculo: quem está desconfortável, o que se rompeu, o que ainda não foi dito. Lê o clima antes de ler o conteúdo.',
+      decide: 'Por adesão e por impacto nas pessoas. Busca consenso antes de posição — decisões estáveis, porém lentas. Sob dúvida, adota o critério de quem tem mais convicção.',
+      relaciona: 'É o tecido conectivo. Integra, medeia e assume a parte ingrata sem que peçam.'
+    },
+    potencias: [
+      'Sustenta a confiança que permite ao time discordar sem se romper',
+      'Detecta desengajamento e sofrimento antes de qualquer indicador',
+      'Faz o onboarding real acontecer',
+      'Traduz decisões duras em linguagem que o time consegue receber',
+      'Adapta-se a contextos e culturas muito diferentes com facilidade rara'
+    ],
+    luzSombra: [
+      { forca: 'Leitura do clima', equilibrada: 'Antecipa ruptura de vínculo antes que ela custe pessoas', excessiva: 'Absorção invisível do desconforto alheio até o esgotamento' },
+      { forca: 'Busca de harmonia', equilibrada: 'Mantém o grupo capaz de divergir sem se romper', excessiva: 'Diluição da própria posição; a discordância migra para o corredor' },
+      { forca: 'Disponibilidade', equilibrada: 'Cobre lacunas que ninguém quer cobrir', excessiva: 'Sobrecarga silenciosa e o ressentimento que o livro registra: "com as atitudes de vítima e sacrifício, em geral coexistem sentimentos de ódio"' },
+      { forca: 'Adaptabilidade', equilibrada: 'Funciona bem em qualquer contexto ou cultura', excessiva: 'Inércia diante da hostilidade — deixa de reagir quando reagir seria necessário' }
+    ],
+    luz: 'Equilibrado, é a função que mantém o grupo capaz de discordar sem se romper. O livro descreve esse polo como obediência madura — não submissão defensiva, mas a capacidade de adaptar-se também "à autoridade do Self" — e reconhece que "o comportamento imitativo e adaptativo ao meio social é imprescindível para a estruturação do ego". A adesão não é fraqueza; é fase necessária.',
+    sombra: 'A sombra do carneiro é a mais mal compreendida, porque não se parece com uma sombra. Começa onde a adaptação deixa de ser escolha e "se torna defensiva, e paralisa a criatividade". A forma extrema é a inércia. Mas o material mais desconfortável é outro: o livro afirma que quem age "como um cordeiro manso" pode "exercer um poder inconsciente sobre os outros". A docilidade tem uma face de poder — e é por não ser reconhecida como tal que ela opera. O pensamento inferior fecha o quadro: julgamentos rígidos e categóricos sobre a intenção alheia, num perfil habitualmente flexível.',
+    contribuicoes: [
+      'Cria a segurança psicológica sem a qual não há divergência produtiva',
+      'Integra pessoas novas e reconstrói vínculos rompidos',
+      'Comunica decisões difíceis de modo que o time consiga recebê-las',
+      'Sinaliza desgaste humano muito antes de ele virar rotatividade'
+    ],
+    menosEspontaneos: [
+      'Formar e sustentar posição própria antes de consultar o grupo',
+      'Recusar demandas explicitamente e nomear o próprio limite',
+      'Aplicar critério técnico quando ele contraria a preferência do grupo'
+    ],
+    complementaridade: 'Complementa-se com recursos de critério explícito e de análise, que dão lastro técnico às suas leituras relacionais. E com recursos de posicionamento firme, que ajudam a converter percepção de clima em decisão.',
+    trabalho: {
+      decisao: 'Por consenso e por impacto nas pessoas. Estável e lenta.',
+      comunicacao: 'Calorosa, afirmativa e atenta ao efeito. Suaviza a mensagem para preservar a relação — às vezes ao ponto de perdê-la.',
+      execucao: 'Colaborativa. Rende mais em par ou grupo pequeno do que isolada.',
+      mudanca: 'Adapta-se rapidamente e absorve o custo emocional pelos outros — absorção que costuma ser invisível até o esgotamento.',
+      conflitos: 'Evita o confronto aberto e leva a discordância para o corredor. O conflito muda de lugar em vez de se resolver.',
+      relacionamento: 'Tecido conectivo. Assume a parte ingrata sem que peçam.',
+      pressao: 'Cede espaço e aumenta disponibilidade, o que agrava a sobrecarga. Em ambiente hostil, tende à inércia.',
+      inovacao: 'Raramente propõe; frequentemente viabiliza. Faz a ideia de outro ser aceita pelo grupo.',
+      organizacao: 'Moderada e centrada em pessoas: sabe quem precisa de quê, mais do que qual é o processo.'
+    }
+  },
+  {
+    id: 'Fi', ordem: 4, atitude: 'I', funcao: 'F',
+    nomeJung: 'Sentimento Introvertido', animal: 'Baleia', cor: '#8C3F33',
+    funcaoInferior: 'T', funcaoInferiorNome: 'Pensamento',
+    sintese: 'Sustenta um sistema de valores interno, profundo e pouco verbalizado, que orienta suas escolhas com firmeza silenciosa.',
+    jung: 'Calmo, retraído e silencioso; sentimentos profundos que se desdobram no íntimo e são difíceis de expressar; motivado por valores bem compreendidos por si mesmo; pode exercer uma influência moral sobre quem convive. O pensamento extrovertido é inferior e pouco desenvolvido.',
+    livro: '[ETO] Maior animal existente, de "comportamento não agressivo e uma delicadeza surpreendente"; comunica-se por sons que podem alcançar "centenas de quilômetros"; a ferida "recebe ajuda dos machos e não é abandonada até a morte". [SIM] "Predominantemente associada ao dinamismo matriarcal"; o mar como inconsciente; salvadora e guia.',
+    estrutura: {
+      percebe: 'Em profundidade e a distância. Registra muito antes de manifestar, e manifesta pouco do que registra.',
+      decide: 'Por congruência com o próprio sistema de valores, mesmo contra a maioria e sem explicitar a razão da recusa. Processa no próprio tempo; uma vez alinhada, sustenta com constância subestimada.',
+      relaciona: 'Vínculo denso e discreto. Não abandona quem está ferido — o cuidado é ação, não declaração.'
+    },
+    potencias: [
+      'É a consciência ética da equipe: freia o atalho que ninguém quer nomear',
+      'Estabilidade emocional em momentos de crise e ruído',
+      'Escuta de altíssima qualidade',
+      'Cria segurança pela previsibilidade do próprio caráter',
+      'Sustenta compromissos de longo prazo sem supervisão'
+    ],
+    luzSombra: [
+      { forca: 'Convicção ética firme', equilibrada: 'Freio confiável antes que o dano aconteça', excessiva: 'Autoridade moral não declarada que, segundo o livro, "pode levar à repressão do menor e mais frágil"' },
+      { forca: 'Discrição', equilibrada: 'Presença estável que não disputa espaço nem cria ruído', excessiva: 'Invisibilidade: a contribuição não é reconhecida e a divergência nunca chega à mesa' },
+      { forca: 'Profundidade de vínculo', equilibrada: 'Confiança que faz as pessoas trazerem o que não trazem a mais ninguém', excessiva: 'Presença que envolve e retém — o polo de sedução que o livro registra' },
+      { forca: 'Processamento interno prolongado', equilibrada: 'Decisões maduras e sustentadas ao longo do tempo', excessiva: 'Ressentimento acumulado que só aparece já como decisão de saída' }
+    ],
+    luz: 'Equilibrada, exerce o que o capítulo junguiano chama de influência moral: não pelo discurso, mas pela coerência. É a estabilidade que segura o ambiente quando tudo acelera e a escuta a quem se conta o que não se conta a mais ninguém. No livro, é salvadora e guia — impede o encalhe e conduz o barco ao porto — e "a força que, quando positivamente canalizada, conduz e dirige a psique para o plano consciente".',
+    sombra: 'A sombra é a mesma profundidade sem via de saída. O livro registra a insaciabilidade — "há sempre um buraco não preenchido" — e é dela que nasce a forma organizacional mais comum: o ressentimento acumulado em silêncio, que só aparece como decisão já tomada. Há também o polo do disfarce: "simboliza aquele que se disfarça e engana", parece ilha e afunda com quem se instalou sobre ela. O pensamento inferior aparece quando finalmente se explica: argumentação rígida, dados usados como arma, frieza atípica.',
+    contribuicoes: [
+      'Sinaliza o custo ético de decisões que pareciam apenas técnicas',
+      'Estabiliza a equipe em períodos de crise e alta rotatividade',
+      'Oferece escuta que faz problemas emergirem antes de estourarem',
+      'Sustenta relações de confiança de longo prazo com pessoas e parceiros'
+    ],
+    menosEspontaneos: [
+      'Verbalizar os critérios que já concluiu internamente',
+      'Sinalizar desconforto cedo e em pequeno grau, antes que vire ruptura',
+      'Ocupar espaço em discussões abertas e disputadas'
+    ],
+    complementaridade: 'Complementa-se com recursos de articulação e visibilidade, que levam suas conclusões ao debate coletivo. E com recursos de estruturação, que convertem convicção de valor em critério aplicável.',
+    trabalho: {
+      decisao: 'Por congruência com valores próprios, mesmo isolada. Raramente explicita a razão da recusa.',
+      comunicacao: 'Fala pouco, e o que diz reorienta a conversa. Melhor em conversa a dois do que em plenária.',
+      execucao: 'Profunda, silenciosa e no próprio tempo. Precisa de material antecipado e de contexto.',
+      mudanca: 'Aceita mudança justificada por propósito e resiste à justificada por eficiência. Precisa de tempo e de sentido, nessa ordem.',
+      conflitos: 'Não confronta; absorve. A expressão chega tarde, já na forma de uma decisão tomada.',
+      relacionamento: 'Presença constante e discreta. Não abandona quem está em dificuldade.',
+      pressao: 'Submerge: reduz contato, mantém a entrega e para de sinalizar.',
+      inovacao: 'Gesta em silêncio e apresenta pronto. O risco é a organização nunca saber que havia algo sendo gestado.',
+      organizacao: 'Moderada, orientada por compromisso assumido mais do que por sistema formal.'
+    }
+  },
+  {
+    id: 'Se', ordem: 5, atitude: 'E', funcao: 'S',
+    nomeJung: 'Sensação Extrovertida', animal: 'Cavalo', cor: '#6E8B3D',
+    funcaoInferior: 'N', funcaoInferiorNome: 'Intuição',
+    sintese: 'Opera na realidade palpável, com senso agudo do concreto e enorme capacidade de ação imediata.',
+    jung: 'Ótima capacidade de perceber os objetos do mundo externo, relacionando-se de modo prático e concreto com eles; agudo senso de realidade; eficiente e apreciador do prazer sensorial; "só se move na realidade palpável". A intuição inferior leva a explicar tudo por um único pensamento rígido.',
+    livro: '[ETO] Tem "os maiores globos oculares dentre os mamíferos terrestres"; movimentos oculares independentes que permitem "focar duas direções ao mesmo tempo"; percebe pelo freio "as menores variações dos movimentos das rédeas"; assusta-se "com qualquer objeto que atravesse de súbito seu campo visual". [SIM] Encarna a energia instintiva, que "exige uma direção consciente" para se tornar produtiva.',
+    estrutura: {
+      percebe: 'Amplitude e detalhe simultâneos. Registra o que muda, na hora em que muda.',
+      decide: 'Rápido e em gradação de custo: primeiro sinaliza, depois recua, só então confronta. Aprende fazendo, não modelando.',
+      relaciona: 'Gregário e responsivo. Lê a menor variação de tom e postura da liderança, mesmo quando não comenta.'
+    },
+    potencias: [
+      'Destrava o que está parado e recupera cronograma',
+      'Presença firme em campo, com cliente e em operação',
+      'Aumenta o ritmo do time inteiro por contágio',
+      'Resolve problemas concretos com economia de movimento',
+      'Desempenho excepcional em crise e alta pressão sensorial'
+    ],
+    luzSombra: [
+      { forca: 'Senso de realidade', equilibrada: 'Ancora a discussão no que efetivamente está acontecendo', excessiva: 'Descarte do que ainda não é visível — inclusive do risco que só existe no futuro' },
+      { forca: 'Velocidade de ação', equilibrada: 'Tira o trabalho do papel no mesmo dia', excessiva: 'Ação que se antecipa à compreensão e multiplica o dano quando o diagnóstico estava errado' },
+      { forca: 'Energia e disposição', equilibrada: 'Contagia e sustenta o ritmo coletivo', excessiva: 'Atropelamento de perfis mais lentos e desengajamento visível em conversas longas' },
+      { forca: 'Pragmatismo', equilibrada: 'Contorna a burocracia que não serve à entrega', excessiva: 'Baixa documentação: a equipe refaz o mesmo trabalho por falta de registro' }
+    ],
+    luz: 'Equilibrado, é a energia que tira o trabalho do papel — e o livro é explícito sobre a condição disso: trata-se de "o ímpeto biológico, a energia natural", massa de energia que "exige uma direção consciente" para se tornar produtiva. Com direção, o polo é solar: "emerge da sombra para a luz" e chega a representar "instintos sublimados ou controlados". O ideal descrito é Quíron, "a expressão nítida da harmonia do homem com sua instintividade".',
+    sombra: 'A sombra aparece exatamente onde a direção falta. "A imagem do cavalo desenfreado aponta para a dificuldade de domínio do eu diante da invasão de impulsos inconscientes" — em termos organizacionais: velocidade que produz dano e energia que não distingue urgência de importância. Há também a indiscriminação, a "crina embaraçada" que confunde o pensamento. E a intuição inferior fecha o quadro: pressentimentos catastróficos em alguém habitualmente ancorado no presente.',
+    contribuicoes: [
+      'Converte decisão em fato concreto no mesmo dia',
+      'Sustenta a operação e o contato direto com a realidade do trabalho',
+      'Estabiliza a equipe em crises que exigem resposta imediata',
+      'Traz de volta ao concreto discussões que se abstraíram'
+    ],
+    menosEspontaneos: [
+      'Antecipar consequências de segunda ordem antes de agir',
+      'Planejar e documentar o que descobriu na prática',
+      'Sustentar trabalho abstrato de horizonte longo'
+    ],
+    complementaridade: 'Complementa-se com recursos de antecipação e de modelagem, que dão direção à sua energia. E com recursos de registro e continuidade, que preservam o que ele descobriu executando.',
+    trabalho: {
+      decisao: 'Rápida, com base no que está diante dos olhos. Prefere testar a modelar; subestima consequências de segunda ordem.',
+      comunicacao: 'Objetiva, concreta e cheia de exemplos reais. Prefere mostrar a explicar.',
+      execucao: 'Faz. Aprende fazendo. Rende em ciclos curtos com resultado visível.',
+      mudanca: 'Adapta-se com facilidade a mudanças concretas; sofre com mudanças de direção estratégica sem tradução prática.',
+      conflitos: 'Reage rápido e sinaliza antes de escalar. Intenso, explícito e geralmente curto.',
+      relacionamento: 'Contagia o ritmo. Presença disponível e visível.',
+      pressao: 'Acelera: faz mais, mais rápido, com menos consulta.',
+      inovacao: 'Por experimento e improviso eficaz. Descobre na prática o que não estava no plano — mas não formaliza o que descobre.',
+      organizacao: 'Baixa no plano formal, alta no plano prático: sabe onde as coisas estão e como fazê-las andar.'
+    }
+  },
+  {
+    id: 'Si', ordem: 6, atitude: 'I', funcao: 'S',
+    nomeJung: 'Sensação Introvertida', animal: 'Urso', cor: '#47632B',
+    funcaoInferior: 'N', funcaoInferiorNome: 'Intuição',
+    sintese: 'Percebe o detalhe concreto com precisão incomum e o organiza em um repertório interno estável.',
+    jung: 'Ótima capacidade de apreender impressões dos objetos, mas com atenção voltada à percepção interna e subjetiva; sintonizado no fato, no "aqui e agora"; percepção sensorial diferenciada; colecionador, atento a qualidades estéticas. A intuição inferior aparece "de modo primitivo", como pressentimentos negativos e fantasias que assaltam.',
+    livro: '[ETO] "Audição e olfato bem desenvolvidos, mas sua visão é deficiente"; plantígrado que "apóia a sola do pé inteira no chão"; hiberna cerca de quatro meses; reconhece a parceira "pelo odor"; pelo mel "enfrenta, sem receios, grandes enxames de abelhas". [SIM] A hibernação em que "conteúdos internos possam ser gestados num processo de recuperação".',
+    estrutura: {
+      percebe: 'Por proximidade e cheiro, não por varredura à distância. Nota o que mudou, compara com o que já viu, sente antes de nomear.',
+      decide: 'Comparando com a experiência concreta acumulada e em ritmo calendárico. Precisa de dado completo; sob objeto desejado, porém, suprime o cálculo de custo e avança.',
+      relaciona: 'Vínculo estável, individualizado e de contato. Pequenos grupos, não coletivos amplos.'
+    },
+    potencias: [
+      'Qualidade e confiabilidade sustentadas ao longo do tempo',
+      'Documentação, rastreabilidade e continuidade operacional',
+      'Detecta o erro pequeno que se tornaria caro',
+      'Estabiliza o time nos períodos em que todos estão reagindo',
+      'Sensibilidade qualitativa: percebe o mal-acabado antes de saber dizer por quê'
+    ],
+    luzSombra: [
+      { forca: 'Atenção ao detalhe', equilibrada: 'Precisão e prevenção do erro caro', excessiva: 'Perfeccionismo e dificuldade de dar por concluído' },
+      { forca: 'Consistência de padrão', equilibrada: 'Qualidade que não oscila com o humor da semana', excessiva: 'Resistência à mudança necessária por apego ao que funcionou' },
+      { forca: 'Memória operacional', equilibrada: 'Contexto recuperável que economiza meses de retrabalho', excessiva: 'Excesso de detalhe em comunicações que pediam síntese' },
+      { forca: 'Confiabilidade', equilibrada: 'É a base sobre a qual a operação não desmorona', excessiva: 'Sobrecarga silenciosa por acumular o que ninguém mais quer sustentar' }
+    ],
+    luz: 'Equilibrado, é a base sobre a qual a operação não desmorona: qualidade constante, memória do detalhe, continuidade quando todos estão reagindo. O livro concentra esse polo na função de cura — o xamã que "podia assumir a forma do urso" — e dá à sua retração o sentido produtivo que raramente se lhe reconhece: a hibernação é a etapa em que conteúdos são "gestados", e a saída dela "pode representar o surgimento da criatividade". O recolhimento não é ausência de trabalho: é onde este perfil trabalha.',
+    sombra: 'A sombra tem duas direções. A primeira é a ingenuidade que o livro documenta exaustivamente e define com precisão: não é falta de inteligência, é não imaginar o que o outro está planejando — crença literal na palavra alheia e aplicação de regra por inversão mecânica sem compreender o caso concreto. É a intuição inferior em estado puro. A segunda é o descontrole da própria potência: o berserk, e a fábula em que mata quem ama "por não conseguir conhecer e usar adequadamente a própria força".',
+    contribuicoes: [
+      'Garante que o que foi construído continue funcionando',
+      'Produz o registro e a rastreabilidade que a equipe usa depois',
+      'Identifica antecipadamente o que vai quebrar quando a mudança chegar à operação',
+      'Mantém o padrão de qualidade sem depender de cobrança'
+    ],
+    menosEspontaneos: [
+      'Considerar cenários que ainda não se materializaram',
+      'Sintetizar: entregar as três linhas principais antes do detalhe',
+      'Ler a intenção estratégica por trás do pedido de outra pessoa'
+    ],
+    complementaridade: 'Complementa-se com recursos de percepção de possibilidade, que ampliam seu horizonte além do precedente. E com recursos de articulação, que traduzem seu conhecimento operacional para quem decide.',
+    trabalho: {
+      decisao: 'Por comparação com a experiência concreta: "já vimos isso antes, e deu nisto". Desconfia de decisão sem precedente.',
+      comunicacao: 'Fala pouco e com precisão factual. Comunica por registro escrito e histórico. Levanta a inconsistência no fim da reunião.',
+      execucao: 'Metódica, no próprio ritmo e com reserva acumulada de dados, versões e contexto.',
+      mudanca: 'O ponto mais sensível. Mudança súbita é vivida como perda. Precisa de aviso antecipado e motivo demonstrado.',
+      conflitos: 'Evita, acumula e expressa tarde, por acúmulo de evidências. A reação parece desproporcional ao gatilho aparente.',
+      relacionamento: 'Estabilizador. Assume silenciosamente o que ninguém quer sustentar.',
+      pressao: 'Fecha-se e reduz o escopo ao que domina. Surge catastrofismo difuso em alguém habitualmente ancorado.',
+      inovacao: 'Baixa iniciativa de ruptura, alta contribuição de viabilidade: identifica o que vai quebrar na operação real.',
+      organizacao: 'Muito alta. É frequentemente quem sabe onde tudo está.'
+    }
+  },
+  {
+    id: 'Ne', ordem: 7, atitude: 'E', funcao: 'N',
+    nomeJung: 'Intuição Extrovertida', animal: 'Raposa', cor: '#8A5AA0',
+    funcaoInferior: 'S', funcaoInferiorNome: 'Sensação',
+    sintese: 'Fareja possibilidades no mundo externo e converte contexto em oportunidade.',
+    jung: 'Apreende o movimento das coisas como possibilidades; inovador; tem "faro" para o que vai dar certo; nunca está parado e abandona seus projetos empreendendo algo novo; não suporta rotina; "raras vezes colhem o que plantam". A sensação introvertida inferior faz com que não perceba que está cansado ou com fome.',
+    livro: '[SIM] Oitavo perfil, decorrente de lacuna estrutural identificada na matriz. A introdução do volume 1 cita "esperto como uma raposa" entre as convenções comportamentais, e o animal é analisado pelas mesmas autoras no volume 2. No volume 1 ela aparece como agente em três capítulos — "O lobo e a raposa", "O jaguar e a raposa", "O urso, o pássaro e a raposa" — sempre percebendo a possibilidade que o animal grande não vê. O livro diferencia as duas inteligências: o lobo "tenta utilizar os mesmos estratagemas que a raposa utiliza; mas ela é bem-sucedida e ele fracassa". No mito Kaska, é ela quem "levou o fogo para as tribos".',
+    estrutura: {
+      percebe: 'Relações e aberturas onde os outros veem obstáculo. Lê o campo externo como campo de possibilidades.',
+      decide: 'Por leitura de cenário e percepção de janela, com alta tolerância a risco e a informação incompleta. Muda de decisão sem constrangimento quando o cenário muda.',
+      relaciona: 'Por articulação e persuasão. Rede ampla construída sem esforço aparente.'
+    },
+    potencias: [
+      'Traz para dentro da organização o que está acontecendo fora',
+      'Gera opções onde o time via um beco sem saída',
+      'Abre portas, parcerias e caminhos que não existiam',
+      'Recoloca em movimento projetos empacados por excesso de estrutura',
+      'Improviso de alta qualidade em contexto novo'
+    ],
+    luzSombra: [
+      { forca: 'Visão de possibilidades', equilibrada: 'Inovação e saída não óbvia no impasse', excessiva: 'Dispersão: inicia muito, sustenta pouco — "raras vezes colhem o que plantam"' },
+      { forca: 'Persuasão', equilibrada: 'Faz uma ideia boa ser adotada antes de estar pronta', excessiva: 'Manipulação — no volume 1, a possibilidade percebida é sempre convertida em engano do outro' },
+      { forca: 'Versatilidade', equilibrada: 'Funciona bem em contexto ambíguo e desconhecido', excessiva: 'Compromissos verbais sem lastro, que corroem a própria credibilidade' },
+      { forca: 'Energia de início', equilibrada: 'Destrava o que estava parado', excessiva: 'Sobrecarga de quem executa: a equipe paga o custo do que foi prometido' }
+    ],
+    luz: 'Equilibrada, é a função que abre caminhos que não existiam. O livro atribui à "força da idéia criativa" o poder de vencer o que a força bruta não vence — e a raposa é sua principal portadora. Há uma imagem que fixa esse polo: no mito Kaska, depois de todos os animais planejarem juntos a artimanha, é ela quem leva o fogo para as tribos. Não é a guardiã do fogo, é quem o distribui — converte um bem retido em recurso comum.',
+    sombra: 'A sombra é a única que o volume 1 mostra por inteiro, porque ali ela aparece sempre do lado de quem engana: convence Ysengrin a mergulhar o rabo no lago gelado, escapa do poço fazendo o lobo descer pela corda, mata o jaguar persuadindo-o a deixar que lhe retirem o coração. É inteligência de cenário sem compromisso com o outro — o risco organizacional de articular narrativas que funcionam melhor do que são verdadeiras. E a sensação inferior: perde a leitura do próprio corpo, do próprio limite e do custo real do que promete.',
+    contribuicoes: [
+      'Identifica oportunidades e riscos externos antes que apareçam nos números',
+      'Produz alternativas quando o caminho conhecido se esgotou',
+      'Articula parcerias, contatos e recursos fora da fronteira da equipe',
+      'Destrava negociações e impasses por reenquadramento'
+    ],
+    menosEspontaneos: [
+      'Concluir e sustentar o que iniciou',
+      'Trabalhar com detalhe, processo e prestação de contas',
+      'Reconhecer o próprio limite de carga antes do esgotamento'
+    ],
+    complementaridade: 'Complementa-se com recursos de consistência e de detalhe, que sustentam o que ela abre. E com recursos de critério, que separam a boa oportunidade da narrativa persuasiva.',
+    trabalho: {
+      decisao: 'Por percepção de janela e leitura de cenário. Muda de decisão sem constrangimento — o que os outros leem como falta de palavra.',
+      comunicacao: 'Envolvente, associativa e persuasiva. Vende a ideia antes de a ideia existir. Salta entre assuntos seguindo conexões que só ela viu.',
+      execucao: 'Em muitas frentes e em rajadas. Excelente no início e na virada; fraca na sustentação.',
+      mudanca: 'Prospera na mudança e a provoca. Às vezes cria movimento sem necessidade, apenas para haver movimento.',
+      conflitos: 'Contorna em vez de enfrentar; reenquadra e encontra saída lateral. Torna-se evasiva quando o conflito precisava ser tido.',
+      relacionamento: 'Energiza e conecta. Mas a equipe paga o custo de execução do que ela promete.',
+      pressao: 'Multiplica opções e abre novas frentes — o oposto do que a situação pede. Perde a leitura do próprio cansaço.',
+      inovacao: 'Inovação por descoberta externa. Raramente é quem termina a inovação que iniciou.',
+      organizacao: 'Baixa. Precisa de estrutura emprestada de outros perfis.'
+    }
+  },
+  {
+    id: 'Ni', ordem: 8, atitude: 'I', funcao: 'N',
+    nomeJung: 'Intuição Introvertida', animal: 'Onça', cor: '#4E3163',
+    funcaoInferior: 'S', funcaoInferiorNome: 'Sensação',
+    sintese: 'Enxerga o desdobramento profundo das coisas antes que haja evidência dele.',
+    jung: 'Percepção da realidade objetiva fraca e indeterminada, com fantasia muito viva; místicos, artistas visionários, expoentes de novas filosofias; excêntricos; capacidade de transformação de toda uma cultura. A sensação extrovertida inferior faz com que o real lhe escape.',
+    livro: '[ETO] "Ágeis, velozes, elegantes, silenciosos e pacientes"; caminha "sem fazer ruído"; vê na penumbra; o macho "costuma viver solitário". [SIM] Clarividente (Tezcatlipoca, "o espelho fumegante"), psicopompo maia, xamã ou pajé, e guardião do fogo, "símbolo de transformação cultural". A ingenuidade: "é somente por meio desse seu ponto fraco que a onça pode ser derrotada".',
+    estrutura: {
+      percebe: 'Vê onde os outros não veem — a visão noturna que sustenta, no livro, a atribuição de clarividência e a possibilidade "de iluminar o inconsciente, de ver o desconhecido".',
+      decide: 'A partir de convicção interna sobre o desdobramento futuro, depois de espera prolongada. A ação, quando vem, é súbita e total; sob contestação, escala em vez de reavaliar.',
+      relaciona: 'Solitária por estrutura, não por circunstância. O vínculo profundo existe, mas é episódico e não organiza sua conduta.'
+    },
+    potencias: [
+      'Antecipa mudança de mercado, risco estrutural e ruptura de modelo',
+      'Enxerga a dinâmica política e emocional que ninguém verbalizou',
+      'Formula a visão e a narrativa de longo prazo',
+      'Faz a pergunta que reposiciona o problema inteiro',
+      'Paciência incomum: espera o momento e age de uma só vez'
+    ],
+    luzSombra: [
+      { forca: 'Antecipação de cenários', equilibrada: 'Vê a ruptura antes de haver evidência dela', excessiva: 'Descarte do dado presente que contraria a leitura de longo prazo' },
+      { forca: 'Convicção', equilibrada: 'Sustenta a visão quando o consenso ainda não existe', excessiva: 'Escalada em vez de reavaliação — "quanto mais se debate, mais aumenta o ferimento"' },
+      { forca: 'Autonomia', equilibrada: 'Pensa fora do enquadramento coletivo', excessiva: 'Isolamento e perda de influência por não construir base de apoio' },
+      { forca: 'Leitura do não-dito', equilibrada: 'Nomeia a dinâmica que o grupo evita', excessiva: 'Ingenuidade prática: subestima o pequeno e "avalia mal os próprios limites"' }
+    ],
+    luz: 'Equilibrada, é a função que antecipa a mudança antes de haver evidência dela. O livro reúne esse polo em quatro figuras convergentes: clarividente, psicopompo, xamã — "o pajé representa para a sociedade exatamente o mesmo que o jaguar representa para a natureza" — e guardião do fogo, "símbolo de transformação cultural". Vale reter que ela não inventa o fogo: é "seu guardião, depositário e o primeiro a utilizá-lo".',
+    sombra: 'A sombra tem uma face esperada e outra que surpreende. A esperada é a destrutividade: "agressividade destemida e traiçoeira é o aspecto central de seu simbolismo". A inesperada — e mais útil — é a ingenuidade. O livro afirma que "é somente por meio desse seu ponto fraco que a onça pode ser derrotada" e a define: credulidade diante de propostas vantajosas, incapacidade de prever a estratégia do outro, e desprezo pelo fraco. É a sensação inferior: quem enxerga longe deixa de ver o que está diante de si. O livro também aponta a saída, e ela é concreta: a consciência perdida "só é restaurada pelo reconhecimento do valor do menor, do mais humilde, do mais frágil".',
+    contribuicoes: [
+      'Sinaliza risco estrutural e mudança de modelo antes dos indicadores',
+      'Formula a visão de longo prazo e a narrativa que dá sentido ao esforço',
+      'Nomeia a dinâmica implícita que trava o grupo',
+      'Reposiciona problemas que a equipe vinha tentando resolver no enquadramento errado'
+    ],
+    menosEspontaneos: [
+      'Traduzir a visão em um passo concreto e verificável do trimestre',
+      'Construir base de apoio antes de sustentar uma posição',
+      'Sustentar o detalhe operacional e o presente concreto'
+    ],
+    complementaridade: 'Complementa-se com recursos de execução e de concretização, que dão corpo à visão. E com recursos de articulação e de leitura de clima, que constroem a adesão de que ela não cuida.',
+    trabalho: {
+      decisao: 'Por convicção interna sobre o desdobramento futuro. Não negocia bem a própria visão.',
+      comunicacao: 'Por imagem, cenário e síntese, frequentemente sem mostrar o percurso. A conclusão chega sem a demonstração.',
+      execucao: 'Sozinha, em silêncio e por longos períodos de aparente inatividade, seguidos de contribuição concentrada.',
+      mudanca: 'Não reage à mudança: costuma tê-la previsto antes. A dificuldade é sustentar o presente enquanto espera o cenário que enxergou.',
+      conflitos: 'Raramente entra; quando entra, não recua.',
+      relacionamento: 'Presença intermitente. Cala-se em reuniões operacionais e intervém uma vez, deslocando toda a discussão.',
+      pressao: 'Isola-se e endurece a convicção. Surge descuido com o corpo e o ambiente, ou fixação em detalhe irrelevante.',
+      inovacao: 'É a fonte da inovação de ruptura e a menos capaz de executá-la sozinha.',
+      organizacao: 'Baixa no operacional. Indiferente ao processo — não por rebeldia, por desinteresse.'
+    }
+  }
+];
+
+export const PERFIL_POR_ID: Record<PerfilId, Perfil> = Object.fromEntries(
+  PERFIS.map(p => [p.id, p])
+) as Record<PerfilId, Perfil>;
+
+export const perfilDe = (atitude: Atitude, funcao: Funcao): Perfil =>
+  PERFIS.find(p => p.atitude === atitude && p.funcao === funcao)!;
+
+export const NOME_FUNCAO: Record<Funcao, string> = {
+  T: 'Pensamento', F: 'Sentimento', S: 'Sensação', N: 'Intuição'
+};
+export const NOME_ATITUDE: Record<Atitude, string> = {
+  E: 'Extroversão', I: 'Introversão'
+};
+/** Pares de opostos junguianos. Base da regra de função auxiliar e de desempate. */
+export const OPOSTA: Record<Funcao, Funcao> = { T: 'F', F: 'T', S: 'N', N: 'S' };

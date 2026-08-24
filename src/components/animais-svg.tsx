@@ -1,0 +1,161 @@
+/**
+ * OS OITO ANIMAIS — marcas de madeira entalhada
+ * ===========================================================================
+ * Volumes facetados em três planos (#C98A4E claro, #A96D3D médio, #7A4C29
+ * sombra), todos em perfil à esquerda, mesmo peso, sem contorno e sem cartoon.
+ * Cada um tem um elemento-assinatura que o torna reconhecível de imediato: o
+ * lobo tem a golilha, a raposa tem a cauda e as orelhas grandes, o urso não
+ * tem focinho longo, a onça tem as rosetas, o cavalo tem a crina, o carneiro
+ * tem o chifre, o elefante tem a tromba e a baleia tem a cauda horizontal.
+ *
+ * PROVISÓRIO. O item 40 manda adaptar a linguagem do selo circular oficial.
+ * Enquanto o selo não chega, estas marcas sustentam a coleção; recebendo o
+ * arquivo, elas são recalibradas para a mesma textura e iluminação dele.
+ *
+ * São <symbol> definidos uma vez e referenciados por <use>, para não repetir
+ * centenas de polígonos a cada card.
+ */
+import React from 'react';
+import { PERFIL_POR_ID, type PerfilId } from '../data/profiles';
+
+/** Injetado UMA vez por página, perto da raiz. */
+export function DefinicoesAnimais() {
+  return (
+    <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
+      <defs>
+    {/* Sistema: perfil à esquerda · três planos de madeira (#C98A4E claro,
+         #A96D3D médio, #7A4C29 sombra) · faceta angular · sem contorno.
+         Cada animal tem UM elemento-assinatura que o torna reconhecível de
+         imediato: o lobo tem a golilha, a raposa tem a cauda e as orelhas
+         grandes, o urso não tem focinho longo, a onça tem as rosetas, o cavalo
+         tem a crina, o carneiro tem o chifre, o elefante tem a tromba e a
+         baleia tem a cauda horizontal. */}
+
+    <symbol viewBox="0 0 64 64" id="a-lobo">
+      <polygon points="44,20 62,27 59,49 43,47" fill="#7A4C29"/>          {/* golilha */}
+      <polygon points="25,21 29,4 37,20" fill="#7A4C29"/>
+      <polygon points="38,19 46,5 49,22" fill="#8E5A31"/>
+      <polygon points="19,25 49,20 55,33 46,45 25,43" fill="#A96D3D"/>
+      <polygon points="19,25 25,43 32,42 28,26" fill="#8E5A31"/>
+      <polygon points="19,25 25,43 6,39 3,28" fill="#C98A4E"/>            {/* focinho longo */}
+      <polygon points="3,30 9,33 7,37" fill="#221E1A"/>
+      <polygon points="22,29 28,28 27,33" fill="#221E1A"/>
+    </symbol>
+
+    <symbol viewBox="0 0 64 64" id="a-raposa">
+      <path d="M44,33 C57,35 63,45 56,54" fill="none" stroke="#7A4C29"
+            strokeWidth="9" strokeLinecap="round"/>                     {/* cauda densa, atrás */}
+      <path d="M52,49 C56,50 58,53 57,56" fill="none" stroke="#C98A4E"
+            strokeWidth="4" strokeLinecap="round"/>                     {/* ponta clara */}
+      <polygon points="21,23 21,1 35,20" fill="#8E5A31"/>                 {/* orelhas grandes */}
+      <polygon points="37,19 50,2 53,24" fill="#7A4C29"/>
+      <polygon points="21,27 52,23 54,34 40,42 25,39" fill="#A96D3D"/>
+      <polygon points="21,27 25,39 31,38 28,28" fill="#8E5A31"/>
+      <polygon points="21,27 25,39 3,37 2,29" fill="#C98A4E"/>            {/* focinho fino e longo */}
+      <polygon points="2,31 8,33 6,37" fill="#221E1A"/>
+      <polygon points="24,30 30,29 29,34" fill="#221E1A"/>
+    </symbol>
+
+    <symbol viewBox="0 0 64 64" id="a-urso">
+      <circle cx="23" cy="17" r="7.5" fill="#7A4C29"/>
+      <circle cx="47" cy="15" r="7.5" fill="#8E5A31"/>
+      <path d="M13,32 C13,22 26,18 40,19 C54,20 60,28 58,39 C56,50 44,55 31,53 C18,51 13,42 13,32 Z"
+            fill="#A96D3D"/>                                              {/* crânio pesado e redondo */}
+      <path d="M13,32 C13,22 26,18 40,19 C30,22 18,25 13,32 Z" fill="#C98A4E"/>
+      <path d="M13,33 C7,33 4,38 6,43 C8,48 16,49 20,46 C24,43 22,36 16,35 Z" fill="#C98A4E"/>
+      <ellipse cx="9" cy="39" rx="4" ry="3.2" fill="#221E1A"/>            {/* focinho curto e rombudo */}
+      <polygon points="24,31 30,30 29,35" fill="#221E1A"/>
+    </symbol>
+
+    <symbol viewBox="0 0 64 64" id="a-onca">
+      <circle cx="26" cy="21" r="5" fill="#7A4C29"/>                      {/* orelhas pequenas */}
+      <circle cx="53" cy="21" r="5" fill="#8E5A31"/>
+      <polygon points="16,28 36,21 56,24 61,36 50,50 26,50 13,40" fill="#A96D3D"/>
+      <polygon points="16,28 36,21 56,24 40,29 20,32" fill="#C98A4E"/>
+      <polygon points="13,37 26,50 8,48 4,39" fill="#C98A4E"/>            {/* focinho curto e largo */}
+      <polygon points="5,41 11,42 10,46" fill="#221E1A"/>
+      <polygon points="24,33 31,32 30,37" fill="#221E1A"/>
+      <circle cx="44" cy="33" r="2.7" fill="#7A4C29"/>                    {/* rosetas */}
+      <circle cx="53" cy="31" r="2.2" fill="#7A4C29"/>
+      <circle cx="48" cy="41" r="2.2" fill="#7A4C29"/>
+    </symbol>
+
+    <symbol viewBox="0 0 64 64" id="a-cavalo">
+      <polygon points="46,16 62,23 60,52 44,48 40,28" fill="#7A4C29"/>    {/* crina */}
+      <polygon points="37,15 40,3 45,16" fill="#8E5A31"/>
+      <polygon points="46,15 51,4 54,17" fill="#7A4C29"/>
+      <polygon points="31,19 50,15 49,42 36,47 27,32" fill="#A96D3D"/>
+      <polygon points="31,19 27,32 8,52 3,44 20,22" fill="#C98A4E"/>      {/* cabeça longa em diagonal */}
+      <polygon points="31,19 27,32 33,34 36,20" fill="#8E5A31"/>
+      <polygon points="4,45 10,47 8,51" fill="#221E1A"/>
+      <polygon points="31,25 37,24 36,29" fill="#221E1A"/>
+    </symbol>
+
+    <symbol viewBox="0 0 64 64" id="a-carneiro">
+      <polygon points="42,24 54,20 56,32 46,40" fill="#7A4C29"/>          {/* orelha caída */}
+      <polygon points="24,23 46,19 49,35 37,48 26,44" fill="#A96D3D"/>
+      <polygon points="24,23 26,44 32,43 30,24" fill="#8E5A31"/>
+      <polygon points="24,23 26,44 8,45 5,32" fill="#C98A4E"/>
+      <ellipse cx="8" cy="39" rx="4" ry="3.2" fill="#221E1A"/>
+      <polygon points="27,29 33,28 32,33" fill="#221E1A"/>
+      <path d="M44,16 C58,10 64,24 56,33 C49,41 37,38 37,29 C37,22 45,19 49,24 C52,28 50,33 46,33"
+            fill="none" stroke="#7A4C29" strokeWidth="6" strokeLinecap="round"/>   {/* chifre */}
+      <path d="M44,16 C58,10 64,24 56,33 C49,41 37,38 37,29"
+            fill="none" stroke="#C98A4E" strokeWidth="1.7" strokeLinecap="round" opacity=".55"/>
+    </symbol>
+
+    <symbol viewBox="0 0 64 64" id="a-elefante">
+      <path d="M28,11 C50,5 63,15 62,32 C61,47 47,53 33,48 Z" fill="#7A4C29"/>   {/* leque da orelha */}
+      <path d="M31,16 C47,12 56,20 55,32 C54,42 45,46 35,44 Z" fill="#8E5A31"/>
+      <polygon points="11,24 33,10 36,45 19,50" fill="#A96D3D"/>          {/* cabeça */}
+      <polygon points="11,24 33,10 25,22 13,32" fill="#C98A4E"/>          {/* testa */}
+      <path d="M21,45 C23,52 21,58 16,60" fill="none" stroke="#C98A4E" strokeWidth="9" strokeLinecap="round"/>
+      <path d="M16,60 C11,61 7,57 9,53" fill="none" stroke="#C98A4E" strokeWidth="6" strokeLinecap="round"/>
+      <polygon points="21,47 9,45 19,53" fill="#E7DED0"/>                 {/* presa apontando à frente */}
+      <polygon points="16,28 22,27 21,32" fill="#221E1A"/>
+    </symbol>
+
+    <symbol viewBox="0 0 64 64" id="a-baleia">
+      <path d="M4,31 C4,21 14,16 27,17 C41,18 51,24 58,31 C50,36 40,42 27,43 C13,44 4,39 4,31 Z"
+            fill="#A96D3D"/>                                              {/* corpo com cabeça bulbosa */}
+      <path d="M4,31 C4,21 14,16 27,17 C41,18 51,24 58,31 C42,27 19,26 4,31 Z" fill="#C98A4E"/>
+      <polygon points="55,31 64,24 59,32 64,40 55,34" fill="#7A4C29"/>    {/* cauda horizontal */}
+      <polygon points="22,41 29,47 19,44" fill="#8E5A31"/>                {/* nadadeira peitoral */}
+      <path d="M5,33 C16,37 26,39 36,39" stroke="#7A4C29" strokeWidth="1.8" fill="none" strokeLinecap="round"/>
+      <path d="M9,38 L18,39 M13,41 L22,41" stroke="#7A4C29" strokeWidth="1.4" fill="none" strokeLinecap="round"/>
+      <circle cx="12" cy="30" r="1.9" fill="#221E1A"/>
+      <path d="M8,22 C10,19 13,19 14,21" stroke="#C98A4E" strokeWidth="1.6" fill="none" strokeLinecap="round"/>
+    </symbol>
+
+      </defs>
+    </svg>
+  );
+}
+
+const ID_POR_ANIMAL: Record<string, string> = {
+  Lobo: 'a-lobo', Elefante: 'a-elefante', Carneiro: 'a-carneiro', Baleia: 'a-baleia',
+  Cavalo: 'a-cavalo', Urso: 'a-urso', Raposa: 'a-raposa', 'Onça': 'a-onca'
+};
+
+/** Marca de um animal pelo nome. Devolve nulo se o nome não for dos oito. */
+export function Animal({ nome, tamanho = 64, titulo }: {
+  nome: string; tamanho?: number; titulo?: string;
+}) {
+  const id = ID_POR_ANIMAL[nome];
+  if (!id) return null;
+  return (
+    <svg viewBox="0 0 64 64" width={tamanho} height={tamanho} role="img"
+      aria-label={titulo ?? nome} style={{ display: 'block' }}>
+      <use href={`#${id}`} />
+    </svg>
+  );
+}
+
+/** Marca a partir do código do perfil (Te, Ni, …). */
+export function AnimalDoPerfil({ perfil, tamanho, titulo }: {
+  perfil: PerfilId | string; tamanho?: number; titulo?: string;
+}) {
+  const p = PERFIL_POR_ID[perfil as PerfilId];
+  if (!p) return null;
+  return <Animal nome={p.animal} tamanho={tamanho} titulo={titulo ?? `${p.animal} — ${p.nomeJung}`} />;
+}

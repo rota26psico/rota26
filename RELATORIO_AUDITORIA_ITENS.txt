@@ -1,0 +1,48 @@
+══════════════════════════════════════════════════════════════════════════════
+RELATÓRIO DE AUDITORIA DOS ITENS — instrumento v1.0-piloto
+══════════════════════════════════════════════════════════════════════════════
+
+ESTRUTURA
+  Itens ......................... 48 (24 FUNCAO + 24 ATITUDE)
+  Alternativas .................. 192
+  Itens-âncora (peso 2) ......... Q001, Q006, Q013, Q026, Q042, Q047
+  Peso total atitude (E+I) ...... 27 (ímpar — empate impossível)
+  Peso total funções (T+F+S+N) .. 27
+  Contextos cobertos ............ 21 de 21 exigidos
+
+MÁXIMO TEÓRICO POR POLO (denominador do escore relativo interno)
+  Jung : E=27  I=27  T=27  F=27  S=27  N=27
+  Eixos: Exploração=28  Execução=35  Autonomia=44  Cooperação=45  Flexibilidade=22  Estrutura=42
+
+DISTRIBUIÇÃO POR CONTEXTO
+  análise                  ▪▪ 2
+  aprendizagem             ▪▪▪ 3
+  comunicação              ▪▪▪ 3
+  conclusão                ▪▪ 2
+  conflitos                ▪▪ 2
+  divergências             ▪▪ 2
+  execução                 ▪▪▪ 3
+  informações incompletas  ▪▪ 2
+  inovação                 ▪▪ 2
+  mudanças                 ▪▪▪ 3
+  negociação               ▪▪ 2
+  novas oportunidades      ▪▪ 2
+  organização              ▪▪ 2
+  planejamento             ▪▪ 2
+  prazos                   ▪▪ 2
+  pressão                  ▪▪ 2
+  prioridades              ▪▪▪ 3
+  problemas inesperados    ▪▪ 2
+  relacionamento           ▪▪ 2
+  reuniões                 ▪▪▪ 3
+  tomada de decisão        ▪▪ 2
+
+ACHADOS
+  Nenhum achado.
+
+──────────────────────────────────────────────────────────────────────────────
+VEREDITO: 0 erro(s), 0 alerta(s).
+ESTRUTURA APROVADA para aplicação PILOTO. Os alertas devem ser revisados por
+especialista humano e reavaliados após o piloto com dados empíricos (Etapa 51).
+O instrumento NÃO deve ser chamado de validado antes da análise psicométrica.
+──────────────────────────────────────────────────────────────────────────────

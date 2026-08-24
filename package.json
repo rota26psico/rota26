@@ -1,0 +1,50 @@
+{
+  "name": "rota26-mapeamento-equipes",
+  "version": "3.1.0",
+  "engines": {
+    "node": "22.x"
+  },
+  "private": true,
+  "description": "ROTA26 — Instrumento de Mapeamento da Diversidade e Complementaridade de Equipes (Jung × Os Animais e a Psique × Belbin)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "audit:itens": "tsx scripts/audit-itens.ts",
+    "test:algoritmo": "tsx scripts/test-algoritmo.ts",
+    "gen:sql": "tsx scripts/gen-sql.ts",
+    "gen:demo": "tsx scripts/gen-demo.ts",
+    "verificar": "npm run audit:itens && npm run audit:matriz && npm run test:algoritmo && npm run test:telas && npm run test:animais && npm run test:excel && npm run test:glossario && npm run regressao && npm run typecheck && npm run gen:sql",
+    "audit:matriz": "tsx scripts/audit-matriz.ts",
+    "test:producao": "tsx scripts/test-producao.ts",
+    "test:telas": "tsx scripts/test-telas.tsx",
+    "baseline": "tsx scripts/baseline.ts",
+    "regressao": "tsx scripts/verificar-baseline.ts",
+    "test:animais": "tsx scripts/test-animais.ts",
+    "test:excel": "tsx scripts/test-excel-animais.ts",
+    "test:glossario": "tsx scripts/test-glossario.ts",
+    "previa": "node scripts/build-previa.mjs",
+    "test:ui": "node scripts/build-previa.mjs && node scripts/test-ui.mjs",
+    "verificar:tudo": "npm run verificar && npm run test:ui && npm run build"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.45.4",
+    "exceljs": "^4.4.0",
+    "next": "14.2.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "pg": "^8.23.0",
+    "playwright": "^1.62.1",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3"
+  }
+}
