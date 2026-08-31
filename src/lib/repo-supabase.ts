@@ -68,16 +68,64 @@ export async function garantirSessao(db: DB) {
   if (error) throw new Error(`Não foi possível iniciar a sessão. Recarregue a página. (${error.message})`);
 }
 
+/**
+ * UMA CONTA, UM PARTICIPANTE — e o que isso quebrava.
+ *
+ * `participantes.user_id` é único no schema. A consequência aparecia em
+ * produção como a mensagem crua do Postgres: *"O valor de chave duplicado viola
+ * a restrição de unicidade participantes_user_id_key"*.
+ *
+ * Dois caminhos levam até lá, e eles pedem respostas diferentes:
+ *
+ *  · **Computador compartilhado.** A primeira pessoa cria a sessão anônima; a
+ *    segunda abre o mesmo navegador e herda aquela sessão. Ela não é a primeira
+ *    pessoa — e não pode responder como ela. Aqui a sessão é trocada por uma
+ *    nova, e o percurso segue normalmente. É o caso comum numa aplicação
+ *    presencial, e precisa simplesmente funcionar.
+ *
+ *  · **Conta nominal já vinculada.** Quem entrou por `/entrar` está identificado
+ *    de verdade. Trocar a sessão por baixo seria enganoso, e vincular a conta a
+ *    um segundo participante falsificaria a autoria da resposta. Aqui a
+ *    aplicação recusa e diz o que fazer.
+ */
 export async function garantirParticipante(db: DB, d: { nome: string; matricula: string; setorId: string; email?: string }) {
-  const { data: user } = await db.auth.getUser();
+  let { data: user } = await db.auth.getUser();
+  const matricula = d.matricula.trim();
+
+  const vinculado = user.user?.id
+    ? (await db.from('participantes').select('matricula').eq('user_id', user.user.id).maybeSingle()).data
+    : null;
+
+  if (vinculado && vinculado.matricula !== matricula) {
+    if (user.user?.is_anonymous) {
+      await db.auth.signOut();
+      const { error: e } = await db.auth.signInAnonymously();
+      if (e) throw new Error(`Não foi possível iniciar uma sessão nova neste navegador. Recarregue a página. (${e.message})`);
+      ({ data: user } = await db.auth.getUser());
+    } else {
+      throw new Error(
+        `Esta conta já está vinculada à matrícula ${vinculado.matricula}. ` +
+        'Para responder como outra pessoa, use "Sair" no menu e recomece.');
+    }
+  }
+
   // `is_demo` e `is_test` ficam de fora de propósito: as duas colunas já nascem
   // `false` por padrão, e escrevê-las aqui faria o UPDATE do upsert esbarrar na
   // trava de 07_papeis.sql, que reserva a marcação à administração.
   const { data, error } = await db.from('participantes').upsert({
-    user_id: user.user?.id ?? null, nome: d.nome.trim(), matricula: d.matricula.trim(),
+    user_id: user.user?.id ?? null, nome: d.nome.trim(), matricula,
     setor_id: d.setorId, email: d.email ?? user.user?.email ?? null
   }, { onConflict: 'matricula' }).select('id,nome,setor_id').single();
-  if (error) throw error;
+
+  if (error) {
+    // Rede de segurança: se a corrida escapar da verificação acima, a pessoa lê
+    // uma instrução, não o nome de uma restrição do banco.
+    if (/participantes_user_id_key|unicidade|unique/i.test(error.message ?? ''))
+      throw new Error(
+        'Esta sessão já está vinculada a outro participante. ' +
+        'Use "Sair" no menu e recomece — ou abra uma janela anônima.');
+    throw error;
+  }
   return data.id as string;
 }
 
