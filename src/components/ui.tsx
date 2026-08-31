@@ -969,11 +969,47 @@ label{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-tra
   .rota-carrega i{left:46%}
 }
 
-/* Impressão do resultado individual e da leitura executiva */
+/* Blocos que só existem no papel — ver components/BotaoImprimir.tsx */
+.so-impressao{display:none}
+.barra-exportar{display:flex;justify-content:flex-end;margin-bottom:14px}
+
+/* Impressão do resultado individual, da leitura executiva e dos painéis */
 @media print{
   .topo,.nav,.filters,.rod{display:none}
+  /* O !important aqui não é preguiça: esta classe existe para garantir que algo
+     NUNCA seja impresso, e estilo inline no mesmo elemento venceria a regra.
+     Foi exatamente o que aconteceu com o botão de exportar. */
+  .nao-imprime{display:none!important}
   body{background:#fff}
   .card{break-inside:avoid;box-shadow:none;border-color:#ccc}
+
+  /* O cabeçalho e os limites aparecem só aqui: um PDF circula sozinho, longe
+     do cabeçalho e do rodapé da aplicação. */
+  .so-impressao{display:block}
+  .si-marca{font:700 15px/1.3 Georgia,serif;letter-spacing:.02em;margin-bottom:6px}
+  .si-linha{display:flex;flex-wrap:wrap;gap:4px 22px;font-size:11px;color:#4a463f;
+    border-bottom:1px solid #ccc;padding-bottom:10px;margin-bottom:16px}
+  .si-limites{margin-top:18px;padding-top:10px;border-top:1px solid #ccc;
+    font-size:10.5px;line-height:1.5;color:#333;break-inside:avoid}
+
+  /* As grades colapsam para uma coluna nas media queries de tela estreita, e a
+     impressão cai nelas: o painel virava um cartão por linha e 18 páginas.
+     Aqui as colunas voltam. */
+  .g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+  /* Com quatro colunas em A4 o cartão fica estreito, e o overflow-wrap:anywhere
+     do .kpi-val — que na tela evita estouro — passava a partir as palavras no
+     meio: "Carneir/o", "Sentime/nto". Reduzir o corpo resolve sem tirar a
+     proteção contra estouro. */
+  .kpi-val{font-size:24px;line-height:1.15}
+  .kpi{padding:13px 15px}
+
+  /* Título não fica órfão no pé da folha, e tabela não parte ao meio. */
+  h1,h2,h3,h4{break-after:avoid}
+  table,tr,.tabela{break-inside:avoid}
+  a[href]:after{content:''}
   /* Na impressão nada fica escondido atrás de um clique. */
   details{open:true}
   .porque,.grupo-glossario{display:block}

@@ -4,6 +4,7 @@ import { AcessoRestrito } from '@/components/AcessoRestrito';
 import { Rodape } from '@/components/Rodape';
 import { TelaVisaoOrganizacional } from '@/components/views-gestao';
 import { ErroConsulta } from '@/components/ui';
+import { BotaoImprimir } from '@/components/BotaoImprimir';
 import { analisarEquipe } from '@/lib/aggregate';
 import { composicaoAnimais } from '@/lib/animais';
 import { carregarMembros, resumoOrganizacional } from '@/lib/repo-supabase';
@@ -32,8 +33,10 @@ export default async function Page() {
       <main className="wrap" style={{ paddingTop: 24 }}>
         {erro || !dados
           ? <ErroConsulta detalhe={erro} />
-          : <TelaVisaoOrganizacional a={analisarEquipe(dados.membros)} resumo={dados.resumo}
-              animais={composicaoAnimais(dados.membros, 'Organização')} />}
+          : <BotaoImprimir titulo="Visão geral" recorte={p === 'MASTER' ? 'Organização' : 'Seu setor'} papel={p}>
+              <TelaVisaoOrganizacional a={analisarEquipe(dados.membros)} resumo={dados.resumo}
+                animais={composicaoAnimais(dados.membros, 'Organização')} />
+            </BotaoImprimir>}
       </main>
       <Rodape />
     </>
