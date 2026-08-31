@@ -9,16 +9,17 @@
  *
  * IMPORTANTE: o teste escreve no banco e NÃO é idempotente — ele exercita
  * cadastro, conclusão, limpeza e reaplicação, que são operações de estado.
- * Rode sempre contra um banco recém-criado com as migrations 01, 02, 03, 05, 06
- * e 07 aplicadas. Reexecutar sobre a base do teste anterior produz falhas que são
- * do procedimento, não da aplicação.
+ * Rode sempre contra um banco recém-criado com as migrations 01, 02, 03, 05,
+ * 06, 07 e 08 aplicadas. Reexecutar sobre a base do teste anterior produz
+ * falhas que são do procedimento, não da aplicação.
  *
  * Uso:
- *   createdb mapa_teste && psql -d mapa_teste -f supabase/01_schema.sql  (…02, 03, 05, 06)
+ *   createdb mapa_teste && psql -d mapa_teste -f supabase/01_schema.sql  (…02, 03, 05, 06, 07, 08)
  *   PGURL=postgres://... npx tsx scripts/test-producao.ts
  */
 import { Client } from 'pg';
-import { QUESTOES, VERSAO_INSTRUMENTO } from '../src/data/questions';
+import { VERSAO_INSTRUMENTO } from '../src/data/questions';
+import { QUESTOES_COMPLETAS as QUESTOES } from '../src/data/questions.server';
 import { VERSAO_MATRIZ } from '../src/data/scoringMatrix';
 import { avaliar, vetorDe, type Resposta } from '../src/lib/scoring';
 import { analisarEquipe, compararComEquipe, type MembroAgregado } from '../src/lib/aggregate';

@@ -20,11 +20,13 @@ import {
 import { Aviso, ErroConsulta } from '@/components/ui';
 import {
   supabaseBrowser, garantirSessao, listarSetores, garantirParticipante, validarCadastro,
-  consultarAvaliacao, abrirAvaliacao, gravarResposta, concluirAvaliacao,
-  carregarMembros, registrarEvento, type EstadoAvaliacao
+  abrirAvaliacao, carregarMembros, registrarEvento, type EstadoAvaliacao
 } from '@/lib/repo-supabase';
+/* Estas quatro passam pelo servidor: dependem da chave de pontuação, que não
+   pode chegar ao navegador. A sessão continua sendo a do participante. */
+import { consultarAvaliacao, gravarResposta, concluirAvaliacao } from '@/lib/avaliacao-cliente';
 import { compararComEquipe, type ComparacaoIndividuo } from '@/lib/aggregate';
-import { vetorDe, type ResultadoIndividual, type Resposta } from '@/lib/scoring';
+import { vetorDe, type ResultadoIndividual, type Resposta } from '@/lib/resultado';
 import { QUESTOES } from '@/data/questions';
 
 type Etapa = 'ident' | 'retomar' | 'concluida' | 'quest' | 'result';
@@ -72,7 +74,7 @@ export function Fluxo() {
       if (!s) throw new Error('Setor não encontrado. Recarregue a página e tente novamente.');
 
       const pid = await garantirParticipante(db, { nome: d.nome, matricula: d.matricula, setorId: s.id });
-      const est = await consultarAvaliacao(db, pid);
+      const est = await consultarAvaliacao(pid);
       setIdent(d); setParticipanteId(pid); setEstado(est);
       await registrarEvento(db, 'LOGIN', 'participante', d.matricula, 1, { situacao: est.situacao });
 
@@ -95,7 +97,7 @@ export function Fluxo() {
   const salvar = async (r: Resposta, posicao: number) => {
     if (!avaliacaoId) return;
     setSalvando(true);
-    try { await gravarResposta(db, avaliacaoId, r, posicao); setErro(null); }
+    try { await gravarResposta(avaliacaoId, r, posicao); setErro(null); }
     catch (e: any) { setErro(`Sua resposta não foi salva: ${e.message}. Verifique a conexão e escolha novamente.`); }
     finally { setSalvando(false); }
   };
@@ -104,7 +106,7 @@ export function Fluxo() {
     if (!avaliacaoId || !ident) return;
     setSalvando(true); setErro(null);
     try {
-      const r = await concluirAvaliacao(db, avaliacaoId);
+      const r = await concluirAvaliacao(avaliacaoId);
       setResultado(r);
       setDataConclusao(new Date().toISOString());
       await carregarComparacao(r, ident.setor, participanteId ?? undefined);

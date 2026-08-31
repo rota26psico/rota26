@@ -1,9 +1,18 @@
 # O que NÃO sobe para a Vercel.
 #
-# Isto é segurança, não arrumação: docker/.env guarda o JWT_SECRET e a
-# SERVICE_KEY da pilha local. Nada aqui é usado em tempo de execução — o
+# Isto é segurança, não arrumação: `docker/.env` guarda o JWT_SECRET e a
+# SERVICE_KEY da pilha local, e `.env.local` aponta para o banco de produção.
+# Segredo de aplicação publicada mora em Settings → Environment Variables, e em
+# lugar nenhum do código enviado. Nada abaixo é usado em tempo de execução — o
 # runtime precisa apenas de src/, public/, next.config.mjs, package.json e
 # tsconfig.json.
+#
+# ATENÇÃO: com este arquivo presente, o `.gitignore` deixa de ser consultado.
+# Tudo o que não pode subir precisa estar declarado AQUI.
+.env
+.env.*
+node_modules
+.next
 docker
 demo
 dist

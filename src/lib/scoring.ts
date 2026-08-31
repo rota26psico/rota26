@@ -1,3 +1,4 @@
+import 'server-only';
 /**
  * ETAPA 7 — ALGORITMO DETERMINÍSTICO EM DUAS TRILHAS PARALELAS (v2.0)
  * ===========================================================================
@@ -19,10 +20,13 @@
  * tipicamente vão — apresentar configurações funcionais diferentes.
  */
 
+import { PARES_EIXO, VERSAO_INSTRUMENTO, type EixoAux } from '../data/questions';
+/* A chave de pontuação vem da camada de servidor. É o que impede este módulo —
+   e tudo que o importa — de chegar ao navegador com o gabarito junto. */
 import {
-  ALTERNATIVA_POR_ID, QUESTOES, MAXIMO_POR_EIXO, PARES_EIXO,
-  PESO_TOTAL_ATITUDE, PESO_TOTAL_FUNCAO, VERSAO_INSTRUMENTO, type EixoAux
-} from '../data/questions';
+  ALTERNATIVA_POR_ID, QUESTOES_COMPLETAS as QUESTOES, MAXIMO_POR_EIXO,
+  PESO_TOTAL_ATITUDE, PESO_TOTAL_FUNCAO
+} from '../data/questions.server';
 import {
   LINHA_POR_ALTERNATIVA, MAXIMO_CAPACIDADE, MAXIMO_BELBIN,
   CHAVES_CAPACIDADE, CHAVES_BELBIN, VERSAO_MATRIZ
@@ -33,63 +37,18 @@ import {
 } from '../data/profiles';
 import { CAPACIDADES, PAPEIS_BELBIN, type Capacidade, type PapelBelbin } from '../data/functional';
 
-export interface Resposta { questaoId: string; alternativaId: string; }
+import {
+  intensidade, vetorDe,
+  type Resposta, type Intensidade, type EscoresJung, type EscoresEixos,
+  type EscoresFuncionais, type ResultadoIndividual, type VetorParticipante
+} from './resultado';
+/* Reexportados para que quem já importava de `scoring` continue funcionando. */
+export {
+  intensidade, vetorDe,
+  type Resposta, type Intensidade, type EscoresJung, type EscoresEixos,
+  type EscoresFuncionais, type ResultadoIndividual, type VetorParticipante
+};
 
-export type Intensidade = 'Muito alta' | 'Alta' | 'Moderada' | 'Baixa' | 'Muito baixa';
-
-/** Faixas dos rótulos de intensidade — parâmetros internos exploratórios. */
-export function intensidade(v: number): Intensidade {
-  if (v >= 60) return 'Muito alta';
-  if (v >= 45) return 'Alta';
-  if (v >= 30) return 'Moderada';
-  if (v >= 18) return 'Baixa';
-  return 'Muito baixa';
-}
-
-export interface EscoresJung {
-  bruto: Record<'E' | 'I' | 'T' | 'F' | 'S' | 'N', number>;
-  relativo: Record<'E' | 'I' | 'T' | 'F' | 'S' | 'N', number>;
-}
-export interface EscoresEixos {
-  bruto: Record<EixoAux, number>;
-  relativo: Record<EixoAux, number>;
-}
-export interface EscoresFuncionais {
-  capacidadesBruto: Record<Capacidade, number>;
-  capacidades: Record<Capacidade, number>;      // relativo 0–100
-  belbinBruto: Record<PapelBelbin, number>;
-  belbin: Record<PapelBelbin, number>;          // relativo 0–100
-}
-
-export interface ResultadoIndividual {
-  versao: string;
-  versaoMatriz: string;
-
-  /* ── TRILHA A ── */
-  escores: EscoresJung & { eixos: EscoresEixos; denominadores: { atitude: number; funcao: number } };
-  atitude: Atitude;
-  atitudeMargem: number;
-  funcaoDominante: Funcao;
-  funcaoAuxiliar: Funcao;
-  funcaoMenosRepresentada: Funcao;
-  funcaoInferior: Funcao;
-  ordemFuncoes: Funcao[];
-  perfilPrincipal: PerfilId;
-  perfilSecundario: PerfilId;
-  empateFuncoes: boolean;
-  regraDesempate: string | null;
-
-  /* ── TRILHA B ── */
-  funcional: EscoresFuncionais;
-  capacidadesOrdenadas: { id: Capacidade; nome: string; valor: number; intensidade: Intensidade }[];
-  belbinOrdenado: { id: PapelBelbin; nome: string; valor: number; intensidade: Intensidade; posicao: number }[];
-  top3Belbin: { id: PapelBelbin; nome: string; valor: number; intensidade: Intensidade; posicao: number }[];
-
-  eixosAuxiliares: { par: [EixoAux, EixoAux]; polo: EixoAux | 'equilibrado'; a: number; b: number }[];
-
-  respostasValidas: number;
-  completo: boolean;
-}
 
 const zeroDe = <K extends string>(ks: readonly K[]) =>
   Object.fromEntries(ks.map(k => [k, 0])) as Record<K, number>;
@@ -259,20 +218,5 @@ export function avaliar(respostas: Resposta[]): ResultadoIndividual {
   };
 }
 
-/** Vetor completo do participante — base da agregação por equipe (item 38). */
-export interface VetorParticipante {
-  perfil: PerfilId; perfilSecundario: PerfilId; atitude: Atitude; funcaoDominante: Funcao;
-  jung: Record<'E' | 'I' | 'T' | 'F' | 'S' | 'N', number>;
-  eixos: Record<EixoAux, number>;
-  capacidades: Record<Capacidade, number>;
-  belbin: Record<PapelBelbin, number>;
-}
-
-export const vetorDe = (r: ResultadoIndividual): VetorParticipante => ({
-  perfil: r.perfilPrincipal, perfilSecundario: r.perfilSecundario,
-  atitude: r.atitude, funcaoDominante: r.funcaoDominante,
-  jung: r.escores.relativo, eixos: r.escores.eixos.relativo,
-  capacidades: r.funcional.capacidades, belbin: r.funcional.belbin
-});
 
 export { CAPACIDADES, PAPEIS_BELBIN, PERFIL_POR_ID, NOME_FUNCAO };

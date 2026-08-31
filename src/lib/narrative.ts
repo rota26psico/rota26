@@ -15,7 +15,7 @@ import { PERFIL_POR_ID, NOME_FUNCAO, NOME_ATITUDE } from '../data/profiles';
 import { NOME_EIXO } from '../data/questions';
 import { CAPACIDADES, PAPEIS_BELBIN } from '../data/functional';
 import { CONTEUDO_CAPACIDADE, CONTEUDO_BELBIN, DIMENSOES_FUNCIONAMENTO } from '../data/functionalContent';
-import type { ResultadoIndividual } from './scoring';
+import type { ResultadoIndividual } from './resultado';
 
 export const AVISO_ANIMAL =
   'Dentro do modelo simbólico utilizado neste instrumento, seu padrão predominante apresenta maior correspondência com este animal. A metáfora não descreve a pessoa por inteiro e não constitui diagnóstico psicológico.';

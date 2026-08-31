@@ -15,7 +15,7 @@ import {
 import { AnimalDoPerfil } from './animais-svg';
 import { QUESTOES, NOME_EIXO, type Questao } from '../data/questions';
 import { PERFIL_POR_ID, NOME_FUNCAO, NOME_ATITUDE } from '../data/profiles';
-import type { ResultadoIndividual, Resposta } from '../lib/scoring';
+import type { ResultadoIndividual, Resposta } from '../lib/resultado';
 import type { ComparacaoIndividuo } from '../lib/aggregate';
 import {
   cabecalho, interacaoPerfis, comoVoceFunciona, luz, sombra,

@@ -5,10 +5,11 @@
  * redundância, ambiguidade, desejabilidade social, cobertura de contextos e
  * risco de resposta óbvia. Emite um relatório e falha (exit 1) em erro grave.
  */
+import { VERSAO_INSTRUMENTO, NOME_EIXO, type EixoAux } from '../src/data/questions';
 import {
-  QUESTOES, VERSAO_INSTRUMENTO, MAXIMO_POR_POLO_JUNG, MAXIMO_POR_EIXO,
-  PESO_TOTAL_ATITUDE, PESO_TOTAL_FUNCAO, NOME_EIXO, type EixoAux
-} from '../src/data/questions';
+  QUESTOES_COMPLETAS as QUESTOES, MAXIMO_POR_POLO_JUNG, MAXIMO_POR_EIXO,
+  PESO_TOTAL_ATITUDE, PESO_TOTAL_FUNCAO
+} from '../src/data/questions.server';
 import { CAPACIDADES, MATRIZ_FUNCIONAL, AFINIDADE_BELBIN, JUSTIFICATIVAS, verificarCoberturaPossivel } from '../src/data/functional';
 import { PERFIS } from '../src/data/profiles';
 

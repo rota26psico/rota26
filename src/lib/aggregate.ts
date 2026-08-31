@@ -15,7 +15,7 @@
 import { PERFIS, PERFIL_POR_ID, NOME_FUNCAO, NOME_ATITUDE, type PerfilId, type Funcao, type Atitude } from '../data/profiles';
 import { CAPACIDADES, PAPEIS_BELBIN, type Capacidade, type PapelBelbin } from '../data/functional';
 import { NOME_EIXO, PARES_EIXO, type EixoAux } from '../data/questions';
-import { intensidade, type Intensidade, type VetorParticipante } from './scoring';
+import { intensidade, type Intensidade, type VetorParticipante } from './resultado';
 
 export interface MembroAgregado extends VetorParticipante {
   id: string;

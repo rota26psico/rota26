@@ -1,0 +1,179 @@
+{
+  "_leia": "28 itens de desempate — um para cada par não ordenado entre as oito configurações. Aplicado APENAS quando as duas mais altas empatam ou ficam a ≤2 pp. Cada item tem duas alternativas igualmente legítimas; cada uma pontua exclusivamente para uma das duas configurações em disputa. O par NUNCA é revelado ao participante.",
+  "itens": [
+    { "par": ["Te","Ti"], "contexto": "decisao",
+      "enunciado": "Um procedimento em uso apresenta falhas recorrentes. Você tem autonomia para agir. O que faz primeiro?",
+      "alternativas": [
+        { "p": "Te", "texto": "Escrevo a versão corrigida do procedimento e coloco em uso, ajustando o que aparecer depois." },
+        { "p": "Ti", "texto": "Estudo por que ele falha antes de propor qualquer substituição, mesmo que isso leve tempo." }
+      ] },
+    { "par": ["Te","Fe"], "contexto": "conflitos",
+      "enunciado": "Uma entrega atrasou e há desconforto entre as pessoas envolvidas. Por onde você começa?",
+      "alternativas": [
+        { "p": "Te", "texto": "Pelo combinado: retomo prazos e responsabilidades, e reorganizo o que ficou pendente." },
+        { "p": "Fe", "texto": "Pelas pessoas: converso com quem está desconfortável antes de tratar da entrega." }
+      ] },
+    { "par": ["Te","Fi"], "contexto": "decisao",
+      "enunciado": "Você recebe uma orientação que considera equivocada, mas legítima. Como se posiciona?",
+      "alternativas": [
+        { "p": "Te", "texto": "Cumpro e registro formalmente minha divergência, para que fique documentada." },
+        { "p": "Fi", "texto": "Cumpro no que não contraria o que acredito, e não finjo concordar no restante." }
+      ] },
+    { "par": ["Te","Se"], "contexto": "pressao",
+      "enunciado": "Um problema urgente aparece e a equipe está dispersa. Qual é o seu primeiro movimento?",
+      "alternativas": [
+        { "p": "Te", "texto": "Defino quem cuida do quê e em que ordem, antes de qualquer um começar a agir." },
+        { "p": "Se", "texto": "Começo a resolver a parte mais crítica eu mesmo, e organizo o resto no caminho." }
+      ] },
+    { "par": ["Te","Si"], "contexto": "organizacao",
+      "enunciado": "Você assume a coordenação de um trabalho que já vinha sendo feito de outra forma. Como conduz?",
+      "alternativas": [
+        { "p": "Te", "texto": "Estabeleço a estrutura que considero correta e comunico o novo funcionamento." },
+        { "p": "Si", "texto": "Mantenho o que já funcionava e mudo apenas o que se mostrar necessário." }
+      ] },
+    { "par": ["Te","Ne"], "contexto": "inovacao",
+      "enunciado": "A equipe precisa de uma saída para um problema que se repete. O que você traz?",
+      "alternativas": [
+        { "p": "Te", "texto": "Uma proposta fechada, com etapas, responsáveis e prazo, pronta para ser decidida." },
+        { "p": "Ne", "texto": "Várias direções possíveis, para que a equipe escolha antes de fechar qualquer uma." }
+      ] },
+    { "par": ["Te","Ni"], "contexto": "decisao",
+      "enunciado": "Há uma decisão a tomar e o cenário à frente não está claro. Como você se apoia?",
+      "alternativas": [
+        { "p": "Te", "texto": "No critério que já usamos em casos parecidos — decido e sigo, revisando se mudar." },
+        { "p": "Ni", "texto": "Na leitura de onde isso vai desembocar, mesmo que ainda não haja evidência disso." }
+      ] },
+
+    { "par": ["Ti","Fe"], "contexto": "comunicacao",
+      "enunciado": "Você identifica um erro no trabalho apresentado por um colega diante do grupo. Como age?",
+      "alternativas": [
+        { "p": "Ti", "texto": "Aponto o erro com precisão, porque deixá-lo passar comprometeria o resultado." },
+        { "p": "Fe", "texto": "Trato depois, em separado, para não expor a pessoa na frente de todos." }
+      ] },
+    { "par": ["Ti","Fi"], "contexto": "decisao",
+      "enunciado": "Uma escolha pode ser defendida por argumento técnico ou por convicção pessoal. Qual pesa mais?",
+      "alternativas": [
+        { "p": "Ti", "texto": "O argumento: se ele não se sustenta, minha convicção também não deveria." },
+        { "p": "Fi", "texto": "A convicção: há coisas que sustento mesmo sem conseguir demonstrar por raciocínio." }
+      ] },
+    { "par": ["Ti","Se"], "contexto": "inovacao",
+      "enunciado": "Surge uma abordagem nova para um trabalho que você domina. Como você a avalia?",
+      "alternativas": [
+        { "p": "Ti", "texto": "Entendo como ela funciona por dentro antes de confiar qualquer coisa a ela." },
+        { "p": "Se", "texto": "Experimento em pequena escala — descubro mais usando do que analisando." }
+      ] },
+    { "par": ["Ti","Si"], "contexto": "organizacao",
+      "enunciado": "Um resultado não fechou como esperado. Onde você procura primeiro?",
+      "alternativas": [
+        { "p": "Ti", "texto": "Na lógica: reconstruo o raciocínio até achar onde a premissa não se sustenta." },
+        { "p": "Si", "texto": "Nos registros: confiro passo a passo o que foi feito até achar onde saiu do padrão." }
+      ] },
+    { "par": ["Ti","Ne"], "contexto": "inovacao",
+      "enunciado": "Você tem tempo livre para se dedicar a um assunto de trabalho. Como o usa?",
+      "alternativas": [
+        { "p": "Ti", "texto": "Aprofundo um único tema até dominá-lo por inteiro." },
+        { "p": "Ne", "texto": "Percorro vários temas novos, atrás de conexões que ainda não enxerguei." }
+      ] },
+    { "par": ["Ti","Ni"], "contexto": "decisao",
+      "enunciado": "Você precisa avaliar uma proposta complexa. O que examina primeiro?",
+      "alternativas": [
+        { "p": "Ti", "texto": "Se ela é internamente coerente — se as partes se sustentam umas às outras." },
+        { "p": "Ni", "texto": "Aonde ela chega no longo prazo, mesmo que hoje pareça coerente." }
+      ] },
+
+    { "par": ["Fe","Fi"], "contexto": "conflitos",
+      "enunciado": "O grupo caminha para uma decisão com a qual você não concorda. O que você faz?",
+      "alternativas": [
+        { "p": "Fe", "texto": "Busco uma formulação que a maioria consiga aceitar sem que o grupo se divida." },
+        { "p": "Fi", "texto": "Mantenho minha posição, mesmo ficando sozinho, e não a sustento por fora." }
+      ] },
+    { "par": ["Fe","Se"], "contexto": "colaboracao",
+      "enunciado": "Uma frente de trabalho está parada e a equipe desanimada. Por onde você entra?",
+      "alternativas": [
+        { "p": "Fe", "texto": "Descubro o que desanimou o grupo e trato disso antes de retomar o trabalho." },
+        { "p": "Se", "texto": "Começo a fazer a primeira coisa concreta — o movimento costuma reanimar por si." }
+      ] },
+    { "par": ["Fe","Si"], "contexto": "organizacao",
+      "enunciado": "Você vai distribuir tarefas em um trabalho coletivo. O que orienta a divisão?",
+      "alternativas": [
+        { "p": "Fe", "texto": "Onde cada pessoa vai se sentir útil e disposta a contribuir." },
+        { "p": "Si", "texto": "Quem já fez aquilo bem antes e tem prática comprovada na tarefa." }
+      ] },
+    { "par": ["Fe","Ne"], "contexto": "comunicacao",
+      "enunciado": "Você tem uma conversa com alguém de outra área. O que busca nela?",
+      "alternativas": [
+        { "p": "Fe", "texto": "Construir uma relação de confiança que facilite o trabalho conjunto depois." },
+        { "p": "Ne", "texto": "Descobrir oportunidades e cruzamentos entre o que cada um faz." }
+      ] },
+    { "par": ["Fe","Ni"], "contexto": "pressao",
+      "enunciado": "A equipe está sobrecarregada e o desgaste começa a aparecer. Do que você cuida?",
+      "alternativas": [
+        { "p": "Fe", "texto": "Do clima agora: sem as pessoas inteiras, nada mais anda." },
+        { "p": "Ni", "texto": "Da causa de fundo: enquanto ela ficar, a sobrecarga volta em outra forma." }
+      ] },
+
+    { "par": ["Fi","Se"], "contexto": "pressao",
+      "enunciado": "Sob pressão intensa, o que costuma acontecer com você?",
+      "alternativas": [
+        { "p": "Fi", "texto": "Fico mais quieto — processo por dentro antes de me manifestar." },
+        { "p": "Se", "texto": "Fico mais em movimento — quando aperta, eu ajo." }
+      ] },
+    { "par": ["Fi","Si"], "contexto": "organizacao",
+      "enunciado": "Você precisa entregar algo que considera abaixo do que deveria ser. O que sustenta sua recusa?",
+      "alternativas": [
+        { "p": "Fi", "texto": "Não entrego mal aquilo que, para mim, não se entrega mal — é questão de princípio." },
+        { "p": "Si", "texto": "Não entrego fora do padrão combinado — é questão de conferência e método." }
+      ] },
+    { "par": ["Fi","Ne"], "contexto": "inovacao",
+      "enunciado": "Você tem uma ideia que ainda não convenceu ninguém. O que faz com ela?",
+      "alternativas": [
+        { "p": "Fi", "texto": "Sigo sustentando por conta própria, sem transformar isso em campanha." },
+        { "p": "Ne", "texto": "Levo a mais gente e a outros lugares até encontrar quem se interesse." }
+      ] },
+    { "par": ["Fi","Ni"], "contexto": "comunicacao",
+      "enunciado": "Você percebe algo importante que o grupo ainda não vê. Como se manifesta?",
+      "alternativas": [
+        { "p": "Fi", "texto": "Digo se me pedirem, e sustento na prática mesmo que não me perguntem." },
+        { "p": "Ni", "texto": "Digo uma vez, com clareza, e não insisto — quando ficar visível, vão lembrar." }
+      ] },
+
+    { "par": ["Se","Si"], "contexto": "decisao",
+      "enunciado": "Você precisa decidir sobre algo concreto e há alguma margem de risco. Como resolve?",
+      "alternativas": [
+        { "p": "Se", "texto": "Testo logo, em escala pequena, e deixo o resultado decidir." },
+        { "p": "Si", "texto": "Verifico tudo antes de mover — sob pressa é que o erro passa." }
+      ] },
+    { "par": ["Se","Ne"], "contexto": "inovacao",
+      "enunciado": "Um trabalho novo vai começar e nada está definido ainda. Qual é a sua entrada?",
+      "alternativas": [
+        { "p": "Se", "texto": "Faço a primeira coisa concreta possível hoje, e o resto vem atrás." },
+        { "p": "Ne", "texto": "Levanto os caminhos possíveis antes de fechar por onde começar." }
+      ] },
+    { "par": ["Se","Ni"], "contexto": "pressao",
+      "enunciado": "Uma urgência aparece pela terceira vez no mês. O que você faz agora?",
+      "alternativas": [
+        { "p": "Se", "texto": "Resolvo a urgência da vez — o padrão a gente discute depois, com calma." },
+        { "p": "Ni", "texto": "Paro e trato do que está gerando as urgências, mesmo com esta ainda aberta." }
+      ] },
+
+    { "par": ["Si","Ne"], "contexto": "inovacao",
+      "enunciado": "Propõem trocar um processo que funciona por outro ainda não testado aqui. Qual é a sua posição?",
+      "alternativas": [
+        { "p": "Si", "texto": "Rodar os dois em paralelo antes de abandonar o que já se mostrou confiável." },
+        { "p": "Ne", "texto": "Adotar o novo: o atual já mostrou seu limite e o outro abre caminhos." }
+      ] },
+    { "par": ["Si","Ni"], "contexto": "organizacao",
+      "enunciado": "Pedem seu parecer sobre um plano detalhado. O que você olha primeiro?",
+      "alternativas": [
+        { "p": "Si", "texto": "Se os detalhes fecham: prazos, responsáveis e o que depende do quê." },
+        { "p": "Ni", "texto": "Se a direção está certa — plano bem-feito na direção errada continua errado." }
+      ] },
+
+    { "par": ["Ne","Ni"], "contexto": "inovacao",
+      "enunciado": "Um projeto ainda em fase de ideia chega até você. Como você contribui?",
+      "alternativas": [
+        { "p": "Ne", "texto": "Trago referências e combinações de fora que ninguém tinha considerado." },
+        { "p": "Ni", "texto": "Aponto no que aquilo pode se transformar, mesmo sem sinal disso ainda." }
+      ] }
+  ]
+}

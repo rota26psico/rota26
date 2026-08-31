@@ -55,6 +55,7 @@ No painel do Supabase: **SQL Editor → New query**. Cole e execute **um por vez
 | 4 | `supabase/05_migracao_v2.sql` | Trilha funcional própria, arquivamento, auditoria, retomada, reset |
 | 5 | `supabase/06_producao.sql` | **Produção**: `is_test`, view de dados reais, limpeza DEMO, checklist, auditoria de login e conclusão |
 | 6 | `supabase/07_papeis.sql` | Marcação `eh_administrador` nas views, trava das colunas de marcação do participante |
+| 7 | `supabase/08_reavaliacao_v2.sql` | **v2.0-reavaliacao**, inativa: `resultados_v2`, `desempates`, `vw_resultados_v2`, filtros de contrato e líder |
 
 **Não execute** `supabase/04_demo_seed.sql`. Ele cria 96 participantes fictícios e existe apenas para
 desenvolvimento. O arquivo `supabase/00_stub_auth_local.sql` também **não** deve ser executado no

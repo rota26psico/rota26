@@ -8,7 +8,8 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { QUESTOES, VERSAO_INSTRUMENTO, PESO_TOTAL_ATITUDE, PESO_TOTAL_FUNCAO } from '../src/data/questions';
+import { VERSAO_INSTRUMENTO } from '../src/data/questions';
+import { QUESTOES_COMPLETAS as QUESTOES, PESO_TOTAL_ATITUDE, PESO_TOTAL_FUNCAO } from '../src/data/questions.server';
 import { PERFIS } from '../src/data/profiles';
 import { MATRIZ_FUNCIONAL, AFINIDADE_BELBIN, JUSTIFICATIVAS, CAPACIDADES, PAPEIS_BELBIN } from '../src/data/functional';
 import { avaliar } from '../src/lib/scoring';

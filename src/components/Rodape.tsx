@@ -1,5 +1,5 @@
 import { VERSAO_INSTRUMENTO } from '@/data/questions';
-import { VERSAO_MATRIZ } from '@/data/scoringMatrix';
+import { VERSAO_MATRIZ } from '@/data/matriz';
 import { MARCA } from '@/lib/env';
 
 /**

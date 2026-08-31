@@ -197,6 +197,7 @@ No painel do Supabase: **SQL Editor → New query**. Execute **nesta ordem**:
 | 4 | `supabase/05_migracao_v2.sql` | `resultados_funcionais`, `resultados_belbin`, `is_demo`, arquivamento, `logs_auditoria`, retomada e funções de reset |
 | 5 | `supabase/06_producao.sql` | **v3**: `is_test`, view de dados reais, limpeza DEMO, checklist de prontidão, auditoria de login e conclusão |
 | 6 | `supabase/07_papeis.sql` | Marcação `eh_administrador` nas views, trava das colunas de marcação do participante |
+| 7 | `supabase/08_reavaliacao_v2.sql` | **v2.0-reavaliacao**, inativa: `resultados_v2`, `desempates`, `vw_resultados_v2`, filtros de contrato e líder |
 
 > **Não execute** `supabase/04_demo_seed.sql` em ambiente de aplicação: ele cria 96 participantes
 > fictícios e existe apenas para desenvolvimento. `supabase/00_stub_auth_local.sql` também não —

@@ -5,12 +5,21 @@
  * INDEPENDENTE do polo junguiano — que é a razão de existir da v2.0.
  * Falha (exit 1) em erro grave.
  */
-import { QUESTOES, NOME_EIXO } from '../src/data/questions';
+import { NOME_EIXO } from '../src/data/questions';
+import { QUESTOES_COMPLETAS as QUESTOES } from '../src/data/questions.server';
 import {
   MATRIZ_PONTUACAO, LINHA_POR_ALTERNATIVA, MAXIMO_CAPACIDADE, MAXIMO_BELBIN,
   CHAVES_CAPACIDADE, CHAVES_BELBIN, VERSAO_MATRIZ
 } from '../src/data/scoringMatrix';
 import { CAPACIDADES, PAPEIS_BELBIN } from '../src/data/functional';
+/* Camada pública: os máximos são publicados ali como literais para que as telas
+   os leiam sem puxar a matriz. Esta auditoria recalcula e compara. */
+import {
+  MAXIMO_CAPACIDADE as PUB_CAPACIDADE, MAXIMO_BELBIN as PUB_BELBIN
+} from '../src/data/matriz';
+import {
+  MAXIMO_CAPACIDADE as REAL_CAPACIDADE, MAXIMO_BELBIN as REAL_BELBIN
+} from '../src/data/scoringMatrix';
 
 type Nivel = 'ERRO' | 'ALERTA';
 const achados: { nivel: Nivel; area: string; msg: string }[] = [];
@@ -96,6 +105,21 @@ for (const b of PAPEIS_BELBIN) {
 }
 
 // ── Relatório ──────────────────────────────────────────────────────────────
+/* ── Os literais da camada pública batem com a matriz real? ─────────────── */
+for (const [nome, real, pub] of [
+  ['capacidade', REAL_CAPACIDADE as Record<string, number>, PUB_CAPACIDADE],
+  ['Belbin', REAL_BELBIN as Record<string, number>, PUB_BELBIN]
+] as const) {
+  for (const k of Object.keys(real)) {
+    if (real[k] !== pub[k])
+      add('ERRO', 'camada pública',
+        `MAXIMO ${nome} ${k}: matriz real diz ${real[k]}, data/matriz.ts publica ${pub[k]}.`);
+  }
+  const sobrando = Object.keys(pub).filter(k => !(k in real));
+  if (sobrando.length)
+    add('ERRO', 'camada pública', `data/matriz.ts publica chave inexistente: ${sobrando.join(', ')}.`);
+}
+
 const erros = achados.filter(a => a.nivel === 'ERRO');
 const alertas = achados.filter(a => a.nivel === 'ALERTA');
 console.log('\nACHADOS');

@@ -37,13 +37,13 @@ npm run previa             # regenera dist/demo.html
 npm run baseline           # regrava baseline.json (só com --forcar; ver abaixo)
 
 # Ponta a ponta contra PostgreSQL real, com RLS ligado (escreve no banco, NÃO é idempotente —
-# use um banco recém-criado com 01, 02, 03, 05, 06 e 07 aplicados):
+# use um banco recém-criado com 01, 02, 03, 05, 06, 07 e 08 aplicados):
 PGURL=postgres://usuario@host/banco npx tsx scripts/test-producao.ts
 ```
 
 `npm run dev` não sobe sem `.env.local` (`cp .env.example .env.local`) com `NEXT_PUBLIC_SUPABASE_URL`,
 `NEXT_PUBLIC_SUPABASE_ANON_KEY` e `SUPABASE_SERVICE_ROLE_KEY` — `repo-supabase.ts` lê essas variáveis
-no topo do módulo. As migrações precisam estar aplicadas na ordem `01 → 02 → 03 → 05 → 06 → 07`
+no topo do módulo. As migrações precisam estar aplicadas na ordem `01 → 02 → 03 → 05 → 06 → 07 → 08`
 (nunca `04_demo_seed.sql` fora de desenvolvimento) e um usuário do Supabase Auth precisa existir em
 `administradores` com papel `MASTER`, senão toda tela de dashboard responde "acesso restrito" — o que
 é o comportamento correto.
@@ -67,6 +67,70 @@ separação é a regressão mais grave possível aqui.
 O módulo é puro: sem rede, sem aleatoriedade, sem IA. Desempates têm regra explícita e ordenações
 usam desempate estável pela ordem canônica — respostas idênticas produzem sempre o mesmo resultado.
 
+### A chave de pontuação não chega ao navegador
+
+Vale para as duas versões, e na v1.0 é correção recente: até 28/08/2026 o bundle público entregava
+**191 das 192 alternativas** com o polo junguiano e o eixo ao lado, sem login. Medido no endereço
+publicado, não deduzido.
+
+Cada camada de dado existe em dois arquivos:
+
+| Público — pode ir ao navegador | Confidencial — `import 'server-only'` |
+|---|---|
+| `data/questions.ts` — id, contexto, enunciado, textos | `data/questions.server.ts` — polo, eixo, peso, tipo |
+| `data/matriz.ts` — versão, listas de id, máximos agregados | `data/scoringMatrix.ts` — a matriz alternativa → pesos |
+| `lib/resultado.ts` — o FORMATO do resultado, `intensidade`, `vetorDe` | `lib/scoring.ts` — o algoritmo |
+| `lib/repo-supabase.ts` — leitura e cadastro | `lib/repo-servidor.ts` — o que precisa da chave |
+| `data/v2/questoes.ts` | `data/v2/mapa.server.ts`, `desempate.server.ts`, `lib/v2/apuracao.ts` |
+
+Três consequências práticas:
+
+- **Componente de cliente que importe um módulo confidencial quebra o `next build`.** Não é
+  convenção, é erro de compilação — e `npm run test:sigilo` (22 checagens) ainda compila e varre
+  `.next/static` atrás de vestígio. **Se falhar, não publique.**
+- **Scripts que tocam a chave precisam de `tsx --conditions=react-server`** — já está nos scripts do
+  `package.json`. `test:telas` é a exceção: renderiza React e por isso NÃO pode usar a condição;
+  que ele passe sem ela é a prova de que as telas do participante não tocam mais na chave.
+- **A tela de metodologia recebe a matriz por prop**, montada no servidor para o Master autenticado.
+  Ela nunca faz parte do bundle estático.
+
+Os máximos por capacidade e por papel são publicados como literais em `data/matriz.ts` porque são
+agregados — dizem quanto uma dimensão soma no instrumento inteiro, não o que cada alternativa vale.
+`npm run audit:matriz` recalcula os dois a partir da matriz real e falha se algum número divergir.
+
+`dist/demo.html` é a exceção declarada: calcula no navegador, e por isso `build-previa.mjs`
+neutraliza o `server-only` de propósito. `dist/` está no `.gitignore` e no `.vercelignore` e nunca
+é publicado — se um dia precisar ir a público, esse atalho cai junto.
+
+### Duas versões do instrumento convivem
+
+`v1.0-piloto` é a que está ativa e coletando. `v2.0-reavaliacao` entrou pela migração
+`08_reavaliacao_v2.sql` com `ativa = false` — o motor, os dados e o banco existem; **as telas ainda
+não foram religadas**. Enquanto a versão estiver inativa, nada muda para quem responde.
+
+As duas **não são comparáveis**: a v1.0 tem duas trilhas independentes e produz capacidades e
+proximidades Belbin por pessoa; a v2.0 usa as mesmas 48 respostas para atitude e função ao mesmo
+tempo e produz uma configuração predominante, sem trilha funcional. Por isso todo indicador é
+filtrado por versão e nunca somado entre versões — `vw_resultados_v2` traz o filtro na definição, e
+`resumo_organizacional()` conta pela versão ativa.
+
+O que muda de arquitetura na v2.0, e é o ponto do desenho:
+
+- `src/data/v2/questoes.ts` é **público** — só identificadores e textos, nenhuma configuração,
+  peso, âncora ou animal;
+- `src/data/v2/mapa.server.ts`, `desempate.server.ts` e `src/lib/v2/apuracao.ts` abrem com
+  `import 'server-only'`. Se um componente de cliente importar qualquer um deles, `next build`
+  **falha**. Não é convenção, é erro de compilação;
+- por isso a apuração da v2.0 só pode acontecer no servidor — e a gravação também. `08` não tem
+  policy de INSERT em `resultados_v2` nem em `desempates` de propósito: a escrita passa por rota de
+  servidor com a chave de serviço. Ver a seção 7 do próprio arquivo SQL;
+- `npm run test:sigilo` compila e vasculha `.next/static` atrás de vestígio do gabarito. **Se
+  falhar, não publique.** `npm run test:v2` roda os 47 testes do motor.
+
+Os dois exigem **Node 20+** (`nvm use 20`) — a máquina de desenvolvimento tem 18 por padrão.
+`demo/ROTA26-demo-v2.html` e `demo/fontes/` contêm o gabarito e são a especificação executável do
+painel; `.vercelignore` mantém `demo/` fora de qualquer publicação.
+
 ### Fonte única de verdade
 
 `src/data/` é a origem de tudo. `supabase/03_seed.sql` e `04_demo_seed.sql` são **gerados** por
@@ -89,10 +153,18 @@ tanto pelo dashboard quanto pelo Excel; é isso que faz os números coincidirem.
 
 `src/app/questionario/Fluxo.tsx` (client) abre a sessão antes de qualquer consulta
 (`garantirSessao` — anônima para quem responde, intocada para quem já entrou por `/entrar`) e grava
-**cada resposta individualmente** no instante da escolha, com a chave de pontuação congelada. `concluirAvaliacao` (`src/lib/repo-supabase.ts`)
-relê as respostas do banco, recalcula **no servidor**, grava os quatro derivados, confere que
-existem e só então marca `CONCLUIDA` — o cliente nunca envia resultado. Avaliação em andamento
-pergunta antes de retomar; matrícula já concluída é bloqueada até o Master liberar reaplicação.
+**cada resposta individualmente** no instante da escolha, com a chave de pontuação congelada.
+As quatro operações que dependem da chave de pontuação — consultar, responder, concluir e
+recalcular — passam por `POST /api/avaliacao`, com os invólucros de `src/lib/avaliacao-cliente.ts`.
+Elas executam em `src/lib/repo-servidor.ts`, que é `server-only`. `concluirAvaliacao` relê as
+respostas do banco, recalcula **no servidor**, grava os quatro derivados, confere que existem e só
+então marca `CONCLUIDA`. Avaliação em andamento pergunta antes de retomar; matrícula já concluída é
+bloqueada até o Master liberar reaplicação.
+
+A sessão usada nessas rotas é a **do próprio participante** (`db()` de `sessao.ts`, com os cookies
+dele), nunca a chave de serviço: o RLS decide exatamente o que decidia quando o cálculo era no
+cliente. Item 53 preservado — a chave continua congelada na linha de `respostas` no instante da
+escolha; o que mudou é quem a lê.
 
 ### Páginas e sessão
 

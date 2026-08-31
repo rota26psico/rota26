@@ -1,0 +1,962 @@
+{
+ "1A": {
+  "animal": "Onça: enxerga a distância a presa que ainda não se mostrou.",
+  "jung": "Intuição introvertida: imagem interna do desdobramento antecede qualquer dado externo.",
+  "contribuicao": "Traz ao grupo o destino possível antes de haver evidência."
+ },
+ "1B": {
+  "animal": "Raposa: percorre o entorno e traz saídas que ninguém mapeou.",
+  "jung": "Intuição extrovertida: multiplica possibilidades a partir de estímulos externos recolhidos.",
+  "contribuicao": "Abastece a equipe com material de fora e cruzamentos inéditos."
+ },
+ "1C": {
+  "animal": "Cavalo: aprende no galope, testando um trecho concreto imediatamente.",
+  "jung": "Sensação extrovertida: busca o dado real produzido pela ação presente.",
+  "contribuicao": "Converte a ideia em experimento pequeno para o grupo observar."
+ },
+ "1D": {
+  "animal": "Elefante: pesa a base antes de deslocar qualquer peso adiante.",
+  "jung": "Pensamento introvertido: verifica a coerência interna da premissa antes de prosseguir.",
+  "contribuicao": "Examina se o alicerce do projeto aguenta, antes de investir."
+ },
+ "2A": {
+  "animal": "Baleia: não abandona o ferido, mesmo contra a corrente do grupo.",
+  "jung": "Sentimento introvertido: julga pelo valor próprio atribuído a quem suporta o custo.",
+  "contribuicao": "Define um limite pessoal sobre quem pode ser onerado."
+ },
+ "2B": {
+  "animal": "Elefante: mantém firme a conclusão e separa o que não pertence.",
+  "jung": "Pensamento introvertido: preserva a consistência do critério isolando variáveis alheias.",
+  "contribuicao": "Mantém o mérito técnico intacto e trata o resto à parte."
+ },
+ "2C": {
+  "animal": "Raposa: escapa da armadilha binária buscando uma rota lateral.",
+  "jung": "Intuição extrovertida: abre alternativa fora dos dois termos já postos.",
+  "contribuicao": "Sugere um caminho que ninguém pôs na mesa ainda."
+ },
+ "2D": {
+  "animal": "Carneiro: protege a coesão do rebanho antes de o movimento fechar.",
+  "jung": "Sentimento extrovertido: pauta o valor coletivo dentro do processo decisório externo.",
+  "contribuicao": "Traz o impacto sobre pessoas a tempo de ajustar a decisão."
+ },
+ "3A": {
+  "animal": "Onça: espreita em silêncio, calculando o momento seguinte.",
+  "jung": "Intuição introvertida: converte a pausa externa em leitura do que se aproxima.",
+  "contribuicao": "Usa o intervalo para antecipar o cenário seguinte da equipe."
+ },
+ "3B": {
+  "animal": "Lobo: aproveita a trégua para redesenhar a rota do bando.",
+  "jung": "Pensamento extrovertido: impõe estrutura externa ao que estava sem ordenação.",
+  "contribuicao": "Transforma o tempo livre em estrutura utilizável por todos."
+ },
+ "3C": {
+  "animal": "Raposa: cruza a fronteira do território atrás de terreno novo.",
+  "jung": "Intuição extrovertida: desloca-se para objetos novos assim que o campo satura.",
+  "contribuicao": "Abre frentes fora do próprio escopo e amplia o alcance."
+ },
+ "3D": {
+  "animal": "Urso: revisita o território e reforça o que ficou frouxo.",
+  "jung": "Sensação introvertida: compara o estado atual com o padrão já registrado.",
+  "contribuicao": "Fecha pendências de acabamento que tinham ficado para trás."
+ },
+ "4A": {
+  "animal": "Elefante: aponta a falha com lentidão deliberada, sem disputar espaço.",
+  "jung": "Pensamento introvertido: contrapõe a lógica interna sem entrar na disputa externa.",
+  "contribuicao": "Expõe o ponto exato em que o argumento perde sustentação."
+ },
+ "4B": {
+  "animal": "Urso: consulta a memória do território antes de reagir.",
+  "jung": "Sensação introvertida: confronta a afirmação com o registro concreto acumulado.",
+  "contribuicao": "Traz o histórico verificado antes de abrir a divergência."
+ },
+ "4C": {
+  "animal": "Carneiro: discorda sem romper o vínculo dentro do rebanho.",
+  "jung": "Sentimento extrovertido: modula a objeção pelo valor da relação coletiva.",
+  "contribuicao": "Formula a objeção preservando a posição de quem falou."
+ },
+ "4D": {
+  "animal": "Onça: mostra o rastro adiante e aguarda o bote alheio.",
+  "jung": "Intuição introvertida: nomeia o desdobramento futuro e se cala em seguida.",
+  "contribuicao": "Mostra a consequência distante e devolve a conclusão ao grupo."
+ },
+ "5A": {
+  "animal": "Lobo: recorre à lei do bando para situar cada papel.",
+  "jung": "Pensamento extrovertido: aplica ao caso concreto o critério pactuado já existente.",
+  "contribuicao": "Devolve ao grupo o acordo prévio como régua da disputa."
+ },
+ "5B": {
+  "animal": "Baleia: canto discreto dirigido a quem está ferido.",
+  "jung": "Sentimento introvertido: valor pessoal orienta a atenção reservada ao mais exposto.",
+  "contribuicao": "Ampara reservadamente quem está absorvendo o peso da cobrança."
+ },
+ "5C": {
+  "animal": "Elefante: refaz com paciência o encadeamento até o elo quebrado.",
+  "jung": "Pensamento introvertido: organiza internamente a causalidade até localizar a falha.",
+  "contribuicao": "Reconstrói o encadeamento dos fatos e isola o ponto de ruptura."
+ },
+ "5D": {
+  "animal": "Cavalo: responde ao impedimento presente e retoma o movimento.",
+  "jung": "Sensação extrovertida: age sobre o obstáculo concreto e adia a discussão.",
+  "contribuicao": "Suspende a discussão e recoloca a entrega em movimento."
+ },
+ "6A": {
+  "animal": "Cavalo: rompe a inércia partindo para o terreno concreto.",
+  "jung": "Sensação extrovertida: substitui a deliberação pelo contato imediato com o real.",
+  "contribuicao": "Troca o debate por uma tentativa concreta feita hoje."
+ },
+ "6B": {
+  "animal": "Carneiro: percebe o rebanho travado por algo não verbalizado.",
+  "jung": "Sentimento extrovertido: lê o campo relacional que bloqueia o movimento coletivo.",
+  "contribuicao": "Traz à tona o não dito que trava a conversa."
+ },
+ "6C": {
+  "animal": "Urso: reconhece o trecho de trilha já percorrido antes.",
+  "jung": "Sensação introvertida: recupera o registro anterior e detecta a repetição.",
+  "contribuicao": "Aponta o que já havia sido decidido e encurta a discussão."
+ },
+ "6D": {
+  "animal": "Onça: escolhe um único bote entre as opções em jogo.",
+  "jung": "Intuição introvertida: converge as alternativas numa só leitura de futuro.",
+  "contribuicao": "Reduz as opções a uma, indicando qual resiste adiante."
+ },
+ "7A": {
+  "animal": "Cavalo: mantém o galope e ajusta o passo em curso.",
+  "jung": "Sensação extrovertida: confia no ajuste feito diante do fato que surgir.",
+  "contribuicao": "Prefere avançar e corrigir a parar por precaução."
+ },
+ "7B": {
+  "animal": "Urso: mantém o ritmo próprio mesmo sob pressão externa.",
+  "jung": "Sensação introvertida: o padrão interiorizado de verificação não cede à urgência.",
+  "contribuicao": "Sustenta a etapa de checagem justamente quando há pressa."
+ },
+ "7C": {
+  "animal": "Baleia: sustenta rota própria ainda que separada do grupo.",
+  "jung": "Sentimento introvertido: valor interno de qualidade prevalece sobre a pressão externa.",
+  "contribuicao": "Mantém um padrão pessoal de entrega mesmo ficando isolado."
+ },
+ "7D": {
+  "animal": "Onça: mede o preço distante antes de aceitar o atalho.",
+  "jung": "Intuição introvertida: projeta a fatura futura implicada na decisão presente.",
+  "contribuicao": "Explicita o custo posterior do atalho antes de aceitá-lo."
+ },
+ "8A": {
+  "animal": "Lobo: cumpre a regra acordada e deixa a ressalva registrada.",
+  "jung": "Pensamento extrovertido: obedece ao pacto externo e formaliza a objeção por escrito.",
+  "contribuicao": "Executa o combinado e deixa a discordância documentada."
+ },
+ "8B": {
+  "animal": "Baleia: entrega com profundidade, sem exibir adesão que não tem.",
+  "jung": "Sentimento introvertido: separa a qualidade da entrega da adesão pessoal ao objeto.",
+  "contribuicao": "Entrega no próprio padrão sem simular concordância que não tem."
+ },
+ "8C": {
+  "animal": "Carneiro: preserva o ânimo do rebanho contendo o próprio.",
+  "jung": "Sentimento extrovertido: regula a expressão em função do efeito sobre o grupo.",
+  "contribuicao": "Contém sinais próprios para não abalar quem trabalha junto."
+ },
+ "8D": {
+  "animal": "Cavalo: descarrega o obstáculo em velocidade e segue adiante.",
+  "jung": "Sensação extrovertida: resolve o objeto presente para liberar o campo imediato.",
+  "contribuicao": "Despacha a tarefa rapidamente para liberar o caminho."
+ },
+ "9A": {
+  "animal": "Carneiro: protege o rebanho da dispersão causada pelo medo.",
+  "jung": "Sentimento extrovertido: julga pelo efeito da culpabilização sobre a confiança coletiva.",
+  "contribuicao": "Bloqueia a busca por culpados para preservar relatos futuros."
+ },
+ "9B": {
+  "animal": "Onça: lê no rastro isolado o padrão que retornará.",
+  "jung": "Intuição introvertida: lê o caso singular como sinal de padrão recorrente.",
+  "contribuicao": "Trata o erro como indício de algo que voltará a acontecer."
+ },
+ "9C": {
+  "animal": "Urso: percorre de novo a trilha até o ponto exato.",
+  "jung": "Sensação introvertida: percorre o registro concreto até localizar a entrada da falha.",
+  "contribuicao": "Rastreia passo a passo onde exatamente a falha entrou."
+ },
+ "9D": {
+  "animal": "Lobo: restabelece a rota e depois cobra a hierarquia.",
+  "jung": "Pensamento extrovertido: ordena externamente as providências por prioridade objetiva.",
+  "contribuicao": "Estabelece a sequência: corrigir agora, apurar responsabilidade depois."
+ },
+ "10A": {
+  "animal": "Cavalo: movimento guiado pelo estímulo que surge no presente.",
+  "jung": "Sensação extrovertida: a demanda concreta imediata define a ordem do dia.",
+  "contribuicao": "Responde ao que aparece, sem agenda fixada de antemão."
+ },
+ "10B": {
+  "animal": "Urso: ritmo próprio preservado dentro de território estável.",
+  "jung": "Sensação introvertida: cadência interiorizada sustenta o rendimento ao longo do tempo.",
+  "contribuicao": "Rende de forma constante quando a rotina é preservada."
+ },
+ "10C": {
+  "animal": "Raposa: guarda saídas abertas para o que aparecer no entorno.",
+  "jung": "Intuição extrovertida: reserva disponibilidade para a possibilidade ainda não prevista.",
+  "contribuicao": "Guarda folga na agenda para o que ainda não apareceu."
+ },
+ "10D": {
+  "animal": "Lobo: traça a rota da semana e conduz a marcha.",
+  "jung": "Pensamento extrovertido: organiza o tempo externo por plano explícito e revisável.",
+  "contribuicao": "Trabalha a partir de um plano semanal declarado e ajustável."
+ },
+ "11A": {
+  "animal": "Lobo: aponta o desvio da regra e a correção exigida.",
+  "jung": "Pensamento extrovertido: confronta o desempenho com o critério acordado, explicitamente.",
+  "contribuicao": "Nomeia o desvio do acordo e o ajuste necessário."
+ },
+ "11B": {
+  "animal": "Baleia: canto curto e discreto, sem nenhuma nota falsa.",
+  "jung": "Sentimento introvertido: só enuncia o que passou pelo crivo do valor próprio.",
+  "contribuicao": "Fala pouco, e apenas aquilo que sustenta por convicção."
+ },
+ "11C": {
+  "animal": "Carneiro: ajusta o gesto para manter o outro junto ao rebanho.",
+  "jung": "Sentimento extrovertido: calibra a forma pelo efeito de manutenção do vínculo.",
+  "contribuicao": "Ajusta o modo de dizer para preservar a disposição do outro."
+ },
+ "11D": {
+  "animal": "Urso: detalha cada marca do território, sem borrar o mapa.",
+  "jung": "Sensação introvertida: apoia o retorno em detalhes concretos discriminados um a um.",
+  "contribuicao": "Detalha item por item o que falhou, sem generalizações."
+ },
+ "12A": {
+  "animal": "Urso: confere cada marca antes de dar a trilha por pronta.",
+  "jung": "Sensação introvertida: verifica a consistência concreta dos elementos já registrados.",
+  "contribuicao": "Checa se prazos, encargos e dependências realmente se encaixam."
+ },
+ "12B": {
+  "animal": "Onça: olha o horizonte antes de avaliar o salto.",
+  "jung": "Intuição introvertida: avalia o vetor de destino acima da execução.",
+  "contribuicao": "Pergunta se o rumo é o certo antes do detalhamento."
+ },
+ "12C": {
+  "animal": "Elefante: sustenta o peso do exame premissa por premissa.",
+  "jung": "Pensamento introvertido: submete cada premissa isolada ao teste de coerência.",
+  "contribuicao": "Examina uma a uma as suposições em que o plano se apoia."
+ },
+ "12D": {
+  "animal": "Baleia: mede o plano pelo que ele faz com os atingidos.",
+  "jung": "Sentimento introvertido: avalia o plano pelo valor atribuído aos afetados.",
+  "contribuicao": "Avalia o plano pelo tratamento dado a quem ele atinge."
+ },
+ "13A": {
+  "animal": "Onça: já espreitava o declínio antes do episódio visível.",
+  "jung": "Intuição introvertida: lê o processo subjacente, não o fato pontual.",
+  "contribuicao": "Aponta a origem do problema em vez do sintoma recente."
+ },
+ "13B": {
+  "animal": "Baleia: não abandona o ferido, e sustenta isso em silêncio.",
+  "jung": "Sentimento introvertido: valor pessoal de lealdade sustentado sem exposição pública.",
+  "contribuicao": "Ampara a pessoa de forma discreta, sem tornar caso coletivo."
+ },
+ "13C": {
+  "animal": "Cavalo: entra no movimento parado e retoma a tarefa agora.",
+  "jung": "Sensação extrovertida: age sobre o concreto travado antes de conversar.",
+  "contribuicao": "Cobre na prática a entrega parada e trata do resto depois."
+ },
+ "13D": {
+  "animal": "Carneiro: aciona o rebanho para absorver o peso do companheiro.",
+  "jung": "Sentimento extrovertido: ajusta o vínculo coletivo pactuando cuidado com todos.",
+  "contribuicao": "Mobiliza o grupo para redividir a carga durante a recuperação."
+ },
+ "14A": {
+  "animal": "Onça: enxerga de longe onde aquela proposta vai desembocar.",
+  "jung": "Intuição introvertida: projeta o desdobramento único da trajetória apresentada.",
+  "contribuicao": "Antecipa o destino provável da proposta antes de ela avançar."
+ },
+ "14B": {
+  "animal": "Cavalo: responde no galope e corrige rumo durante a conversa.",
+  "jung": "Sensação extrovertida: reage ao estímulo presente e recalibra em tempo real.",
+  "contribuicao": "Oferece leitura imediata e vai refinando conforme o debate anda."
+ },
+ "14C": {
+  "animal": "Elefante: lentidão deliberada até a estrutura interna se mostrar consistente.",
+  "jung": "Pensamento introvertido: testa coerência interna antes de emitir posição.",
+  "contribuicao": "Adia o parecer até verificar se a proposta se sustenta."
+ },
+ "14D": {
+  "animal": "Raposa: fareja a rota que a proposta ainda pode abrir.",
+  "jung": "Intuição extrovertida: lê a proposta pelas possibilidades que ela abre.",
+  "contribuicao": "Avalia o potencial futuro em vez do estado atual."
+ },
+ "15A": {
+  "animal": "Cavalo: avança pessoalmente sobre o ponto mais travado da frente.",
+  "jung": "Sensação extrovertida: descarrega impulso no obstáculo físico mais imediato.",
+  "contribuicao": "Desatola pessoalmente a parte parada enquanto os demais seguem."
+ },
+ "15B": {
+  "animal": "Carneiro: reagrupa o rebanho antes que a dispersão se firme.",
+  "jung": "Sentimento extrovertido: restaura o acordo coletivo como valor prioritário.",
+  "contribuicao": "Junta todos brevemente para realinhar antes que o desencontro cresça."
+ },
+ "15C": {
+  "animal": "Onça: espreita o custo futuro escondido dentro da pressa atual.",
+  "jung": "Intuição introvertida: percebe consequência distante que o presente ainda oculta.",
+  "contribuicao": "Nomeia o que a pressa vai cobrar e o inegociável."
+ },
+ "15D": {
+  "animal": "Lobo: restabelece a hierarquia de decisão do bando sob pressão.",
+  "jung": "Pensamento extrovertido: reimpõe ordenamento explícito de responsabilidades no campo externo.",
+  "contribuicao": "Recoloca quem decide o quê e em que sequência."
+ },
+ "16A": {
+  "animal": "Cavalo: passa por cima da regra e resolve no ato.",
+  "jung": "Sensação extrovertida: prioriza a eficácia concreta sobre a norma prévia.",
+  "contribuicao": "Resolve pelo caminho prático e presta contas só se cobrado."
+ },
+ "16B": {
+  "animal": "Urso: preserva a norma herdada mesmo sem ver sua razão.",
+  "jung": "Sensação introvertida: confia na memória do que foi estabelecido antes.",
+  "contribuicao": "Mantém o procedimento vigente por presunção de motivo anterior."
+ },
+ "16C": {
+  "animal": "Baleia: sustenta rota própria onde a regra fere seu valor.",
+  "jung": "Sentimento introvertido: obediência condicionada à coerência com critério interno.",
+  "contribuicao": "Adere à norma só onde ela não fere convicção."
+ },
+ "16D": {
+  "animal": "Raposa: encontra a saída que a própria regra deixou aberta.",
+  "jung": "Intuição extrovertida: enxerga alternativas no entorno da restrição dada.",
+  "contribuicao": "Opera nas brechas disponíveis sem confronto direto com a norma."
+ },
+ "17A": {
+  "animal": "Raposa: explora o entorno atrás de quem já trilhou aquilo.",
+  "jung": "Intuição extrovertida: busca ligações externas que encurtam o caminho.",
+  "contribuicao": "Traz experiência de fora da equipe para acelerar o início."
+ },
+ "17B": {
+  "animal": "Urso: recorre à memória do território e reaproveita a divisão.",
+  "jung": "Sensação introvertida: compara o presente com registro interno do precedente.",
+  "contribuicao": "Recupera o arranjo anterior que funcionou e o reaplica."
+ },
+ "17C": {
+  "animal": "Lobo: planeja a rota e distribui posições antes da caçada.",
+  "jung": "Pensamento extrovertido: estabelece ordem e responsabilidade objetivas antes da execução.",
+  "contribuicao": "Fixa responsáveis e sequência antes de qualquer um começar."
+ },
+ "17D": {
+  "animal": "Carneiro: consulta o rebanho para que ninguém carregue além do suportável.",
+  "jung": "Sentimento extrovertido: pondera adesão e conforto declarados de cada integrante.",
+  "contribuicao": "Divide a partir da preferência de cada um, evitando sobrecarga."
+ },
+ "18A": {
+  "animal": "Baleia: registra internamente a ofensa de forma e não a expõe.",
+  "jung": "Sentimento introvertido: julga o modo pelo próprio critério, guardando a reação.",
+  "contribuicao": "Percebe a inadequação do tom sem levar isso ao grupo."
+ },
+ "18B": {
+  "animal": "Onça: silêncio de espreita; confia que o tempo responde sozinho.",
+  "jung": "Intuição introvertida: aposta no desdobramento futuro em vez da réplica.",
+  "contribuicao": "Não replica agora e deixa o desfecho esclarecer a questão."
+ },
+ "18C": {
+  "animal": "Elefante: pesa o argumento alheio e cede se ele sustentar.",
+  "jung": "Pensamento introvertido: submete a própria posição ao exame de consistência.",
+  "contribuicao": "Revisa a análise quando o contra-argumento se mostra melhor fundamentado."
+ },
+ "18D": {
+  "animal": "Cavalo: leva a disputa para o terreno do teste imediato.",
+  "jung": "Sensação extrovertida: recorre à verificação concreta em lugar do debate.",
+  "contribuicao": "Transfere a divergência para uma checagem prática e observável."
+ },
+ "19A": {
+  "animal": "Elefante: reconstrói a lógica de quem começou antes de continuar.",
+  "jung": "Pensamento introvertido: busca o princípio interno que organiza o trabalho.",
+  "contribuicao": "Preserva a coerência do raciocínio já embutido no material."
+ },
+ "19B": {
+  "animal": "Urso: refaz o percurso desde o início, verificando cada etapa.",
+  "jung": "Sensação introvertida: só aceita o dado que passou por sua conferência.",
+  "contribuicao": "Revalida tudo pessoalmente antes de assumir o que recebeu."
+ },
+ "19C": {
+  "animal": "Baleia: sustenta ritmo e padrão próprios até aceitar a entrega.",
+  "jung": "Sentimento introvertido: critério pessoal de aceitação define quando está pronto.",
+  "contribuicao": "Entrega no próprio padrão, sem se ajustar ao formato herdado."
+ },
+ "19D": {
+  "animal": "Raposa: varre o conjunto e persegue a abertura mais promissora.",
+  "jung": "Intuição extrovertida: capta rapidamente a possibilidade de maior rendimento.",
+  "contribuicao": "Prioriza a oportunidade percebida em vez do encadeamento recebido."
+ },
+ "20A": {
+  "animal": "Lobo: exige que a lei do bando seja dita em voz alta.",
+  "jung": "Pensamento extrovertido: cobra explicitação do critério objetivo da decisão.",
+  "contribuicao": "Contesta abertamente e pede o critério que sustentou a escolha."
+ },
+ "20B": {
+  "animal": "Onça: não dá o bote; aguarda a decisão se revelar.",
+  "jung": "Intuição introvertida: confia na leitura antecipada do custo que virá.",
+  "contribuicao": "Espera que o próprio resultado evidencie o problema previsto."
+ },
+ "20C": {
+  "animal": "Carneiro: busca formulação que evite rachadura no rebanho.",
+  "jung": "Sentimento extrovertido: harmoniza valor e coesão grupal na mesma solução.",
+  "contribuicao": "Procura redação que preserve o essencial sem dividir o grupo."
+ },
+ "20D": {
+  "animal": "Baleia: silencia na discussão, mas não sustenta o que contraria.",
+  "jung": "Sentimento introvertido: recusa prática ancorada em valor não negociado.",
+  "contribuicao": "Abstém-se do debate e retira adesão silenciosa na execução."
+ },
+ "21A": {
+  "animal": "Baleia: aproxima-se em profundidade e só se abre com sintonia.",
+  "jung": "Sentimento introvertido: mede afinidade interna antes de expor-se ao outro.",
+  "contribuicao": "Escuta primeiro e revela pouco até haver conexão real."
+ },
+ "21B": {
+  "animal": "Lobo: usa o encontro para alinhar territórios e fixar rota.",
+  "jung": "Pensamento extrovertido: converte o contato em encaminhamento objetivo entre áreas.",
+  "contribuicao": "Sai do encontro com pendência tratada e próximo passo definido."
+ },
+ "21C": {
+  "animal": "Elefante: acumula conhecimento sobre o terreno que ainda desconhece.",
+  "jung": "Pensamento introvertido: amplia o próprio modelo compreendendo o funcionamento alheio.",
+  "contribuicao": "Usa o tempo para entender a mecânica da outra área."
+ },
+ "21D": {
+  "animal": "Raposa: abre conversa ampla para descobrir cruzamentos entre os territórios.",
+  "jung": "Intuição extrovertida: explora o campo aberto atrás de conexões possíveis.",
+  "contribuicao": "Sonda amplamente onde os dois trabalhos podem se encontrar."
+ },
+ "22A": {
+  "animal": "Onça: espera imóvel; o tempo entrega o que a tentativa custaria.",
+  "jung": "Intuição introvertida: confia na percepção interna acima da evidência experimental.",
+  "contribuicao": "Prefere aguardar a clareza a gastar recurso testando agora."
+ },
+ "22B": {
+  "animal": "Cavalo: aprende no galope; tenta pequeno e lê o resultado.",
+  "jung": "Sensação extrovertida: obtém a resposta pela ação concreta imediata.",
+  "contribuicao": "Faz um teste reduzido e decide pelo que aparecer."
+ },
+ "22C": {
+  "animal": "Raposa: não testa uma rota só; leva variantes junto.",
+  "jung": "Intuição extrovertida: multiplica alternativas antes de estreitar o caminho.",
+  "contribuicao": "Amplia o teste com duas ou três versões simultâneas."
+ },
+ "22D": {
+  "animal": "Elefante: paciência antes do passo; define o que o teste responde.",
+  "jung": "Pensamento introvertido: delimita a pergunta interna que valida o experimento.",
+  "contribuicao": "Especifica o que precisa ser respondido antes de tentar."
+ },
+ "23A": {
+  "animal": "Carneiro: distribui de modo que cada um se sinta parte.",
+  "jung": "Sentimento extrovertido: pesa aptidão e sentido de utilidade percebida.",
+  "contribuicao": "Aloca considerando o que cada um faz bem e valoriza."
+ },
+ "23B": {
+  "animal": "Baleia: aposta no envolvimento pessoal acima da aptidão declarada.",
+  "jung": "Sentimento introvertido: valor investido pela pessoa orienta a alocação.",
+  "contribuicao": "Distribui pelo que cada um genuinamente se importa em fazer."
+ },
+ "23C": {
+  "animal": "Elefante: aloca pelo domínio real do assunto de cada parte.",
+  "jung": "Pensamento introvertido: competência verificada como critério interno da divisão.",
+  "contribuicao": "Entrega cada parte a quem efetivamente domina aquele conteúdo."
+ },
+ "23D": {
+  "animal": "Cavalo: divide pelo que está disponível agora e ajusta andando.",
+  "jung": "Sensação extrovertida: parte da disponibilidade concreta do momento presente.",
+  "contribuicao": "Distribui pela disponibilidade imediata e corrige durante o percurso."
+ },
+ "24A": {
+  "animal": "Urso: memória do território; recorre ao desfecho que já funcionou.",
+  "jung": "Sensação introvertida: reconhece o padrão pelo registro do caso anterior.",
+  "contribuicao": "Trata o conflito como repetição de algo já resolvido antes."
+ },
+ "24B": {
+  "animal": "Lobo: falta de lei clara no bando gera o atrito.",
+  "jung": "Pensamento extrovertido: atribui o conflito à ausência de norma objetiva.",
+  "contribuicao": "Lê o atrito como lacuna de definição de responsabilidades."
+ },
+ "24C": {
+  "animal": "Carneiro: teme a rachadura do rebanho e cuida do vínculo.",
+  "jung": "Sentimento extrovertido: avalia o conflito pelo dano à relação coletiva.",
+  "contribuicao": "Trata primeiro o vínculo, antes que o atrito rompa."
+ },
+ "24D": {
+  "animal": "Onça: espreita a causa oculta que faz o padrão retornar.",
+  "jung": "Intuição introvertida: identifica a raiz não visível sob formas variadas.",
+  "contribuicao": "Aponta a causa intocada que faz o conflito reaparecer."
+ },
+ "25A": {
+  "animal": "Raposa: contorna o impasse realocando a pessoa para outra frente.",
+  "jung": "Intuição extrovertida: enxerga possibilidade alternativa no arranjo, não no desempenho.",
+  "contribuicao": "Abre outra saída redistribuindo a atribuição em vez de cobrar."
+ },
+ "25B": {
+  "animal": "Urso: percorre o material item a item e devolve pendências.",
+  "jung": "Sensação introvertida: confronta o entregue com o detalhe já registrado.",
+  "contribuicao": "Confere o trabalho até o fim e devolve o que falta."
+ },
+ "25C": {
+  "animal": "Baleia: aproxima-se de quem está afundando antes de cobrar rota.",
+  "jung": "Sentimento introvertido: julga primeiro pela pessoa, depois pelo padrão de entrega.",
+  "contribuicao": "Procura entender a situação de quem falhou antes do resultado."
+ },
+ "25D": {
+  "animal": "Lobo: retoma a lei do bando diretamente com quem desviou.",
+  "jung": "Pensamento extrovertido: aplica ao caso o padrão externo já combinado.",
+  "contribuicao": "Nomeia a exigência e a distância que ainda falta percorrer."
+ },
+ "26A": {
+  "animal": "Cavalo: entra no galope da conversa e corrige em movimento.",
+  "jung": "Sensação extrovertida: responde ao presente imediato e recalibra pelo retorno.",
+  "contribuicao": "Põe a conversa em movimento e ajusta durante o percurso."
+ },
+ "26B": {
+  "animal": "Carneiro: lê o andamento do rebanho antes de se posicionar.",
+  "jung": "Sentimento extrovertido: toma o clima coletivo como critério de entrada.",
+  "contribuicao": "Sintoniza com o tom do grupo antes de acrescentar algo."
+ },
+ "26C": {
+  "animal": "Elefante: só se move depois de pesar internamente o assunto.",
+  "jung": "Pensamento introvertido: exige consistência interna antes de expor a formulação.",
+  "contribuicao": "Fala pouco, e o que traz já foi examinado."
+ },
+ "26D": {
+  "animal": "Onça: espreita em silêncio e dá o bote uma vez.",
+  "jung": "Intuição introvertida: aguarda a imagem inteira amadurecer antes de enunciá-la.",
+  "contribuicao": "Guarda a intervenção para o momento em que ela decide."
+ },
+ "27A": {
+  "animal": "Elefante: aceita a lentidão de esgotar o assunto por inteiro.",
+  "jung": "Pensamento introvertido: busca compreensão completa como finalidade da própria tarefa.",
+  "contribuicao": "Aprofunda um tema até o fim e vira referência interna."
+ },
+ "27B": {
+  "animal": "Baleia: sustenta rota longa apenas onde há adesão interna.",
+  "jung": "Sentimento introvertido: condiciona o compromisso à importância pessoal do tema.",
+  "contribuicao": "Entrega profundidade onde existe vínculo próprio com o assunto."
+ },
+ "27C": {
+  "animal": "Raposa: rastreia no entorno quem já domina e o aproxima.",
+  "jung": "Intuição extrovertida: identifica no ambiente externo o recurso humano disponível.",
+  "contribuicao": "Liga a equipe a quem, de fora, já domina."
+ },
+ "27D": {
+  "animal": "Urso: permanece no território que já percorre há muito tempo.",
+  "jung": "Sensação introvertida: apoia-se no repertório acumulado pela prática repetida.",
+  "contribuicao": "Assume o que já faz bem por prática longa."
+ },
+ "28A": {
+  "animal": "Raposa: defende sem fechar as demais saídas do assunto.",
+  "jung": "Intuição extrovertida: mantém abertas as leituras alternativas durante a defesa.",
+  "contribuicao": "Sustenta a posição e ainda expõe as outras possibilidades."
+ },
+ "28B": {
+  "animal": "Carneiro: mantém o rebanho junto diante de olhos externos.",
+  "jung": "Sentimento extrovertido: julga pela coesão visível do grupo como valor.",
+  "contribuicao": "Prioriza mostrar o time unido diante de quem observa."
+ },
+ "28C": {
+  "animal": "Lobo: fala pela lei do bando, não pela preferência própria.",
+  "jung": "Pensamento extrovertido: apoia-se no critério objetivo, não na opinião pessoal.",
+  "contribuicao": "Expõe a razão combinada que sustenta a posição pública."
+ },
+ "28D": {
+  "animal": "Baleia: não canta o que não corresponde à rota própria.",
+  "jung": "Sentimento introvertido: condiciona a fala à coerência com os valores internos.",
+  "contribuicao": "Só empresta a voz ao que assina por dentro."
+ },
+ "29A": {
+  "animal": "Carneiro: recompõe a coesão do rebanho antes de retomar a marcha.",
+  "jung": "Sentimento extrovertido: trata o clima coletivo como condição prévia da tarefa.",
+  "contribuicao": "Restaura a convivência antes de voltar ao trabalho em si."
+ },
+ "29B": {
+  "animal": "Onça: enxerga a distância aonde a rota atual termina.",
+  "jung": "Intuição introvertida: antecipa internamente o desdobramento da situação presente.",
+  "contribuicao": "Mostra o destino provável para a escolha ser consciente."
+ },
+ "29C": {
+  "animal": "Cavalo: puxa imediatamente a carga mais pesada, no concreto.",
+  "jung": "Sensação extrovertida: age agora sobre o objeto físico da sobrecarga.",
+  "contribuicao": "Assume na prática a parte mais pesada do trabalho."
+ },
+ "29D": {
+  "animal": "Elefante: pesa sem pressa o que cabe e enuncia friamente.",
+  "jung": "Pensamento introvertido: usa análise própria para separar viável de inviável.",
+  "contribuicao": "Substitui o achismo por uma conta clara do que cabe."
+ },
+ "30A": {
+  "animal": "Raposa: usa o relato para apontar rotas ainda não previstas.",
+  "jung": "Intuição extrovertida: projeta desdobramentos possíveis a partir do estado atual.",
+  "contribuicao": "Transforma o relato em abertura de novas possibilidades."
+ },
+ "30B": {
+  "animal": "Urso: guarda e apresenta o registro exato do percurso feito.",
+  "jung": "Sensação introvertida: reproduz o fato acumulado sem alterar as proporções.",
+  "contribuicao": "Dá o estado real do trabalho, sem arredondamento."
+ },
+ "30C": {
+  "animal": "Carneiro: torna visível cada membro do rebanho no relato.",
+  "jung": "Sentimento extrovertido: atribui publicamente valor à contribuição de cada pessoa.",
+  "contribuicao": "Garante que cada participação apareça com nome próprio."
+ },
+ "30D": {
+  "animal": "Baleia: canto discreto e íntegro, mesmo quando a notícia pesa.",
+  "jung": "Sentimento introvertido: a coerência interna prevalece sobre o efeito da notícia.",
+  "contribuicao": "Prefere a notícia dura à versão suavizada do quadro."
+ },
+ "31A": {
+  "animal": "Carneiro: percebe quem ficou para trás no rebanho e chama.",
+  "jung": "Sentimento extrovertido: distribui a participação segundo o valor da inclusão.",
+  "contribuicao": "Abre espaço para as vozes que ficaram de fora."
+ },
+ "31B": {
+  "animal": "Lobo: conduz o bando até o fecho da caçada.",
+  "jung": "Pensamento extrovertido: impõe estrutura de fechamento à discussão em curso.",
+  "contribuicao": "Leva a conversa longa até uma conclusão efetiva."
+ },
+ "31C": {
+  "animal": "Raposa: percorre o assunto em voz alta, testando caminhos.",
+  "jung": "Intuição extrovertida: elabora a ideia no próprio movimento da conversa.",
+  "contribuicao": "Alimenta a discussão pensando em voz alta com o grupo."
+ },
+ "31D": {
+  "animal": "Onça: silêncio longo e um bote que nomeia o oculto.",
+  "jung": "Intuição introvertida: percebe o padrão subjacente e o enuncia raramente.",
+  "contribuicao": "Nomeia o que está por baixo da discussão aparente."
+ },
+ "32A": {
+  "animal": "Baleia: protege o inegociável mesmo quando a corrente acelera.",
+  "jung": "Sentimento introvertido: hierarquiza por valor o que não pode ser sacrificado.",
+  "contribuicao": "Protege o que não pode ser perdido na correria."
+ },
+ "32B": {
+  "animal": "Lobo: define a rota e organiza o bando para executá-la.",
+  "jung": "Pensamento extrovertido: ordena meios e execução no ambiente externo imediatamente.",
+  "contribuicao": "Fecha a escolha e organiza quem faz o quê."
+ },
+ "32C": {
+  "animal": "Raposa: multiplica saídas do cerco, sem apego a nenhuma.",
+  "jung": "Intuição extrovertida: produz alternativas em volume a partir do impasse.",
+  "contribuicao": "Coloca muitas opções rápidas na mesa para o grupo escolher."
+ },
+ "32D": {
+  "animal": "Urso: retorna ao território estável e retoma o ritmo dali.",
+  "jung": "Sensação introvertida: recorre ao estado anterior registrado como base segura.",
+  "contribuicao": "Recupera o último ponto estável e reinicia a partir dele."
+ },
+ "33A": {
+  "animal": "Elefante: volta lentamente à própria ideia procurando o ponto frágil.",
+  "jung": "Pensamento introvertido: submete a formulação própria a exame de consistência.",
+  "contribuicao": "Revisa a própria proposta procurando a falha interna dela."
+ },
+ "33B": {
+  "animal": "Baleia: mantém o canto longo mesmo sem resposta do grupo.",
+  "jung": "Sentimento introvertido: sustenta a convicção interna independentemente da adesão externa.",
+  "contribuicao": "Mantém a ideia viva sozinho, sem exigir concordância agora."
+ },
+ "33C": {
+  "animal": "Lobo: converte a ideia em plano de rota com marcos.",
+  "jung": "Pensamento extrovertido: traduz a ideia em critérios mensuráveis e externos.",
+  "contribuicao": "Dá número e prazo à ideia para torná-la discutível."
+ },
+ "33D": {
+  "animal": "Raposa: circula por outros territórios até achar interlocutor receptivo.",
+  "jung": "Intuição extrovertida: busca no ambiente amplo o contexto que acolhe.",
+  "contribuicao": "Leva a ideia para fora até encontrar quem embarque."
+ },
+ "34A": {
+  "animal": "Onça: observa a diferença sutil antes de repetir o bote.",
+  "jung": "Intuição introvertida: lê o que a semelhança aparente está encobrindo.",
+  "contribuicao": "Alerta que a diferença entre os casos pode ser decisiva."
+ },
+ "34B": {
+  "animal": "Urso: recorre à memória do que o território já ensinou.",
+  "jung": "Sensação introvertida: decide pelo repertório concreto de experiências já vividas.",
+  "contribuicao": "Traz o precedente que funcionou como base da decisão."
+ },
+ "34C": {
+  "animal": "Raposa: usa o caminho já conhecido para experimentar um desvio.",
+  "jung": "Intuição extrovertida: converte o já sabido em oportunidade de variação.",
+  "contribuicao": "Usa o caso conhecido como chance de testar outro jeito."
+ },
+ "34D": {
+  "animal": "Elefante: reexamina se o raciocínio antigo ainda se sustenta hoje.",
+  "jung": "Pensamento introvertido: testa a validade interna do princípio aplicado antes.",
+  "contribuicao": "Checa se a lógica anterior continua valendo neste caso."
+ },
+ "35A": {
+  "animal": "Carneiro: preserva o ânimo do rebanho durante o escrutínio da proposta.",
+  "jung": "Sentimento extrovertido: pondera o efeito da crítica sobre o coletivo.",
+  "contribuicao": "Cuida para a análise não desmontar o ânimo do grupo."
+ },
+ "35B": {
+  "animal": "Lobo: pergunta pelos papéis, pelos recursos e pelo prazo da rota.",
+  "jung": "Pensamento extrovertido: exige responsáveis, meios e prazos observáveis e verificáveis.",
+  "contribuicao": "Cobra quem faz, com o quê e até quando."
+ },
+ "35C": {
+  "animal": "Elefante: mantém o peso da análise contra a corrente do grupo.",
+  "jung": "Pensamento introvertido: aponta a inconsistência lógica independentemente do ambiente entusiasmado.",
+  "contribuicao": "Mostra onde a proposta pode não se sustentar depois."
+ },
+ "35D": {
+  "animal": "Raposa: amplia a proposta apontando saídas que ela destrava.",
+  "jung": "Intuição extrovertida: expande a ideia em desdobramentos adjacentes ainda não vistos.",
+  "contribuicao": "Amplia a proposta mostrando o que mais ela abre."
+ },
+ "36A": {
+  "animal": "Elefante: distingue com calma o essencial do acessório no desentendimento.",
+  "jung": "Pensamento introvertido: classifica internamente o conteúdo real do que foi disputado.",
+  "contribuicao": "Separa o desacordo de fundo do barulho do momento."
+ },
+ "36B": {
+  "animal": "Lobo: retoma a questão e encerra a pendência do bando.",
+  "jung": "Pensamento extrovertido: resolve pelo mérito objetivo e formaliza a decisão.",
+  "contribuicao": "Reabre o tema pelo conteúdo e encerra com decisão."
+ },
+ "36C": {
+  "animal": "Carneiro: percorre o rebanho recosturando um a um os vínculos.",
+  "jung": "Sentimento extrovertido: reconstrói ativamente as relações rompidas entre as partes.",
+  "contribuicao": "Conversa com cada lado até refazer as pontes rompidas."
+ },
+ "36D": {
+  "animal": "Baleia: não abandona o ferido, e o faz sem alarde.",
+  "jung": "Sentimento introvertido: cuida por valor próprio, sem endereçar o gesto ao público.",
+  "contribuicao": "Ampara reservadamente quem ficou pior depois do episódio."
+ },
+ "37A": {
+  "animal": "Cavalo: arranca contra a urgência visível e deixa o padrão para depois.",
+  "jung": "Sensação extrovertida: age sobre o fato imediato, sem abstrair o ciclo.",
+  "contribuicao": "Estanca o problema em curso e mantém a operação de pé."
+ },
+ "37B": {
+  "animal": "Onça: espreitou o ciclo repetido e dá o bote no padrão.",
+  "jung": "Intuição introvertida: lê o padrão de fundo por trás dos eventos.",
+  "contribuicao": "Nomeia a causa recorrente mesmo contra o clima do momento."
+ },
+ "37C": {
+  "animal": "Lobo: impõe ordem de caça para o bando parar de correr disperso.",
+  "jung": "Pensamento extrovertido: organiza o externo por hierarquia explícita de prioridades.",
+  "contribuicao": "Sequencia as frentes para o grupo deixar de reagir simultaneamente."
+ },
+ "37D": {
+  "animal": "Urso: recorre à memória do território anterior ao ciclo.",
+  "jung": "Sensação introvertida: compara o presente com o registro interno do que funcionava.",
+  "contribuicao": "Retoma a prática já comprovada antes do desarranjo atual."
+ },
+ "38A": {
+  "animal": "Cavalo: aprende a ferramenta no galope, usando desde o primeiro minuto.",
+  "jung": "Sensação extrovertida: o conhecimento vem do contato direto com o objeto.",
+  "contribuicao": "Converte a novidade em uso prático antes de qualquer teoria."
+ },
+ "38B": {
+  "animal": "Urso: preserva o arranjo já assentado e mantém ritmo próprio.",
+  "jung": "Sensação introvertida: confia no funcionamento já registrado pela experiência acumulada.",
+  "contribuicao": "Segura a troca até existir razão concreta para mudar."
+ },
+ "38C": {
+  "animal": "Raposa: fareja saídas que a ferramenta não anunciou.",
+  "jung": "Intuição extrovertida: multiplica possibilidades a partir do objeto novo.",
+  "contribuicao": "Amplia o uso possível para além da finalidade declarada."
+ },
+ "38D": {
+  "animal": "Elefante: examina o mecanismo com paciência antes de carregar peso nele.",
+  "jung": "Pensamento introvertido: exige coerência interna compreendida antes de conceder confiança.",
+  "contribuicao": "Verifica o funcionamento por dentro antes de apostar trabalho nele."
+ },
+ "39A": {
+  "animal": "Raposa: abre rota alternativa que a proposta original não previa.",
+  "jung": "Intuição extrovertida: gera uma opção terceira fora do par apresentado.",
+  "contribuicao": "Traz possibilidade adicional quando as opções dadas parecem fechadas."
+ },
+ "39B": {
+  "animal": "Lobo: aplica a lei do bando já firmada e deixa rastro.",
+  "jung": "Pensamento extrovertido: aplica critério externo estabelecido e formaliza o resultado.",
+  "contribuicao": "Decide pela regra combinada e deixa registro consultável depois."
+ },
+ "39C": {
+  "animal": "Elefante: lentidão deliberada até a lacuna mais pesada ser fechada.",
+  "jung": "Pensamento introvertido: suspende o juízo enquanto a estrutura lógica tem falha.",
+  "contribuicao": "Retém a decisão até a informação decisiva estar disponível."
+ },
+ "39D": {
+  "animal": "Cavalo: testa em escala pequena e aprende com o próprio movimento.",
+  "jung": "Sensação extrovertida: busca no real concreto o dado que falta.",
+  "contribuicao": "Reduz o tamanho da aposta para obter evidência prática rápido."
+ },
+ "40A": {
+  "animal": "Urso: conserva a estrutura conhecida e a recupera por ajuste.",
+  "jung": "Sensação introvertida: prefere restaurar aquilo que a experiência já validou.",
+  "contribuicao": "Recupera a solução existente com correções em vez de substituição."
+ },
+ "40B": {
+  "animal": "Raposa: explora o entorno e volta com rota de outro território.",
+  "jung": "Intuição extrovertida: busca possibilidades no mundo externo, fora do escopo atual.",
+  "contribuicao": "Traz referências de fora para destravar o que estagnou."
+ },
+ "40C": {
+  "animal": "Cavalo: põe duas ou três saídas em movimento imediato.",
+  "jung": "Sensação extrovertida: deixa o resultado concreto do teste decidir a escolha.",
+  "contribuicao": "Compara alternativas por desempenho real, não por argumento prévio."
+ },
+ "40D": {
+  "animal": "Elefante: memória longa do porquê aquilo funcionava antes.",
+  "jung": "Pensamento introvertido: reconstrói o princípio interno que sustentava a solução.",
+  "contribuicao": "Isola o que exatamente deixou de valer antes de trocar."
+ },
+ "41A": {
+  "animal": "Cavalo: parte no primeiro passo concreto e puxa o resto.",
+  "jung": "Sensação extrovertida: inicia pelo objeto disponível, sem planejamento prévio da sequência.",
+  "contribuicao": "Destrava a frente parada começando por algo executável agora."
+ },
+ "41B": {
+  "animal": "Carneiro: recompõe o rebanho antes de retomar o deslocamento.",
+  "jung": "Sentimento extrovertido: julga pelo valor do vínculo coletivo compartilhado.",
+  "contribuicao": "Trata o desânimo do grupo como condição da retomada."
+ },
+ "41C": {
+  "animal": "Lobo: define etapas e postos antes de a caçada começar.",
+  "jung": "Pensamento extrovertido: estrutura o campo externo em sequência e atribuições.",
+  "contribuicao": "Organiza etapas e responsáveis antes de qualquer movimento começar."
+ },
+ "41D": {
+  "animal": "Onça: espreita o sentido da frente antes de qualquer bote.",
+  "jung": "Intuição introvertida: interroga a finalidade de fundo antes de agir.",
+  "contribuicao": "Recoloca a pergunta sobre a validade da frente parada."
+ },
+ "42A": {
+  "animal": "Urso: guarda o que já provou valor durante a troca.",
+  "jung": "Sensação introvertida: retém o registro do que funcionava no arranjo anterior.",
+  "contribuicao": "Evita que a mudança descarte partes ainda úteis hoje."
+ },
+ "42B": {
+  "animal": "Cavalo: adota o modo novo já, e o movimento serve de exemplo.",
+  "jung": "Sensação extrovertida: implementa no concreto imediato em vez de anunciar.",
+  "contribuicao": "Adianta a prática nova e puxa os demais pelo exemplo."
+ },
+ "42C": {
+  "animal": "Carneiro: mudança só anda quando o rebanho se move junto.",
+  "jung": "Sentimento extrovertido: adesão coletiva como valor que decide a adoção.",
+  "contribuicao": "Constrói a concordância do grupo como condição da mudança pegar."
+ },
+ "42D": {
+  "animal": "Onça: enxerga a distância aonde essa mudança desemboca.",
+  "jung": "Intuição introvertida: mantém a direção de longo prazo sob o processo.",
+  "contribuicao": "Sustenta o horizonte da mudança para além da adoção imediata."
+ },
+ "43A": {
+  "animal": "Lobo: recorre à lei já aplicada em caçadas semelhantes.",
+  "jung": "Pensamento extrovertido: consistência com o critério externo já em uso.",
+  "contribuicao": "Compara as opções com precedentes já aceitos pelo grupo."
+ },
+ "43B": {
+  "animal": "Baleia: sustenta rota própria e não se contradiz depois.",
+  "jung": "Sentimento introvertido: julga pela coerência com valores internos duradouros.",
+  "contribuicao": "Escolhe o que consegue sustentar publicamente sem se desdizer."
+ },
+ "43C": {
+  "animal": "Onça: mede a alternativa pela distância que ela alcança.",
+  "jung": "Intuição introvertida: avalia a opção pela projeção interna de longo prazo.",
+  "contribuicao": "Introduz o teste do tempo longo no impasse da equipe."
+ },
+ "43D": {
+  "animal": "Cavalo: escolhe a que entra em movimento mais cedo.",
+  "jung": "Sensação extrovertida: prioriza viabilidade imediata e ajuste durante a execução.",
+  "contribuicao": "Desempata pela rapidez de colocar de pé e corrigir depois."
+ },
+ "44A": {
+  "animal": "Elefante: não se pronuncia antes de compreender a lógica do novo.",
+  "jung": "Pensamento introvertido: suspende a posição até a estrutura interna ficar clara.",
+  "contribuicao": "Separa entendimento de opinião antes de tomar qualquer lado."
+ },
+ "44B": {
+  "animal": "Onça: olha o destino do processo, não sua estreia.",
+  "jung": "Intuição introvertida: interroga o desdobramento futuro implícito na proposta.",
+  "contribuicao": "Traz a consequência de longo prazo para a decisão."
+ },
+ "44C": {
+  "animal": "Raposa: o limite do atual é convite a outras saídas.",
+  "jung": "Intuição extrovertida: lê a substituição como abertura de novas possibilidades.",
+  "contribuicao": "Apoia a troca pelo campo de opções que ela abre."
+ },
+ "44D": {
+  "animal": "Urso: mantém o território conhecido enquanto o novo prova valor.",
+  "jung": "Sensação introvertida: exige comparação concreta com a experiência já acumulada.",
+  "contribuicao": "Propõe operação em paralelo para não perder o que funciona."
+ },
+ "45A": {
+  "animal": "Urso: sob aperto, recua ao ritmo e ao procedimento guardado.",
+  "jung": "Sensação introvertida: apoia-se na sequência concreta já interiorizada pela repetição.",
+  "contribuicao": "Sob pressão, ancora-se no passo a passo estabelecido."
+ },
+ "45B": {
+  "animal": "Carneiro: sob aperto, cuida para o rebanho não se dispersar.",
+  "jung": "Sentimento extrovertido: valor posto na integridade do grupo sob tensão.",
+  "contribuicao": "Sob pressão, volta-se para manter as pessoas inteiras."
+ },
+ "45C": {
+  "animal": "Baleia: canto discreto; profundidade por dentro e pouca superfície.",
+  "jung": "Sentimento introvertido: elabora o julgamento internamente antes de qualquer exteriorização.",
+  "contribuicao": "Sob pressão, silencia para fora e decide por dentro."
+ },
+ "45D": {
+  "animal": "Cavalo: a pressão vira galope; responde pelo movimento.",
+  "jung": "Sensação extrovertida: descarrega a tensão em ação sobre o concreto.",
+  "contribuicao": "Sob pressão, transforma tensão acumulada em movimento visível."
+ },
+ "46A": {
+  "animal": "Urso: não abandona o território que já está em curso.",
+  "jung": "Sensação introvertida: preserva a continuidade concreta daquilo que já começou.",
+  "contribuicao": "Recusa a novidade para proteger o compromisso já assumido."
+ },
+ "46B": {
+  "animal": "Lobo: pesa a rota nova contra a rota já traçada.",
+  "jung": "Pensamento extrovertido: compara por custo objetivo entre compromissos externos concorrentes.",
+  "contribuicao": "Calcula o custo de trocar antes de aceitar a oportunidade."
+ },
+ "46C": {
+  "animal": "Baleia: só entra se a rota for própria.",
+  "jung": "Sentimento introvertido: filtra a oportunidade pelo valor pessoal, não pelo ganho.",
+  "contribuicao": "Adere apenas ao que faz sentido próprio, não pela chance."
+ },
+ "46D": {
+  "animal": "Raposa: agarra a saída que apareceu e refaz o percurso.",
+  "jung": "Intuição extrovertida: prioriza a possibilidade emergente sobre o plano vigente.",
+  "contribuicao": "Reorganiza o plano para não perder a abertura que surgiu."
+ },
+ "47A": {
+  "animal": "Lobo: anuncia a regra e o que muda para cada posto.",
+  "jung": "Pensamento extrovertido: torna público o critério e suas consequências práticas.",
+  "contribuicao": "Comunica a razão da decisão e o efeito sobre cada um."
+ },
+ "47B": {
+  "animal": "Elefante: só avança quando a explicação sustenta o próprio peso.",
+  "jung": "Pensamento introvertido: refina a coerência interna do argumento antes de expô-lo.",
+  "contribuicao": "Prepara o raciocínio até ele resistir a qualquer questionamento."
+ },
+ "47C": {
+  "animal": "Carneiro: avisa primeiro quem sente mais o deslocamento do rebanho.",
+  "jung": "Sentimento extrovertido: preserva o vínculo ajustando a ordem do anúncio.",
+  "contribuicao": "Fala antes com os mais afetados para preservar a relação."
+ },
+ "47D": {
+  "animal": "Baleia: não abandona a própria posição, mesmo quando custa.",
+  "jung": "Sentimento introvertido: expõe julgamento pessoal ainda que contrarie a conveniência.",
+  "contribuicao": "Declara o que pensa da mudança, assumindo o custo disso."
+ },
+ "48A": {
+  "animal": "Onça: aponta a direção que a pergunta revela, sem bote pronto.",
+  "jung": "Intuição introvertida: responde pelo sentido de fundo, não pelo dado exato.",
+  "contribuicao": "Entrega a direção da questão quando a resposta ainda falta."
+ },
+ "48B": {
+  "animal": "Cavalo: responde no impulso e corrige durante a corrida.",
+  "jung": "Sensação extrovertida: usa o material disponível agora e segue adiante.",
+  "contribuicao": "Devolve resposta utilizável de imediato, admitindo correção posterior."
+ },
+ "48C": {
+  "animal": "Carneiro: adia sem deixar quem perguntou fora do rebanho.",
+  "jung": "Sentimento extrovertido: protege o vínculo enquanto suspende a resposta pedida.",
+  "contribuicao": "Adia a resposta sem deixar quem perguntou sem retorno."
+ },
+ "48D": {
+  "animal": "Elefante: peso da franqueza; delimita o que sabe e o que ignora.",
+  "jung": "Pensamento introvertido: preserva a precisão interna demarcando os limites do saber.",
+  "contribuicao": "Marca a fronteira entre o que sabe e o que falta."
+ }
+}

@@ -12,13 +12,13 @@ import {
 } from './ui';
 import { PERFIL_POR_ID, PERFIS, NOME_FUNCAO, NOME_ATITUDE } from '../data/profiles';
 import { CAPACIDADES, PAPEIS_BELBIN } from '../data/functional';
-import { QUESTOES, NOME_EIXO, VERSAO_INSTRUMENTO } from '../data/questions';
-import { MATRIZ_PONTUACAO, MAXIMO_CAPACIDADE, MAXIMO_BELBIN, VERSAO_MATRIZ } from '../data/scoringMatrix';
+import { QUESTOES, NOME_EIXO, VERSAO_INSTRUMENTO, TOTAL_QUESTOES, TOTAL_ALTERNATIVAS, TOTAL_ANCORAS } from '../data/questions';
+import { MAXIMO_CAPACIDADE, MAXIMO_BELBIN, VERSAO_MATRIZ, type LinhaMatriz } from '../data/matriz';
 import type { AnaliseEquipe, MembroAgregado } from '../lib/aggregate';
 import { LIMIAR_PORTADOR, MIN_PARTICIPANTES_INTERPRETACAO } from '../lib/aggregate';
 import type { ComposicaoAnimais, MatrizAnimais } from '../lib/animais';
 import { Animal } from './animais-svg';
-import type { ResultadoIndividual } from '../lib/scoring';
+import type { ResultadoIndividual } from '../lib/resultado';
 import {
   blocosLeituraExecutiva, leituraExecutivaIndividual, leituraIDF, leituraICF,
   AVISO_BELBIN, AVISO_GERAL
@@ -707,8 +707,11 @@ export interface QualidadeItem {
   concentracaoMax: number; discriminativo: boolean;
 }
 
-export function TelaMetodologia({ qualidade, empates, distribuicoes }: {
+export function TelaMetodologia({ qualidade, empates, distribuicoes, matriz }: {
   qualidade: QualidadeItem[];
+  /* A matriz é a chave de pontuação: chega por prop, montada no servidor para o
+     Master autenticado, e nunca faz parte do bundle estático. */
+  matriz: LinhaMatriz[];
   empates: { n: number; pct: number };
   distribuicoes: { perfis: { nome: string; n: number }[]; funcoes: { nome: string; n: number }[]; atitudes: { nome: string; n: number }[]; capacidades: { nome: string; media: number }[] };
 }) {
@@ -766,7 +769,7 @@ export function TelaMetodologia({ qualidade, empates, distribuicoes }: {
         <Card titulo={`Matriz de pontuação — ${VERSAO_MATRIZ}`}
           sub="Uma linha por alternativa. As capacidades e as proximidades Belbin derivam do conteúdo comportamental da alternativa, não do polo junguiano.">
           <Tabela colunas={['Questão', 'Alternativa', 'Texto', 'Jung', 'Eixo', 'Capacidades', 'Proximidades Belbin']}
-            linhas={MATRIZ_PONTUACAO.map(l => [
+            linhas={matriz.map(l => [
               <b key="q">{l.questaoId}</b>, l.alternativaId,
               <span key="t" style={{ fontSize: 12.5 }}>{l.texto}</span>,
               <Pill key="j" cor={CORES_FUNCAO[l.jung] ?? CORES_ATITUDE[l.jung]}>{l.jung}</Pill>,
@@ -783,8 +786,8 @@ export function TelaMetodologia({ qualidade, empates, distribuicoes }: {
             <Tabela colunas={['Propriedade', 'Valor']} linhas={[
               ['Versão do questionário', VERSAO_INSTRUMENTO],
               ['Versão da matriz de pontuação', VERSAO_MATRIZ],
-              ['Itens', `${QUESTOES.length} (24 de função + 24 de atitude)`],
-              ['Alternativas', `${QUESTOES.length * 4}`],
+              ['Itens', `${TOTAL_QUESTOES} (24 de função + 24 de atitude)`],
+              ['Alternativas', `${TOTAL_ALTERNATIVAS}`],
               ['Denominador da atitude', '27 (ímpar — empate E/I impossível)'],
               ['Denominador das funções', '27'],
               ['Auditoria estrutural dos itens', <Pill key="a" cor="var(--bronze)">0 erros · 0 alertas</Pill>],
@@ -1239,9 +1242,9 @@ export function TelaGestaoDados({
             <Tabela colunas={['Parâmetro', 'Valor']} linhas={[
               ['Versão do instrumento', <b key="a">{VERSAO_INSTRUMENTO}</b>],
               ['Versão da matriz de pontuação', <b key="b">{VERSAO_MATRIZ}</b>],
-              ['Total de itens', `${QUESTOES.length} situações`],
-              ['Total de alternativas', `${QUESTOES.reduce((s, q) => s + q.alternativas.length, 0)} (quatro por item)`],
-              ['Itens com peso 2 (âncoras)', `${QUESTOES.filter(q => q.peso === 2).length}`],
+              ['Total de itens', `${TOTAL_QUESTOES} situações`],
+              ['Total de alternativas', `${TOTAL_ALTERNATIVAS} (quatro por item)`],
+              ['Itens com peso 2 (âncoras)', `${TOTAL_ANCORAS}`],
               ['Máximo por capacidade', `${MAXIMO_CAPACIDADE}`],
               ['Máximo por papel de Belbin', `${MAXIMO_BELBIN}`]
             ]} />

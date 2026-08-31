@@ -146,7 +146,7 @@ significar base vazia) e o checklist com aprovado e reprovado.
 ## 7. Produção ponta a ponta — 45/45
 
 `scripts/test-producao.ts` contra **PostgreSQL 16 real, com RLS ligado**, banco
-criado do zero com as migrations 01, 02, 03, 05, 06 e 07.
+criado do zero com as migrations 01, 02, 03, 05, 06, 07 e 08.
 
 | Seção | O que provou |
 |---|---|
@@ -251,7 +251,7 @@ npm run verificar:tudo
 # Ponta a ponta em PostgreSQL — o banco precisa ser NOVO a cada execução,
 # porque o teste exercita cadastro, limpeza e reaplicação.
 createdb rota26_teste
-for f in 01_schema 02_policies 03_seed 05_migracao_v2 06_producao 07_papeis; do
+for f in 01_schema 02_policies 03_seed 05_migracao_v2 06_producao 07_papeis 08_reavaliacao_v2; do
   psql -d rota26_teste -f supabase/$f.sql
 done
 PGURL=postgres:///rota26_teste npx tsx scripts/test-producao.ts

@@ -17,7 +17,7 @@
  */
 import { writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { QUESTOES } from '../src/data/questions';
+import { QUESTOES_COMPLETAS as QUESTOES } from '../src/data/questions.server';
 import { avaliar, vetorDe, type Resposta } from '../src/lib/scoring';
 import { analisarEquipe, type MembroAgregado } from '../src/lib/aggregate';
 import { gerarParticipantes } from './simulate';

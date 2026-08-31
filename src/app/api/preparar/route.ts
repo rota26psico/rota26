@@ -1,11 +1,11 @@
 import { db, papel } from '@/lib/sessao';
-import {
-  supabaseAdmin, carregarMembros, carregarParaExport, verificarProntidao, registrarEvento
-} from '@/lib/repo-supabase';
+import { supabaseAdmin, carregarMembros, verificarProntidao, registrarEvento } from '@/lib/repo-supabase';
+import { carregarParaExport } from '@/lib/repo-servidor';
 import { avaliar, vetorDe, type Resposta } from '@/lib/scoring';
 import { analisarEquipe, compararComEquipe } from '@/lib/aggregate';
 import { gerarExcel } from '@/lib/excel';
-import { QUESTOES, VERSAO_INSTRUMENTO } from '@/data/questions';
+import { VERSAO_INSTRUMENTO } from '@/data/questions';
+import { QUESTOES_COMPLETAS as QUESTOES } from '@/data/questions.server';
 import { VERSAO_MATRIZ } from '@/data/scoringMatrix';
 import { PERFIL_POR_ID } from '@/data/profiles';
 import { EM_PRODUCAO, SEED_DEMO_PERMITIDO, APP_MODE } from '@/lib/env';

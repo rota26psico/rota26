@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server';
 import { db, papel } from '@/lib/sessao';
-import { carregarParaExport } from '@/lib/repo-supabase';
+import { carregarParaExport } from '@/lib/repo-servidor';
 import { gerarExcel, NOME_ARQUIVO, type TipoExport } from '@/lib/excel';
 
 export const dynamic = 'force-dynamic';

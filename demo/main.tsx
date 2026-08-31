@@ -27,7 +27,9 @@ import { composicaoAnimais, matrizAnimais } from '../src/lib/animais';
 import { avaliar, vetorDe, type Resposta, type ResultadoIndividual } from '../src/lib/scoring';
 import { analisarEquipe, compararSetores, compararComEquipe, type MembroAgregado } from '../src/lib/aggregate';
 import { gerarExcel, NOME_ARQUIVO, type RegistroExport, type TipoExport } from '../src/lib/excel';
-import { QUESTOES, VERSAO_INSTRUMENTO, ALTERNATIVA_POR_ID } from '../src/data/questions';
+import { VERSAO_INSTRUMENTO } from '../src/data/questions';
+import { MATRIZ_PONTUACAO } from '../src/data/scoringMatrix';
+import { QUESTOES_COMPLETAS as QUESTOES, ALTERNATIVA_POR_ID } from '../src/data/questions.server';
 import { PERFIS, NOME_FUNCAO, NOME_ATITUDE } from '../src/data/profiles';
 import { CAPACIDADES } from '../src/data/functional';
 import { gerarParticipantes, SETORES } from '../scripts/simulate';
@@ -440,7 +442,7 @@ function App() {
         )}
 
         {aba === 'metodologia' && (
-          <TelaMetodologia qualidade={qualidade} empates={empates} distribuicoes={{
+          <TelaMetodologia qualidade={qualidade} matriz={MATRIZ_PONTUACAO} empates={empates} distribuicoes={{
             perfis: geral.distribuicaoPerfis.map(p => ({ nome: p.animal, n: p.n })),
             funcoes: geral.distribuicaoFuncoes.map(f => ({ nome: f.nome, n: f.n })),
             atitudes: geral.distribuicaoAtitudes.map(a => ({ nome: a.nome, n: a.n })),

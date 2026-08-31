@@ -6,7 +6,7 @@
  * Determinístico por construção: PRNG com semente fixa (nada de Math.random),
  * de modo que o mesmo comando produz sempre o mesmo conjunto de dados.
  */
-import { QUESTOES } from '../src/data/questions';
+import { QUESTOES_COMPLETAS as QUESTOES } from '../src/data/questions.server';
 import { avaliar, type Resposta } from '../src/lib/scoring';
 import type { PerfilId } from '../src/data/profiles';
 

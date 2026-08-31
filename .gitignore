@@ -8,3 +8,4 @@ demo/.bundle.js
 docker/.env
 src/app/api/dev-login/
 docker/next-cache/
+.vercel

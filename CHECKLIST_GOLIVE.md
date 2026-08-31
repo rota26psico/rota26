@@ -27,6 +27,7 @@ presume estar certo. A coluna "como conferir" diz onde olhar.
 | ☐ | `05_migracao_v2.sql` aplicado | `resultados_funcionais` e `resultados_belbin` existem |
 | ☐ | `06_producao.sql` aplicado | `select * from verificar_prontidao();` |
 | ☐ | `07_papeis.sql` aplicado | `select eh_conta_administrativa(null) is not null;` |
+| ☐ | `08_reavaliacao_v2.sql` aplicado, versão **inativa** | `select codigo, ativa from versoes_instrumento;` |
 | ☐ | **`04_demo_seed.sql` NÃO aplicado** | `select * from contagem_demo();` → tudo zero |
 | ☐ | **`00_stub_auth_local.sql` NÃO aplicado** | só serve para PostgreSQL local |
 | ☐ | Backups do provedor ativos | Database → Backups |

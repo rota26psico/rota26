@@ -22,7 +22,21 @@ const TITULO =
   /tituloCurto:\s*'([^']+)'/.exec(readFileSync('src/lib/env.ts', 'utf8'))?.[1]
   ?? 'ROTA26';
 
+/* A demo calcula no próprio navegador — é a natureza dela — e por isso importa
+   a chave de pontuação, que na aplicação é `server-only`. Aqui esse guarda é
+   neutralizado de propósito: `dist/` é artefato de desenvolvimento, está no
+   `.vercelignore` e no `.gitignore`, e nunca é publicado. Se um dia a demo
+   precisar ir a público, este atalho precisa cair junto. */
+const neutralizarServerOnly = {
+  name: 'server-only-vazio',
+  setup(b) {
+    b.onResolve({ filter: /^server-only$/ }, () => ({ path: 'server-only', namespace: 'vazio' }));
+    b.onLoad({ filter: /.*/, namespace: 'vazio' }, () => ({ contents: 'export {};', loader: 'js' }));
+  }
+};
+
 const resultado = await build({
+  plugins: [neutralizarServerOnly],
   entryPoints: ['demo/main.tsx'],
   bundle: true,
   write: false,

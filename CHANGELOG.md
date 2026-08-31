@@ -441,3 +441,172 @@ tela que o código não tinha.
    saídas, se isso incomodar; nenhuma das duas foi implementada.
 
 `npm run regressao`: **nenhuma divergência**. Nada aqui toca metodologia.
+
+---
+
+# v3.4 — REAVALIAÇÃO v2.0: INFRAESTRUTURA (BLOCO B)
+
+O pacote `rota26v2` (25/08/2026) entrega um **novo instrumento**, para conviver
+com a `v1.0-piloto` que está publicada. Esta etapa instala o que ele traz de
+motor, dados e banco. **As telas não foram religadas** — a versão entra inativa
+e nada muda para quem responde hoje.
+
+`npm run regressao`: **nenhuma divergência**. `npm run verificar`: exit 0.
+
+## Instalado
+
+- `src/data/v2/questoes.ts` — camada **pública**: só identificadores e textos.
+- `src/data/v2/mapa.server.ts` · `desempate.server.ts` · `src/lib/v2/apuracao.ts`
+  — camada **confidencial**, com `import 'server-only'`. Componente de cliente
+  que os importe faz o `next build` falhar.
+- `supabase/08_reavaliacao_v2.sql` · `scripts/test-apuracao-v2.ts` (47 testes) ·
+  `scripts/test-sigilo.mjs` (12 testes) · a demo e as verificações em `demo/`.
+- Dependência `server-only`. Scripts `test:v2` e `test:sigilo`.
+
+Resultados na primeira execução dentro deste projeto: **47/47** no motor,
+**12/12** no sigilo.
+
+## Divergências entre o pacote e o projeto, resolvidas
+
+1. **Dois arquivos `07`.** O pacote chamava a migração de `07_reavaliacao_v2.sql`,
+   mas `07_papeis.sql` já existia **e já estava aplicado na nuvem**. Renumerado
+   para **`08`** — renumerar o que já rodou seria pior. O motivo está no
+   cabeçalho do arquivo.
+2. **`verificar:tudo` já existia.** O `MUDANCAS.md` do pacote afirmava que
+   nenhum script existente seria alterado. Os dois novos foram **encadeados** ao
+   que havia, não substituíram.
+3. **Caminhos da máquina de origem.** As verificações da demo importavam o
+   Playwright de `/home/claude/app/node_modules/...`. Passaram a resolver a raiz
+   a partir do próprio arquivo, e o Chromium por `CHROMIUM_PATH` — mesma
+   convenção que `scripts/test-ui.mjs` já usava aqui.
+4. **`cobertura`.** O pacote lista esse script mas não o define em lugar nenhum.
+   Não foi inventado.
+
+## Lacunas do pacote, fechadas na migração 08
+
+5. **Nenhuma policy de escrita** em `resultados_v2` nem em `desempates` — só
+   `select`. Do jeito que veio, concluir uma avaliação v2.0 seria barrado pelo
+   RLS. **Decisão registrada na seção 7 do SQL:** a ausência é deliberada. Como o
+   gabarito é `server-only`, a apuração só pode ocorrer no servidor, e a gravação
+   passa por rota de servidor com a chave de serviço. Acrescentar policy de
+   escrita seria desfazer a garantia, não corrigir um esquecimento.
+6. **`resumo_organizacional()` não filtrava versão.** Ativada a v2.0, os quatro
+   números do topo somariam as duas versões enquanto os painéis — que leem
+   `vw_resultados`, com junção na tabela `resultados` da v1.0 — mostrariam só a
+   v1.0. Topo e painel discordando sem nada estar quebrado. A função passou a
+   contar pela **versão ativa**. Provado em transação desfeita: com o filtro, 1;
+   sem ele, 2.
+
+## Verificado contra o banco
+
+Migração aplicada em transação, com backup antes. Depois: os quatro números do
+resumo idênticos (2 · 1 · 0 · 16) e o **md5 das respostas inalterado**
+(`39b03b6a…`). `versoes_instrumento` passou a ter as duas, com a v2.0 `ativa = false`.
+
+## O que continua faltando
+
+As cinco frentes de tela da seção 9 do documento técnico — participante,
+desempate, resultado, gravação em `resultados_v2`, dashboard e relatório
+integral. E as decisões da seção 10, que são do cliente: se capacidades e
+proximidades Belbin desaparecem por pessoa, e se a tabela das nove contribuições
+está aprovada.
+
+## Achado que não é do pacote, mas apareceu na análise
+
+**A chave de pontuação da v1.0 está pública no endereço no ar.** 191 das 192
+alternativas, com polo junguiano e eixo, baixáveis dos chunks de
+`/questionario` sem login. É consequência de `concluirAvaliacao` recalcular no
+navegador — o `CLAUDE.md` afirmava que era no servidor, e foi corrigido. A
+correção do código é o Bloco A, ainda não feito.
+
+---
+
+# v3.5 — A CHAVE DE PONTUAÇÃO SAI DO NAVEGADOR (BLOCO A)
+
+Correção do vazamento medido na análise do pacote v2.0. Não é melhoria de
+arquitetura: é defeito de sigilo no instrumento que estava coletando.
+
+## O que estava acontecendo
+
+`Fluxo.tsx` é componente de cliente e chamava `concluirAvaliacao` de lá. Por
+isso `src/data/questions.ts` ia inteiro para o bundle, com o polo junguiano e o
+eixo de cada alternativa, e `scoringMatrix.ts` junto. Medido no endereço
+publicado, sem login:
+
+```
+["Reviso mentalmente o material que preparei antes de intervir.","I","EST"]
+191 de 192 alternativas
+```
+
+Um instrumento com a chave de correção pública deixa de medir o que se propõe:
+quem quisesse sair Lobo em vez de Baleia bastava ler o arquivo.
+
+## O que mudou
+
+Cada camada de dado passou a existir em dois arquivos — o público e o
+confidencial, este com `import 'server-only'`:
+
+| Público | Confidencial |
+|---|---|
+| `data/questions.ts` — id, contexto, enunciado, textos | `data/questions.server.ts` — polo, eixo, peso, tipo |
+| `data/matriz.ts` — versão, listas de id, máximos agregados | `data/scoringMatrix.ts` — a matriz |
+| `lib/resultado.ts` — formato do resultado, `intensidade`, `vetorDe` | `lib/scoring.ts` — o algoritmo |
+| `lib/repo-supabase.ts` — leitura e cadastro | `lib/repo-servidor.ts` — o que precisa da chave |
+
+E as quatro operações que dependem da chave — consultar, responder, concluir,
+recalcular — passaram para `POST /api/avaliacao`, com invólucros finos em
+`lib/avaliacao-cliente.ts` para que as telas continuassem lendo como antes.
+
+**A sessão continua sendo a do participante.** As rotas usam `db()` de
+`sessao.ts`, com os cookies dele, e não a chave de serviço: o RLS decide
+exatamente o que decidia quando o cálculo era no cliente. Nenhuma política foi
+afrouxada. Item 53 preservado — a chave segue congelada na linha de `respostas`
+no instante da escolha; mudou quem a lê.
+
+A tela de metodologia do Master recebe a matriz **por prop**, montada no
+servidor. Ela nunca faz parte do bundle estático.
+
+## Provas
+
+| | antes | depois |
+|---|---|---|
+| Alternativas com polo e eixo no bundle | **191** | **0** |
+| Linhas da matriz funcional no bundle | presentes | **0** |
+| Texto das 48 perguntas no bundle | presente | **presente** (o participante precisa lê-las) |
+
+`npm run regressao`: **nenhuma divergência** — perfil, animal, E/I/T/F/S/N, seis
+eixos, capacidades, Belbin, IDF, ICF e distribuições bit a bit iguais depois de
+mover quinze arquivos.
+
+Baterias: `verificar` exit 0 · `test:ui` 48/48 · `test:v2` 47/47 ·
+`test:sigilo` **22/22** (era 12 — nove checagens novas cobrem a v1.0) ·
+`verifica-demo` 18/18 · `verifica-dashboard` 72/72 · `build` exit 0.
+
+## Travas acrescentadas
+
+- **`test:sigilo` cobre a v1.0.** Varre o bundle atrás de alternativa com polo e
+  eixo, de associação alternativa → polo, e de linha da matriz funcional. Se
+  qualquer uma aparecer, falha.
+- **`audit:matriz` compara os literais públicos com a matriz real.** Os máximos
+  por capacidade e por papel são publicados como literais em `data/matriz.ts`
+  para que as telas os leiam sem puxar a matriz; a auditoria recalcula e falha se
+  divergirem. Verificado adulterando um número de propósito: `MATRIZ BLOQUEADA`.
+- **`test:telas` roda SEM `--conditions=react-server`.** Que ele passe assim é a
+  prova de que as telas do participante não tocam mais na chave.
+
+## Dois defeitos meus no caminho, registrados
+
+1. Ao criar `data/matriz.ts`, **escrevi as listas `CHAVES_CAPACIDADE` e
+   `CHAVES_BELBIN` de memória em vez de copiá-las**. Seis das dez capacidades
+   passaram a ter máximo zero. Apareceu na conferência dos números; recuperado do
+   commit. É exatamente o tipo de erro que a auditoria nova agora pega sozinha.
+2. A primeira versão da trava de deriva foi inserida **depois** do cálculo do
+   veredito da auditoria, e por isso não reprovava nada. Descoberto ao testá-la
+   com um número adulterado de propósito — o teste do teste.
+
+## Exceção declarada
+
+`dist/demo.html` calcula no navegador, por natureza. `build-previa.mjs`
+neutraliza o `server-only` com um plugin do esbuild, de propósito e comentado.
+`dist/` está no `.gitignore` e no `.vercelignore`. Se a demo um dia for a
+público, esse atalho cai junto.

@@ -11,7 +11,8 @@
  * calculados pelo algoritmo determinístico antes de chegarem aqui.
  */
 import ExcelJS from 'exceljs';
-import { QUESTOES, NOME_EIXO, VERSAO_INSTRUMENTO, MAXIMO_POR_EIXO, PESO_TOTAL_ATITUDE, PESO_TOTAL_FUNCAO } from '../data/questions';
+import { QUESTOES, NOME_EIXO, VERSAO_INSTRUMENTO } from '../data/questions';
+import { MAXIMO_POR_EIXO, PESO_TOTAL_ATITUDE, PESO_TOTAL_FUNCAO } from '../data/questions.server';
 import { PERFIS, NOME_FUNCAO, NOME_ATITUDE } from '../data/profiles';
 import { CAPACIDADES, PAPEIS_BELBIN } from '../data/functional';
 import { MATRIZ_PONTUACAO, MAXIMO_CAPACIDADE, MAXIMO_BELBIN, VERSAO_MATRIZ } from '../data/scoringMatrix';
@@ -19,7 +20,7 @@ import { analisarEquipe, compararSetores, type MembroAgregado } from './aggregat
 import {
   matrizAnimais, linhasComposicaoParaExcel, linhasMatrizParaExcel, cabecalhoMatriz
 } from './animais';
-import type { ResultadoIndividual } from './scoring';
+import type { ResultadoIndividual } from './resultado';
 
 export interface RegistroExport {
   participanteId: string;

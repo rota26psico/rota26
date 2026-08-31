@@ -1,18 +1,17 @@
 'use client';
 import { useState } from 'react';
 import { TelaPessoas, TelaLeituraExecutivaIndividual } from '@/components/views-gestao';
-import { supabaseBrowser, recalcular } from '@/lib/repo-supabase';
-import type { ResultadoIndividual } from '@/lib/scoring';
+import { recalcular } from '@/lib/avaliacao-cliente';
+import type { ResultadoIndividual } from '@/lib/resultado';
 
 type P = { nome: string; matricula: string; setor: string; perfil: string; secundario: string; data: string; status: string; demo?: boolean; ehAdministrador?: boolean; avaliacaoId: string };
 
 export function Pessoas({ pessoas }: { pessoas: P[] }) {
   const [aberto, setAberto] = useState<{ p: P; r: ResultadoIndividual } | null>(null);
-  const db = supabaseBrowser();
   const abrir = async (matricula: string) => {
     const p = pessoas.find(x => x.matricula === matricula)!;
     // Recalcula a partir das respostas brutas — prova de reprodutibilidade.
-    setAberto({ p, r: await recalcular(db, p.avaliacaoId) });
+    setAberto({ p, r: await recalcular(p.avaliacaoId) });
   };
   if (aberto) return (
     <>

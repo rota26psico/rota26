@@ -4,6 +4,9 @@ import { Rodape } from '@/components/Rodape';
 import { TelaMetodologia, type QualidadeItem } from '@/components/views-gestao';
 import { ErroConsulta, Glossario } from '@/components/ui';
 import { QUESTOES } from '@/data/questions';
+/* A matriz é lida no servidor e entregue à tela por prop: ela é a chave de
+   pontuação e não pode fazer parte do bundle que o navegador baixa. */
+import { MATRIZ_PONTUACAO } from '@/data/scoringMatrix';
 import { CAPACIDADES } from '@/data/functional';
 import { analisarEquipe } from '@/lib/aggregate';
 import { carregarMembros } from '@/lib/repo-supabase';
@@ -61,6 +64,7 @@ export default async function Page() {
       <main className="wrap" style={{ paddingTop: 24 }}>
         <TelaMetodologia
           qualidade={qualidade}
+          matriz={MATRIZ_PONTUACAO}
           empates={{ n: nEmpates, pct: total ? Math.round((nEmpates / total) * 1000) / 10 : 0 }}
           distribuicoes={{
             perfis: a.distribuicaoPerfis.map(x => ({ nome: x.animal, n: x.n })),

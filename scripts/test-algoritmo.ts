@@ -5,7 +5,8 @@
  * Cobre: consistência, determinismo, as duas trilhas, retomada, agregação,
  * privacidade, exportação Excel e coincidência dashboard × Excel.
  */
-import { QUESTOES, ALTERNATIVA_POR_ID, PESO_TOTAL_ATITUDE, PESO_TOTAL_FUNCAO, VERSAO_INSTRUMENTO } from '../src/data/questions';
+import { VERSAO_INSTRUMENTO } from '../src/data/questions';
+import { QUESTOES_COMPLETAS as QUESTOES, ALTERNATIVA_POR_ID, PESO_TOTAL_ATITUDE, PESO_TOTAL_FUNCAO } from '../src/data/questions.server';
 import { MATRIZ_PONTUACAO, LINHA_POR_ALTERNATIVA } from '../src/data/scoringMatrix';
 import { avaliar, calcularEscores, calcularFuncional, determinarPerfil, vetorDe, intensidade, type Resposta } from '../src/lib/scoring';
 import { analisarEquipe, compararSetores, compararComEquipe, MIN_PARTICIPANTES_INTERPRETACAO, type MembroAgregado } from '../src/lib/aggregate';

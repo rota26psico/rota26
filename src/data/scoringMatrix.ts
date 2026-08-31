@@ -1,3 +1,4 @@
+import 'server-only';
 /**
  * ETAPA 5 — MATRIZ DE PONTUAÇÃO AUDITÁVEL DAS 192 ALTERNATIVAS
  * ===========================================================================
@@ -22,10 +23,13 @@
  * Administrador Master, na área de Metodologia. O participante nunca a vê.
  */
 
-import { QUESTOES, type EixoAux, type PoloJung } from './questions';
+import { QUESTOES_COMPLETAS as QUESTOES } from './questions.server';
 import type { Capacidade, PapelBelbin } from './functional';
 
-export const VERSAO_MATRIZ = 'v2.0';
+/* Versão, formato e listas de identificadores vivem na camada pública, para
+   que as telas possam usá-los sem puxar a matriz junto. */
+export { VERSAO_MATRIZ, CHAVES_CAPACIDADE, CHAVES_BELBIN, type LinhaMatriz } from './matriz';
+import { CHAVES_CAPACIDADE, CHAVES_BELBIN, type LinhaMatriz } from './matriz';
 
 type Par = [string, string];
 
@@ -281,18 +285,6 @@ const parse = <K extends string>(s: string): Partial<Record<K, number>> =>
     return [m[1], Number(m[2])];
   })) as Partial<Record<K, number>>;
 
-export interface LinhaMatriz {
-  questaoId: string;
-  alternativaId: string;
-  texto: string;
-  peso: number;
-  tipo: string;
-  contexto: string;
-  jung: PoloJung;
-  eixo: EixoAux;
-  capacidades: Partial<Record<Capacidade, number>>;
-  belbin: Partial<Record<PapelBelbin, number>>;
-}
 
 /** A matriz completa e auditável — uma linha por alternativa. */
 export const MATRIZ_PONTUACAO: LinhaMatriz[] = QUESTOES.flatMap(q =>
@@ -329,15 +321,9 @@ function maximos<K extends string>(campo: 'capacidades' | 'belbin', chaves: read
   return max;
 }
 
-export const CHAVES_CAPACIDADE = [
-  'CRIAR', 'EXPLORAR', 'ANALISAR', 'DECIDIR', 'ORGANIZAR',
-  'EXECUTAR', 'RELACIONAR', 'COORDENAR', 'FINALIZAR', 'ESPECIALIZAR'
-] as const;
 
-export const CHAVES_BELBIN = [
-  'PLANTA', 'INV_RECURSOS', 'COORDENADOR', 'FORMADOR', 'MONITOR',
-  'IMPLEMENTADOR', 'TRAB_EQUIPE', 'FINALIZADOR', 'ESPECIALISTA'
-] as const;
 
+/* Recalculados aqui a partir da matriz real. A camada pública publica os mesmos
+   números como literais, e `audit:matriz` confere um contra o outro. */
 export const MAXIMO_CAPACIDADE = maximos('capacidades', CHAVES_CAPACIDADE);
 export const MAXIMO_BELBIN = maximos('belbin', CHAVES_BELBIN);
