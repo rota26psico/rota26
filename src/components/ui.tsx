@@ -131,7 +131,11 @@ export function Barras({ dados, max = 100, sufixo = '', altura = 26 }: {
   return (
     <div className="barras">
       {dados.map((d, i) => (
-        <div className="barra-linha" key={i} style={{ height: altura }}>
+        /* minHeight, não height: a terceira coluna leva o valor e, quando existe,
+           uma nota que quebra em duas ou três linhas. Com altura fixa a nota
+           transbordava e colidia com a barra seguinte. Sem nota, o resultado é
+           o mesmo de antes. */
+        <div className="barra-linha" key={i} style={{ minHeight: altura }}>
           <div className="barra-rot" title={d.rotulo}>{d.rotulo}</div>
           <div className="barra-trilho">
             <div className="barra-fill" style={{ width: `${Math.max(1, (d.valor / m) * 100)}%`, background: d.cor ?? '#31556B' }} />
@@ -635,12 +639,12 @@ code{font-family:var(--mono);font-size:.9em;background:var(--bg2);padding:1px 5p
 
 /* ── GRÁFICOS: sempre com número impresso ao lado ──────────────────────── */
 .barras{display:flex;flex-direction:column;gap:5px}
-.barra-linha{display:grid;grid-template-columns:138px minmax(0,1fr) 78px;align-items:center;gap:11px}
+.barra-linha{display:grid;grid-template-columns:138px minmax(0,1fr) 104px;align-items:center;gap:11px}
 .barra-rot{font-size:13px;color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .barra-trilho{background:#E6DBC7;border-radius:3px;height:14px;overflow:hidden}
 .barra-fill{height:100%;border-radius:3px;transition:width .4s ease}
 .barra-val{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
-.barra-nota{display:block;font-size:10.5px;font-weight:400;color:var(--ink3);line-height:1.3}
+.barra-nota{display:block;font-size:10.5px;font-weight:400;color:var(--ink3);line-height:1.35;margin-top:1px}
 
 .dupla{margin:var(--e3) 0}
 .dupla-topo{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink2);margin-bottom:6px}
@@ -949,7 +953,7 @@ label{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-tra
     -webkit-overflow-scrolling:touch}
   .nav button{white-space:nowrap}
   .card{padding:var(--e4);border-radius:var(--r2)}
-  .barra-linha{grid-template-columns:96px minmax(0,1fr) 62px;gap:8px}
+  .barra-linha{grid-template-columns:96px minmax(0,1fr) 88px;gap:8px}
   .kpi-val{font-size:31px}
   /* Questionário no celular: alvo de toque grande e texto confortável */
   .alt{padding:16px;font-size:15.5px;min-height:56px}
