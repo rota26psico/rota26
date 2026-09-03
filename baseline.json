@@ -1,6 +1,7 @@
 {
   "geradoPor": "scripts/baseline.ts",
   "versaoInstrumento": "v1.0-piloto",
+  "versaoAlgoritmo": "v1.1-desempate-auxiliar",
   "versaoMatriz": "v2.0",
   "totalQuestoes": 48,
   "totalAlternativas": 192,
@@ -10,11 +11,11 @@
       "descricao": "Sempre a primeira alternativa apresentada",
       "retrato": {
         "perfilPredominante": "Te",
-        "perfilSecundario": "Se",
+        "perfilSecundario": "Ne",
         "atitude": "E",
         "atitudeMargem": 27,
         "funcaoDominante": "T",
-        "funcaoAuxiliar": "S",
+        "funcaoAuxiliar": "N",
         "funcaoMenosRepresentada": "N",
         "funcaoInferior": "F",
         "ordemFuncoes": [
@@ -25,6 +26,8 @@
         ],
         "empateFuncoes": false,
         "regraDesempate": null,
+        "empateAuxiliar": true,
+        "regraDesempateAuxiliar": "D2: desempate por evidência convergente nos eixos comportamentais.",
         "escoresJungBruto": {
           "E": 27,
           "I": 0,
@@ -286,7 +289,8 @@
             "posicao": 3
           }
         ],
-        "versaoAlgoritmo": "v1.0-piloto",
+        "versaoInstrumento": "v1.0-piloto",
+        "versaoAlgoritmo": "v1.1-desempate-auxiliar",
         "versaoMatriz": "v2.0",
         "respostasValidas": 48,
         "completo": true
@@ -297,11 +301,11 @@
       "descricao": "Sempre a segunda alternativa",
       "retrato": {
         "perfilPredominante": "Fe",
-        "perfilSecundario": "Se",
+        "perfilSecundario": "Ne",
         "atitude": "E",
         "atitudeMargem": 27,
         "funcaoDominante": "F",
-        "funcaoAuxiliar": "S",
+        "funcaoAuxiliar": "N",
         "funcaoMenosRepresentada": "N",
         "funcaoInferior": "T",
         "ordemFuncoes": [
@@ -312,6 +316,8 @@
         ],
         "empateFuncoes": false,
         "regraDesempate": null,
+        "empateAuxiliar": true,
+        "regraDesempateAuxiliar": "D2: desempate por evidência convergente nos eixos comportamentais.",
         "escoresJungBruto": {
           "E": 27,
           "I": 0,
@@ -573,7 +579,8 @@
             "posicao": 3
           }
         ],
-        "versaoAlgoritmo": "v1.0-piloto",
+        "versaoInstrumento": "v1.0-piloto",
+        "versaoAlgoritmo": "v1.1-desempate-auxiliar",
         "versaoMatriz": "v2.0",
         "respostasValidas": 48,
         "completo": true
@@ -599,6 +606,8 @@
         ],
         "empateFuncoes": false,
         "regraDesempate": null,
+        "empateAuxiliar": false,
+        "regraDesempateAuxiliar": null,
         "escoresJungBruto": {
           "E": 15,
           "I": 12,
@@ -860,7 +869,8 @@
             "posicao": 3
           }
         ],
-        "versaoAlgoritmo": "v1.0-piloto",
+        "versaoInstrumento": "v1.0-piloto",
+        "versaoAlgoritmo": "v1.1-desempate-auxiliar",
         "versaoMatriz": "v2.0",
         "respostasValidas": 48,
         "completo": true
@@ -886,6 +896,8 @@
         ],
         "empateFuncoes": false,
         "regraDesempate": null,
+        "empateAuxiliar": false,
+        "regraDesempateAuxiliar": null,
         "escoresJungBruto": {
           "E": 12,
           "I": 15,
@@ -1147,7 +1159,8 @@
             "posicao": 3
           }
         ],
-        "versaoAlgoritmo": "v1.0-piloto",
+        "versaoInstrumento": "v1.0-piloto",
+        "versaoAlgoritmo": "v1.1-desempate-auxiliar",
         "versaoMatriz": "v2.0",
         "respostasValidas": 48,
         "completo": true
@@ -1173,6 +1186,8 @@
         ],
         "empateFuncoes": false,
         "regraDesempate": null,
+        "empateAuxiliar": false,
+        "regraDesempateAuxiliar": null,
         "escoresJungBruto": {
           "E": 15,
           "I": 12,
@@ -1434,7 +1449,588 @@
             "posicao": 3
           }
         ],
-        "versaoAlgoritmo": "v1.0-piloto",
+        "versaoInstrumento": "v1.0-piloto",
+        "versaoAlgoritmo": "v1.1-desempate-auxiliar",
+        "versaoMatriz": "v2.0",
+        "respostasValidas": 48,
+        "completo": true
+      }
+    },
+    {
+      "id": "C6",
+      "descricao": "Blocos de dois: floor(i/2) módulo 4 — empata dominante (D1) e auxiliar (D2)",
+      "retrato": {
+        "perfilPredominante": "Te",
+        "perfilSecundario": "Se",
+        "atitude": "E",
+        "atitudeMargem": 1,
+        "funcaoDominante": "T",
+        "funcaoAuxiliar": "S",
+        "funcaoMenosRepresentada": "F",
+        "funcaoInferior": "F",
+        "ordemFuncoes": [
+          "T",
+          "S",
+          "N",
+          "F"
+        ],
+        "empateFuncoes": true,
+        "regraDesempate": "D1: vence a função cuja oposta tem o menor escore (maior diferenciação).",
+        "empateAuxiliar": true,
+        "regraDesempateAuxiliar": "D2: desempate por evidência convergente nos eixos comportamentais.",
+        "escoresJungBruto": {
+          "E": 14,
+          "I": 13,
+          "T": 7,
+          "F": 6,
+          "S": 7,
+          "N": 7
+        },
+        "escoresJungRelativo": {
+          "E": 51.9,
+          "I": 48.1,
+          "T": 25.9,
+          "F": 22.2,
+          "S": 25.9,
+          "N": 25.9
+        },
+        "denominadores": {
+          "atitude": 27,
+          "funcao": 27
+        },
+        "eixosBruto": {
+          "EXP": 5,
+          "EXE": 7,
+          "AUT": 10,
+          "COO": 11,
+          "FLE": 10,
+          "EST": 11
+        },
+        "eixosRelativo": {
+          "EXP": 17.9,
+          "EXE": 20,
+          "AUT": 22.7,
+          "COO": 24.4,
+          "FLE": 45.5,
+          "EST": 26.2
+        },
+        "eixosAuxiliares": [
+          {
+            "par": [
+              "EXP",
+              "EXE"
+            ],
+            "polo": "EXE",
+            "a": 17.9,
+            "b": 20
+          },
+          {
+            "par": [
+              "AUT",
+              "COO"
+            ],
+            "polo": "COO",
+            "a": 22.7,
+            "b": 24.4
+          },
+          {
+            "par": [
+              "FLE",
+              "EST"
+            ],
+            "polo": "FLE",
+            "a": 45.5,
+            "b": 26.2
+          }
+        ],
+        "capacidadesBruto": {
+          "CRIAR": 23,
+          "EXPLORAR": 14,
+          "ANALISAR": 29,
+          "DECIDIR": 14,
+          "ORGANIZAR": 17,
+          "EXECUTAR": 13,
+          "RELACIONAR": 27,
+          "COORDENAR": 10,
+          "FINALIZAR": 16,
+          "ESPECIALIZAR": 4
+        },
+        "capacidades": {
+          "CRIAR": 36.5,
+          "EXPLORAR": 24.1,
+          "ANALISAR": 37.2,
+          "DECIDIR": 34.1,
+          "ORGANIZAR": 32.1,
+          "EXECUTAR": 23.6,
+          "RELACIONAR": 32.1,
+          "COORDENAR": 16.4,
+          "FINALIZAR": 34,
+          "ESPECIALIZAR": 8.2
+        },
+        "capacidadesOrdenadas": [
+          {
+            "id": "ANALISAR",
+            "nome": "Analisar",
+            "valor": 37.2,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "CRIAR",
+            "nome": "Criar",
+            "valor": 36.5,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "DECIDIR",
+            "nome": "Decidir/Mobilizar",
+            "valor": 34.1,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "FINALIZAR",
+            "nome": "Finalizar",
+            "valor": 34,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "ORGANIZAR",
+            "nome": "Organizar",
+            "valor": 32.1,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "RELACIONAR",
+            "nome": "Relacionar",
+            "valor": 32.1,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "EXPLORAR",
+            "nome": "Explorar",
+            "valor": 24.1,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "EXECUTAR",
+            "nome": "Executar",
+            "valor": 23.6,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "COORDENAR",
+            "nome": "Coordenar",
+            "valor": 16.4,
+            "intensidade": "Muito baixa"
+          },
+          {
+            "id": "ESPECIALIZAR",
+            "nome": "Especializar",
+            "valor": 8.2,
+            "intensidade": "Muito baixa"
+          }
+        ],
+        "belbinBruto": {
+          "PLANTA": 25,
+          "INV_RECURSOS": 17,
+          "COORDENADOR": 12,
+          "FORMADOR": 13,
+          "MONITOR": 24,
+          "IMPLEMENTADOR": 22,
+          "TRAB_EQUIPE": 21,
+          "FINALIZADOR": 19,
+          "ESPECIALISTA": 9
+        },
+        "belbin": {
+          "PLANTA": 33.8,
+          "INV_RECURSOS": 32.1,
+          "COORDENADOR": 21.4,
+          "FORMADOR": 31.7,
+          "MONITOR": 32.9,
+          "IMPLEMENTADOR": 30.6,
+          "TRAB_EQUIPE": 25.6,
+          "FINALIZADOR": 38,
+          "ESPECIALISTA": 15.5
+        },
+        "belbinOrdenado": [
+          {
+            "id": "FINALIZADOR",
+            "nome": "Finalizador",
+            "valor": 38,
+            "intensidade": "Moderada",
+            "posicao": 1
+          },
+          {
+            "id": "PLANTA",
+            "nome": "Planta",
+            "valor": 33.8,
+            "intensidade": "Moderada",
+            "posicao": 2
+          },
+          {
+            "id": "MONITOR",
+            "nome": "Monitor Avaliador",
+            "valor": 32.9,
+            "intensidade": "Moderada",
+            "posicao": 3
+          },
+          {
+            "id": "INV_RECURSOS",
+            "nome": "Investigador de Recursos",
+            "valor": 32.1,
+            "intensidade": "Moderada",
+            "posicao": 4
+          },
+          {
+            "id": "FORMADOR",
+            "nome": "Formador",
+            "valor": 31.7,
+            "intensidade": "Moderada",
+            "posicao": 5
+          },
+          {
+            "id": "IMPLEMENTADOR",
+            "nome": "Implementador",
+            "valor": 30.6,
+            "intensidade": "Moderada",
+            "posicao": 6
+          },
+          {
+            "id": "TRAB_EQUIPE",
+            "nome": "Trabalhador em Equipe",
+            "valor": 25.6,
+            "intensidade": "Baixa",
+            "posicao": 7
+          },
+          {
+            "id": "COORDENADOR",
+            "nome": "Coordenador",
+            "valor": 21.4,
+            "intensidade": "Baixa",
+            "posicao": 8
+          },
+          {
+            "id": "ESPECIALISTA",
+            "nome": "Especialista",
+            "valor": 15.5,
+            "intensidade": "Muito baixa",
+            "posicao": 9
+          }
+        ],
+        "top3Belbin": [
+          {
+            "id": "FINALIZADOR",
+            "nome": "Finalizador",
+            "valor": 38,
+            "intensidade": "Moderada",
+            "posicao": 1
+          },
+          {
+            "id": "PLANTA",
+            "nome": "Planta",
+            "valor": 33.8,
+            "intensidade": "Moderada",
+            "posicao": 2
+          },
+          {
+            "id": "MONITOR",
+            "nome": "Monitor Avaliador",
+            "valor": 32.9,
+            "intensidade": "Moderada",
+            "posicao": 3
+          }
+        ],
+        "versaoInstrumento": "v1.0-piloto",
+        "versaoAlgoritmo": "v1.1-desempate-auxiliar",
+        "versaoMatriz": "v2.0",
+        "respostasValidas": 48,
+        "completo": true
+      }
+    },
+    {
+      "id": "C7",
+      "descricao": "Blocos de quatro deslocados: (floor(i/4) + 1) módulo 4 — empate de auxiliar que chega a D3",
+      "retrato": {
+        "perfilPredominante": "Ti",
+        "perfilSecundario": "Si",
+        "atitude": "I",
+        "atitudeMargem": 3,
+        "funcaoDominante": "T",
+        "funcaoAuxiliar": "S",
+        "funcaoMenosRepresentada": "N",
+        "funcaoInferior": "F",
+        "ordemFuncoes": [
+          "T",
+          "F",
+          "S",
+          "N"
+        ],
+        "empateFuncoes": false,
+        "regraDesempate": null,
+        "empateAuxiliar": true,
+        "regraDesempateAuxiliar": "D3: ordem canônica fixa (critério arbitrário de último recurso).",
+        "escoresJungBruto": {
+          "E": 12,
+          "I": 15,
+          "T": 8,
+          "F": 7,
+          "S": 6,
+          "N": 6
+        },
+        "escoresJungRelativo": {
+          "E": 44.4,
+          "I": 55.6,
+          "T": 29.6,
+          "F": 25.9,
+          "S": 22.2,
+          "N": 22.2
+        },
+        "denominadores": {
+          "atitude": 27,
+          "funcao": 27
+        },
+        "eixosBruto": {
+          "EXP": 5,
+          "EXE": 7,
+          "AUT": 13,
+          "COO": 13,
+          "FLE": 5,
+          "EST": 11
+        },
+        "eixosRelativo": {
+          "EXP": 17.9,
+          "EXE": 20,
+          "AUT": 29.5,
+          "COO": 28.9,
+          "FLE": 22.7,
+          "EST": 26.2
+        },
+        "eixosAuxiliares": [
+          {
+            "par": [
+              "EXP",
+              "EXE"
+            ],
+            "polo": "EXE",
+            "a": 17.9,
+            "b": 20
+          },
+          {
+            "par": [
+              "AUT",
+              "COO"
+            ],
+            "polo": "AUT",
+            "a": 29.5,
+            "b": 28.9
+          },
+          {
+            "par": [
+              "FLE",
+              "EST"
+            ],
+            "polo": "EST",
+            "a": 22.7,
+            "b": 26.2
+          }
+        ],
+        "capacidadesBruto": {
+          "CRIAR": 15,
+          "EXPLORAR": 13,
+          "ANALISAR": 34,
+          "DECIDIR": 15,
+          "ORGANIZAR": 12,
+          "EXECUTAR": 8,
+          "RELACIONAR": 26,
+          "COORDENAR": 20,
+          "FINALIZAR": 11,
+          "ESPECIALIZAR": 14
+        },
+        "capacidades": {
+          "CRIAR": 23.8,
+          "EXPLORAR": 22.4,
+          "ANALISAR": 43.6,
+          "DECIDIR": 36.6,
+          "ORGANIZAR": 22.6,
+          "EXECUTAR": 14.5,
+          "RELACIONAR": 31,
+          "COORDENAR": 32.8,
+          "FINALIZAR": 23.4,
+          "ESPECIALIZAR": 28.6
+        },
+        "capacidadesOrdenadas": [
+          {
+            "id": "ANALISAR",
+            "nome": "Analisar",
+            "valor": 43.6,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "DECIDIR",
+            "nome": "Decidir/Mobilizar",
+            "valor": 36.6,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "COORDENAR",
+            "nome": "Coordenar",
+            "valor": 32.8,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "RELACIONAR",
+            "nome": "Relacionar",
+            "valor": 31,
+            "intensidade": "Moderada"
+          },
+          {
+            "id": "ESPECIALIZAR",
+            "nome": "Especializar",
+            "valor": 28.6,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "CRIAR",
+            "nome": "Criar",
+            "valor": 23.8,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "FINALIZAR",
+            "nome": "Finalizar",
+            "valor": 23.4,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "ORGANIZAR",
+            "nome": "Organizar",
+            "valor": 22.6,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "EXPLORAR",
+            "nome": "Explorar",
+            "valor": 22.4,
+            "intensidade": "Baixa"
+          },
+          {
+            "id": "EXECUTAR",
+            "nome": "Executar",
+            "valor": 14.5,
+            "intensidade": "Muito baixa"
+          }
+        ],
+        "belbinBruto": {
+          "PLANTA": 19,
+          "INV_RECURSOS": 11,
+          "COORDENADOR": 17,
+          "FORMADOR": 13,
+          "MONITOR": 32,
+          "IMPLEMENTADOR": 16,
+          "TRAB_EQUIPE": 26,
+          "FINALIZADOR": 12,
+          "ESPECIALISTA": 16
+        },
+        "belbin": {
+          "PLANTA": 25.7,
+          "INV_RECURSOS": 20.8,
+          "COORDENADOR": 30.4,
+          "FORMADOR": 31.7,
+          "MONITOR": 43.8,
+          "IMPLEMENTADOR": 22.2,
+          "TRAB_EQUIPE": 31.7,
+          "FINALIZADOR": 24,
+          "ESPECIALISTA": 27.6
+        },
+        "belbinOrdenado": [
+          {
+            "id": "MONITOR",
+            "nome": "Monitor Avaliador",
+            "valor": 43.8,
+            "intensidade": "Moderada",
+            "posicao": 1
+          },
+          {
+            "id": "FORMADOR",
+            "nome": "Formador",
+            "valor": 31.7,
+            "intensidade": "Moderada",
+            "posicao": 2
+          },
+          {
+            "id": "TRAB_EQUIPE",
+            "nome": "Trabalhador em Equipe",
+            "valor": 31.7,
+            "intensidade": "Moderada",
+            "posicao": 3
+          },
+          {
+            "id": "COORDENADOR",
+            "nome": "Coordenador",
+            "valor": 30.4,
+            "intensidade": "Moderada",
+            "posicao": 4
+          },
+          {
+            "id": "ESPECIALISTA",
+            "nome": "Especialista",
+            "valor": 27.6,
+            "intensidade": "Baixa",
+            "posicao": 5
+          },
+          {
+            "id": "PLANTA",
+            "nome": "Planta",
+            "valor": 25.7,
+            "intensidade": "Baixa",
+            "posicao": 6
+          },
+          {
+            "id": "FINALIZADOR",
+            "nome": "Finalizador",
+            "valor": 24,
+            "intensidade": "Baixa",
+            "posicao": 7
+          },
+          {
+            "id": "IMPLEMENTADOR",
+            "nome": "Implementador",
+            "valor": 22.2,
+            "intensidade": "Baixa",
+            "posicao": 8
+          },
+          {
+            "id": "INV_RECURSOS",
+            "nome": "Investigador de Recursos",
+            "valor": 20.8,
+            "intensidade": "Baixa",
+            "posicao": 9
+          }
+        ],
+        "top3Belbin": [
+          {
+            "id": "MONITOR",
+            "nome": "Monitor Avaliador",
+            "valor": 43.8,
+            "intensidade": "Moderada",
+            "posicao": 1
+          },
+          {
+            "id": "FORMADOR",
+            "nome": "Formador",
+            "valor": 31.7,
+            "intensidade": "Moderada",
+            "posicao": 2
+          },
+          {
+            "id": "TRAB_EQUIPE",
+            "nome": "Trabalhador em Equipe",
+            "valor": 31.7,
+            "intensidade": "Moderada",
+            "posicao": 3
+          }
+        ],
+        "versaoInstrumento": "v1.0-piloto",
+        "versaoAlgoritmo": "v1.1-desempate-auxiliar",
         "versaoMatriz": "v2.0",
         "respostasValidas": 48,
         "completo": true

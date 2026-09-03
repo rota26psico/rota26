@@ -138,3 +138,101 @@ silenciosa.
 
 **Esta é a única da lista que eu recomendaria priorizar**, e ela depende de
 dados reais, não de código.
+
+---
+
+## 8. Revisitar o resultado só funciona no navegador que respondeu
+
+**O que identifiquei.** O vínculo entre pessoa e resultado é o `user_id` da
+sessão anônima criada quando ela respondeu. `participantes_atualiza`
+(`supabase/02_policies.sql`) exige `user_id = auth.uid()` para atualizar o
+cadastro, e o upsert de `garantirParticipante` casa por **matrícula**. As duas
+regras juntas produzem dois efeitos, e vale separar:
+
+*O efeito bom, verificado contra PostgreSQL real com RLS ligado:* digitar a
+matrícula de um colega em outra sessão **não** dá acesso ao resultado dele. O
+UPDATE é recusado pelo banco. A proteção não depende da interface.
+
+*O efeito ruim:* quem respondeu no computador da recepção e depois abre no
+próprio, quem limpou os dados do navegador, quem trocou de celular — todos caem
+na mesma recusa. Até esta entrega, liam
+`new row violates row-level security policy for table "participantes"`, que não
+diz nada a ninguém. Isso **foi corrigido**: a mensagem agora explica o que
+aconteceu, por que a recusa existe e a quem recorrer. O que **não** foi feito é
+dar a essa pessoa um caminho próprio de volta.
+
+**Por que não foi resolvido agora.** Qualquer caminho de volta é uma decisão de
+autenticação, e ela muda o fluxo de entrada de todo mundo — inclusive de quem
+ainda não respondeu. Merece decisão própria, não carona numa entrega sobre
+revisitar resultado.
+
+**Três saídas avaliadas.**
+
+*Código de acesso pessoal.* Na conclusão, o participante recebe um código curto,
+mostrado na tela e impresso no rodapé do PDF; com matrícula **e** código, o
+vínculo pode ser transferido para a sessão nova. Não depende de SMTP nem de
+e-mail cadastrado (hoje `participantes.email` é opcional) e funciona no cenário
+presencial de computador compartilhado. Custo: uma coluna, uma tela, e um
+caminho de reemissão pelo Master para quem perder o código.
+
+*Link por e-mail.* O participante informa a matrícula e recebe um link via
+Supabase Auth. Mais forte e sem nada para guardar. Custo maior: exige SMTP
+configurado, e-mail obrigatório para todo mundo, e troca a sessão anônima por
+conta nominal — o que muda a premissa "responder não exige cadastro", declarada
+na abertura.
+
+*Emissão pelo Master.* Nenhuma mudança de fluxo: o participante procura a área
+responsável, que abre `/dashboard/pessoas/<avaliação>` e imprime o relatório. Já
+funciona hoje, e é o que a mensagem de erro passou a instruir. Custo zero de
+código, custo operacional recorrente.
+
+**Impacto se nada mais for feito.** Nenhum número muda. O resultado continua
+acessível — pelo mesmo navegador, ou pela administração. O que fica é o atrito
+para quem troca de dispositivo.
+
+**Recomendação.** Decidir antes de ampliar o uso para além do piloto. Das três, o
+código de acesso é a que cabe no desenho atual sem mudar a premissa de entrada.
+
+---
+
+## 9. "Anterior" permite trocar a resposta, mas o banco recusa a troca
+
+**O que identifiquei.** `respostas` tem policy de SELECT e de INSERT, e
+**nenhuma de UPDATE** — a decisão está escrita no próprio SQL
+(`supabase/02_policies.sql`): *"respostas brutas são imutáveis após gravadas"*.
+Só que `gravarResposta` (`src/lib/repo-servidor.ts`) grava com
+`upsert ... onConflict: 'avaliacao_id,questao_codigo'`, e a tela oferece o botão
+**Anterior** com as alternativas clicáveis.
+
+Resultado: quem volta uma situação e escolhe outra alternativa recebe
+*"Sua resposta não foi salva: new row violates row-level security policy (USING
+expression) for table respostas"*. Reproduzido no navegador contra a stack local,
+e confirmado na estrutura — `select policyname, cmd from pg_policies where
+tablename='respostas'` devolve apenas SELECT e INSERT.
+
+**Por que é sério.** Não é só uma mensagem feia. A tela passa a mostrar a
+alternativa nova enquanto o banco mantém a antiga, e é o banco que alimenta o
+resultado. A pessoa acredita ter corrigido uma resposta que não foi corrigida.
+
+**Por que não corrigi.** Porque as duas metades são decisões declaradas e
+opostas, e escolher entre elas é decisão de metodologia, não de implementação:
+
+*Manter a imutabilidade e ajustar a tela.* A resposta bruta continua sendo o
+registro do que a pessoa escolheu **no instante em que escolheu** — que é o que
+sustenta a reprodutibilidade e a análise psicométrica. A tela deixaria de aceitar
+a troca: "Anterior" passaria a ser só releitura, com as alternativas
+desabilitadas e uma frase explicando por quê. Nenhum escore muda.
+
+*Permitir a correção.* Uma policy de UPDATE restrita à própria avaliação e ao
+status `EM_ANDAMENTO` — o mesmo recorte que `respostas_insere` já usa. Custa o
+abandono da imutabilidade declarada, e convém guardar a resposta anterior em vez
+de sobrescrevê-la, senão a auditoria perde a informação de que houve troca.
+Escores de quem trocar de resposta mudam — corretamente, mas mudam.
+
+**Impacto se nada for feito.** Nenhum número muda. O que fica é a discrepância
+entre o que a tela deixa fazer e o que o banco aceita, e o risco de alguém
+concluir a avaliação convencido de ter corrigido uma resposta.
+
+**Recomendação.** Decidir antes da próxima aplicação. A primeira saída é a que
+preserva o desenho atual e custa menos.
+

@@ -10,11 +10,11 @@
  * IMPORTANTE: o teste escreve no banco e NÃO é idempotente — ele exercita
  * cadastro, conclusão, limpeza e reaplicação, que são operações de estado.
  * Rode sempre contra um banco recém-criado com as migrations 01, 02, 03, 05,
- * 06, 07 e 08 aplicadas. Reexecutar sobre a base do teste anterior produz
+ * 06, 07, 08 e 09 aplicadas. Reexecutar sobre a base do teste anterior produz
  * falhas que são do procedimento, não da aplicação.
  *
  * Uso:
- *   createdb mapa_teste && psql -d mapa_teste -f supabase/01_schema.sql  (…02, 03, 05, 06, 07, 08)
+ *   createdb mapa_teste && psql -d mapa_teste -f supabase/01_schema.sql  (…02, 03, 05, 06, 07, 08, 09)
  *   PGURL=postgres://... npx tsx scripts/test-producao.ts
  */
 import { Client } from 'pg';
@@ -168,11 +168,11 @@ async function main() {
       [avaliacaoId, r.escores.bruto, r.escores.relativo]);
     await c.query(`insert into resultados(avaliacao_id,atitude,funcao_dominante,funcao_auxiliar,
       funcao_menos_representada,funcao_inferior,perfil_principal,perfil_secundario,empate_funcoes,
-      regra_desempate,ordem_funcoes,algoritmo_versao)
-      values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) on conflict (avaliacao_id) do nothing`,
+      regra_desempate,empate_auxiliar,regra_desempate_auxiliar,ordem_funcoes,algoritmo_versao)
+      values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) on conflict (avaliacao_id) do nothing`,
       [avaliacaoId, r.atitude, r.funcaoDominante, r.funcaoAuxiliar, r.funcaoMenosRepresentada,
        r.funcaoInferior, r.perfilPrincipal, r.perfilSecundario, r.empateFuncoes,
-       r.regraDesempate, r.ordemFuncoes, r.versao]);
+       r.regraDesempate, r.empateAuxiliar, r.regraDesempateAuxiliar, r.ordemFuncoes, r.versaoAlgoritmo]);
     await c.query(`insert into resultados_funcionais(avaliacao_id,eixos_bruto,eixos,cap_bruto,capacidades,
       ordem_capacidades,versao_matriz) values ($1,$2,$3,$4,$5,$6,$7) on conflict (avaliacao_id) do nothing`,
       [avaliacaoId, r.escores.eixos.bruto, r.escores.eixos.relativo, r.funcional.capacidadesBruto,
@@ -252,9 +252,11 @@ async function main() {
       [aid, r.escores.bruto, r.escores.relativo]);
     await c.query(`insert into resultados(avaliacao_id,atitude,funcao_dominante,funcao_auxiliar,
       funcao_menos_representada,funcao_inferior,perfil_principal,perfil_secundario,empate_funcoes,
-      regra_desempate,ordem_funcoes,algoritmo_versao) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`,
+      regra_desempate,empate_auxiliar,regra_desempate_auxiliar,ordem_funcoes,algoritmo_versao)
+      values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)`,
       [aid, r.atitude, r.funcaoDominante, r.funcaoAuxiliar, r.funcaoMenosRepresentada, r.funcaoInferior,
-       r.perfilPrincipal, r.perfilSecundario, r.empateFuncoes, r.regraDesempate, r.ordemFuncoes, r.versao]);
+       r.perfilPrincipal, r.perfilSecundario, r.empateFuncoes, r.regraDesempate,
+       r.empateAuxiliar, r.regraDesempateAuxiliar, r.ordemFuncoes, r.versaoAlgoritmo]);
     await c.query(`update avaliacoes set status='CONCLUIDA' where id=$1`, [aid]);
   });
 
@@ -411,6 +413,82 @@ async function main() {
       [participanteId])).rows[0].n);
     checa('Participante liberado pode responder de novo', emAnd === 0 && conc === 0,
       'nenhuma avaliação ativa bloqueia uma nova aplicação');
+  });
+
+  /* ══════════════ 12. Segunda aplicação — histórico e não-duplicação ══════════════ */
+  /**
+   * O ponto desta seção: responder de novo NÃO pode fazer a pessoa contar duas
+   * vezes em indicador nenhum, e NÃO pode apagar a leitura anterior. Antes de
+   * `09_aplicacoes.sql` as duas coisas eram promessas da interface — o banco não
+   * garantia nenhuma delas.
+   */
+  secao('12. Segunda aplicação — histórico preservado, indicadores sem duplicar');
+
+  let segundaId = '';
+  await como(PART, 'ana.real@empresa.com.br', async () => {
+    segundaId = (await c.query(
+      `insert into avaliacoes(participante_id,versao_codigo) values ($1,$2) returning id`,
+      [participanteId, VERSAO_INSTRUMENTO])).rows[0].id;
+    const n = (await c.query('select numero_aplicacao from avaliacoes where id=$1', [segundaId])).rows[0].numero_aplicacao;
+    checa('A nova aplicação recebe o ordinal seguinte, atribuído pelo banco', Number(n) === 2,
+      `numero_aplicacao = ${n} — calculado por trigger, não pelo cliente`);
+
+    // Respostas DIFERENTES das da primeira aplicação: é o que torna visível que
+    // as duas leituras coexistem em vez de uma sobrescrever a outra.
+    const rr = respostasDe(2);
+    for (const r of rr) {
+      // O peso é do ITEM, não da alternativa — mesma leitura das seções anteriores.
+      const q = QUESTOES.find(x => x.id === r.questaoId)!;
+      const alt = q.alternativas.find(a => a.id === r.alternativaId)!;
+      await c.query(
+        `insert into respostas(avaliacao_id,questao_codigo,alternativa_codigo,jung,eixo,peso) values ($1,$2,$3,$4,$5,$6)`,
+        [segundaId, r.questaoId, r.alternativaId, alt.jung, alt.eixo, q.peso]);
+    }
+    const r = avaliar(rr);
+    await c.query(`insert into escores(avaliacao_id,bruto,relativo) values ($1,$2,$3)`,
+      [segundaId, r.escores.bruto, r.escores.relativo]);
+    await c.query(`insert into resultados(avaliacao_id,atitude,funcao_dominante,funcao_auxiliar,
+      funcao_menos_representada,funcao_inferior,perfil_principal,perfil_secundario,empate_funcoes,
+      regra_desempate,empate_auxiliar,regra_desempate_auxiliar,ordem_funcoes,algoritmo_versao)
+      values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)`,
+      [segundaId, r.atitude, r.funcaoDominante, r.funcaoAuxiliar, r.funcaoMenosRepresentada, r.funcaoInferior,
+       r.perfilPrincipal, r.perfilSecundario, r.empateFuncoes, r.regraDesempate,
+       r.empateAuxiliar, r.regraDesempateAuxiliar, r.ordemFuncoes, r.versaoAlgoritmo]);
+    await c.query(`update avaliacoes set status='CONCLUIDA', concluida_em=now() where id=$1`, [segundaId]);
+  });
+
+  await como(MASTER, 'master@empresa.com.br', async () => {
+    const linhas = Number((await c.query('select count(*) n from vw_resultados')).rows[0].n);
+    const duplicadas = Number((await c.query(
+      `select count(*) n from (select participante_id from vw_resultados group by 1 having count(*) > 1) d`)).rows[0].n);
+    checa('A pessoa conta UMA vez nos indicadores, mesmo com duas aplicações no banco',
+      linhas === 1 && duplicadas === 0,
+      `${linhas} linha(s) em vw_resultados · ${duplicadas} participante(s) duplicado(s)`);
+
+    const vigente = (await c.query('select numero_aplicacao from vw_resultados')).rows[0]?.numero_aplicacao;
+    checa('O indicador considera a aplicação MAIS RECENTE', Number(vigente) === 2,
+      `aplicação vigente = ${vigente}`);
+
+    const hist = (await c.query(
+      `select numero_aplicacao, status, vigente, arquivada_em is not null as arquivada, respostas_gravadas
+         from vw_aplicacoes where participante_id=$1 order by numero_aplicacao`, [participanteId])).rows;
+    checa('O histórico mostra as DUAS aplicações, inclusive a arquivada', hist.length === 2,
+      hist.map((h: any) => `${h.numero_aplicacao}:${h.status}${h.arquivada ? ' (arquivada)' : ''} ${h.respostas_gravadas} resp.`).join(' · '));
+    checa('A aplicação arquivada continua com as 48 respostas gravadas',
+      hist.length === 2 && Number(hist[0].respostas_gravadas) === 48 && hist[0].arquivada === true,
+      `aplicação 01 arquivada com ${hist[0]?.respostas_gravadas} respostas — arquivar não apaga`);
+
+    const resumo = (await c.query('select * from resumo_organizacional()')).rows[0];
+    checa('O resumo conta PESSOAS, não avaliações', Number(resumo.concluidas) === 1,
+      `${resumo.participantes} participante(s) · ${resumo.concluidas} concluída(s) — não 2`);
+  });
+
+  await como(ADMIN_MEC, 'admin.mec@empresa.com.br', async () => {
+    const hist = Number((await c.query('select count(*) n from vw_aplicacoes')).rows[0].n);
+    const resp = Number((await c.query('select count(*) n from respostas')).rows[0].n);
+    checa('Admin de setor vê o histórico do próprio setor, mas nenhuma resposta bruta',
+      hist === 2 && resp === 0,
+      `${hist} aplicação(ões) visível(is) · ${resp} respostas brutas — o RLS decide, não a tela`);
   });
 
   await c.end();

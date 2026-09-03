@@ -37,13 +37,13 @@ npm run previa             # regenera dist/demo.html
 npm run baseline           # regrava baseline.json (só com --forcar; ver abaixo)
 
 # Ponta a ponta contra PostgreSQL real, com RLS ligado (escreve no banco, NÃO é idempotente —
-# use um banco recém-criado com 01, 02, 03, 05, 06, 07 e 08 aplicados):
+# use um banco recém-criado com 01, 02, 03, 05, 06, 07, 08 e 09 aplicados):
 PGURL=postgres://usuario@host/banco npx tsx scripts/test-producao.ts
 ```
 
 `npm run dev` não sobe sem `.env.local` (`cp .env.example .env.local`) com `NEXT_PUBLIC_SUPABASE_URL`,
 `NEXT_PUBLIC_SUPABASE_ANON_KEY` e `SUPABASE_SERVICE_ROLE_KEY` — `repo-supabase.ts` lê essas variáveis
-no topo do módulo. As migrações precisam estar aplicadas na ordem `01 → 02 → 03 → 05 → 06 → 07 → 08`
+no topo do módulo. As migrações precisam estar aplicadas na ordem `01 → 02 → 03 → 05 → 06 → 07 → 08 → 09`
 (nunca `04_demo_seed.sql` fora de desenvolvimento) e um usuário do Supabase Auth precisa existir em
 `administradores` com papel `MASTER`, senão toda tela de dashboard responde "acesso restrito" — o que
 é o comportamento correto.
@@ -66,6 +66,13 @@ separação é a regressão mais grave possível aqui.
 
 O módulo é puro: sem rede, sem aleatoriedade, sem IA. Desempates têm regra explícita e ordenações
 usam desempate estável pela ordem canônica — respostas idênticas produzem sempre o mesmo resultado.
+
+A cascata de desempate vive em `desempatar()` e é aplicada em **dois** pontos: a função dominante
+(perfil principal) e a função auxiliar (perfil secundário). D1 diferenciação em relação à oposta →
+D2 evidência convergente nos eixos → D3 ordem canônica. O texto gravado em `regra_desempate` /
+`regra_desempate_auxiliar` só lista degraus que **efetivamente reduziram** o conjunto de candidatas.
+`VERSAO_ALGORITMO` (`data/questions.ts`) é distinta de `VERSAO_INSTRUMENTO`: a primeira identifica
+como as respostas viram resultado, a segunda o que foi perguntado. Mudar a cascata muda a primeira.
 
 ### A chave de pontuação não chega ao navegador
 
@@ -143,6 +150,16 @@ tanto pelo dashboard quanto pelo Excel; é isso que faz os números coincidirem.
 - `vw_resultados` já exclui `is_demo` e `is_test` **na definição da view**. Nenhum indicador,
   relatório ou planilha enxerga dado fictício mesmo que uma tela futura esqueça de filtrar.
   `vw_resultados_todos` existe só para o backup antes da limpeza DEMO.
+- `vw_resultados` também é `distinct on (participante)`, pela conclusão mais recente: **uma linha por
+  pessoa, sempre**. `avaliacoes_cria` não verifica se já existe avaliação concluída — o bloqueio é
+  aplicacional —, e sem o `distinct on` quem contornasse a interface se contaria duas vezes em todo
+  indicador. `resumo_organizacional()` conta pessoas distintas pelo mesmo motivo.
+- `vw_aplicacoes` é o oposto declarado: o histórico por participante, **incluindo arquivadas e em
+  andamento**. Arquivar significa "fora dos indicadores", não "inexistente". `numero_aplicacao` é
+  atribuído por trigger no banco — `abrirAvaliacao` roda no navegador e é sujeito a corrida.
+- `resultados` só tem policy de INSERT para o participante; `resultados_atualiza_master` permite
+  UPDATE ao MASTER, e existe para o recálculo de `/api/recalcular` quando o algoritmo muda. As
+  `respostas` continuam sem UPDATE nem DELETE: são imutáveis.
 - RLS em `02_policies.sql` implementa os três papéis: participante vê a si mesmo e suas respostas
   brutas; `ADMIN_SETOR` vê o próprio setor e **zero** respostas brutas; `MASTER` vê tudo. As páginas
   não filtram por setor — o RLS filtra.
@@ -150,6 +167,13 @@ tanto pelo dashboard quanto pelo Excel; é isso que faz os números coincidirem.
   reset geral com `ZERAR RESULTADOS`), prévia, backup e registro em auditoria.
 
 ### Fluxo do participante
+
+O participante revisita o próprio resultado em `/meu-resultado`, que reaproveita a identificação do
+percurso e lista as aplicações dele por `vw_aplicacoes`. O vínculo pessoa↔resultado é o `user_id` da
+sessão anônima que respondeu, e `participantes_atualiza` exige `user_id = auth.uid()`: digitar a
+matrícula de um colega **não** abre o resultado dele — o banco recusa —, mas quem troca de navegador
+também é recusado. A mensagem explica isso; o caminho de volta é decisão pendente, no item 8 de
+`SUGESTOES_NAO_IMPLEMENTADAS.md`.
 
 `src/app/questionario/Fluxo.tsx` (client) abre a sessão antes de qualquer consulta
 (`garantirSessao` — anônima para quem responde, intocada para quem já entrou por `/entrar`) e grava

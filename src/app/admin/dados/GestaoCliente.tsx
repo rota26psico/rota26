@@ -43,6 +43,10 @@ export function GestaoCliente({ setores, logsIniciais, abaInicial }: {
   const [previaDemo, setPreviaDemo] = useState<PreviaDemo | null>(null);
   const [resultadoDemo, setResultadoDemo] = useState<{ participantes: number; avaliacoes: number; respostas: number; restantes: number } | null>(null);
   const [checklist, setChecklist] = useState<ItemChecklistUI[] | null>(null);
+  const [previaRecalculo, setPreviaRecalculo] = useState<
+    { total: number; avaliacoesAfetadas: number; porCampo: Record<string, number>; algoritmo: string } | null>(null);
+  const [resultadoRecalculo, setResultadoRecalculo] = useState<
+    { total: number; gravados: number; completo: boolean; avaliacoesAfetadas: number } | null>(null);
   const [ocupado, setOcupado] = useState<string | null>(null);
   const [mensagem, setMensagem] = useState<string | null>(null);
   const [erroProd, setErroProd] = useState<string | null>(null);
@@ -168,13 +172,47 @@ export function GestaoCliente({ setores, logsIniciais, abaInicial }: {
     finally { setOcupado(null); }
   };
 
+  /* ── Recálculo dos derivados com o algoritmo vigente ──
+     Mesmo desenho das demais operações de escrita em massa: uma prévia que só
+     conta, uma confirmação literal, e o registro na auditoria — feito pela
+     própria rota, que é quem sabe quantas linhas gravou. */
+  const chamarRecalculo = async (corpo: object) => {
+    const r = await fetch('/api/recalcular', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corpo)
+    });
+    const d = await r.json().catch(() => ({ erro: 'Resposta ilegível do servidor.' }));
+    if (!r.ok) throw new Error(d?.erro ?? `Falha na comunicação (HTTP ${r.status}).`);
+    return d;
+  };
+
+  const onPreviaRecalculo = async () => {
+    setOcupado('recalculo'); setErroProd(null); setMensagem(null); setResultadoRecalculo(null);
+    try { setPreviaRecalculo(await chamarRecalculo({ acao: 'previa' })); }
+    catch (e: any) { setErroProd(e.message); }
+    finally { setOcupado(null); }
+  };
+
+  const onRecalcular = async (confirmacao: string) => {
+    setOcupado('recalculo'); setErroProd(null);
+    try {
+      const d = await chamarRecalculo({ acao: 'aplicar', confirmacao });
+      setResultadoRecalculo(d);
+      setPreviaRecalculo(null);
+      setLogs(l => [{ data: new Date().toISOString(), usuario: 'você', acao: 'RECALCULO', detalhe: `${d.gravados} resultado(s) · algoritmo ${d.algoritmo}` }, ...l]);
+      router.refresh();
+    } catch (e: any) { setErroProd(e.message); }
+    finally { setOcupado(null); }
+  };
+
   const producao: PainelProducao = {
     ambiente: ROTULO_AMBIENTE,
     emProducao: EM_PRODUCAO,
     contagem, previaDemo, resultadoDemo, checklist, ocupado, mensagem,
     erro: erroProd,
     onPreviaDemo, onLimparDemo, onPreparar, onLimparTeste, onLiberarReaplicacao,
-    onCancelarPrevia: () => setPreviaDemo(null)
+    onCancelarPrevia: () => setPreviaDemo(null),
+    onPreviaRecalculo, onRecalcular, previaRecalculo, resultadoRecalculo,
+    onCancelarRecalculo: () => setPreviaRecalculo(null)
   };
 
   return (

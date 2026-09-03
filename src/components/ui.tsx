@@ -775,6 +775,13 @@ label{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-tra
 /* Botão da marca — o amarelo do logo, usado UMA vez por tela. */
 .btn-marca{background:var(--amarelo);color:var(--grafite);border-color:var(--amarelo);font-weight:700}
 .btn-marca:hover:not(:disabled){background:var(--amarelo-claro);border-color:var(--amarelo-claro)}
+/* ATENÇÃO: esta folha inteira é um template literal. Crase e cifrão-chave aqui
+   dentro encerram ou interpolam a string — o comentário vira código.
+   O botão secundário é preto sobre claro; dentro da abertura, que é escura, o
+   texto sumia. Ele existe ali desde que a abertura passou a oferecer também
+   "já respondi": quem volta para reler é tão previsto quanto quem começa. */
+.abertura .btn-sec{color:#F3EEE3;border-color:rgba(243,238,227,.34);background:transparent}
+.abertura .btn-sec:hover:not(:disabled){background:rgba(243,238,227,.10);border-color:rgba(243,238,227,.55)}
 
 /* Lugar do selo dos oito animais. Enquanto o arquivo oficial não chega, os
    oito nomes em disco sustentam a composição — sem fingir ser o selo.        */

@@ -146,7 +146,7 @@ significar base vazia) e o checklist com aprovado e reprovado.
 ## 7. Produção ponta a ponta — 45/45
 
 `scripts/test-producao.ts` contra **PostgreSQL 16 real, com RLS ligado**, banco
-criado do zero com as migrations 01, 02, 03, 05, 06, 07 e 08.
+criado do zero com as migrations 01, 02, 03, 05, 06, 07, 08 e 09.
 
 | Seção | O que provou |
 |---|---|

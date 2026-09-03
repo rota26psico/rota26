@@ -86,10 +86,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":19,"I":8,"T":20,"F":2,"S":1,"N":4}'::jsonb, '{"E":70.4,"I":29.6,"T":74.1,"F":7.4,"S":3.7,"N":14.8}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'T', 'N', 'S',
     'F', 'Te', 'Ne', false, null,
-    ARRAY['T','N','F','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','N','F','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":5,"EXE":7,"AUT":15,"COO":7,"FLE":6,"EST":14}'::jsonb, '{"EXP":17.9,"EXE":20,"AUT":34.1,"COO":15.6,"FLE":27.3,"EST":33.3}'::jsonb, '{"CRIAR":14,"EXPLORAR":10,"ANALISAR":37,"DECIDIR":25,"ORGANIZAR":22,"EXECUTAR":14,"RELACIONAR":17,"COORDENAR":9,"FINALIZAR":9,"ESPECIALIZAR":8}'::jsonb, '{"CRIAR":22.2,"EXPLORAR":17.2,"ANALISAR":47.4,"DECIDIR":61,"ORGANIZAR":41.5,"EXECUTAR":25.5,"RELACIONAR":20.2,"COORDENAR":14.8,"FINALIZAR":19.1,"ESPECIALIZAR":16.3}'::jsonb,
     ARRAY['DECIDIR','ANALISAR','ORGANIZAR','EXECUTAR','CRIAR','RELACIONAR','FINALIZAR','EXPLORAR','ESPECIALIZAR','COORDENAR']::text[], 'v2.0');
@@ -161,10 +163,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":9,"I":18,"T":3,"F":3,"S":18,"N":3}'::jsonb, '{"E":33.3,"I":66.7,"T":11.1,"F":11.1,"S":66.7,"N":11.1}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'S', 'T', 'N',
     'N', 'Si', 'Ti', false, null,
-    ARRAY['S','T','F','N']::text[], 'v1.0-piloto');
+    true, 'D2: desempate por evidência convergente nos eixos comportamentais.',
+    ARRAY['S','T','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":5,"EXE":20,"AUT":9,"COO":5,"FLE":1,"EST":14}'::jsonb, '{"EXP":17.9,"EXE":57.1,"AUT":20.5,"COO":11.1,"FLE":4.5,"EST":33.3}'::jsonb, '{"CRIAR":10,"EXPLORAR":13,"ANALISAR":27,"DECIDIR":6,"ORGANIZAR":21,"EXECUTAR":28,"RELACIONAR":13,"COORDENAR":9,"FINALIZAR":24,"ESPECIALIZAR":20}'::jsonb, '{"CRIAR":15.9,"EXPLORAR":22.4,"ANALISAR":34.6,"DECIDIR":14.6,"ORGANIZAR":39.6,"EXECUTAR":50.9,"RELACIONAR":15.5,"COORDENAR":14.8,"FINALIZAR":51.1,"ESPECIALIZAR":40.8}'::jsonb,
     ARRAY['FINALIZAR','EXECUTAR','ESPECIALIZAR','ORGANIZAR','ANALISAR','EXPLORAR','CRIAR','RELACIONAR','COORDENAR','DECIDIR']::text[], 'v2.0');
@@ -236,10 +240,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":11,"I":16,"T":3,"F":4,"S":1,"N":19}'::jsonb, '{"E":40.7,"I":59.3,"T":11.1,"F":14.8,"S":3.7,"N":70.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'N', 'F', 'S',
     'S', 'Ni', 'Fi', false, null,
-    ARRAY['N','F','T','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','F','T','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":16,"EXE":4,"AUT":15,"COO":7,"FLE":6,"EST":6}'::jsonb, '{"EXP":57.1,"EXE":11.4,"AUT":34.1,"COO":15.6,"FLE":27.3,"EST":14.3}'::jsonb, '{"CRIAR":37,"EXPLORAR":28,"ANALISAR":28,"DECIDIR":6,"ORGANIZAR":8,"EXECUTAR":14,"RELACIONAR":15,"COORDENAR":11,"FINALIZAR":6,"ESPECIALIZAR":12}'::jsonb, '{"CRIAR":58.7,"EXPLORAR":48.3,"ANALISAR":35.9,"DECIDIR":14.6,"ORGANIZAR":15.1,"EXECUTAR":25.5,"RELACIONAR":17.9,"COORDENAR":18,"FINALIZAR":12.8,"ESPECIALIZAR":24.5}'::jsonb,
     ARRAY['CRIAR','EXPLORAR','ANALISAR','EXECUTAR','ESPECIALIZAR','COORDENAR','RELACIONAR','ORGANIZAR','DECIDIR','FINALIZAR']::text[], 'v2.0');
@@ -311,10 +317,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":16,"I":11,"T":3,"F":1,"S":18,"N":5}'::jsonb, '{"E":59.3,"I":40.7,"T":11.1,"F":3.7,"S":66.7,"N":18.5}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'T', 'F',
     'N', 'Se', 'Te', false, null,
-    ARRAY['S','N','T','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','N','T','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":7,"EXE":17,"AUT":9,"COO":6,"FLE":6,"EST":9}'::jsonb, '{"EXP":25,"EXE":48.6,"AUT":20.5,"COO":13.3,"FLE":27.3,"EST":21.4}'::jsonb, '{"CRIAR":15,"EXPLORAR":19,"ANALISAR":26,"DECIDIR":16,"ORGANIZAR":8,"EXECUTAR":20,"RELACIONAR":13,"COORDENAR":8,"FINALIZAR":17,"ESPECIALIZAR":27}'::jsonb, '{"CRIAR":23.8,"EXPLORAR":32.8,"ANALISAR":33.3,"DECIDIR":39,"ORGANIZAR":15.1,"EXECUTAR":36.4,"RELACIONAR":15.5,"COORDENAR":13.1,"FINALIZAR":36.2,"ESPECIALIZAR":55.1}'::jsonb,
     ARRAY['ESPECIALIZAR','DECIDIR','EXECUTAR','FINALIZAR','ANALISAR','EXPLORAR','CRIAR','RELACIONAR','ORGANIZAR','COORDENAR']::text[], 'v2.0');
@@ -386,10 +394,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":12,"I":15,"T":19,"F":4,"S":3,"N":1}'::jsonb, '{"E":44.4,"I":55.6,"T":70.4,"F":14.8,"S":11.1,"N":3.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'T', 'S', 'N',
     'F', 'Ti', 'Si', false, null,
-    ARRAY['T','F','S','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','F','S','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":1,"EXE":5,"AUT":18,"COO":10,"FLE":4,"EST":16}'::jsonb, '{"EXP":3.6,"EXE":14.3,"AUT":40.9,"COO":22.2,"FLE":18.2,"EST":38.1}'::jsonb, '{"CRIAR":4,"EXPLORAR":7,"ANALISAR":41,"DECIDIR":22,"ORGANIZAR":19,"EXECUTAR":13,"RELACIONAR":23,"COORDENAR":9,"FINALIZAR":16,"ESPECIALIZAR":13}'::jsonb, '{"CRIAR":6.3,"EXPLORAR":12.1,"ANALISAR":52.6,"DECIDIR":53.7,"ORGANIZAR":35.8,"EXECUTAR":23.6,"RELACIONAR":27.4,"COORDENAR":14.8,"FINALIZAR":34,"ESPECIALIZAR":26.5}'::jsonb,
     ARRAY['DECIDIR','ANALISAR','ORGANIZAR','FINALIZAR','RELACIONAR','ESPECIALIZAR','EXECUTAR','COORDENAR','EXPLORAR','CRIAR']::text[], 'v2.0');
@@ -461,10 +471,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":21,"I":6,"T":19,"F":3,"S":1,"N":4}'::jsonb, '{"E":77.8,"I":22.2,"T":70.4,"F":11.1,"S":3.7,"N":14.8}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'T', 'N', 'S',
     'F', 'Te', 'Ne', false, null,
-    ARRAY['T','N','F','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','N','F','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":7,"EXE":5,"AUT":12,"COO":12,"FLE":6,"EST":12}'::jsonb, '{"EXP":25,"EXE":14.3,"AUT":27.3,"COO":26.7,"FLE":27.3,"EST":28.6}'::jsonb, '{"CRIAR":9,"EXPLORAR":20,"ANALISAR":35,"DECIDIR":19,"ORGANIZAR":15,"EXECUTAR":11,"RELACIONAR":27,"COORDENAR":13,"FINALIZAR":5,"ESPECIALIZAR":12}'::jsonb, '{"CRIAR":14.3,"EXPLORAR":34.5,"ANALISAR":44.9,"DECIDIR":46.3,"ORGANIZAR":28.3,"EXECUTAR":20,"RELACIONAR":32.1,"COORDENAR":21.3,"FINALIZAR":10.6,"ESPECIALIZAR":24.5}'::jsonb,
     ARRAY['DECIDIR','ANALISAR','EXPLORAR','RELACIONAR','ORGANIZAR','ESPECIALIZAR','COORDENAR','EXECUTAR','CRIAR','FINALIZAR']::text[], 'v2.0');
@@ -536,10 +548,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":8,"I":19,"T":2,"F":3,"S":3,"N":19}'::jsonb, '{"E":29.6,"I":70.4,"T":7.4,"F":11.1,"S":11.1,"N":70.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'N', 'F', 'T',
     'S', 'Ni', 'Fi', false, null,
-    ARRAY['N','S','F','T']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','S','F','T']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":15,"EXE":3,"AUT":17,"COO":6,"FLE":6,"EST":7}'::jsonb, '{"EXP":53.6,"EXE":8.6,"AUT":38.6,"COO":13.3,"FLE":27.3,"EST":16.7}'::jsonb, '{"CRIAR":44,"EXPLORAR":27,"ANALISAR":26,"DECIDIR":7,"ORGANIZAR":9,"EXECUTAR":8,"RELACIONAR":11,"COORDENAR":9,"FINALIZAR":6,"ESPECIALIZAR":19}'::jsonb, '{"CRIAR":69.8,"EXPLORAR":46.6,"ANALISAR":33.3,"DECIDIR":17.1,"ORGANIZAR":17,"EXECUTAR":14.5,"RELACIONAR":13.1,"COORDENAR":14.8,"FINALIZAR":12.8,"ESPECIALIZAR":38.8}'::jsonb,
     ARRAY['CRIAR','EXPLORAR','ESPECIALIZAR','ANALISAR','DECIDIR','ORGANIZAR','COORDENAR','EXECUTAR','RELACIONAR','FINALIZAR']::text[], 'v2.0');
@@ -611,10 +625,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":22,"I":5,"T":3,"F":3,"S":21,"N":0}'::jsonb, '{"E":81.5,"I":18.5,"T":11.1,"F":11.1,"S":77.8,"N":0}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'T', 'N',
     'N', 'Se', 'Te', false, null,
-    ARRAY['S','T','F','N']::text[], 'v1.0-piloto');
+    true, 'D2: desempate por evidência convergente nos eixos comportamentais.',
+    ARRAY['S','T','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":0,"EXE":24,"AUT":4,"COO":14,"FLE":6,"EST":6}'::jsonb, '{"EXP":0,"EXE":68.6,"AUT":9.1,"COO":31.1,"FLE":27.3,"EST":14.3}'::jsonb, '{"CRIAR":4,"EXPLORAR":6,"ANALISAR":21,"DECIDIR":16,"ORGANIZAR":9,"EXECUTAR":34,"RELACIONAR":28,"COORDENAR":15,"FINALIZAR":27,"ESPECIALIZAR":8}'::jsonb, '{"CRIAR":6.3,"EXPLORAR":10.3,"ANALISAR":26.9,"DECIDIR":39,"ORGANIZAR":17,"EXECUTAR":61.8,"RELACIONAR":33.3,"COORDENAR":24.6,"FINALIZAR":57.4,"ESPECIALIZAR":16.3}'::jsonb,
     ARRAY['EXECUTAR','FINALIZAR','DECIDIR','RELACIONAR','ANALISAR','COORDENAR','ORGANIZAR','ESPECIALIZAR','EXPLORAR','CRIAR']::text[], 'v2.0');
@@ -686,10 +702,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":20,"I":7,"T":6,"F":3,"S":16,"N":2}'::jsonb, '{"E":74.1,"I":25.9,"T":22.2,"F":11.1,"S":59.3,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'T', 'N',
     'N', 'Se', 'Te', false, null,
-    ARRAY['S','T','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','T','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":6,"EXE":16,"AUT":5,"COO":13,"FLE":2,"EST":12}'::jsonb, '{"EXP":21.4,"EXE":45.7,"AUT":11.4,"COO":28.9,"FLE":9.1,"EST":28.6}'::jsonb, '{"CRIAR":7,"EXPLORAR":17,"ANALISAR":26,"DECIDIR":10,"ORGANIZAR":12,"EXECUTAR":27,"RELACIONAR":25,"COORDENAR":16,"FINALIZAR":18,"ESPECIALIZAR":8}'::jsonb, '{"CRIAR":11.1,"EXPLORAR":29.3,"ANALISAR":33.3,"DECIDIR":24.4,"ORGANIZAR":22.6,"EXECUTAR":49.1,"RELACIONAR":29.8,"COORDENAR":26.2,"FINALIZAR":38.3,"ESPECIALIZAR":16.3}'::jsonb,
     ARRAY['EXECUTAR','FINALIZAR','ANALISAR','RELACIONAR','EXPLORAR','COORDENAR','DECIDIR','ORGANIZAR','ESPECIALIZAR','CRIAR']::text[], 'v2.0');
@@ -761,10 +779,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":24,"I":3,"T":3,"F":3,"S":2,"N":19}'::jsonb, '{"E":88.9,"I":11.1,"T":11.1,"F":11.1,"S":7.4,"N":70.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
-    values (v_aval, 'E', 'N', 'T', 'S',
-    'S', 'Ne', 'Te', false, null,
-    ARRAY['N','T','F','S']::text[], 'v1.0-piloto');
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
+    values (v_aval, 'E', 'N', 'F', 'S',
+    'S', 'Ne', 'Fe', false, null,
+    true, 'D2: desempate por evidência convergente nos eixos comportamentais.',
+    ARRAY['N','T','F','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":18,"EXE":6,"AUT":3,"COO":15,"FLE":7,"EST":5}'::jsonb, '{"EXP":64.3,"EXE":17.1,"AUT":6.8,"COO":33.3,"FLE":31.8,"EST":11.9}'::jsonb, '{"CRIAR":36,"EXPLORAR":37,"ANALISAR":7,"DECIDIR":13,"ORGANIZAR":7,"EXECUTAR":14,"RELACIONAR":32,"COORDENAR":15,"FINALIZAR":5,"ESPECIALIZAR":0}'::jsonb, '{"CRIAR":57.1,"EXPLORAR":63.8,"ANALISAR":9,"DECIDIR":31.7,"ORGANIZAR":13.2,"EXECUTAR":25.5,"RELACIONAR":38.1,"COORDENAR":24.6,"FINALIZAR":10.6,"ESPECIALIZAR":0}'::jsonb,
     ARRAY['EXPLORAR','CRIAR','RELACIONAR','DECIDIR','EXECUTAR','COORDENAR','ORGANIZAR','FINALIZAR','ANALISAR','ESPECIALIZAR']::text[], 'v2.0');
@@ -836,10 +856,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":7,"I":20,"T":2,"F":23,"S":0,"N":2}'::jsonb, '{"E":25.9,"I":74.1,"T":7.4,"F":85.2,"S":0,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'F', 'N', 'S',
     'T', 'Fi', 'Ni', false, null,
-    ARRAY['F','T','N','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['F','T','N','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":3,"EXE":1,"AUT":13,"COO":23,"FLE":3,"EST":11}'::jsonb, '{"EXP":10.7,"EXE":2.9,"AUT":29.5,"COO":51.1,"FLE":13.6,"EST":26.2}'::jsonb, '{"CRIAR":13,"EXPLORAR":6,"ANALISAR":12,"DECIDIR":8,"ORGANIZAR":16,"EXECUTAR":5,"RELACIONAR":43,"COORDENAR":36,"FINALIZAR":7,"ESPECIALIZAR":21}'::jsonb, '{"CRIAR":20.6,"EXPLORAR":10.3,"ANALISAR":15.4,"DECIDIR":19.5,"ORGANIZAR":30.2,"EXECUTAR":9.1,"RELACIONAR":51.2,"COORDENAR":59,"FINALIZAR":14.9,"ESPECIALIZAR":42.9}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','ESPECIALIZAR','ORGANIZAR','CRIAR','DECIDIR','ANALISAR','FINALIZAR','EXPLORAR','EXECUTAR']::text[], 'v2.0');
@@ -911,10 +933,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":8,"I":19,"T":1,"F":0,"S":24,"N":2}'::jsonb, '{"E":29.6,"I":70.4,"T":3.7,"F":0,"S":88.9,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'S', 'T', 'F',
     'N', 'Si', 'Ti', false, null,
-    ARRAY['S','N','T','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','N','T','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":1,"EXE":22,"AUT":11,"COO":5,"FLE":3,"EST":12}'::jsonb, '{"EXP":3.6,"EXE":62.9,"AUT":25,"COO":11.1,"FLE":13.6,"EST":28.6}'::jsonb, '{"CRIAR":12,"EXPLORAR":6,"ANALISAR":34,"DECIDIR":9,"ORGANIZAR":20,"EXECUTAR":27,"RELACIONAR":12,"COORDENAR":3,"FINALIZAR":28,"ESPECIALIZAR":18}'::jsonb, '{"CRIAR":19,"EXPLORAR":10.3,"ANALISAR":43.6,"DECIDIR":22,"ORGANIZAR":37.7,"EXECUTAR":49.1,"RELACIONAR":14.3,"COORDENAR":4.9,"FINALIZAR":59.6,"ESPECIALIZAR":36.7}'::jsonb,
     ARRAY['FINALIZAR','EXECUTAR','ANALISAR','ORGANIZAR','ESPECIALIZAR','DECIDIR','CRIAR','RELACIONAR','EXPLORAR','COORDENAR']::text[], 'v2.0');
@@ -986,10 +1010,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":18,"I":9,"T":5,"F":16,"S":3,"N":3}'::jsonb, '{"E":66.7,"I":33.3,"T":18.5,"F":59.3,"S":11.1,"N":11.1}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
-    values (v_aval, 'E', 'F', 'S', 'N',
-    'T', 'Fe', 'Se', false, null,
-    ARRAY['F','T','S','N']::text[], 'v1.0-piloto');
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
+    values (v_aval, 'E', 'F', 'N', 'N',
+    'T', 'Fe', 'Ne', false, null,
+    true, 'D2: desempate por evidência convergente nos eixos comportamentais.',
+    ARRAY['F','T','S','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":7,"EXE":6,"AUT":4,"COO":21,"FLE":4,"EST":12}'::jsonb, '{"EXP":25,"EXE":17.1,"AUT":9.1,"COO":46.7,"FLE":18.2,"EST":28.6}'::jsonb, '{"CRIAR":7,"EXPLORAR":16,"ANALISAR":19,"DECIDIR":12,"ORGANIZAR":10,"EXECUTAR":12,"RELACIONAR":33,"COORDENAR":36,"FINALIZAR":8,"ESPECIALIZAR":12}'::jsonb, '{"CRIAR":11.1,"EXPLORAR":27.6,"ANALISAR":24.4,"DECIDIR":29.3,"ORGANIZAR":18.9,"EXECUTAR":21.8,"RELACIONAR":39.3,"COORDENAR":59,"FINALIZAR":17,"ESPECIALIZAR":24.5}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','DECIDIR','EXPLORAR','ESPECIALIZAR','ANALISAR','EXECUTAR','ORGANIZAR','FINALIZAR','CRIAR']::text[], 'v2.0');
@@ -1061,10 +1087,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":19,"I":8,"T":1,"F":4,"S":1,"N":21}'::jsonb, '{"E":70.4,"I":29.6,"T":3.7,"F":14.8,"S":3.7,"N":77.8}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'N', 'F', 'S',
     'S', 'Ne', 'Fe', false, null,
-    ARRAY['N','F','T','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','F','T','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":17,"EXE":7,"AUT":7,"COO":9,"FLE":9,"EST":5}'::jsonb, '{"EXP":60.7,"EXE":20,"AUT":15.9,"COO":20,"FLE":40.9,"EST":11.9}'::jsonb, '{"CRIAR":40,"EXPLORAR":32,"ANALISAR":12,"DECIDIR":14,"ORGANIZAR":6,"EXECUTAR":14,"RELACIONAR":23,"COORDENAR":12,"FINALIZAR":5,"ESPECIALIZAR":8}'::jsonb, '{"CRIAR":63.5,"EXPLORAR":55.2,"ANALISAR":15.4,"DECIDIR":34.1,"ORGANIZAR":11.3,"EXECUTAR":25.5,"RELACIONAR":27.4,"COORDENAR":19.7,"FINALIZAR":10.6,"ESPECIALIZAR":16.3}'::jsonb,
     ARRAY['CRIAR','EXPLORAR','DECIDIR','RELACIONAR','EXECUTAR','COORDENAR','ESPECIALIZAR','ANALISAR','ORGANIZAR','FINALIZAR']::text[], 'v2.0');
@@ -1136,10 +1164,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":17,"I":10,"T":6,"F":19,"S":1,"N":1}'::jsonb, '{"E":63,"I":37,"T":22.2,"F":70.4,"S":3.7,"N":3.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
-    values (v_aval, 'E', 'F', 'S', 'N',
-    'T', 'Fe', 'Se', false, null,
-    ARRAY['F','T','S','N']::text[], 'v1.0-piloto');
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
+    values (v_aval, 'E', 'F', 'N', 'N',
+    'T', 'Fe', 'Ne', false, null,
+    true, 'D2: desempate por evidência convergente nos eixos comportamentais.',
+    ARRAY['F','T','S','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":5,"EXE":3,"AUT":10,"COO":22,"FLE":8,"EST":6}'::jsonb, '{"EXP":17.9,"EXE":8.6,"AUT":22.7,"COO":48.9,"FLE":36.4,"EST":14.3}'::jsonb, '{"CRIAR":7,"EXPLORAR":11,"ANALISAR":25,"DECIDIR":15,"ORGANIZAR":9,"EXECUTAR":13,"RELACIONAR":45,"COORDENAR":32,"FINALIZAR":7,"ESPECIALIZAR":2}'::jsonb, '{"CRIAR":11.1,"EXPLORAR":19,"ANALISAR":32.1,"DECIDIR":36.6,"ORGANIZAR":17,"EXECUTAR":23.6,"RELACIONAR":53.6,"COORDENAR":52.5,"FINALIZAR":14.9,"ESPECIALIZAR":4.1}'::jsonb,
     ARRAY['RELACIONAR','COORDENAR','DECIDIR','ANALISAR','EXECUTAR','EXPLORAR','ORGANIZAR','FINALIZAR','CRIAR','ESPECIALIZAR']::text[], 'v2.0');
@@ -1211,10 +1241,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":19,"I":8,"T":4,"F":17,"S":2,"N":4}'::jsonb, '{"E":70.4,"I":29.6,"T":14.8,"F":63,"S":7.4,"N":14.8}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'F', 'N', 'S',
     'T', 'Fe', 'Ne', false, null,
-    ARRAY['F','T','N','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['F','T','N','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":6,"EXE":7,"AUT":6,"COO":23,"FLE":6,"EST":6}'::jsonb, '{"EXP":21.4,"EXE":20,"AUT":13.6,"COO":51.1,"FLE":27.3,"EST":14.3}'::jsonb, '{"CRIAR":10,"EXPLORAR":17,"ANALISAR":17,"DECIDIR":11,"ORGANIZAR":7,"EXECUTAR":14,"RELACIONAR":43,"COORDENAR":35,"FINALIZAR":2,"ESPECIALIZAR":8}'::jsonb, '{"CRIAR":15.9,"EXPLORAR":29.3,"ANALISAR":21.8,"DECIDIR":26.8,"ORGANIZAR":13.2,"EXECUTAR":25.5,"RELACIONAR":51.2,"COORDENAR":57.4,"FINALIZAR":4.3,"ESPECIALIZAR":16.3}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','EXPLORAR','DECIDIR','EXECUTAR','ANALISAR','ESPECIALIZAR','CRIAR','ORGANIZAR','FINALIZAR']::text[], 'v2.0');
@@ -1286,10 +1318,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":25,"I":2,"T":1,"F":3,"S":1,"N":22}'::jsonb, '{"E":92.6,"I":7.4,"T":3.7,"F":11.1,"S":3.7,"N":81.5}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'N', 'F', 'S',
     'S', 'Ne', 'Fe', false, null,
-    ARRAY['N','F','T','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','F','T','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":18,"EXE":4,"AUT":2,"COO":17,"FLE":12,"EST":1}'::jsonb, '{"EXP":64.3,"EXE":11.4,"AUT":4.5,"COO":37.8,"FLE":54.5,"EST":2.4}'::jsonb, '{"CRIAR":41,"EXPLORAR":40,"ANALISAR":7,"DECIDIR":11,"ORGANIZAR":2,"EXECUTAR":13,"RELACIONAR":31,"COORDENAR":19,"FINALIZAR":0,"ESPECIALIZAR":2}'::jsonb, '{"CRIAR":65.1,"EXPLORAR":69,"ANALISAR":9,"DECIDIR":26.8,"ORGANIZAR":3.8,"EXECUTAR":23.6,"RELACIONAR":36.9,"COORDENAR":31.1,"FINALIZAR":0,"ESPECIALIZAR":4.1}'::jsonb,
     ARRAY['EXPLORAR','CRIAR','RELACIONAR','COORDENAR','DECIDIR','EXECUTAR','ANALISAR','ESPECIALIZAR','ORGANIZAR','FINALIZAR']::text[], 'v2.0');
@@ -1361,10 +1395,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":4,"I":23,"T":0,"F":7,"S":2,"N":18}'::jsonb, '{"E":14.8,"I":85.2,"T":0,"F":25.9,"S":7.4,"N":66.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'N', 'F', 'T',
     'S', 'Ni', 'Fi', false, null,
-    ARRAY['N','F','S','T']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','F','S','T']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":15,"EXE":2,"AUT":11,"COO":7,"FLE":5,"EST":14}'::jsonb, '{"EXP":53.6,"EXE":5.7,"AUT":25,"COO":15.6,"FLE":22.7,"EST":33.3}'::jsonb, '{"CRIAR":33,"EXPLORAR":25,"ANALISAR":18,"DECIDIR":7,"ORGANIZAR":20,"EXECUTAR":5,"RELACIONAR":18,"COORDENAR":10,"FINALIZAR":10,"ESPECIALIZAR":19}'::jsonb, '{"CRIAR":52.4,"EXPLORAR":43.1,"ANALISAR":23.1,"DECIDIR":17.1,"ORGANIZAR":37.7,"EXECUTAR":9.1,"RELACIONAR":21.4,"COORDENAR":16.4,"FINALIZAR":21.3,"ESPECIALIZAR":38.8}'::jsonb,
     ARRAY['CRIAR','EXPLORAR','ESPECIALIZAR','ORGANIZAR','ANALISAR','RELACIONAR','FINALIZAR','DECIDIR','COORDENAR','EXECUTAR']::text[], 'v2.0');
@@ -1436,10 +1472,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":23,"I":4,"T":2,"F":1,"S":1,"N":23}'::jsonb, '{"E":85.2,"I":14.8,"T":7.4,"F":3.7,"S":3.7,"N":85.2}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'N', 'T', 'F',
     'S', 'Ne', 'Te', false, null,
-    ARRAY['N','T','S','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','T','S','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":17,"EXE":6,"AUT":7,"COO":13,"FLE":10,"EST":1}'::jsonb, '{"EXP":60.7,"EXE":17.1,"AUT":15.9,"COO":28.9,"FLE":45.5,"EST":2.4}'::jsonb, '{"CRIAR":45,"EXPLORAR":35,"ANALISAR":14,"DECIDIR":11,"ORGANIZAR":2,"EXECUTAR":14,"RELACIONAR":27,"COORDENAR":15,"FINALIZAR":1,"ESPECIALIZAR":1}'::jsonb, '{"CRIAR":71.4,"EXPLORAR":60.3,"ANALISAR":17.9,"DECIDIR":26.8,"ORGANIZAR":3.8,"EXECUTAR":25.5,"RELACIONAR":32.1,"COORDENAR":24.6,"FINALIZAR":2.1,"ESPECIALIZAR":2}'::jsonb,
     ARRAY['CRIAR','EXPLORAR','RELACIONAR','DECIDIR','EXECUTAR','COORDENAR','ANALISAR','ORGANIZAR','FINALIZAR','ESPECIALIZAR']::text[], 'v2.0');
@@ -1511,10 +1549,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":20,"I":7,"T":0,"F":19,"S":4,"N":4}'::jsonb, '{"E":74.1,"I":25.9,"T":0,"F":70.4,"S":14.8,"N":14.8}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
-    values (v_aval, 'E', 'F', 'S', 'T',
-    'T', 'Fe', 'Se', false, null,
-    ARRAY['F','S','N','T']::text[], 'v1.0-piloto');
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
+    values (v_aval, 'E', 'F', 'N', 'T',
+    'T', 'Fe', 'Ne', false, null,
+    true, 'D2: desempate por evidência convergente nos eixos comportamentais.',
+    ARRAY['F','S','N','T']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":9,"EXE":8,"AUT":5,"COO":24,"FLE":6,"EST":2}'::jsonb, '{"EXP":32.1,"EXE":22.9,"AUT":11.4,"COO":53.3,"FLE":27.3,"EST":4.8}'::jsonb, '{"CRIAR":14,"EXPLORAR":21,"ANALISAR":6,"DECIDIR":12,"ORGANIZAR":5,"EXECUTAR":10,"RELACIONAR":50,"COORDENAR":35,"FINALIZAR":6,"ESPECIALIZAR":7}'::jsonb, '{"CRIAR":22.2,"EXPLORAR":36.2,"ANALISAR":7.7,"DECIDIR":29.3,"ORGANIZAR":9.4,"EXECUTAR":18.2,"RELACIONAR":59.5,"COORDENAR":57.4,"FINALIZAR":12.8,"ESPECIALIZAR":14.3}'::jsonb,
     ARRAY['RELACIONAR','COORDENAR','EXPLORAR','DECIDIR','CRIAR','EXECUTAR','ESPECIALIZAR','FINALIZAR','ORGANIZAR','ANALISAR']::text[], 'v2.0');
@@ -1586,10 +1626,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":21,"I":6,"T":0,"F":2,"S":2,"N":23}'::jsonb, '{"E":77.8,"I":22.2,"T":0,"F":7.4,"S":7.4,"N":85.2}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'N', 'F', 'T',
     'S', 'Ne', 'Fe', false, null,
-    ARRAY['N','S','F','T']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','S','F','T']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":17,"EXE":8,"AUT":6,"COO":10,"FLE":11,"EST":2}'::jsonb, '{"EXP":60.7,"EXE":22.9,"AUT":13.6,"COO":22.2,"FLE":50,"EST":4.8}'::jsonb, '{"CRIAR":45,"EXPLORAR":37,"ANALISAR":10,"DECIDIR":13,"ORGANIZAR":3,"EXECUTAR":14,"RELACIONAR":20,"COORDENAR":15,"FINALIZAR":2,"ESPECIALIZAR":7}'::jsonb, '{"CRIAR":71.4,"EXPLORAR":63.8,"ANALISAR":12.8,"DECIDIR":31.7,"ORGANIZAR":5.7,"EXECUTAR":25.5,"RELACIONAR":23.8,"COORDENAR":24.6,"FINALIZAR":4.3,"ESPECIALIZAR":14.3}'::jsonb,
     ARRAY['CRIAR','EXPLORAR','DECIDIR','EXECUTAR','COORDENAR','RELACIONAR','ESPECIALIZAR','ANALISAR','ORGANIZAR','FINALIZAR']::text[], 'v2.0');
@@ -1661,10 +1703,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":9,"I":18,"T":8,"F":0,"S":3,"N":16}'::jsonb, '{"E":33.3,"I":66.7,"T":29.6,"F":0,"S":11.1,"N":59.3}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'N', 'T', 'F',
     'S', 'Ni', 'Ti', false, null,
-    ARRAY['N','T','S','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','T','S','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":16,"EXE":4,"AUT":20,"COO":3,"FLE":3,"EST":8}'::jsonb, '{"EXP":57.1,"EXE":11.4,"AUT":45.5,"COO":6.7,"FLE":13.6,"EST":19}'::jsonb, '{"CRIAR":35,"EXPLORAR":29,"ANALISAR":34,"DECIDIR":12,"ORGANIZAR":13,"EXECUTAR":10,"RELACIONAR":8,"COORDENAR":6,"FINALIZAR":5,"ESPECIALIZAR":13}'::jsonb, '{"CRIAR":55.6,"EXPLORAR":50,"ANALISAR":43.6,"DECIDIR":29.3,"ORGANIZAR":24.5,"EXECUTAR":18.2,"RELACIONAR":9.5,"COORDENAR":9.8,"FINALIZAR":10.6,"ESPECIALIZAR":26.5}'::jsonb,
     ARRAY['CRIAR','EXPLORAR','ANALISAR','DECIDIR','ESPECIALIZAR','ORGANIZAR','EXECUTAR','FINALIZAR','COORDENAR','RELACIONAR']::text[], 'v2.0');
@@ -1736,10 +1780,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":16,"I":11,"T":3,"F":0,"S":4,"N":20}'::jsonb, '{"E":59.3,"I":40.7,"T":11.1,"F":0,"S":14.8,"N":74.1}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'N', 'T', 'F',
     'S', 'Ne', 'Te', false, null,
-    ARRAY['N','S','T','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','S','T','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":16,"EXE":7,"AUT":10,"COO":7,"FLE":8,"EST":6}'::jsonb, '{"EXP":57.1,"EXE":20,"AUT":22.7,"COO":15.6,"FLE":36.4,"EST":14.3}'::jsonb, '{"CRIAR":37,"EXPLORAR":31,"ANALISAR":18,"DECIDIR":10,"ORGANIZAR":11,"EXECUTAR":14,"RELACIONAR":18,"COORDENAR":9,"FINALIZAR":10,"ESPECIALIZAR":8}'::jsonb, '{"CRIAR":58.7,"EXPLORAR":53.4,"ANALISAR":23.1,"DECIDIR":24.4,"ORGANIZAR":20.8,"EXECUTAR":25.5,"RELACIONAR":21.4,"COORDENAR":14.8,"FINALIZAR":21.3,"ESPECIALIZAR":16.3}'::jsonb,
     ARRAY['CRIAR','EXPLORAR','EXECUTAR','DECIDIR','ANALISAR','RELACIONAR','FINALIZAR','ORGANIZAR','ESPECIALIZAR','COORDENAR']::text[], 'v2.0');
@@ -1811,10 +1857,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":12,"I":15,"T":1,"F":17,"S":4,"N":5}'::jsonb, '{"E":44.4,"I":55.6,"T":3.7,"F":63,"S":14.8,"N":18.5}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'F', 'N', 'T',
     'T', 'Fi', 'Ni', false, null,
-    ARRAY['F','N','S','T']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['F','N','S','T']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":7,"EXE":6,"AUT":6,"COO":18,"FLE":6,"EST":11}'::jsonb, '{"EXP":25,"EXE":17.1,"AUT":13.6,"COO":40,"FLE":27.3,"EST":26.2}'::jsonb, '{"CRIAR":14,"EXPLORAR":16,"ANALISAR":13,"DECIDIR":9,"ORGANIZAR":18,"EXECUTAR":15,"RELACIONAR":34,"COORDENAR":31,"FINALIZAR":7,"ESPECIALIZAR":10}'::jsonb, '{"CRIAR":22.2,"EXPLORAR":27.6,"ANALISAR":16.7,"DECIDIR":22,"ORGANIZAR":34,"EXECUTAR":27.3,"RELACIONAR":40.5,"COORDENAR":50.8,"FINALIZAR":14.9,"ESPECIALIZAR":20.4}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','ORGANIZAR','EXPLORAR','EXECUTAR','CRIAR','DECIDIR','ESPECIALIZAR','ANALISAR','FINALIZAR']::text[], 'v2.0');
@@ -1886,10 +1934,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":13,"I":14,"T":6,"F":15,"S":4,"N":2}'::jsonb, '{"E":48.1,"I":51.9,"T":22.2,"F":55.6,"S":14.8,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'F', 'S', 'N',
     'T', 'Fi', 'Si', false, null,
-    ARRAY['F','T','S','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['F','T','S','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":6,"EXE":5,"AUT":9,"COO":19,"FLE":2,"EST":13}'::jsonb, '{"EXP":21.4,"EXE":14.3,"AUT":20.5,"COO":42.2,"FLE":9.1,"EST":31}'::jsonb, '{"CRIAR":9,"EXPLORAR":9,"ANALISAR":19,"DECIDIR":9,"ORGANIZAR":18,"EXECUTAR":13,"RELACIONAR":35,"COORDENAR":30,"FINALIZAR":11,"ESPECIALIZAR":11}'::jsonb, '{"CRIAR":14.3,"EXPLORAR":15.5,"ANALISAR":24.4,"DECIDIR":22,"ORGANIZAR":34,"EXECUTAR":23.6,"RELACIONAR":41.7,"COORDENAR":49.2,"FINALIZAR":23.4,"ESPECIALIZAR":22.4}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','ORGANIZAR','ANALISAR','EXECUTAR','FINALIZAR','ESPECIALIZAR','DECIDIR','EXPLORAR','CRIAR']::text[], 'v2.0');
@@ -1961,10 +2011,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":20,"I":7,"T":2,"F":1,"S":21,"N":3}'::jsonb, '{"E":74.1,"I":25.9,"T":7.4,"F":3.7,"S":77.8,"N":11.1}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'T', 'F',
     'N', 'Se', 'Te', false, null,
-    ARRAY['S','N','T','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','N','T','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":4,"EXE":23,"AUT":2,"COO":13,"FLE":3,"EST":9}'::jsonb, '{"EXP":14.3,"EXE":65.7,"AUT":4.5,"COO":28.9,"FLE":13.6,"EST":21.4}'::jsonb, '{"CRIAR":5,"EXPLORAR":17,"ANALISAR":25,"DECIDIR":13,"ORGANIZAR":10,"EXECUTAR":25,"RELACIONAR":23,"COORDENAR":13,"FINALIZAR":20,"ESPECIALIZAR":18}'::jsonb, '{"CRIAR":7.9,"EXPLORAR":29.3,"ANALISAR":32.1,"DECIDIR":31.7,"ORGANIZAR":18.9,"EXECUTAR":45.5,"RELACIONAR":27.4,"COORDENAR":21.3,"FINALIZAR":42.6,"ESPECIALIZAR":36.7}'::jsonb,
     ARRAY['EXECUTAR','FINALIZAR','ESPECIALIZAR','ANALISAR','DECIDIR','EXPLORAR','RELACIONAR','COORDENAR','ORGANIZAR','CRIAR']::text[], 'v2.0');
@@ -2036,10 +2088,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":19,"I":8,"T":24,"F":1,"S":2,"N":0}'::jsonb, '{"E":70.4,"I":29.6,"T":88.9,"F":3.7,"S":7.4,"N":0}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'T', 'S', 'N',
     'F', 'Te', 'Se', false, null,
-    ARRAY['T','S','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','S','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":2,"EXE":9,"AUT":19,"COO":9,"FLE":3,"EST":12}'::jsonb, '{"EXP":7.1,"EXE":25.7,"AUT":43.2,"COO":20,"FLE":13.6,"EST":28.6}'::jsonb, '{"CRIAR":6,"EXPLORAR":6,"ANALISAR":41,"DECIDIR":26,"ORGANIZAR":16,"EXECUTAR":20,"RELACIONAR":16,"COORDENAR":12,"FINALIZAR":11,"ESPECIALIZAR":12}'::jsonb, '{"CRIAR":9.5,"EXPLORAR":10.3,"ANALISAR":52.6,"DECIDIR":63.4,"ORGANIZAR":30.2,"EXECUTAR":36.4,"RELACIONAR":19,"COORDENAR":19.7,"FINALIZAR":23.4,"ESPECIALIZAR":24.5}'::jsonb,
     ARRAY['DECIDIR','ANALISAR','EXECUTAR','ORGANIZAR','ESPECIALIZAR','FINALIZAR','COORDENAR','RELACIONAR','EXPLORAR','CRIAR']::text[], 'v2.0');
@@ -2111,10 +2165,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":22,"I":5,"T":19,"F":1,"S":2,"N":5}'::jsonb, '{"E":81.5,"I":18.5,"T":70.4,"F":3.7,"S":7.4,"N":18.5}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'T', 'N', 'F',
     'F', 'Te', 'Ne', false, null,
-    ARRAY['T','N','S','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','N','S','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":9,"EXE":4,"AUT":13,"COO":12,"FLE":6,"EST":10}'::jsonb, '{"EXP":32.1,"EXE":11.4,"AUT":29.5,"COO":26.7,"FLE":27.3,"EST":23.8}'::jsonb, '{"CRIAR":16,"EXPLORAR":19,"ANALISAR":33,"DECIDIR":15,"ORGANIZAR":15,"EXECUTAR":16,"RELACIONAR":25,"COORDENAR":16,"FINALIZAR":5,"ESPECIALIZAR":9}'::jsonb, '{"CRIAR":25.4,"EXPLORAR":32.8,"ANALISAR":42.3,"DECIDIR":36.6,"ORGANIZAR":28.3,"EXECUTAR":29.1,"RELACIONAR":29.8,"COORDENAR":26.2,"FINALIZAR":10.6,"ESPECIALIZAR":18.4}'::jsonb,
     ARRAY['ANALISAR','DECIDIR','EXPLORAR','RELACIONAR','EXECUTAR','ORGANIZAR','COORDENAR','CRIAR','ESPECIALIZAR','FINALIZAR']::text[], 'v2.0');
@@ -2186,10 +2242,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":12,"I":15,"T":4,"F":3,"S":13,"N":7}'::jsonb, '{"E":44.4,"I":55.6,"T":14.8,"F":11.1,"S":48.1,"N":25.9}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'S', 'T', 'F',
     'N', 'Si', 'Ti', false, null,
-    ARRAY['S','N','T','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','N','T','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":7,"EXE":12,"AUT":14,"COO":10,"FLE":3,"EST":8}'::jsonb, '{"EXP":25,"EXE":34.3,"AUT":31.8,"COO":22.2,"FLE":13.6,"EST":19}'::jsonb, '{"CRIAR":18,"EXPLORAR":18,"ANALISAR":30,"DECIDIR":12,"ORGANIZAR":10,"EXECUTAR":13,"RELACIONAR":23,"COORDENAR":10,"FINALIZAR":21,"ESPECIALIZAR":11}'::jsonb, '{"CRIAR":28.6,"EXPLORAR":31,"ANALISAR":38.5,"DECIDIR":29.3,"ORGANIZAR":18.9,"EXECUTAR":23.6,"RELACIONAR":27.4,"COORDENAR":16.4,"FINALIZAR":44.7,"ESPECIALIZAR":22.4}'::jsonb,
     ARRAY['FINALIZAR','ANALISAR','EXPLORAR','DECIDIR','CRIAR','RELACIONAR','EXECUTAR','ESPECIALIZAR','ORGANIZAR','COORDENAR']::text[], 'v2.0');
@@ -2261,10 +2319,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":22,"I":5,"T":3,"F":2,"S":18,"N":4}'::jsonb, '{"E":81.5,"I":18.5,"T":11.1,"F":7.4,"S":66.7,"N":14.8}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'T', 'F',
     'N', 'Se', 'Te', false, null,
-    ARRAY['S','N','T','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','N','T','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":6,"EXE":20,"AUT":2,"COO":6,"FLE":11,"EST":9}'::jsonb, '{"EXP":21.4,"EXE":57.1,"AUT":4.5,"COO":13.3,"FLE":50,"EST":21.4}'::jsonb, '{"CRIAR":12,"EXPLORAR":17,"ANALISAR":24,"DECIDIR":19,"ORGANIZAR":12,"EXECUTAR":35,"RELACIONAR":20,"COORDENAR":5,"FINALIZAR":17,"ESPECIALIZAR":7}'::jsonb, '{"CRIAR":19,"EXPLORAR":29.3,"ANALISAR":30.8,"DECIDIR":46.3,"ORGANIZAR":22.6,"EXECUTAR":63.6,"RELACIONAR":23.8,"COORDENAR":8.2,"FINALIZAR":36.2,"ESPECIALIZAR":14.3}'::jsonb,
     ARRAY['EXECUTAR','DECIDIR','FINALIZAR','ANALISAR','EXPLORAR','RELACIONAR','ORGANIZAR','CRIAR','ESPECIALIZAR','COORDENAR']::text[], 'v2.0');
@@ -2336,10 +2396,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":19,"I":8,"T":1,"F":6,"S":15,"N":5}'::jsonb, '{"E":70.4,"I":29.6,"T":3.7,"F":22.2,"S":55.6,"N":18.5}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'F', 'T',
     'N', 'Se', 'Fe', false, null,
-    ARRAY['S','F','N','T']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','F','N','T']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":7,"EXE":16,"AUT":6,"COO":14,"FLE":5,"EST":6}'::jsonb, '{"EXP":25,"EXE":45.7,"AUT":13.6,"COO":31.1,"FLE":22.7,"EST":14.3}'::jsonb, '{"CRIAR":12,"EXPLORAR":14,"ANALISAR":26,"DECIDIR":11,"ORGANIZAR":7,"EXECUTAR":25,"RELACIONAR":26,"COORDENAR":21,"FINALIZAR":14,"ESPECIALIZAR":12}'::jsonb, '{"CRIAR":19,"EXPLORAR":24.1,"ANALISAR":33.3,"DECIDIR":26.8,"ORGANIZAR":13.2,"EXECUTAR":45.5,"RELACIONAR":31,"COORDENAR":34.4,"FINALIZAR":29.8,"ESPECIALIZAR":24.5}'::jsonb,
     ARRAY['EXECUTAR','COORDENAR','ANALISAR','RELACIONAR','FINALIZAR','DECIDIR','ESPECIALIZAR','EXPLORAR','CRIAR','ORGANIZAR']::text[], 'v2.0');
@@ -2411,10 +2473,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":18,"I":9,"T":4,"F":2,"S":20,"N":1}'::jsonb, '{"E":66.7,"I":33.3,"T":14.8,"F":7.4,"S":74.1,"N":3.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'T', 'N',
     'N', 'Se', 'Te', false, null,
-    ARRAY['S','T','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','T','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":3,"EXE":22,"AUT":9,"COO":8,"FLE":5,"EST":7}'::jsonb, '{"EXP":10.7,"EXE":62.9,"AUT":20.5,"COO":17.8,"FLE":22.7,"EST":16.7}'::jsonb, '{"CRIAR":11,"EXPLORAR":15,"ANALISAR":31,"DECIDIR":13,"ORGANIZAR":10,"EXECUTAR":22,"RELACIONAR":17,"COORDENAR":8,"FINALIZAR":23,"ESPECIALIZAR":18}'::jsonb, '{"CRIAR":17.5,"EXPLORAR":25.9,"ANALISAR":39.7,"DECIDIR":31.7,"ORGANIZAR":18.9,"EXECUTAR":40,"RELACIONAR":20.2,"COORDENAR":13.1,"FINALIZAR":48.9,"ESPECIALIZAR":36.7}'::jsonb,
     ARRAY['FINALIZAR','EXECUTAR','ANALISAR','ESPECIALIZAR','DECIDIR','EXPLORAR','RELACIONAR','ORGANIZAR','CRIAR','COORDENAR']::text[], 'v2.0');
@@ -2486,10 +2550,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":18,"I":9,"T":18,"F":2,"S":5,"N":2}'::jsonb, '{"E":66.7,"I":33.3,"T":66.7,"F":7.4,"S":18.5,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'T', 'S', 'N',
     'F', 'Te', 'Se', false, null,
-    ARRAY['T','S','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','S','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":2,"EXE":4,"AUT":14,"COO":12,"FLE":8,"EST":14}'::jsonb, '{"EXP":7.1,"EXE":11.4,"AUT":31.8,"COO":26.7,"FLE":36.4,"EST":33.3}'::jsonb, '{"CRIAR":14,"EXPLORAR":3,"ANALISAR":40,"DECIDIR":17,"ORGANIZAR":17,"EXECUTAR":4,"RELACIONAR":28,"COORDENAR":15,"FINALIZAR":16,"ESPECIALIZAR":11}'::jsonb, '{"CRIAR":22.2,"EXPLORAR":5.2,"ANALISAR":51.3,"DECIDIR":41.5,"ORGANIZAR":32.1,"EXECUTAR":7.3,"RELACIONAR":33.3,"COORDENAR":24.6,"FINALIZAR":34,"ESPECIALIZAR":22.4}'::jsonb,
     ARRAY['ANALISAR','DECIDIR','FINALIZAR','RELACIONAR','ORGANIZAR','COORDENAR','ESPECIALIZAR','CRIAR','EXECUTAR','EXPLORAR']::text[], 'v2.0');
@@ -2561,10 +2627,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":8,"I":19,"T":1,"F":19,"S":5,"N":2}'::jsonb, '{"E":29.6,"I":70.4,"T":3.7,"F":70.4,"S":18.5,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'F', 'S', 'T',
     'T', 'Fi', 'Si', false, null,
-    ARRAY['F','S','N','T']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['F','S','N','T']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":2,"EXE":6,"AUT":10,"COO":22,"FLE":3,"EST":11}'::jsonb, '{"EXP":7.1,"EXE":17.1,"AUT":22.7,"COO":48.9,"FLE":13.6,"EST":26.2}'::jsonb, '{"CRIAR":7,"EXPLORAR":8,"ANALISAR":16,"DECIDIR":6,"ORGANIZAR":17,"EXECUTAR":10,"RELACIONAR":40,"COORDENAR":32,"FINALIZAR":16,"ESPECIALIZAR":14}'::jsonb, '{"CRIAR":11.1,"EXPLORAR":13.8,"ANALISAR":20.5,"DECIDIR":14.6,"ORGANIZAR":32.1,"EXECUTAR":18.2,"RELACIONAR":47.6,"COORDENAR":52.5,"FINALIZAR":34,"ESPECIALIZAR":28.6}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','FINALIZAR','ORGANIZAR','ESPECIALIZAR','ANALISAR','EXECUTAR','DECIDIR','EXPLORAR','CRIAR']::text[], 'v2.0');
@@ -2636,10 +2704,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":23,"I":4,"T":0,"F":25,"S":2,"N":0}'::jsonb, '{"E":85.2,"I":14.8,"T":0,"F":92.6,"S":7.4,"N":0}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'F', 'S', 'N',
     'T', 'Fe', 'Se', false, null,
-    ARRAY['F','S','T','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['F','S','T','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":4,"EXE":6,"AUT":1,"COO":32,"FLE":7,"EST":4}'::jsonb, '{"EXP":14.3,"EXE":17.1,"AUT":2.3,"COO":71.1,"FLE":31.8,"EST":9.5}'::jsonb, '{"CRIAR":4,"EXPLORAR":15,"ANALISAR":3,"DECIDIR":13,"ORGANIZAR":8,"EXECUTAR":11,"RELACIONAR":61,"COORDENAR":44,"FINALIZAR":2,"ESPECIALIZAR":6}'::jsonb, '{"CRIAR":6.3,"EXPLORAR":25.9,"ANALISAR":3.8,"DECIDIR":31.7,"ORGANIZAR":15.1,"EXECUTAR":20,"RELACIONAR":72.6,"COORDENAR":72.1,"FINALIZAR":4.3,"ESPECIALIZAR":12.2}'::jsonb,
     ARRAY['RELACIONAR','COORDENAR','DECIDIR','EXPLORAR','EXECUTAR','ORGANIZAR','ESPECIALIZAR','CRIAR','FINALIZAR','ANALISAR']::text[], 'v2.0');
@@ -2711,10 +2781,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":7,"I":20,"T":20,"F":0,"S":5,"N":2}'::jsonb, '{"E":25.9,"I":74.1,"T":74.1,"F":0,"S":18.5,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'T', 'S', 'F',
     'F', 'Ti', 'Si', false, null,
-    ARRAY['T','S','N','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','S','N','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":2,"EXE":6,"AUT":20,"COO":5,"FLE":2,"EST":19}'::jsonb, '{"EXP":7.1,"EXE":17.1,"AUT":45.5,"COO":11.1,"FLE":9.1,"EST":45.2}'::jsonb, '{"CRIAR":10,"EXPLORAR":3,"ANALISAR":54,"DECIDIR":13,"ORGANIZAR":24,"EXECUTAR":6,"RELACIONAR":10,"COORDENAR":8,"FINALIZAR":19,"ESPECIALIZAR":20}'::jsonb, '{"CRIAR":15.9,"EXPLORAR":5.2,"ANALISAR":69.2,"DECIDIR":31.7,"ORGANIZAR":45.3,"EXECUTAR":10.9,"RELACIONAR":11.9,"COORDENAR":13.1,"FINALIZAR":40.4,"ESPECIALIZAR":40.8}'::jsonb,
     ARRAY['ANALISAR','ORGANIZAR','ESPECIALIZAR','FINALIZAR','DECIDIR','CRIAR','COORDENAR','RELACIONAR','EXECUTAR','EXPLORAR']::text[], 'v2.0');
@@ -2786,10 +2858,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":10,"I":17,"T":3,"F":2,"S":18,"N":4}'::jsonb, '{"E":37,"I":63,"T":11.1,"F":7.4,"S":66.7,"N":14.8}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'S', 'T', 'F',
     'N', 'Si', 'Ti', false, null,
-    ARRAY['S','N','T','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','N','T','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":3,"EXE":19,"AUT":6,"COO":6,"FLE":4,"EST":16}'::jsonb, '{"EXP":10.7,"EXE":54.3,"AUT":13.6,"COO":13.3,"FLE":18.2,"EST":38.1}'::jsonb, '{"CRIAR":14,"EXPLORAR":7,"ANALISAR":28,"DECIDIR":11,"ORGANIZAR":28,"EXECUTAR":20,"RELACIONAR":10,"COORDENAR":9,"FINALIZAR":24,"ESPECIALIZAR":17}'::jsonb, '{"CRIAR":22.2,"EXPLORAR":12.1,"ANALISAR":35.9,"DECIDIR":26.8,"ORGANIZAR":52.8,"EXECUTAR":36.4,"RELACIONAR":11.9,"COORDENAR":14.8,"FINALIZAR":51.1,"ESPECIALIZAR":34.7}'::jsonb,
     ARRAY['ORGANIZAR','FINALIZAR','EXECUTAR','ANALISAR','ESPECIALIZAR','DECIDIR','CRIAR','COORDENAR','EXPLORAR','RELACIONAR']::text[], 'v2.0');
@@ -2861,10 +2935,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":9,"I":18,"T":21,"F":2,"S":1,"N":3}'::jsonb, '{"E":33.3,"I":66.7,"T":77.8,"F":7.4,"S":3.7,"N":11.1}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'T', 'N', 'S',
     'F', 'Ti', 'Ni', false, null,
-    ARRAY['T','N','F','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','N','F','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":2,"EXE":6,"AUT":22,"COO":5,"FLE":2,"EST":17}'::jsonb, '{"EXP":7.1,"EXE":17.1,"AUT":50,"COO":11.1,"FLE":9.1,"EST":40.5}'::jsonb, '{"CRIAR":15,"EXPLORAR":3,"ANALISAR":42,"DECIDIR":17,"ORGANIZAR":27,"EXECUTAR":12,"RELACIONAR":11,"COORDENAR":7,"FINALIZAR":14,"ESPECIALIZAR":17}'::jsonb, '{"CRIAR":23.8,"EXPLORAR":5.2,"ANALISAR":53.8,"DECIDIR":41.5,"ORGANIZAR":50.9,"EXECUTAR":21.8,"RELACIONAR":13.1,"COORDENAR":11.5,"FINALIZAR":29.8,"ESPECIALIZAR":34.7}'::jsonb,
     ARRAY['ANALISAR','ORGANIZAR','DECIDIR','ESPECIALIZAR','FINALIZAR','CRIAR','EXECUTAR','RELACIONAR','COORDENAR','EXPLORAR']::text[], 'v2.0');
@@ -2936,10 +3012,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":13,"I":14,"T":18,"F":3,"S":4,"N":2}'::jsonb, '{"E":48.1,"I":51.9,"T":66.7,"F":11.1,"S":14.8,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'T', 'S', 'N',
     'F', 'Ti', 'Si', false, null,
-    ARRAY['T','S','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','S','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":2,"EXE":7,"AUT":21,"COO":9,"FLE":5,"EST":10}'::jsonb, '{"EXP":7.1,"EXE":20,"AUT":47.7,"COO":20,"FLE":22.7,"EST":23.8}'::jsonb, '{"CRIAR":13,"EXPLORAR":6,"ANALISAR":41,"DECIDIR":20,"ORGANIZAR":17,"EXECUTAR":15,"RELACIONAR":18,"COORDENAR":9,"FINALIZAR":14,"ESPECIALIZAR":16}'::jsonb, '{"CRIAR":20.6,"EXPLORAR":10.3,"ANALISAR":52.6,"DECIDIR":48.8,"ORGANIZAR":32.1,"EXECUTAR":27.3,"RELACIONAR":21.4,"COORDENAR":14.8,"FINALIZAR":29.8,"ESPECIALIZAR":32.7}'::jsonb,
     ARRAY['ANALISAR','DECIDIR','ESPECIALIZAR','ORGANIZAR','FINALIZAR','EXECUTAR','RELACIONAR','CRIAR','COORDENAR','EXPLORAR']::text[], 'v2.0');
@@ -3011,10 +3089,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":16,"I":11,"T":20,"F":2,"S":3,"N":2}'::jsonb, '{"E":59.3,"I":40.7,"T":74.1,"F":7.4,"S":11.1,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'T', 'S', 'N',
     'F', 'Te', 'Se', false, null,
-    ARRAY['T','S','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','S','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":1,"EXE":8,"AUT":16,"COO":11,"FLE":4,"EST":14}'::jsonb, '{"EXP":3.6,"EXE":22.9,"AUT":36.4,"COO":24.4,"FLE":18.2,"EST":33.3}'::jsonb, '{"CRIAR":11,"EXPLORAR":5,"ANALISAR":44,"DECIDIR":16,"ORGANIZAR":21,"EXECUTAR":12,"RELACIONAR":19,"COORDENAR":16,"FINALIZAR":8,"ESPECIALIZAR":16}'::jsonb, '{"CRIAR":17.5,"EXPLORAR":8.6,"ANALISAR":56.4,"DECIDIR":39,"ORGANIZAR":39.6,"EXECUTAR":21.8,"RELACIONAR":22.6,"COORDENAR":26.2,"FINALIZAR":17,"ESPECIALIZAR":32.7}'::jsonb,
     ARRAY['ANALISAR','ORGANIZAR','DECIDIR','ESPECIALIZAR','COORDENAR','RELACIONAR','EXECUTAR','CRIAR','FINALIZAR','EXPLORAR']::text[], 'v2.0');
@@ -3086,10 +3166,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":21,"I":6,"T":5,"F":0,"S":21,"N":1}'::jsonb, '{"E":77.8,"I":22.2,"T":18.5,"F":0,"S":77.8,"N":3.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'T', 'F',
     'N', 'Se', 'Te', false, null,
-    ARRAY['S','T','N','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','T','N','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":2,"EXE":22,"AUT":3,"COO":11,"FLE":5,"EST":11}'::jsonb, '{"EXP":7.1,"EXE":62.9,"AUT":6.8,"COO":24.4,"FLE":22.7,"EST":26.2}'::jsonb, '{"CRIAR":8,"EXPLORAR":12,"ANALISAR":35,"DECIDIR":15,"ORGANIZAR":13,"EXECUTAR":27,"RELACIONAR":18,"COORDENAR":11,"FINALIZAR":20,"ESPECIALIZAR":10}'::jsonb, '{"CRIAR":12.7,"EXPLORAR":20.7,"ANALISAR":44.9,"DECIDIR":36.6,"ORGANIZAR":24.5,"EXECUTAR":49.1,"RELACIONAR":21.4,"COORDENAR":18,"FINALIZAR":42.6,"ESPECIALIZAR":20.4}'::jsonb,
     ARRAY['EXECUTAR','ANALISAR','FINALIZAR','DECIDIR','ORGANIZAR','RELACIONAR','EXPLORAR','ESPECIALIZAR','COORDENAR','CRIAR']::text[], 'v2.0');
@@ -3161,10 +3243,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":14,"I":13,"T":1,"F":4,"S":1,"N":21}'::jsonb, '{"E":51.9,"I":48.1,"T":3.7,"F":14.8,"S":3.7,"N":77.8}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'N', 'F', 'S',
     'S', 'Ne', 'Fe', false, null,
-    ARRAY['N','F','T','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','F','T','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":18,"EXE":8,"AUT":11,"COO":6,"FLE":6,"EST":5}'::jsonb, '{"EXP":64.3,"EXE":22.9,"AUT":25,"COO":13.3,"FLE":27.3,"EST":11.9}'::jsonb, '{"CRIAR":44,"EXPLORAR":32,"ANALISAR":16,"DECIDIR":16,"ORGANIZAR":8,"EXECUTAR":15,"RELACIONAR":12,"COORDENAR":7,"FINALIZAR":4,"ESPECIALIZAR":12}'::jsonb, '{"CRIAR":69.8,"EXPLORAR":55.2,"ANALISAR":20.5,"DECIDIR":39,"ORGANIZAR":15.1,"EXECUTAR":27.3,"RELACIONAR":14.3,"COORDENAR":11.5,"FINALIZAR":8.5,"ESPECIALIZAR":24.5}'::jsonb,
     ARRAY['CRIAR','EXPLORAR','DECIDIR','EXECUTAR','ESPECIALIZAR','ANALISAR','ORGANIZAR','RELACIONAR','COORDENAR','FINALIZAR']::text[], 'v2.0');
@@ -3236,10 +3320,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":15,"I":12,"T":4,"F":3,"S":4,"N":16}'::jsonb, '{"E":55.6,"I":44.4,"T":14.8,"F":11.1,"S":14.8,"N":59.3}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'N', 'T', 'F',
     'S', 'Ne', 'Te', false, null,
-    ARRAY['N','T','S','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','T','S','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":13,"EXE":6,"AUT":10,"COO":11,"FLE":5,"EST":9}'::jsonb, '{"EXP":46.4,"EXE":17.1,"AUT":22.7,"COO":24.4,"FLE":22.7,"EST":21.4}'::jsonb, '{"CRIAR":29,"EXPLORAR":29,"ANALISAR":21,"DECIDIR":8,"ORGANIZAR":16,"EXECUTAR":11,"RELACIONAR":26,"COORDENAR":8,"FINALIZAR":8,"ESPECIALIZAR":9}'::jsonb, '{"CRIAR":46,"EXPLORAR":50,"ANALISAR":26.9,"DECIDIR":19.5,"ORGANIZAR":30.2,"EXECUTAR":20,"RELACIONAR":31,"COORDENAR":13.1,"FINALIZAR":17,"ESPECIALIZAR":18.4}'::jsonb,
     ARRAY['EXPLORAR','CRIAR','RELACIONAR','ORGANIZAR','ANALISAR','EXECUTAR','DECIDIR','ESPECIALIZAR','FINALIZAR','COORDENAR']::text[], 'v2.0');
@@ -3311,10 +3397,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":15,"I":12,"T":15,"F":0,"S":8,"N":4}'::jsonb, '{"E":55.6,"I":44.4,"T":55.6,"F":0,"S":29.6,"N":14.8}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'T', 'S', 'F',
     'F', 'Te', 'Se', false, null,
-    ARRAY['T','S','N','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','S','N','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":5,"EXE":6,"AUT":14,"COO":8,"FLE":5,"EST":16}'::jsonb, '{"EXP":17.9,"EXE":17.1,"AUT":31.8,"COO":17.8,"FLE":22.7,"EST":38.1}'::jsonb, '{"CRIAR":12,"EXPLORAR":11,"ANALISAR":33,"DECIDIR":12,"ORGANIZAR":24,"EXECUTAR":13,"RELACIONAR":17,"COORDENAR":9,"FINALIZAR":17,"ESPECIALIZAR":21}'::jsonb, '{"CRIAR":19,"EXPLORAR":19,"ANALISAR":42.3,"DECIDIR":29.3,"ORGANIZAR":45.3,"EXECUTAR":23.6,"RELACIONAR":20.2,"COORDENAR":14.8,"FINALIZAR":36.2,"ESPECIALIZAR":42.9}'::jsonb,
     ARRAY['ORGANIZAR','ESPECIALIZAR','ANALISAR','FINALIZAR','DECIDIR','EXECUTAR','RELACIONAR','CRIAR','EXPLORAR','COORDENAR']::text[], 'v2.0');
@@ -3386,10 +3474,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":21,"I":6,"T":1,"F":1,"S":6,"N":19}'::jsonb, '{"E":77.8,"I":22.2,"T":3.7,"F":3.7,"S":22.2,"N":70.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'N', 'T', 'F',
     'S', 'Ne', 'Te', false, null,
-    ARRAY['N','S','T','F']::text[], 'v1.0-piloto');
+    true, 'D3: ordem canônica fixa (critério arbitrário de último recurso).',
+    ARRAY['N','S','T','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":17,"EXE":13,"AUT":3,"COO":4,"FLE":9,"EST":8}'::jsonb, '{"EXP":60.7,"EXE":37.1,"AUT":6.8,"COO":8.9,"FLE":40.9,"EST":19}'::jsonb, '{"CRIAR":34,"EXPLORAR":30,"ANALISAR":13,"DECIDIR":20,"ORGANIZAR":8,"EXECUTAR":26,"RELACIONAR":9,"COORDENAR":7,"FINALIZAR":12,"ESPECIALIZAR":7}'::jsonb, '{"CRIAR":54,"EXPLORAR":51.7,"ANALISAR":16.7,"DECIDIR":48.8,"ORGANIZAR":15.1,"EXECUTAR":47.3,"RELACIONAR":10.7,"COORDENAR":11.5,"FINALIZAR":25.5,"ESPECIALIZAR":14.3}'::jsonb,
     ARRAY['CRIAR','EXPLORAR','DECIDIR','EXECUTAR','FINALIZAR','ANALISAR','ORGANIZAR','ESPECIALIZAR','COORDENAR','RELACIONAR']::text[], 'v2.0');
@@ -3461,10 +3551,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":19,"I":8,"T":4,"F":2,"S":7,"N":14}'::jsonb, '{"E":70.4,"I":29.6,"T":14.8,"F":7.4,"S":25.9,"N":51.9}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'N', 'T', 'F',
     'S', 'Ne', 'Te', false, null,
-    ARRAY['N','S','T','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','S','T','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":10,"EXE":11,"AUT":7,"COO":11,"FLE":9,"EST":6}'::jsonb, '{"EXP":35.7,"EXE":31.4,"AUT":15.9,"COO":24.4,"FLE":40.9,"EST":14.3}'::jsonb, '{"CRIAR":28,"EXPLORAR":28,"ANALISAR":17,"DECIDIR":16,"ORGANIZAR":8,"EXECUTAR":20,"RELACIONAR":22,"COORDENAR":12,"FINALIZAR":7,"ESPECIALIZAR":11}'::jsonb, '{"CRIAR":44.4,"EXPLORAR":48.3,"ANALISAR":21.8,"DECIDIR":39,"ORGANIZAR":15.1,"EXECUTAR":36.4,"RELACIONAR":26.2,"COORDENAR":19.7,"FINALIZAR":14.9,"ESPECIALIZAR":22.4}'::jsonb,
     ARRAY['EXPLORAR','CRIAR','DECIDIR','EXECUTAR','RELACIONAR','ESPECIALIZAR','ANALISAR','COORDENAR','ORGANIZAR','FINALIZAR']::text[], 'v2.0');
@@ -3536,10 +3628,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":23,"I":4,"T":4,"F":20,"S":3,"N":0}'::jsonb, '{"E":85.2,"I":14.8,"T":14.8,"F":74.1,"S":11.1,"N":0}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'F', 'S', 'N',
     'T', 'Fe', 'Se', false, null,
-    ARRAY['F','T','S','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['F','T','S','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":4,"EXE":6,"AUT":3,"COO":30,"FLE":5,"EST":6}'::jsonb, '{"EXP":14.3,"EXE":17.1,"AUT":6.8,"COO":66.7,"FLE":22.7,"EST":14.3}'::jsonb, '{"CRIAR":5,"EXPLORAR":14,"ANALISAR":11,"DECIDIR":13,"ORGANIZAR":6,"EXECUTAR":12,"RELACIONAR":54,"COORDENAR":43,"FINALIZAR":6,"ESPECIALIZAR":4}'::jsonb, '{"CRIAR":7.9,"EXPLORAR":24.1,"ANALISAR":14.1,"DECIDIR":31.7,"ORGANIZAR":11.3,"EXECUTAR":21.8,"RELACIONAR":64.3,"COORDENAR":70.5,"FINALIZAR":12.8,"ESPECIALIZAR":8.2}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','DECIDIR','EXPLORAR','EXECUTAR','ANALISAR','FINALIZAR','ORGANIZAR','ESPECIALIZAR','CRIAR']::text[], 'v2.0');
@@ -3611,10 +3705,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":14,"I":13,"T":7,"F":5,"S":11,"N":4}'::jsonb, '{"E":51.9,"I":48.1,"T":25.9,"F":18.5,"S":40.7,"N":14.8}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'T', 'N',
     'N', 'Se', 'Te', false, null,
-    ARRAY['S','T','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','T','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":6,"EXE":10,"AUT":14,"COO":10,"FLE":6,"EST":8}'::jsonb, '{"EXP":21.4,"EXE":28.6,"AUT":31.8,"COO":22.2,"FLE":27.3,"EST":19}'::jsonb, '{"CRIAR":18,"EXPLORAR":13,"ANALISAR":30,"DECIDIR":14,"ORGANIZAR":8,"EXECUTAR":16,"RELACIONAR":20,"COORDENAR":15,"FINALIZAR":15,"ESPECIALIZAR":17}'::jsonb, '{"CRIAR":28.6,"EXPLORAR":22.4,"ANALISAR":38.5,"DECIDIR":34.1,"ORGANIZAR":15.1,"EXECUTAR":29.1,"RELACIONAR":23.8,"COORDENAR":24.6,"FINALIZAR":31.9,"ESPECIALIZAR":34.7}'::jsonb,
     ARRAY['ANALISAR','ESPECIALIZAR','DECIDIR','FINALIZAR','EXECUTAR','CRIAR','COORDENAR','RELACIONAR','EXPLORAR','ORGANIZAR']::text[], 'v2.0');
@@ -3686,10 +3782,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":21,"I":6,"T":4,"F":2,"S":19,"N":2}'::jsonb, '{"E":77.8,"I":22.2,"T":14.8,"F":7.4,"S":70.4,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'T', 'N',
     'N', 'Se', 'Te', false, null,
-    ARRAY['S','T','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','T','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":5,"EXE":22,"AUT":7,"COO":9,"FLE":5,"EST":6}'::jsonb, '{"EXP":17.9,"EXE":62.9,"AUT":15.9,"COO":20,"FLE":22.7,"EST":14.3}'::jsonb, '{"CRIAR":9,"EXPLORAR":12,"ANALISAR":33,"DECIDIR":14,"ORGANIZAR":10,"EXECUTAR":28,"RELACIONAR":23,"COORDENAR":8,"FINALIZAR":21,"ESPECIALIZAR":9}'::jsonb, '{"CRIAR":14.3,"EXPLORAR":20.7,"ANALISAR":42.3,"DECIDIR":34.1,"ORGANIZAR":18.9,"EXECUTAR":50.9,"RELACIONAR":27.4,"COORDENAR":13.1,"FINALIZAR":44.7,"ESPECIALIZAR":18.4}'::jsonb,
     ARRAY['EXECUTAR','FINALIZAR','ANALISAR','DECIDIR','RELACIONAR','EXPLORAR','ORGANIZAR','ESPECIALIZAR','CRIAR','COORDENAR']::text[], 'v2.0');
@@ -3761,10 +3859,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":12,"I":15,"T":18,"F":4,"S":4,"N":1}'::jsonb, '{"E":44.4,"I":55.6,"T":66.7,"F":14.8,"S":14.8,"N":3.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'T', 'S', 'N',
     'F', 'Ti', 'Si', false, null,
-    ARRAY['T','S','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','S','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":2,"EXE":8,"AUT":21,"COO":9,"FLE":3,"EST":11}'::jsonb, '{"EXP":7.1,"EXE":22.9,"AUT":47.7,"COO":20,"FLE":13.6,"EST":26.2}'::jsonb, '{"CRIAR":8,"EXPLORAR":10,"ANALISAR":44,"DECIDIR":19,"ORGANIZAR":17,"EXECUTAR":15,"RELACIONAR":16,"COORDENAR":10,"FINALIZAR":10,"ESPECIALIZAR":16}'::jsonb, '{"CRIAR":12.7,"EXPLORAR":17.2,"ANALISAR":56.4,"DECIDIR":46.3,"ORGANIZAR":32.1,"EXECUTAR":27.3,"RELACIONAR":19,"COORDENAR":16.4,"FINALIZAR":21.3,"ESPECIALIZAR":32.7}'::jsonb,
     ARRAY['ANALISAR','DECIDIR','ESPECIALIZAR','ORGANIZAR','EXECUTAR','FINALIZAR','RELACIONAR','EXPLORAR','COORDENAR','CRIAR']::text[], 'v2.0');
@@ -3836,10 +3936,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":15,"I":12,"T":2,"F":2,"S":16,"N":7}'::jsonb, '{"E":55.6,"I":44.4,"T":7.4,"F":7.4,"S":59.3,"N":25.9}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'T', 'F',
     'N', 'Se', 'Te', false, null,
-    ARRAY['S','N','T','F']::text[], 'v1.0-piloto');
+    true, 'D2: desempate por evidência convergente nos eixos comportamentais.',
+    ARRAY['S','N','T','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":6,"EXE":16,"AUT":3,"COO":9,"FLE":6,"EST":14}'::jsonb, '{"EXP":21.4,"EXE":45.7,"AUT":6.8,"COO":20,"FLE":27.3,"EST":33.3}'::jsonb, '{"CRIAR":12,"EXPLORAR":23,"ANALISAR":24,"DECIDIR":10,"ORGANIZAR":13,"EXECUTAR":18,"RELACIONAR":18,"COORDENAR":10,"FINALIZAR":26,"ESPECIALIZAR":15}'::jsonb, '{"CRIAR":19,"EXPLORAR":39.7,"ANALISAR":30.8,"DECIDIR":24.4,"ORGANIZAR":24.5,"EXECUTAR":32.7,"RELACIONAR":21.4,"COORDENAR":16.4,"FINALIZAR":55.3,"ESPECIALIZAR":30.6}'::jsonb,
     ARRAY['FINALIZAR','EXPLORAR','EXECUTAR','ANALISAR','ESPECIALIZAR','ORGANIZAR','DECIDIR','RELACIONAR','CRIAR','COORDENAR']::text[], 'v2.0');
@@ -3911,10 +4013,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":10,"I":17,"T":1,"F":5,"S":15,"N":6}'::jsonb, '{"E":37,"I":63,"T":3.7,"F":18.5,"S":55.6,"N":22.2}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'S', 'F', 'T',
     'N', 'Si', 'Fi', false, null,
-    ARRAY['S','N','F','T']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','N','F','T']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":7,"EXE":14,"AUT":9,"COO":7,"FLE":5,"EST":12}'::jsonb, '{"EXP":25,"EXE":40,"AUT":20.5,"COO":15.6,"FLE":22.7,"EST":28.6}'::jsonb, '{"CRIAR":14,"EXPLORAR":18,"ANALISAR":24,"DECIDIR":7,"ORGANIZAR":10,"EXECUTAR":20,"RELACIONAR":18,"COORDENAR":9,"FINALIZAR":26,"ESPECIALIZAR":22}'::jsonb, '{"CRIAR":22.2,"EXPLORAR":31,"ANALISAR":30.8,"DECIDIR":17.1,"ORGANIZAR":18.9,"EXECUTAR":36.4,"RELACIONAR":21.4,"COORDENAR":14.8,"FINALIZAR":55.3,"ESPECIALIZAR":44.9}'::jsonb,
     ARRAY['FINALIZAR','ESPECIALIZAR','EXECUTAR','EXPLORAR','ANALISAR','CRIAR','RELACIONAR','ORGANIZAR','DECIDIR','COORDENAR']::text[], 'v2.0');
@@ -3986,10 +4090,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":24,"I":3,"T":1,"F":4,"S":19,"N":3}'::jsonb, '{"E":88.9,"I":11.1,"T":3.7,"F":14.8,"S":70.4,"N":11.1}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'F', 'T',
     'N', 'Se', 'Fe', false, null,
-    ARRAY['S','F','N','T']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','F','N','T']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":5,"EXE":22,"AUT":3,"COO":19,"FLE":3,"EST":2}'::jsonb, '{"EXP":17.9,"EXE":62.9,"AUT":6.8,"COO":42.2,"FLE":13.6,"EST":4.8}'::jsonb, '{"CRIAR":11,"EXPLORAR":17,"ANALISAR":21,"DECIDIR":11,"ORGANIZAR":3,"EXECUTAR":28,"RELACIONAR":34,"COORDENAR":23,"FINALIZAR":10,"ESPECIALIZAR":9}'::jsonb, '{"CRIAR":17.5,"EXPLORAR":29.3,"ANALISAR":26.9,"DECIDIR":26.8,"ORGANIZAR":5.7,"EXECUTAR":50.9,"RELACIONAR":40.5,"COORDENAR":37.7,"FINALIZAR":21.3,"ESPECIALIZAR":18.4}'::jsonb,
     ARRAY['EXECUTAR','RELACIONAR','COORDENAR','EXPLORAR','ANALISAR','DECIDIR','FINALIZAR','ESPECIALIZAR','CRIAR','ORGANIZAR']::text[], 'v2.0');
@@ -4061,10 +4167,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":2,"I":25,"T":3,"F":1,"S":22,"N":1}'::jsonb, '{"E":7.4,"I":92.6,"T":11.1,"F":3.7,"S":81.5,"N":3.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'S', 'T', 'N',
     'N', 'Si', 'Ti', false, null,
-    ARRAY['S','T','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','T','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":1,"EXE":21,"AUT":16,"COO":2,"FLE":1,"EST":13}'::jsonb, '{"EXP":3.6,"EXE":60,"AUT":36.4,"COO":4.4,"FLE":4.5,"EST":31}'::jsonb, '{"CRIAR":5,"EXPLORAR":5,"ANALISAR":37,"DECIDIR":6,"ORGANIZAR":18,"EXECUTAR":31,"RELACIONAR":6,"COORDENAR":3,"FINALIZAR":27,"ESPECIALIZAR":31}'::jsonb, '{"CRIAR":7.9,"EXPLORAR":8.6,"ANALISAR":47.4,"DECIDIR":14.6,"ORGANIZAR":34,"EXECUTAR":56.4,"RELACIONAR":7.1,"COORDENAR":4.9,"FINALIZAR":57.4,"ESPECIALIZAR":63.3}'::jsonb,
     ARRAY['ESPECIALIZAR','FINALIZAR','EXECUTAR','ANALISAR','ORGANIZAR','DECIDIR','EXPLORAR','CRIAR','RELACIONAR','COORDENAR']::text[], 'v2.0');
@@ -4136,10 +4244,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":10,"I":17,"T":3,"F":2,"S":16,"N":6}'::jsonb, '{"E":37,"I":63,"T":11.1,"F":7.4,"S":59.3,"N":22.2}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'S', 'T', 'F',
     'N', 'Si', 'Ti', false, null,
-    ARRAY['S','N','T','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','N','T','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":6,"EXE":18,"AUT":10,"COO":5,"FLE":3,"EST":12}'::jsonb, '{"EXP":21.4,"EXE":51.4,"AUT":22.7,"COO":11.1,"FLE":13.6,"EST":28.6}'::jsonb, '{"CRIAR":14,"EXPLORAR":11,"ANALISAR":26,"DECIDIR":11,"ORGANIZAR":19,"EXECUTAR":27,"RELACIONAR":11,"COORDENAR":7,"FINALIZAR":21,"ESPECIALIZAR":21}'::jsonb, '{"CRIAR":22.2,"EXPLORAR":19,"ANALISAR":33.3,"DECIDIR":26.8,"ORGANIZAR":35.8,"EXECUTAR":49.1,"RELACIONAR":13.1,"COORDENAR":11.5,"FINALIZAR":44.7,"ESPECIALIZAR":42.9}'::jsonb,
     ARRAY['EXECUTAR','FINALIZAR','ESPECIALIZAR','ORGANIZAR','ANALISAR','DECIDIR','CRIAR','EXPLORAR','RELACIONAR','COORDENAR']::text[], 'v2.0');
@@ -4211,10 +4321,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":4,"I":23,"T":4,"F":1,"S":19,"N":3}'::jsonb, '{"E":14.8,"I":85.2,"T":14.8,"F":3.7,"S":70.4,"N":11.1}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'S', 'T', 'F',
     'N', 'Si', 'Ti', false, null,
-    ARRAY['S','T','N','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','T','N','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":2,"EXE":17,"AUT":21,"COO":3,"FLE":3,"EST":8}'::jsonb, '{"EXP":7.1,"EXE":48.6,"AUT":47.7,"COO":6.7,"FLE":13.6,"EST":19}'::jsonb, '{"CRIAR":19,"EXPLORAR":4,"ANALISAR":41,"DECIDIR":14,"ORGANIZAR":14,"EXECUTAR":17,"RELACIONAR":7,"COORDENAR":3,"FINALIZAR":18,"ESPECIALIZAR":30}'::jsonb, '{"CRIAR":30.2,"EXPLORAR":6.9,"ANALISAR":52.6,"DECIDIR":34.1,"ORGANIZAR":26.4,"EXECUTAR":30.9,"RELACIONAR":8.3,"COORDENAR":4.9,"FINALIZAR":38.3,"ESPECIALIZAR":61.2}'::jsonb,
     ARRAY['ESPECIALIZAR','ANALISAR','FINALIZAR','DECIDIR','EXECUTAR','CRIAR','ORGANIZAR','RELACIONAR','EXPLORAR','COORDENAR']::text[], 'v2.0');
@@ -4286,10 +4398,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":15,"I":12,"T":1,"F":19,"S":3,"N":4}'::jsonb, '{"E":55.6,"I":44.4,"T":3.7,"F":70.4,"S":11.1,"N":14.8}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'F', 'N', 'T',
     'T', 'Fe', 'Ne', false, null,
-    ARRAY['F','N','S','T']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['F','N','S','T']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":7,"EXE":6,"AUT":5,"COO":24,"FLE":4,"EST":8}'::jsonb, '{"EXP":25,"EXE":17.1,"AUT":11.4,"COO":53.3,"FLE":18.2,"EST":19}'::jsonb, '{"CRIAR":8,"EXPLORAR":13,"ANALISAR":11,"DECIDIR":13,"ORGANIZAR":8,"EXECUTAR":12,"RELACIONAR":38,"COORDENAR":37,"FINALIZAR":14,"ESPECIALIZAR":13}'::jsonb, '{"CRIAR":12.7,"EXPLORAR":22.4,"ANALISAR":14.1,"DECIDIR":31.7,"ORGANIZAR":15.1,"EXECUTAR":21.8,"RELACIONAR":45.2,"COORDENAR":60.7,"FINALIZAR":29.8,"ESPECIALIZAR":26.5}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','DECIDIR','FINALIZAR','ESPECIALIZAR','EXPLORAR','EXECUTAR','ORGANIZAR','ANALISAR','CRIAR']::text[], 'v2.0');
@@ -4361,10 +4475,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":3,"I":24,"T":1,"F":0,"S":25,"N":1}'::jsonb, '{"E":11.1,"I":88.9,"T":3.7,"F":0,"S":92.6,"N":3.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'S', 'T', 'F',
     'N', 'Si', 'Ti', false, null,
-    ARRAY['S','T','N','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','T','N','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":1,"EXE":22,"AUT":16,"COO":2,"FLE":1,"EST":12}'::jsonb, '{"EXP":3.6,"EXE":62.9,"AUT":36.4,"COO":4.4,"FLE":4.5,"EST":28.6}'::jsonb, '{"CRIAR":15,"EXPLORAR":5,"ANALISAR":44,"DECIDIR":4,"ORGANIZAR":18,"EXECUTAR":21,"RELACIONAR":5,"COORDENAR":0,"FINALIZAR":26,"ESPECIALIZAR":30}'::jsonb, '{"CRIAR":23.8,"EXPLORAR":8.6,"ANALISAR":56.4,"DECIDIR":9.8,"ORGANIZAR":34,"EXECUTAR":38.2,"RELACIONAR":6,"COORDENAR":0,"FINALIZAR":55.3,"ESPECIALIZAR":61.2}'::jsonb,
     ARRAY['ESPECIALIZAR','ANALISAR','FINALIZAR','EXECUTAR','ORGANIZAR','CRIAR','DECIDIR','EXPLORAR','RELACIONAR','COORDENAR']::text[], 'v2.0');
@@ -4436,10 +4552,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":6,"I":21,"T":15,"F":4,"S":5,"N":3}'::jsonb, '{"E":22.2,"I":77.8,"T":55.6,"F":14.8,"S":18.5,"N":11.1}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'T', 'S', 'N',
     'F', 'Ti', 'Si', false, null,
-    ARRAY['T','S','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','S','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":3,"EXE":6,"AUT":19,"COO":6,"FLE":3,"EST":17}'::jsonb, '{"EXP":10.7,"EXE":17.1,"AUT":43.2,"COO":13.3,"FLE":13.6,"EST":40.5}'::jsonb, '{"CRIAR":16,"EXPLORAR":5,"ANALISAR":40,"DECIDIR":13,"ORGANIZAR":29,"EXECUTAR":10,"RELACIONAR":15,"COORDENAR":9,"FINALIZAR":14,"ESPECIALIZAR":16}'::jsonb, '{"CRIAR":25.4,"EXPLORAR":8.6,"ANALISAR":51.3,"DECIDIR":31.7,"ORGANIZAR":54.7,"EXECUTAR":18.2,"RELACIONAR":17.9,"COORDENAR":14.8,"FINALIZAR":29.8,"ESPECIALIZAR":32.7}'::jsonb,
     ARRAY['ORGANIZAR','ANALISAR','ESPECIALIZAR','DECIDIR','FINALIZAR','CRIAR','EXECUTAR','RELACIONAR','COORDENAR','EXPLORAR']::text[], 'v2.0');
@@ -4511,10 +4629,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":9,"I":18,"T":22,"F":1,"S":3,"N":1}'::jsonb, '{"E":33.3,"I":66.7,"T":81.5,"F":3.7,"S":11.1,"N":3.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'T', 'S', 'N',
     'F', 'Ti', 'Si', false, null,
-    ARRAY['T','S','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','S','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":3,"EXE":5,"AUT":27,"COO":5,"FLE":1,"EST":13}'::jsonb, '{"EXP":10.7,"EXE":14.3,"AUT":61.4,"COO":11.1,"FLE":4.5,"EST":31}'::jsonb, '{"CRIAR":11,"EXPLORAR":7,"ANALISAR":50,"DECIDIR":16,"ORGANIZAR":27,"EXECUTAR":10,"RELACIONAR":11,"COORDENAR":8,"FINALIZAR":7,"ESPECIALIZAR":18}'::jsonb, '{"CRIAR":17.5,"EXPLORAR":12.1,"ANALISAR":64.1,"DECIDIR":39,"ORGANIZAR":50.9,"EXECUTAR":18.2,"RELACIONAR":13.1,"COORDENAR":13.1,"FINALIZAR":14.9,"ESPECIALIZAR":36.7}'::jsonb,
     ARRAY['ANALISAR','ORGANIZAR','DECIDIR','ESPECIALIZAR','EXECUTAR','CRIAR','FINALIZAR','RELACIONAR','COORDENAR','EXPLORAR']::text[], 'v2.0');
@@ -4586,10 +4706,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":3,"I":24,"T":21,"F":2,"S":1,"N":3}'::jsonb, '{"E":11.1,"I":88.9,"T":77.8,"F":7.4,"S":3.7,"N":11.1}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'T', 'N', 'S',
     'F', 'Ti', 'Ni', false, null,
-    ARRAY['T','N','F','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','N','F','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":3,"EXE":2,"AUT":25,"COO":3,"FLE":2,"EST":19}'::jsonb, '{"EXP":10.7,"EXE":5.7,"AUT":56.8,"COO":6.7,"FLE":9.1,"EST":45.2}'::jsonb, '{"CRIAR":18,"EXPLORAR":6,"ANALISAR":50,"DECIDIR":16,"ORGANIZAR":27,"EXECUTAR":5,"RELACIONAR":6,"COORDENAR":5,"FINALIZAR":14,"ESPECIALIZAR":19}'::jsonb, '{"CRIAR":28.6,"EXPLORAR":10.3,"ANALISAR":64.1,"DECIDIR":39,"ORGANIZAR":50.9,"EXECUTAR":9.1,"RELACIONAR":7.1,"COORDENAR":8.2,"FINALIZAR":29.8,"ESPECIALIZAR":38.8}'::jsonb,
     ARRAY['ANALISAR','ORGANIZAR','DECIDIR','ESPECIALIZAR','FINALIZAR','CRIAR','EXPLORAR','EXECUTAR','COORDENAR','RELACIONAR']::text[], 'v2.0');
@@ -4661,10 +4783,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":15,"I":12,"T":2,"F":3,"S":19,"N":3}'::jsonb, '{"E":55.6,"I":44.4,"T":7.4,"F":11.1,"S":70.4,"N":11.1}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'F', 'T',
     'N', 'Se', 'Fe', false, null,
-    ARRAY['S','F','N','T']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','F','N','T']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":7,"EXE":20,"AUT":9,"COO":6,"FLE":4,"EST":8}'::jsonb, '{"EXP":25,"EXE":57.1,"AUT":20.5,"COO":13.3,"FLE":18.2,"EST":19}'::jsonb, '{"CRIAR":12,"EXPLORAR":14,"ANALISAR":33,"DECIDIR":13,"ORGANIZAR":13,"EXECUTAR":23,"RELACIONAR":12,"COORDENAR":12,"FINALIZAR":20,"ESPECIALIZAR":15}'::jsonb, '{"CRIAR":19,"EXPLORAR":24.1,"ANALISAR":42.3,"DECIDIR":31.7,"ORGANIZAR":24.5,"EXECUTAR":41.8,"RELACIONAR":14.3,"COORDENAR":19.7,"FINALIZAR":42.6,"ESPECIALIZAR":30.6}'::jsonb,
     ARRAY['FINALIZAR','ANALISAR','EXECUTAR','DECIDIR','ESPECIALIZAR','ORGANIZAR','EXPLORAR','COORDENAR','CRIAR','RELACIONAR']::text[], 'v2.0');
@@ -4736,10 +4860,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":12,"I":15,"T":22,"F":4,"S":0,"N":1}'::jsonb, '{"E":44.4,"I":55.6,"T":81.5,"F":14.8,"S":0,"N":3.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'T', 'N', 'S',
     'F', 'Ti', 'Ni', false, null,
-    ARRAY['T','F','N','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','F','N','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":6,"EXE":1,"AUT":21,"COO":5,"FLE":6,"EST":15}'::jsonb, '{"EXP":21.4,"EXE":2.9,"AUT":47.7,"COO":11.1,"FLE":27.3,"EST":35.7}'::jsonb, '{"CRIAR":6,"EXPLORAR":10,"ANALISAR":45,"DECIDIR":16,"ORGANIZAR":20,"EXECUTAR":15,"RELACIONAR":17,"COORDENAR":11,"FINALIZAR":15,"ESPECIALIZAR":12}'::jsonb, '{"CRIAR":9.5,"EXPLORAR":17.2,"ANALISAR":57.7,"DECIDIR":39,"ORGANIZAR":37.7,"EXECUTAR":27.3,"RELACIONAR":20.2,"COORDENAR":18,"FINALIZAR":31.9,"ESPECIALIZAR":24.5}'::jsonb,
     ARRAY['ANALISAR','DECIDIR','ORGANIZAR','FINALIZAR','EXECUTAR','ESPECIALIZAR','RELACIONAR','COORDENAR','EXPLORAR','CRIAR']::text[], 'v2.0');
@@ -4811,10 +4937,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":22,"I":5,"T":23,"F":1,"S":3,"N":0}'::jsonb, '{"E":81.5,"I":18.5,"T":85.2,"F":3.7,"S":11.1,"N":0}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'T', 'S', 'N',
     'F', 'Te', 'Se', false, null,
-    ARRAY['T','S','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','S','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":2,"EXE":7,"AUT":15,"COO":12,"FLE":6,"EST":12}'::jsonb, '{"EXP":7.1,"EXE":20,"AUT":34.1,"COO":26.7,"FLE":27.3,"EST":28.6}'::jsonb, '{"CRIAR":8,"EXPLORAR":9,"ANALISAR":37,"DECIDIR":24,"ORGANIZAR":18,"EXECUTAR":13,"RELACIONAR":21,"COORDENAR":16,"FINALIZAR":11,"ESPECIALIZAR":8}'::jsonb, '{"CRIAR":12.7,"EXPLORAR":15.5,"ANALISAR":47.4,"DECIDIR":58.5,"ORGANIZAR":34,"EXECUTAR":23.6,"RELACIONAR":25,"COORDENAR":26.2,"FINALIZAR":23.4,"ESPECIALIZAR":16.3}'::jsonb,
     ARRAY['DECIDIR','ANALISAR','ORGANIZAR','COORDENAR','RELACIONAR','EXECUTAR','FINALIZAR','ESPECIALIZAR','EXPLORAR','CRIAR']::text[], 'v2.0');
@@ -4886,10 +5014,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":14,"I":13,"T":2,"F":4,"S":19,"N":2}'::jsonb, '{"E":51.9,"I":48.1,"T":7.4,"F":14.8,"S":70.4,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'F', 'N',
     'N', 'Se', 'Fe', false, null,
-    ARRAY['S','F','T','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','F','T','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":2,"EXE":18,"AUT":7,"COO":9,"FLE":7,"EST":11}'::jsonb, '{"EXP":7.1,"EXE":51.4,"AUT":15.9,"COO":20,"FLE":31.8,"EST":26.2}'::jsonb, '{"CRIAR":9,"EXPLORAR":10,"ANALISAR":28,"DECIDIR":16,"ORGANIZAR":11,"EXECUTAR":22,"RELACIONAR":19,"COORDENAR":11,"FINALIZAR":30,"ESPECIALIZAR":14}'::jsonb, '{"CRIAR":14.3,"EXPLORAR":17.2,"ANALISAR":35.9,"DECIDIR":39,"ORGANIZAR":20.8,"EXECUTAR":40,"RELACIONAR":22.6,"COORDENAR":18,"FINALIZAR":63.8,"ESPECIALIZAR":28.6}'::jsonb,
     ARRAY['FINALIZAR','EXECUTAR','DECIDIR','ANALISAR','ESPECIALIZAR','RELACIONAR','ORGANIZAR','COORDENAR','EXPLORAR','CRIAR']::text[], 'v2.0');
@@ -4961,10 +5091,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":16,"I":11,"T":8,"F":4,"S":14,"N":1}'::jsonb, '{"E":59.3,"I":40.7,"T":29.6,"F":14.8,"S":51.9,"N":3.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'T', 'N',
     'N', 'Se', 'Te', false, null,
-    ARRAY['S','T','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','T','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":4,"EXE":18,"AUT":9,"COO":6,"FLE":6,"EST":11}'::jsonb, '{"EXP":14.3,"EXE":51.4,"AUT":20.5,"COO":13.3,"FLE":27.3,"EST":26.2}'::jsonb, '{"CRIAR":9,"EXPLORAR":14,"ANALISAR":28,"DECIDIR":17,"ORGANIZAR":14,"EXECUTAR":27,"RELACIONAR":13,"COORDENAR":9,"FINALIZAR":19,"ESPECIALIZAR":16}'::jsonb, '{"CRIAR":14.3,"EXPLORAR":24.1,"ANALISAR":35.9,"DECIDIR":41.5,"ORGANIZAR":26.4,"EXECUTAR":49.1,"RELACIONAR":15.5,"COORDENAR":14.8,"FINALIZAR":40.4,"ESPECIALIZAR":32.7}'::jsonb,
     ARRAY['EXECUTAR','DECIDIR','FINALIZAR','ANALISAR','ESPECIALIZAR','ORGANIZAR','EXPLORAR','RELACIONAR','COORDENAR','CRIAR']::text[], 'v2.0');
@@ -5036,10 +5168,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":23,"I":4,"T":16,"F":6,"S":4,"N":1}'::jsonb, '{"E":85.2,"I":14.8,"T":59.3,"F":22.2,"S":14.8,"N":3.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'T', 'S', 'N',
     'F', 'Te', 'Se', false, null,
-    ARRAY['T','F','S','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','F','S','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":0,"EXE":9,"AUT":7,"COO":16,"FLE":9,"EST":13}'::jsonb, '{"EXP":0,"EXE":25.7,"AUT":15.9,"COO":35.6,"FLE":40.9,"EST":31}'::jsonb, '{"CRIAR":9,"EXPLORAR":8,"ANALISAR":35,"DECIDIR":20,"ORGANIZAR":11,"EXECUTAR":16,"RELACIONAR":30,"COORDENAR":22,"FINALIZAR":6,"ESPECIALIZAR":10}'::jsonb, '{"CRIAR":14.3,"EXPLORAR":13.8,"ANALISAR":44.9,"DECIDIR":48.8,"ORGANIZAR":20.8,"EXECUTAR":29.1,"RELACIONAR":35.7,"COORDENAR":36.1,"FINALIZAR":12.8,"ESPECIALIZAR":20.4}'::jsonb,
     ARRAY['DECIDIR','ANALISAR','COORDENAR','RELACIONAR','EXECUTAR','ORGANIZAR','ESPECIALIZAR','CRIAR','EXPLORAR','FINALIZAR']::text[], 'v2.0');
@@ -5111,10 +5245,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":15,"I":12,"T":5,"F":17,"S":4,"N":1}'::jsonb, '{"E":55.6,"I":44.4,"T":18.5,"F":63,"S":14.8,"N":3.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'F', 'S', 'N',
     'T', 'Fe', 'Se', false, null,
-    ARRAY['F','T','S','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['F','T','S','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":3,"EXE":9,"AUT":7,"COO":21,"FLE":4,"EST":10}'::jsonb, '{"EXP":10.7,"EXE":25.7,"AUT":15.9,"COO":46.7,"FLE":18.2,"EST":23.8}'::jsonb, '{"CRIAR":6,"EXPLORAR":11,"ANALISAR":18,"DECIDIR":12,"ORGANIZAR":11,"EXECUTAR":17,"RELACIONAR":38,"COORDENAR":30,"FINALIZAR":10,"ESPECIALIZAR":15}'::jsonb, '{"CRIAR":9.5,"EXPLORAR":19,"ANALISAR":23.1,"DECIDIR":29.3,"ORGANIZAR":20.8,"EXECUTAR":30.9,"RELACIONAR":45.2,"COORDENAR":49.2,"FINALIZAR":21.3,"ESPECIALIZAR":30.6}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','EXECUTAR','ESPECIALIZAR','DECIDIR','ANALISAR','FINALIZAR','ORGANIZAR','EXPLORAR','CRIAR']::text[], 'v2.0');
@@ -5186,10 +5322,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":19,"I":8,"T":2,"F":22,"S":1,"N":2}'::jsonb, '{"E":70.4,"I":29.6,"T":7.4,"F":81.5,"S":3.7,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'F', 'N', 'S',
     'T', 'Fe', 'Ne', false, null,
-    ARRAY['F','T','N','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['F','T','N','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":3,"EXE":7,"AUT":5,"COO":24,"FLE":9,"EST":6}'::jsonb, '{"EXP":10.7,"EXE":20,"AUT":11.4,"COO":53.3,"FLE":40.9,"EST":14.3}'::jsonb, '{"CRIAR":10,"EXPLORAR":12,"ANALISAR":7,"DECIDIR":16,"ORGANIZAR":10,"EXECUTAR":21,"RELACIONAR":45,"COORDENAR":36,"FINALIZAR":6,"ESPECIALIZAR":5}'::jsonb, '{"CRIAR":15.9,"EXPLORAR":20.7,"ANALISAR":9,"DECIDIR":39,"ORGANIZAR":18.9,"EXECUTAR":38.2,"RELACIONAR":53.6,"COORDENAR":59,"FINALIZAR":12.8,"ESPECIALIZAR":10.2}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','DECIDIR','EXECUTAR','EXPLORAR','ORGANIZAR','CRIAR','FINALIZAR','ESPECIALIZAR','ANALISAR']::text[], 'v2.0');
@@ -5261,10 +5399,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":16,"I":11,"T":1,"F":6,"S":6,"N":14}'::jsonb, '{"E":59.3,"I":40.7,"T":3.7,"F":22.2,"S":22.2,"N":51.9}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'N', 'F', 'T',
     'S', 'Ne', 'Fe', false, null,
-    ARRAY['N','S','F','T']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','S','F','T']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":11,"EXE":12,"AUT":5,"COO":9,"FLE":10,"EST":7}'::jsonb, '{"EXP":39.3,"EXE":34.3,"AUT":11.4,"COO":20,"FLE":45.5,"EST":16.7}'::jsonb, '{"CRIAR":24,"EXPLORAR":24,"ANALISAR":21,"DECIDIR":18,"ORGANIZAR":7,"EXECUTAR":17,"RELACIONAR":21,"COORDENAR":14,"FINALIZAR":12,"ESPECIALIZAR":8}'::jsonb, '{"CRIAR":38.1,"EXPLORAR":41.4,"ANALISAR":26.9,"DECIDIR":43.9,"ORGANIZAR":13.2,"EXECUTAR":30.9,"RELACIONAR":25,"COORDENAR":23,"FINALIZAR":25.5,"ESPECIALIZAR":16.3}'::jsonb,
     ARRAY['DECIDIR','EXPLORAR','CRIAR','EXECUTAR','ANALISAR','FINALIZAR','RELACIONAR','COORDENAR','ESPECIALIZAR','ORGANIZAR']::text[], 'v2.0');
@@ -5336,10 +5476,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":15,"I":12,"T":3,"F":18,"S":4,"N":2}'::jsonb, '{"E":55.6,"I":44.4,"T":11.1,"F":66.7,"S":14.8,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'F', 'S', 'N',
     'T', 'Fe', 'Se', false, null,
-    ARRAY['F','S','T','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['F','S','T','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":5,"EXE":9,"AUT":8,"COO":20,"FLE":3,"EST":9}'::jsonb, '{"EXP":17.9,"EXE":25.7,"AUT":18.2,"COO":44.4,"FLE":13.6,"EST":21.4}'::jsonb, '{"CRIAR":9,"EXPLORAR":9,"ANALISAR":23,"DECIDIR":9,"ORGANIZAR":13,"EXECUTAR":22,"RELACIONAR":38,"COORDENAR":32,"FINALIZAR":5,"ESPECIALIZAR":8}'::jsonb, '{"CRIAR":14.3,"EXPLORAR":15.5,"ANALISAR":29.5,"DECIDIR":22,"ORGANIZAR":24.5,"EXECUTAR":40,"RELACIONAR":45.2,"COORDENAR":52.5,"FINALIZAR":10.6,"ESPECIALIZAR":16.3}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','EXECUTAR','ANALISAR','ORGANIZAR','DECIDIR','ESPECIALIZAR','EXPLORAR','CRIAR','FINALIZAR']::text[], 'v2.0');
@@ -5411,10 +5553,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":19,"I":8,"T":4,"F":21,"S":1,"N":1}'::jsonb, '{"E":70.4,"I":29.6,"T":14.8,"F":77.8,"S":3.7,"N":3.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
-    values (v_aval, 'E', 'F', 'S', 'N',
-    'T', 'Fe', 'Se', false, null,
-    ARRAY['F','T','S','N']::text[], 'v1.0-piloto');
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
+    values (v_aval, 'E', 'F', 'N', 'N',
+    'T', 'Fe', 'Ne', false, null,
+    true, 'D2: desempate por evidência convergente nos eixos comportamentais.',
+    ARRAY['F','T','S','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":7,"EXE":5,"AUT":6,"COO":26,"FLE":3,"EST":7}'::jsonb, '{"EXP":25,"EXE":14.3,"AUT":13.6,"COO":57.8,"FLE":13.6,"EST":16.7}'::jsonb, '{"CRIAR":7,"EXPLORAR":11,"ANALISAR":16,"DECIDIR":9,"ORGANIZAR":12,"EXECUTAR":11,"RELACIONAR":46,"COORDENAR":40,"FINALIZAR":3,"ESPECIALIZAR":11}'::jsonb, '{"CRIAR":11.1,"EXPLORAR":19,"ANALISAR":20.5,"DECIDIR":22,"ORGANIZAR":22.6,"EXECUTAR":20,"RELACIONAR":54.8,"COORDENAR":65.6,"FINALIZAR":6.4,"ESPECIALIZAR":22.4}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','ORGANIZAR','ESPECIALIZAR','DECIDIR','ANALISAR','EXECUTAR','EXPLORAR','CRIAR','FINALIZAR']::text[], 'v2.0');
@@ -5486,10 +5630,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":18,"I":9,"T":1,"F":22,"S":2,"N":2}'::jsonb, '{"E":66.7,"I":33.3,"T":3.7,"F":81.5,"S":7.4,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
-    values (v_aval, 'E', 'F', 'S', 'T',
-    'T', 'Fe', 'Se', false, null,
-    ARRAY['F','S','N','T']::text[], 'v1.0-piloto');
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
+    values (v_aval, 'E', 'F', 'N', 'T',
+    'T', 'Fe', 'Ne', false, null,
+    true, 'D2: desempate por evidência convergente nos eixos comportamentais.',
+    ARRAY['F','S','N','T']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":8,"EXE":10,"AUT":4,"COO":20,"FLE":4,"EST":8}'::jsonb, '{"EXP":28.6,"EXE":28.6,"AUT":9.1,"COO":44.4,"FLE":18.2,"EST":19}'::jsonb, '{"CRIAR":8,"EXPLORAR":16,"ANALISAR":9,"DECIDIR":15,"ORGANIZAR":9,"EXECUTAR":25,"RELACIONAR":39,"COORDENAR":35,"FINALIZAR":6,"ESPECIALIZAR":5}'::jsonb, '{"CRIAR":12.7,"EXPLORAR":27.6,"ANALISAR":11.5,"DECIDIR":36.6,"ORGANIZAR":17,"EXECUTAR":45.5,"RELACIONAR":46.4,"COORDENAR":57.4,"FINALIZAR":12.8,"ESPECIALIZAR":10.2}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','EXECUTAR','DECIDIR','EXPLORAR','ORGANIZAR','FINALIZAR','CRIAR','ANALISAR','ESPECIALIZAR']::text[], 'v2.0');
@@ -5561,10 +5707,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":25,"I":2,"T":2,"F":23,"S":2,"N":0}'::jsonb, '{"E":92.6,"I":7.4,"T":7.4,"F":85.2,"S":7.4,"N":0}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'F', 'S', 'N',
     'T', 'Fe', 'Se', false, null,
-    ARRAY['F','T','S','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['F','T','S','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":6,"EXE":4,"AUT":2,"COO":29,"FLE":8,"EST":5}'::jsonb, '{"EXP":21.4,"EXE":11.4,"AUT":4.5,"COO":64.4,"FLE":36.4,"EST":11.9}'::jsonb, '{"CRIAR":4,"EXPLORAR":16,"ANALISAR":7,"DECIDIR":9,"ORGANIZAR":5,"EXECUTAR":14,"RELACIONAR":57,"COORDENAR":47,"FINALIZAR":5,"ESPECIALIZAR":2}'::jsonb, '{"CRIAR":6.3,"EXPLORAR":27.6,"ANALISAR":9,"DECIDIR":22,"ORGANIZAR":9.4,"EXECUTAR":25.5,"RELACIONAR":67.9,"COORDENAR":77,"FINALIZAR":10.6,"ESPECIALIZAR":4.1}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','EXPLORAR','EXECUTAR','DECIDIR','FINALIZAR','ORGANIZAR','ANALISAR','CRIAR','ESPECIALIZAR']::text[], 'v2.0');
@@ -5636,10 +5784,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":16,"I":11,"T":20,"F":4,"S":1,"N":2}'::jsonb, '{"E":59.3,"I":40.7,"T":74.1,"F":14.8,"S":3.7,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'T', 'N', 'S',
     'F', 'Te', 'Ne', false, null,
-    ARRAY['T','F','N','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','F','N','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":2,"EXE":8,"AUT":18,"COO":7,"FLE":6,"EST":13}'::jsonb, '{"EXP":7.1,"EXE":22.9,"AUT":40.9,"COO":15.6,"FLE":27.3,"EST":31}'::jsonb, '{"CRIAR":11,"EXPLORAR":7,"ANALISAR":39,"DECIDIR":26,"ORGANIZAR":18,"EXECUTAR":19,"RELACIONAR":13,"COORDENAR":10,"FINALIZAR":8,"ESPECIALIZAR":14}'::jsonb, '{"CRIAR":17.5,"EXPLORAR":12.1,"ANALISAR":50,"DECIDIR":63.4,"ORGANIZAR":34,"EXECUTAR":34.5,"RELACIONAR":15.5,"COORDENAR":16.4,"FINALIZAR":17,"ESPECIALIZAR":28.6}'::jsonb,
     ARRAY['DECIDIR','ANALISAR','EXECUTAR','ORGANIZAR','ESPECIALIZAR','CRIAR','FINALIZAR','COORDENAR','RELACIONAR','EXPLORAR']::text[], 'v2.0');
@@ -5711,10 +5861,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":3,"I":24,"T":20,"F":3,"S":4,"N":0}'::jsonb, '{"E":11.1,"I":88.9,"T":74.1,"F":11.1,"S":14.8,"N":0}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'T', 'S', 'N',
     'F', 'Ti', 'Si', false, null,
-    ARRAY['T','S','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','S','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":0,"EXE":6,"AUT":25,"COO":3,"FLE":2,"EST":18}'::jsonb, '{"EXP":0,"EXE":17.1,"AUT":56.8,"COO":6.7,"FLE":9.1,"EST":42.9}'::jsonb, '{"CRIAR":8,"EXPLORAR":2,"ANALISAR":57,"DECIDIR":16,"ORGANIZAR":22,"EXECUTAR":11,"RELACIONAR":7,"COORDENAR":6,"FINALIZAR":17,"ESPECIALIZAR":18}'::jsonb, '{"CRIAR":12.7,"EXPLORAR":3.4,"ANALISAR":73.1,"DECIDIR":39,"ORGANIZAR":41.5,"EXECUTAR":20,"RELACIONAR":8.3,"COORDENAR":9.8,"FINALIZAR":36.2,"ESPECIALIZAR":36.7}'::jsonb,
     ARRAY['ANALISAR','ORGANIZAR','DECIDIR','ESPECIALIZAR','FINALIZAR','EXECUTAR','CRIAR','COORDENAR','RELACIONAR','EXPLORAR']::text[], 'v2.0');
@@ -5786,10 +5938,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":8,"I":19,"T":0,"F":21,"S":1,"N":5}'::jsonb, '{"E":29.6,"I":70.4,"T":0,"F":77.8,"S":3.7,"N":18.5}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'F', 'N', 'T',
     'T', 'Fi', 'Ni', false, null,
-    ARRAY['F','N','S','T']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['F','N','S','T']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":6,"EXE":1,"AUT":11,"COO":23,"FLE":4,"EST":9}'::jsonb, '{"EXP":21.4,"EXE":2.9,"AUT":25,"COO":51.1,"FLE":18.2,"EST":21.4}'::jsonb, '{"CRIAR":19,"EXPLORAR":14,"ANALISAR":16,"DECIDIR":3,"ORGANIZAR":11,"EXECUTAR":4,"RELACIONAR":37,"COORDENAR":37,"FINALIZAR":6,"ESPECIALIZAR":19}'::jsonb, '{"CRIAR":30.2,"EXPLORAR":24.1,"ANALISAR":20.5,"DECIDIR":7.3,"ORGANIZAR":20.8,"EXECUTAR":7.3,"RELACIONAR":44,"COORDENAR":60.7,"FINALIZAR":12.8,"ESPECIALIZAR":38.8}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','ESPECIALIZAR','CRIAR','EXPLORAR','ORGANIZAR','ANALISAR','FINALIZAR','DECIDIR','EXECUTAR']::text[], 'v2.0');
@@ -5861,10 +6015,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":14,"I":13,"T":4,"F":6,"S":14,"N":3}'::jsonb, '{"E":51.9,"I":48.1,"T":14.8,"F":22.2,"S":51.9,"N":11.1}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'F', 'N',
     'N', 'Se', 'Fe', false, null,
-    ARRAY['S','F','T','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','F','T','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":4,"EXE":15,"AUT":11,"COO":10,"FLE":5,"EST":9}'::jsonb, '{"EXP":14.3,"EXE":42.9,"AUT":25,"COO":22.2,"FLE":22.7,"EST":21.4}'::jsonb, '{"CRIAR":10,"EXPLORAR":14,"ANALISAR":28,"DECIDIR":10,"ORGANIZAR":11,"EXECUTAR":19,"RELACIONAR":20,"COORDENAR":16,"FINALIZAR":20,"ESPECIALIZAR":19}'::jsonb, '{"CRIAR":15.9,"EXPLORAR":24.1,"ANALISAR":35.9,"DECIDIR":24.4,"ORGANIZAR":20.8,"EXECUTAR":34.5,"RELACIONAR":23.8,"COORDENAR":26.2,"FINALIZAR":42.6,"ESPECIALIZAR":38.8}'::jsonb,
     ARRAY['FINALIZAR','ESPECIALIZAR','ANALISAR','EXECUTAR','COORDENAR','DECIDIR','EXPLORAR','RELACIONAR','ORGANIZAR','CRIAR']::text[], 'v2.0');
@@ -5936,10 +6092,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":12,"I":15,"T":3,"F":14,"S":3,"N":7}'::jsonb, '{"E":44.4,"I":55.6,"T":11.1,"F":51.9,"S":11.1,"N":25.9}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'F', 'N', 'S',
     'T', 'Fi', 'Ni', false, null,
-    ARRAY['F','N','T','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['F','N','T','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":6,"EXE":5,"AUT":8,"COO":16,"FLE":7,"EST":12}'::jsonb, '{"EXP":21.4,"EXE":14.3,"AUT":18.2,"COO":35.6,"FLE":31.8,"EST":28.6}'::jsonb, '{"CRIAR":17,"EXPLORAR":20,"ANALISAR":16,"DECIDIR":8,"ORGANIZAR":15,"EXECUTAR":11,"RELACIONAR":31,"COORDENAR":26,"FINALIZAR":14,"ESPECIALIZAR":11}'::jsonb, '{"CRIAR":27,"EXPLORAR":34.5,"ANALISAR":20.5,"DECIDIR":19.5,"ORGANIZAR":28.3,"EXECUTAR":20,"RELACIONAR":36.9,"COORDENAR":42.6,"FINALIZAR":29.8,"ESPECIALIZAR":22.4}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','EXPLORAR','FINALIZAR','ORGANIZAR','CRIAR','ESPECIALIZAR','ANALISAR','EXECUTAR','DECIDIR']::text[], 'v2.0');
@@ -6011,10 +6169,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":13,"I":14,"T":4,"F":17,"S":6,"N":0}'::jsonb, '{"E":48.1,"I":51.9,"T":14.8,"F":63,"S":22.2,"N":0}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'F', 'S', 'N',
     'T', 'Fi', 'Si', false, null,
-    ARRAY['F','S','T','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['F','S','T','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":6,"EXE":8,"AUT":8,"COO":18,"FLE":4,"EST":10}'::jsonb, '{"EXP":21.4,"EXE":22.9,"AUT":18.2,"COO":40,"FLE":18.2,"EST":23.8}'::jsonb, '{"CRIAR":6,"EXPLORAR":12,"ANALISAR":24,"DECIDIR":7,"ORGANIZAR":17,"EXECUTAR":14,"RELACIONAR":33,"COORDENAR":29,"FINALIZAR":9,"ESPECIALIZAR":16}'::jsonb, '{"CRIAR":9.5,"EXPLORAR":20.7,"ANALISAR":30.8,"DECIDIR":17.1,"ORGANIZAR":32.1,"EXECUTAR":25.5,"RELACIONAR":39.3,"COORDENAR":47.5,"FINALIZAR":19.1,"ESPECIALIZAR":32.7}'::jsonb,
     ARRAY['COORDENAR','RELACIONAR','ESPECIALIZAR','ORGANIZAR','ANALISAR','EXECUTAR','EXPLORAR','FINALIZAR','DECIDIR','CRIAR']::text[], 'v2.0');
@@ -6086,10 +6246,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":14,"I":13,"T":5,"F":4,"S":14,"N":4}'::jsonb, '{"E":51.9,"I":48.1,"T":18.5,"F":14.8,"S":51.9,"N":14.8}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'S', 'T', 'N',
     'N', 'Se', 'Te', false, null,
-    ARRAY['S','T','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','T','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":4,"EXE":15,"AUT":7,"COO":12,"FLE":5,"EST":11}'::jsonb, '{"EXP":14.3,"EXE":42.9,"AUT":15.9,"COO":26.7,"FLE":22.7,"EST":26.2}'::jsonb, '{"CRIAR":10,"EXPLORAR":15,"ANALISAR":26,"DECIDIR":8,"ORGANIZAR":18,"EXECUTAR":22,"RELACIONAR":24,"COORDENAR":14,"FINALIZAR":15,"ESPECIALIZAR":19}'::jsonb, '{"CRIAR":15.9,"EXPLORAR":25.9,"ANALISAR":33.3,"DECIDIR":19.5,"ORGANIZAR":34,"EXECUTAR":40,"RELACIONAR":28.6,"COORDENAR":23,"FINALIZAR":31.9,"ESPECIALIZAR":38.8}'::jsonb,
     ARRAY['EXECUTAR','ESPECIALIZAR','ORGANIZAR','ANALISAR','FINALIZAR','RELACIONAR','EXPLORAR','COORDENAR','DECIDIR','CRIAR']::text[], 'v2.0');
@@ -6161,10 +6323,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":21,"I":6,"T":22,"F":2,"S":1,"N":2}'::jsonb, '{"E":77.8,"I":22.2,"T":81.5,"F":7.4,"S":3.7,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'T', 'N', 'S',
     'F', 'Te', 'Ne', false, null,
-    ARRAY['T','F','N','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','F','N','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":3,"EXE":6,"AUT":17,"COO":9,"FLE":8,"EST":11}'::jsonb, '{"EXP":10.7,"EXE":17.1,"AUT":38.6,"COO":20,"FLE":36.4,"EST":26.2}'::jsonb, '{"CRIAR":10,"EXPLORAR":12,"ANALISAR":39,"DECIDIR":29,"ORGANIZAR":16,"EXECUTAR":16,"RELACIONAR":16,"COORDENAR":13,"FINALIZAR":5,"ESPECIALIZAR":9}'::jsonb, '{"CRIAR":15.9,"EXPLORAR":20.7,"ANALISAR":50,"DECIDIR":70.7,"ORGANIZAR":30.2,"EXECUTAR":29.1,"RELACIONAR":19,"COORDENAR":21.3,"FINALIZAR":10.6,"ESPECIALIZAR":18.4}'::jsonb,
     ARRAY['DECIDIR','ANALISAR','ORGANIZAR','EXECUTAR','COORDENAR','EXPLORAR','RELACIONAR','ESPECIALIZAR','CRIAR','FINALIZAR']::text[], 'v2.0');
@@ -6236,10 +6400,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":12,"I":15,"T":14,"F":6,"S":6,"N":1}'::jsonb, '{"E":44.4,"I":55.6,"T":51.9,"F":22.2,"S":22.2,"N":3.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'T', 'S', 'N',
     'F', 'Ti', 'Si', false, null,
-    ARRAY['T','S','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','S','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":3,"EXE":10,"AUT":15,"COO":8,"FLE":5,"EST":13}'::jsonb, '{"EXP":10.7,"EXE":28.6,"AUT":34.1,"COO":17.8,"FLE":22.7,"EST":31}'::jsonb, '{"CRIAR":9,"EXPLORAR":9,"ANALISAR":36,"DECIDIR":14,"ORGANIZAR":18,"EXECUTAR":17,"RELACIONAR":16,"COORDENAR":10,"FINALIZAR":14,"ESPECIALIZAR":22}'::jsonb, '{"CRIAR":14.3,"EXPLORAR":15.5,"ANALISAR":46.2,"DECIDIR":34.1,"ORGANIZAR":34,"EXECUTAR":30.9,"RELACIONAR":19,"COORDENAR":16.4,"FINALIZAR":29.8,"ESPECIALIZAR":44.9}'::jsonb,
     ARRAY['ANALISAR','ESPECIALIZAR','DECIDIR','ORGANIZAR','EXECUTAR','FINALIZAR','RELACIONAR','COORDENAR','EXPLORAR','CRIAR']::text[], 'v2.0');
@@ -6311,10 +6477,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":8,"I":19,"T":1,"F":2,"S":22,"N":2}'::jsonb, '{"E":29.6,"I":70.4,"T":3.7,"F":7.4,"S":81.5,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'S', 'F', 'T',
     'N', 'Si', 'Fi', false, null,
-    ARRAY['S','F','N','T']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','F','N','T']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":2,"EXE":20,"AUT":10,"COO":7,"FLE":3,"EST":12}'::jsonb, '{"EXP":7.1,"EXE":57.1,"AUT":22.7,"COO":15.6,"FLE":13.6,"EST":28.6}'::jsonb, '{"CRIAR":15,"EXPLORAR":5,"ANALISAR":34,"DECIDIR":11,"ORGANIZAR":18,"EXECUTAR":17,"RELACIONAR":14,"COORDENAR":9,"FINALIZAR":27,"ESPECIALIZAR":18}'::jsonb, '{"CRIAR":23.8,"EXPLORAR":8.6,"ANALISAR":43.6,"DECIDIR":26.8,"ORGANIZAR":34,"EXECUTAR":30.9,"RELACIONAR":16.7,"COORDENAR":14.8,"FINALIZAR":57.4,"ESPECIALIZAR":36.7}'::jsonb,
     ARRAY['FINALIZAR','ANALISAR','ESPECIALIZAR','ORGANIZAR','EXECUTAR','DECIDIR','CRIAR','RELACIONAR','COORDENAR','EXPLORAR']::text[], 'v2.0');
@@ -6386,10 +6554,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":23,"I":4,"T":3,"F":1,"S":1,"N":22}'::jsonb, '{"E":85.2,"I":14.8,"T":11.1,"F":3.7,"S":3.7,"N":81.5}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'N', 'T', 'F',
     'S', 'Ne', 'Te', false, null,
-    ARRAY['N','T','S','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','T','S','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":19,"EXE":8,"AUT":5,"COO":9,"FLE":10,"EST":3}'::jsonb, '{"EXP":67.9,"EXE":22.9,"AUT":11.4,"COO":20,"FLE":45.5,"EST":7.1}'::jsonb, '{"CRIAR":39,"EXPLORAR":36,"ANALISAR":10,"DECIDIR":13,"ORGANIZAR":6,"EXECUTAR":22,"RELACIONAR":20,"COORDENAR":13,"FINALIZAR":3,"ESPECIALIZAR":3}'::jsonb, '{"CRIAR":61.9,"EXPLORAR":62.1,"ANALISAR":12.8,"DECIDIR":31.7,"ORGANIZAR":11.3,"EXECUTAR":40,"RELACIONAR":23.8,"COORDENAR":21.3,"FINALIZAR":6.4,"ESPECIALIZAR":6.1}'::jsonb,
     ARRAY['EXPLORAR','CRIAR','EXECUTAR','DECIDIR','RELACIONAR','COORDENAR','ANALISAR','ORGANIZAR','FINALIZAR','ESPECIALIZAR']::text[], 'v2.0');
@@ -6461,10 +6631,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":11,"I":16,"T":4,"F":4,"S":17,"N":2}'::jsonb, '{"E":40.7,"I":59.3,"T":14.8,"F":14.8,"S":63,"N":7.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'S', 'T', 'N',
     'N', 'Si', 'Ti', false, null,
-    ARRAY['S','T','F','N']::text[], 'v1.0-piloto');
+    true, 'D2: desempate por evidência convergente nos eixos comportamentais.',
+    ARRAY['S','T','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":4,"EXE":15,"AUT":11,"COO":8,"FLE":5,"EST":11}'::jsonb, '{"EXP":14.3,"EXE":42.9,"AUT":25,"COO":17.8,"FLE":22.7,"EST":26.2}'::jsonb, '{"CRIAR":7,"EXPLORAR":11,"ANALISAR":36,"DECIDIR":7,"ORGANIZAR":10,"EXECUTAR":25,"RELACIONAR":21,"COORDENAR":10,"FINALIZAR":24,"ESPECIALIZAR":18}'::jsonb, '{"CRIAR":11.1,"EXPLORAR":19,"ANALISAR":46.2,"DECIDIR":17.1,"ORGANIZAR":18.9,"EXECUTAR":45.5,"RELACIONAR":25,"COORDENAR":16.4,"FINALIZAR":51.1,"ESPECIALIZAR":36.7}'::jsonb,
     ARRAY['FINALIZAR','ANALISAR','EXECUTAR','ESPECIALIZAR','RELACIONAR','EXPLORAR','ORGANIZAR','DECIDIR','COORDENAR','CRIAR']::text[], 'v2.0');
@@ -6536,10 +6708,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":5,"I":22,"T":4,"F":1,"S":16,"N":6}'::jsonb, '{"E":18.5,"I":81.5,"T":14.8,"F":3.7,"S":59.3,"N":22.2}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'S', 'T', 'F',
     'N', 'Si', 'Ti', false, null,
-    ARRAY['S','N','T','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','N','T','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":7,"EXE":16,"AUT":13,"COO":1,"FLE":2,"EST":15}'::jsonb, '{"EXP":25,"EXE":45.7,"AUT":29.5,"COO":2.2,"FLE":9.1,"EST":35.7}'::jsonb, '{"CRIAR":17,"EXPLORAR":11,"ANALISAR":39,"DECIDIR":7,"ORGANIZAR":21,"EXECUTAR":22,"RELACIONAR":8,"COORDENAR":2,"FINALIZAR":17,"ESPECIALIZAR":22}'::jsonb, '{"CRIAR":27,"EXPLORAR":19,"ANALISAR":50,"DECIDIR":17.1,"ORGANIZAR":39.6,"EXECUTAR":40,"RELACIONAR":9.5,"COORDENAR":3.3,"FINALIZAR":36.2,"ESPECIALIZAR":44.9}'::jsonb,
     ARRAY['ANALISAR','ESPECIALIZAR','EXECUTAR','ORGANIZAR','FINALIZAR','CRIAR','EXPLORAR','DECIDIR','RELACIONAR','COORDENAR']::text[], 'v2.0');
@@ -6611,10 +6785,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":5,"I":22,"T":21,"F":1,"S":2,"N":3}'::jsonb, '{"E":18.5,"I":81.5,"T":77.8,"F":3.7,"S":7.4,"N":11.1}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'T', 'N', 'F',
     'F', 'Ti', 'Ni', false, null,
-    ARRAY['T','N','S','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','N','S','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":4,"EXE":3,"AUT":17,"COO":2,"FLE":3,"EST":25}'::jsonb, '{"EXP":14.3,"EXE":8.6,"AUT":38.6,"COO":4.4,"FLE":13.6,"EST":59.5}'::jsonb, '{"CRIAR":12,"EXPLORAR":7,"ANALISAR":43,"DECIDIR":16,"ORGANIZAR":34,"EXECUTAR":6,"RELACIONAR":6,"COORDENAR":4,"FINALIZAR":18,"ESPECIALIZAR":22}'::jsonb, '{"CRIAR":19,"EXPLORAR":12.1,"ANALISAR":55.1,"DECIDIR":39,"ORGANIZAR":64.2,"EXECUTAR":10.9,"RELACIONAR":7.1,"COORDENAR":6.6,"FINALIZAR":38.3,"ESPECIALIZAR":44.9}'::jsonb,
     ARRAY['ORGANIZAR','ANALISAR','ESPECIALIZAR','DECIDIR','FINALIZAR','CRIAR','EXPLORAR','EXECUTAR','RELACIONAR','COORDENAR']::text[], 'v2.0');
@@ -6686,10 +6862,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":8,"I":19,"T":3,"F":1,"S":23,"N":0}'::jsonb, '{"E":29.6,"I":70.4,"T":11.1,"F":3.7,"S":85.2,"N":0}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'S', 'T', 'N',
     'N', 'Si', 'Ti', false, null,
-    ARRAY['S','T','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['S','T','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":1,"EXE":23,"AUT":12,"COO":4,"FLE":1,"EST":13}'::jsonb, '{"EXP":3.6,"EXE":65.7,"AUT":27.3,"COO":8.9,"FLE":4.5,"EST":31}'::jsonb, '{"CRIAR":8,"EXPLORAR":5,"ANALISAR":36,"DECIDIR":11,"ORGANIZAR":22,"EXECUTAR":24,"RELACIONAR":9,"COORDENAR":4,"FINALIZAR":27,"ESPECIALIZAR":22}'::jsonb, '{"CRIAR":12.7,"EXPLORAR":8.6,"ANALISAR":46.2,"DECIDIR":26.8,"ORGANIZAR":41.5,"EXECUTAR":43.6,"RELACIONAR":10.7,"COORDENAR":6.6,"FINALIZAR":57.4,"ESPECIALIZAR":44.9}'::jsonb,
     ARRAY['FINALIZAR','ANALISAR','ESPECIALIZAR','EXECUTAR','ORGANIZAR','DECIDIR','CRIAR','RELACIONAR','EXPLORAR','COORDENAR']::text[], 'v2.0');
@@ -6761,10 +6939,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":5,"I":22,"T":4,"F":2,"S":3,"N":18}'::jsonb, '{"E":18.5,"I":81.5,"T":14.8,"F":7.4,"S":11.1,"N":66.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'N', 'T', 'F',
     'S', 'Ni', 'Ti', false, null,
-    ARRAY['N','T','S','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','T','S','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":13,"EXE":5,"AUT":16,"COO":3,"FLE":6,"EST":11}'::jsonb, '{"EXP":46.4,"EXE":14.3,"AUT":36.4,"COO":6.7,"FLE":27.3,"EST":26.2}'::jsonb, '{"CRIAR":40,"EXPLORAR":21,"ANALISAR":21,"DECIDIR":10,"ORGANIZAR":18,"EXECUTAR":11,"RELACIONAR":9,"COORDENAR":4,"FINALIZAR":10,"ESPECIALIZAR":23}'::jsonb, '{"CRIAR":63.5,"EXPLORAR":36.2,"ANALISAR":26.9,"DECIDIR":24.4,"ORGANIZAR":34,"EXECUTAR":20,"RELACIONAR":10.7,"COORDENAR":6.6,"FINALIZAR":21.3,"ESPECIALIZAR":46.9}'::jsonb,
     ARRAY['CRIAR','ESPECIALIZAR','EXPLORAR','ORGANIZAR','ANALISAR','DECIDIR','FINALIZAR','EXECUTAR','RELACIONAR','COORDENAR']::text[], 'v2.0');
@@ -6836,10 +7016,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":3,"I":24,"T":2,"F":4,"S":2,"N":19}'::jsonb, '{"E":11.1,"I":88.9,"T":7.4,"F":14.8,"S":7.4,"N":70.4}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'N', 'F', 'S',
     'S', 'Ni', 'Fi', false, null,
-    ARRAY['N','F','T','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','F','T','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":12,"EXE":2,"AUT":17,"COO":4,"FLE":8,"EST":11}'::jsonb, '{"EXP":42.9,"EXE":5.7,"AUT":38.6,"COO":8.9,"FLE":36.4,"EST":26.2}'::jsonb, '{"CRIAR":35,"EXPLORAR":26,"ANALISAR":33,"DECIDIR":8,"ORGANIZAR":13,"EXECUTAR":4,"RELACIONAR":14,"COORDENAR":5,"FINALIZAR":12,"ESPECIALIZAR":16}'::jsonb, '{"CRIAR":55.6,"EXPLORAR":44.8,"ANALISAR":42.3,"DECIDIR":19.5,"ORGANIZAR":24.5,"EXECUTAR":7.3,"RELACIONAR":16.7,"COORDENAR":8.2,"FINALIZAR":25.5,"ESPECIALIZAR":32.7}'::jsonb,
     ARRAY['CRIAR','EXPLORAR','ANALISAR','ESPECIALIZAR','FINALIZAR','ORGANIZAR','DECIDIR','RELACIONAR','COORDENAR','EXECUTAR']::text[], 'v2.0');
@@ -6911,10 +7093,12 @@ begin
     (v_aval, 'Q048', 'Q048A', 'E'::polo_jung, 'EXP'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":21,"I":6,"T":16,"F":6,"S":4,"N":1}'::jsonb, '{"E":77.8,"I":22.2,"T":59.3,"F":22.2,"S":14.8,"N":3.7}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'T', 'S', 'N',
     'F', 'Te', 'Se', false, null,
-    ARRAY['T','F','S','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','F','S','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":6,"EXE":6,"AUT":10,"COO":13,"FLE":7,"EST":12}'::jsonb, '{"EXP":21.4,"EXE":17.1,"AUT":22.7,"COO":28.9,"FLE":31.8,"EST":28.6}'::jsonb, '{"CRIAR":6,"EXPLORAR":18,"ANALISAR":29,"DECIDIR":11,"ORGANIZAR":20,"EXECUTAR":20,"RELACIONAR":27,"COORDENAR":15,"FINALIZAR":8,"ESPECIALIZAR":11}'::jsonb, '{"CRIAR":9.5,"EXPLORAR":31,"ANALISAR":37.2,"DECIDIR":26.8,"ORGANIZAR":37.7,"EXECUTAR":36.4,"RELACIONAR":32.1,"COORDENAR":24.6,"FINALIZAR":17,"ESPECIALIZAR":22.4}'::jsonb,
     ARRAY['ORGANIZAR','ANALISAR','EXECUTAR','RELACIONAR','EXPLORAR','DECIDIR','COORDENAR','ESPECIALIZAR','FINALIZAR','CRIAR']::text[], 'v2.0');
@@ -6986,10 +7170,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":14,"I":13,"T":4,"F":1,"S":2,"N":20}'::jsonb, '{"E":51.9,"I":48.1,"T":14.8,"F":3.7,"S":7.4,"N":74.1}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'N', 'T', 'F',
     'S', 'Ne', 'Te', false, null,
-    ARRAY['N','T','S','F']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','T','S','F']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":16,"EXE":6,"AUT":7,"COO":6,"FLE":7,"EST":12}'::jsonb, '{"EXP":57.1,"EXE":17.1,"AUT":15.9,"COO":13.3,"FLE":31.8,"EST":28.6}'::jsonb, '{"CRIAR":33,"EXPLORAR":32,"ANALISAR":22,"DECIDIR":12,"ORGANIZAR":13,"EXECUTAR":13,"RELACIONAR":16,"COORDENAR":6,"FINALIZAR":5,"ESPECIALIZAR":15}'::jsonb, '{"CRIAR":52.4,"EXPLORAR":55.2,"ANALISAR":28.2,"DECIDIR":29.3,"ORGANIZAR":24.5,"EXECUTAR":23.6,"RELACIONAR":19,"COORDENAR":9.8,"FINALIZAR":10.6,"ESPECIALIZAR":30.6}'::jsonb,
     ARRAY['EXPLORAR','CRIAR','ESPECIALIZAR','DECIDIR','ANALISAR','ORGANIZAR','EXECUTAR','RELACIONAR','FINALIZAR','COORDENAR']::text[], 'v2.0');
@@ -7061,10 +7247,12 @@ begin
     (v_aval, 'Q048', 'Q048D', 'I'::polo_jung, 'EST'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":7,"I":20,"T":0,"F":4,"S":1,"N":22}'::jsonb, '{"E":25.9,"I":74.1,"T":0,"F":14.8,"S":3.7,"N":81.5}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'N', 'F', 'T',
     'S', 'Ni', 'Fi', false, null,
-    ARRAY['N','F','S','T']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['N','F','S','T']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":15,"EXE":3,"AUT":9,"COO":6,"FLE":9,"EST":12}'::jsonb, '{"EXP":53.6,"EXE":8.6,"AUT":20.5,"COO":13.3,"FLE":40.9,"EST":28.6}'::jsonb, '{"CRIAR":41,"EXPLORAR":33,"ANALISAR":16,"DECIDIR":6,"ORGANIZAR":14,"EXECUTAR":11,"RELACIONAR":12,"COORDENAR":7,"FINALIZAR":12,"ESPECIALIZAR":14}'::jsonb, '{"CRIAR":65.1,"EXPLORAR":56.9,"ANALISAR":20.5,"DECIDIR":14.6,"ORGANIZAR":26.4,"EXECUTAR":20,"RELACIONAR":14.3,"COORDENAR":11.5,"FINALIZAR":25.5,"ESPECIALIZAR":28.6}'::jsonb,
     ARRAY['CRIAR','EXPLORAR','ESPECIALIZAR','ORGANIZAR','FINALIZAR','ANALISAR','EXECUTAR','DECIDIR','RELACIONAR','COORDENAR']::text[], 'v2.0');
@@ -7136,10 +7324,12 @@ begin
     (v_aval, 'Q048', 'Q048C', 'I'::polo_jung, 'AUT'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":10,"I":17,"T":22,"F":2,"S":3,"N":0}'::jsonb, '{"E":37,"I":63,"T":81.5,"F":7.4,"S":11.1,"N":0}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'I', 'T', 'S', 'N',
     'F', 'Ti', 'Si', false, null,
-    ARRAY['T','S','F','N']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','S','F','N']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":1,"EXE":5,"AUT":23,"COO":5,"FLE":3,"EST":17}'::jsonb, '{"EXP":3.6,"EXE":14.3,"AUT":52.3,"COO":11.1,"FLE":13.6,"EST":40.5}'::jsonb, '{"CRIAR":10,"EXPLORAR":2,"ANALISAR":51,"DECIDIR":21,"ORGANIZAR":22,"EXECUTAR":8,"RELACIONAR":15,"COORDENAR":8,"FINALIZAR":6,"ESPECIALIZAR":23}'::jsonb, '{"CRIAR":15.9,"EXPLORAR":3.4,"ANALISAR":65.4,"DECIDIR":51.2,"ORGANIZAR":41.5,"EXECUTAR":14.5,"RELACIONAR":17.9,"COORDENAR":13.1,"FINALIZAR":12.8,"ESPECIALIZAR":46.9}'::jsonb,
     ARRAY['ANALISAR','DECIDIR','ESPECIALIZAR','ORGANIZAR','RELACIONAR','CRIAR','EXECUTAR','COORDENAR','FINALIZAR','EXPLORAR']::text[], 'v2.0');
@@ -7211,10 +7401,12 @@ begin
     (v_aval, 'Q048', 'Q048B', 'E'::polo_jung, 'EXE'::eixo_aux, 1, 4);
   insert into escores (avaliacao_id, bruto, relativo) values (v_aval, '{"E":17,"I":10,"T":21,"F":2,"S":0,"N":4}'::jsonb, '{"E":63,"I":37,"T":77.8,"F":7.4,"S":0,"N":14.8}'::jsonb);
   insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, 'E', 'T', 'N', 'S',
     'F', 'Te', 'Ne', false, null,
-    ARRAY['T','N','F','S']::text[], 'v1.0-piloto');
+    false, null,
+    ARRAY['T','N','F','S']::text[], 'v1.1-desempate-auxiliar');
   insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, '{"EXP":3,"EXE":2,"AUT":19,"COO":11,"FLE":6,"EST":13}'::jsonb, '{"EXP":10.7,"EXE":5.7,"AUT":43.2,"COO":24.4,"FLE":27.3,"EST":31}'::jsonb, '{"CRIAR":11,"EXPLORAR":9,"ANALISAR":42,"DECIDIR":21,"ORGANIZAR":16,"EXECUTAR":9,"RELACIONAR":25,"COORDENAR":10,"FINALIZAR":15,"ESPECIALIZAR":10}'::jsonb, '{"CRIAR":17.5,"EXPLORAR":15.5,"ANALISAR":53.8,"DECIDIR":51.2,"ORGANIZAR":30.2,"EXECUTAR":16.4,"RELACIONAR":29.8,"COORDENAR":16.4,"FINALIZAR":31.9,"ESPECIALIZAR":20.4}'::jsonb,
     ARRAY['ANALISAR','DECIDIR','FINALIZAR','ORGANIZAR','RELACIONAR','ESPECIALIZAR','CRIAR','EXECUTAR','COORDENAR','EXPLORAR']::text[], 'v2.0');

@@ -98,6 +98,7 @@ Matrizes teóricas dos 8 perfis, das 10 capacidades e dos 9 papéis.
 | `iniciada_em` / `concluida_em` | timestamptz | | — |
 | `is_demo` / `is_test` | boolean | NN | Excluem a linha de **todos** os indicadores |
 | `arquivada_em` / `arquivada_por` | timestamptz / uuid | | Soft delete: sai dos indicadores, as respostas permanecem |
+| `numero_aplicacao` | int | NN, UQ com participante | **Ordinal da aplicação**, começando em 1. Atribuído por trigger no banco, não pelo cliente. Conta também as arquivadas: depois de uma reaplicação liberada, a nova é a 02 |
 
 > **Gatilho `trg_valida_conclusao`**: recusa mudar o status para `CONCLUIDA`
 > enquanto o número de respostas for menor que o número de itens ativos da
@@ -131,7 +132,7 @@ Todos recalculáveis a partir de `respostas`.
 | Tabela | Chave | Conteúdo |
 |---|---|---|
 | `escores` | `avaliacao_id` PK | `bruto` e `relativo` (jsonb) dos seis polos junguianos |
-| `resultados` | `avaliacao_id` PK | atitude, funções dominante/auxiliar/inferior/menos representada, perfil principal e secundário, empate, regra de desempate, `ordem_funcoes` (text[]), versão do algoritmo |
+| `resultados` | `avaliacao_id` PK | atitude, funções dominante/auxiliar/inferior/menos representada, perfil principal e secundário, `empate_funcoes` + `regra_desempate` (dominante), `empate_auxiliar` + `regra_desempate_auxiliar` (auxiliar → perfil secundário), `ordem_funcoes` (text[]), `algoritmo_versao` |
 | `resultados_funcionais` | `avaliacao_id` PK | `eixos_bruto`, `eixos`, `cap_bruto`, `capacidades` (jsonb), `ordem_capacidades` (text[]), `versao_matriz` |
 | `resultados_belbin` | `avaliacao_id` PK | `bruto`, `relativo` (jsonb) e top1/top2/top3 com valor e intensidade |
 
@@ -145,7 +146,7 @@ Todos recalculáveis a partir de `respostas`.
 | `id` | bigserial PK | — |
 | `user_id` | uuid | Autor |
 | `usuario_email` | text | Preenchido pelo banco via `email_do_usuario()` (item 30) |
-| `acao` | text NN | `LOGIN`, `CONCLUSAO`, `EXPORTACAO`, `RESET`, `LIMPEZA_DEMO`, `LIMPEZA_TESTE`, `ALTERACAO_CONFIGURACAO` |
+| `acao` | text NN | `LOGIN`, `CONCLUSAO`, `EXPORTACAO`, `RESET`, `LIMPEZA_DEMO`, `LIMPEZA_TESTE`, `RECALCULO`, `ALTERACAO_CONFIGURACAO` |
 | `escopo`, `parametro` | text | Alvo da operação |
 | `registros_afetados` | int NN | Quantidade |
 | `detalhe` | jsonb | Contexto da operação |
@@ -160,8 +161,9 @@ compatibilidade. A aplicação escreve em `logs_auditoria`.
 
 | View | Conteúdo | Regra |
 |---|---|---|
-| `vw_resultados` | **Somente dados reais** | `status = CONCLUIDA` **e** não arquivada **e** `is_demo = false` **e** `is_test = false`. Tudo que a aplicação lê passa por aqui |
+| `vw_resultados` | **Somente dados reais, e só a aplicação VIGENTE** | `status = CONCLUIDA` **e** não arquivada **e** `is_demo = false` **e** `is_test = false`, com `distinct on (participante)` pela conclusão mais recente. **Uma linha por pessoa, sempre.** Tudo que a aplicação lê como indicador passa por aqui |
 | `vw_resultados_todos` | Tudo que está concluído | Usada **apenas** para o backup dos dados DEMO |
+| `vw_aplicacoes` | **Histórico** por participante | Uma linha por avaliação, **incluindo arquivadas e em andamento**. Não filtra `arquivada_em` — é o oposto de `vw_resultados`, de propósito. Continua excluindo `is_demo` e `is_test` |
 | `resultados_jung` | Compatibilidade de nome | — |
 
 Ambas com `security_invoker = true`: o RLS das tabelas continua valendo dentro
@@ -176,6 +178,7 @@ contando em todos os indicadores.
 | Função | Papel exigido | O que faz |
 |---|---|---|
 | `eh_master()` · `eh_admin()` · `setor_do_admin()` · `meu_participante_id()` | — | Autorização, usadas pelas policies |
+| `proximo_numero_aplicacao()` | — | Trigger `BEFORE INSERT` em `avaliacoes`. O ordinal é calculado no banco porque `abrirAvaliacao` roda no navegador e dois cliques concorrentes gerariam o mesmo número; o `unique (participante_id, numero_aplicacao)` é a rede |
 | `eh_conta_administrativa(user_id)` | autenticado | Alimenta `eh_administrador` nas views. SECURITY DEFINER: sem isso o ADMIN_SETOR, que só enxerga a própria linha de `administradores`, veria a marcação sempre falsa |
 | `email_do_usuario()` | — | E-mail do JWT, para a auditoria |
 | `resumo_organizacional()` | autenticado | Contadores do topo do dashboard, já sem DEMO |

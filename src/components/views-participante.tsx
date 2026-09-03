@@ -12,6 +12,7 @@ import {
   Card, Aviso, Barras, BarraDupla, Tabela, Pill, Medidor, Secao, Totem, FaixaAnimais,
   PorQue, ExplicaSigla, Glossario, TracoRota, CORES_FUNCAO, CORES_ATITUDE
 } from './ui';
+import { dataBR } from '../lib/datas';
 import { AnimalDoPerfil } from './animais-svg';
 import { QUESTOES, NOME_EIXO, type Questao } from '../data/questions';
 import { PERFIL_POR_ID, NOME_FUNCAO, NOME_ATITUDE } from '../data/profiles';
@@ -25,8 +26,18 @@ import {
 } from '../lib/narrative';
 
 /* ───────────────────────── IDENTIFICAÇÃO (item 26) ───────────────────────── */
-export function TelaIdentificacao({ setores, onIniciar, erro }: {
-  setores: string[]; onIniciar: (d: { nome: string; matricula: string; setor: string }) => void; erro?: string | null;
+/**
+ * A MESMA identificação serve a dois propósitos, e eles pedem textos diferentes.
+ * Quem chega por `/questionario` vai responder e precisa saber quanto tempo leva
+ * e que dá para parar no meio. Quem chega por `/meu-resultado` já respondeu:
+ * dizer "são 48 situações, leva 12 minutos" ali sugere que ele vai refazer o
+ * teste — que é exatamente o oposto do que a tela faz. `modo` troca o que muda,
+ * e só isso: os campos, a validação e a regra da matrícula são os mesmos.
+ */
+export function TelaIdentificacao({ setores, onIniciar, erro, modo = 'responder' }: {
+  setores: string[]; onIniciar: (d: { nome: string; matricula: string; setor: string }) => void;
+  erro?: string | null;
+  modo?: 'responder' | 'revisitar';
 }) {
   const [nome, setNome] = useState('');
   const [matricula, setMatricula] = useState('');
@@ -47,7 +58,10 @@ export function TelaIdentificacao({ setores, onIniciar, erro }: {
 
   return (
     <div style={{ maxWidth: 640, margin: '0 auto' }}>
-      <Card titulo="Identificação" sub="Seus dados vinculam o resultado a você e compõem as análises por equipe.">
+      <Card titulo="Identificação"
+        sub={modo === 'revisitar'
+          ? 'Informe os mesmos dados que você usou para responder — é por eles que seu resultado é localizado.'
+          : 'Seus dados vinculam o resultado a você e compõem as análises por equipe.'}>
         {erro && <Aviso tipo="limite" titulo="Não foi possível continuar">{erro}</Aviso>}
         {/* label ligado por htmlFor/id: sem isso o leitor de tela anuncia
             "caixa de edição" sem dizer de quê. */}
@@ -67,14 +81,22 @@ export function TelaIdentificacao({ setores, onIniciar, erro }: {
         {tocado && problema && (
           <p id="c-erro" role="alert" style={{ color: '#A8503C', fontSize: 13, margin: '0 0 12px' }}>{problema}</p>
         )}
-        <Aviso tipo="info" titulo="Como funciona">
-          São 48 situações de trabalho, sem resposta certa ou errada — todas as alternativas descrevem
-          recursos úteis. Leva cerca de 12 minutos. <b>Cada resposta é salva no momento em que você escolhe</b>,
-          então você pode fechar e continuar depois do ponto em que parou.
-        </Aviso>
+        {modo === 'revisitar' ? (
+          <Aviso tipo="info" titulo="Você não vai responder de novo">
+            Seu resultado é <b>recalculado a partir das 48 respostas já guardadas</b> — por isso ele é sempre o
+            mesmo, e por isso não é preciso refazer nada para lê-lo. Se você respondeu mais de uma vez,
+            todas as aplicações ficam disponíveis.
+          </Aviso>
+        ) : (
+          <Aviso tipo="info" titulo="Como funciona">
+            São 48 situações de trabalho, sem resposta certa ou errada — todas as alternativas descrevem
+            recursos úteis. Leva cerca de 12 minutos. <b>Cada resposta é salva no momento em que você escolhe</b>,
+            então você pode fechar e continuar depois do ponto em que parou.
+          </Aviso>
+        )}
         <Aviso tipo="limite" titulo="Limites">{AVISO_GERAL} Seus resultados individuais não são visíveis para colegas.</Aviso>
         <button className="btn" disabled={!valido} onClick={() => onIniciar({ nome, matricula, setor })}>
-          Iniciar ou continuar
+          {modo === 'revisitar' ? 'Ver meu resultado' : 'Iniciar ou continuar'}
         </button>
       </Card>
     </div>
@@ -115,14 +137,15 @@ export function TelaRetomada({ nome, respondidas, total = 48, proxima, onContinu
  * Nenhuma nova avaliação é iniciada em silêncio. Responder de novo depende de
  * uma autorização explícita do Administrador Master.
  */
-export function TelaJaConcluida({ nome, data, podeVerResultado, onVerResultado }: {
-  nome: string; data?: string; podeVerResultado?: boolean; onVerResultado?: () => void;
+export function TelaJaConcluida({ nome, data, aplicacao, podeVerResultado, onVerResultado }: {
+  nome: string; data?: string; aplicacao?: number; podeVerResultado?: boolean; onVerResultado?: () => void;
 }) {
   return (
     <div style={{ maxWidth: 640, margin: '0 auto' }}>
       <Card titulo="Sua avaliação já foi concluída" sub={nome}>
         <p style={{ fontSize: 15 }}>
-          Suas 48 respostas estão registradas{data ? <> e a avaliação foi finalizada em <b>{new Date(data).toLocaleDateString('pt-BR')}</b></> : null}.
+          Suas 48 respostas estão registradas{data ? <> e a avaliação foi finalizada em <b>{dataBR(data)}</b></> : null}
+          {aplicacao && aplicacao > 1 ? <> — esta é a sua <b>{aplicacao}ª aplicação</b></> : null}.
           Elas já compõem as análises da sua equipe.
         </p>
         <Aviso tipo="info" titulo="Quer responder novamente?">
@@ -130,9 +153,14 @@ export function TelaJaConcluida({ nome, data, podeVerResultado, onVerResultado }
           anterior é arquivada, ou quando uma nova versão do instrumento é publicada para reaplicação.
           Procure a área responsável pelo instrumento.
         </Aviso>
-        {podeVerResultado && onVerResultado && (
-          <button className="btn" onClick={onVerResultado}>Ver meu resultado</button>
-        )}
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          {podeVerResultado && onVerResultado && (
+            <button className="btn" onClick={onVerResultado}>Ver meu resultado</button>
+          )}
+          {/* Endereço fixo: quem só quer reler o resultado não precisa passar
+              pela tela de quem vai responder. */}
+          <a className="btn btn-sec" href="/meu-resultado">Meu resultado e histórico</a>
+        </div>
       </Card>
     </div>
   );
@@ -267,7 +295,7 @@ export function TelaResultado({ r, dados, comparacao }: {
 
       <Card>
         <div style={{ fontSize: 12.5, color: 'var(--ink3)', marginBottom: 16 }}>
-          <b>{cab.nome}</b> · {cab.setor} · {new Date(cab.data).toLocaleDateString('pt-BR')} · instrumento {cab.versao}
+          <b>{cab.nome}</b> · {cab.setor} · {dataBR(cab.data)} · instrumento {cab.versao}
         </div>
 
         <Aviso tipo="limite">{cab.aviso}</Aviso>
@@ -288,10 +316,23 @@ export function TelaResultado({ r, dados, comparacao }: {
           </div>
         </div>
         <p style={{ marginTop: 14, marginBottom: 0 }}>{interacaoPerfis(r)}</p>
+        {/* Os dois empates são declarados separadamente porque decidem coisas
+            diferentes: o da dominante define a tendência PREDOMINANTE, o da
+            auxiliar define a SECUNDÁRIA. Esconder o segundo — como acontecia até
+            o algoritmo v1.0-piloto — fazia a secundária parecer mais firme do
+            que os números sustentam. */}
         {r.empateFuncoes && (
-          <Aviso tipo="alerta" titulo="Duas funções apareceram empatadas">
-            O resultado acima decorre de uma regra de desempate explícita ({r.regraDesempate}). Leia sua tendência
+          <Aviso tipo="alerta" titulo="Duas funções apareceram empatadas na tendência predominante">
+            A tendência predominante acima decorre de uma regra de desempate explícita ({r.regraDesempate}). Leia-a
             como menos definida do que o habitual: ambas as funções empatadas descrevem recursos que você utiliza.
+            <ExplicaSigla sigla="Empate" titulo="Por que o empate é declarado em vez de escondido" />
+          </Aviso>
+        )}
+        {r.empateAuxiliar && (
+          <Aviso tipo="alerta" titulo="As duas funções do par auxiliar apareceram empatadas">
+            A tendência <b>secundária</b> acima decorre de uma regra de desempate explícita
+            ({r.regraDesempateAuxiliar}). As duas funções do par tiveram exatamente o mesmo escore, então leia a
+            secundária como uma indicação fraca: a outra função do par descreve recursos igualmente seus.
             <ExplicaSigla sigla="Empate" titulo="Por que o empate é declarado em vez de escondido" />
           </Aviso>
         )}

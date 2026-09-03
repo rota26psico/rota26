@@ -12,7 +12,7 @@ else
   $PSQL -f /sql/local/00_pre.sql
 
   # 04_demo_seed.sql fica DE FORA de propósito: são 96 participantes fictícios.
-  for f in 01_schema 02_policies 03_seed 05_migracao_v2 06_producao 07_papeis 08_reavaliacao_v2; do
+  for f in 01_schema 02_policies 03_seed 05_migracao_v2 06_producao 07_papeis 08_reavaliacao_v2 09_aplicacoes; do
     echo "[migrate] $f.sql"
     $PSQL -f "/sql/projeto/$f.sql"
   done

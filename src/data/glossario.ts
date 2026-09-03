@@ -232,13 +232,17 @@ export const GLOSSARIO: Verbete[] = [
   {
     sigla: 'Empate', nome: 'Empate entre funções', grupo: 'jung',
     oQueE:
-      'Ocorre quando duas funções terminam com o mesmo escore e uma regra explícita decide qual é a dominante.',
+      'Ocorre quando duas funções terminam com o mesmo escore e uma cascata explícita de três degraus decide ' +
+      'qual delas vale. Acontece em dois lugares: na função dominante, que define a tendência predominante, e ' +
+      'no par auxiliar, que define a secundária.',
     porQue:
       'O instrumento poderia esconder o empate e simplesmente entregar um resultado. Ele prefere declarar, ' +
       'porque a informação importa para quem lê: um resultado que veio de desempate descreve uma tendência ' +
       'MENOS definida, e as duas funções empatadas são recursos reais da pessoa. A regra aplicada aparece ' +
-      'na tela e fica gravada no banco. Empate de atitude, por sinal, é impossível: a soma dos pesos é ' +
-      'ímpar (27), de propósito.',
+      'na tela e fica gravada no banco. Os três degraus, sempre nesta ordem: D1 vence a função cuja oposta ' +
+      'tem o menor escore; D2 desempata por evidência convergente nos eixos comportamentais; D3 recorre à ' +
+      'ordem canônica fixa, e o texto diz que esse último é arbitrário. Empate de atitude, por sinal, é ' +
+      'impossível: a soma dos pesos é ímpar (27), de propósito.',
     ondeAparece: 'Resultado individual, bloco 1, quando ocorre. Excel e Metodologia.'
   },
 

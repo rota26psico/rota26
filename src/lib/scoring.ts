@@ -20,7 +20,7 @@ import 'server-only';
  * tipicamente vão — apresentar configurações funcionais diferentes.
  */
 
-import { PARES_EIXO, VERSAO_INSTRUMENTO, type EixoAux } from '../data/questions';
+import { PARES_EIXO, VERSAO_INSTRUMENTO, VERSAO_ALGORITMO, type EixoAux } from '../data/questions';
 /* A chave de pontuação vem da camada de servidor. É o que impede este módulo —
    e tudo que o importa — de chegar ao navegador com o gabarito junto. */
 import {
@@ -99,48 +99,106 @@ export function calcularEscores(respostas: Resposta[]) {
   };
 }
 
+/** Ordem canônica das funções. Último recurso do desempate e da ordenação. */
+const ORDEM_CANONICA: readonly Funcao[] = ['T', 'S', 'F', 'N'] as const;
+
 /**
- * Regras de determinação do perfil (inalteradas na v2.0 — preservadas).
- * Atitude: maior bruto. E+I é ímpar por construção do banco, logo não há empate.
- * Função dominante: maior bruto; empate resolvido por D1 → D2 → D3 (ver abaixo).
- * Auxiliar: melhor função do OUTRO par de opostos (regra junguiana).
+ * A CASCATA DE DESEMPATE — D1 → D2 → D3
+ * ---------------------------------------------------------------------------
+ * Extraída de `determinarPerfil` para poder ser aplicada nos DOIS pontos em que
+ * um empate decide um perfil: a função dominante (perfil principal) e a função
+ * auxiliar (perfil secundário). Até `v1.0-piloto` só a dominante passava por
+ * aqui; o empate da auxiliar era resolvido em silêncio pelo primeiro elemento do
+ * par, sem registro nenhum — de fora, isso era indistinguível de um sorteio.
+ *
+ *   D1  vence a função cuja OPOSTA tem o menor escore. Entre funções empatadas,
+ *       `b[f] - b[OPOSTA[f]]` mede o quanto o par está diferenciado.
+ *   D2  evidência convergente nos eixos comportamentais: T e S se apoiam em
+ *       Estrutura + Execução; F e N, em Cooperação + Exploração.
+ *   D3  ordem canônica fixa. É arbitrário e o texto diz isso.
+ *
+ * Determinística por construção: sem `Math.random`, sem `sort` instável, sem
+ * dependência da ordem de iteração de objeto. As mesmas respostas produzem
+ * sempre o mesmo vencedor E o mesmo texto de regra.
+ *
+ * O texto só menciona um degrau que EFETIVAMENTE reduziu o conjunto. Antes, D2
+ * era anunciado sempre que a linha rodava, inclusive quando não eliminava
+ * ninguém — e o banco guardava "D2 foi aplicado" para casos resolvidos em D3.
+ */
+export function desempatar(
+  candidatas: Funcao[],
+  bruto: Record<'E' | 'I' | 'T' | 'F' | 'S' | 'N', number>,
+  eixos: Record<EixoAux, number>
+): { vencedora: Funcao; regra: string | null } {
+  if (candidatas.length === 1) return { vencedora: candidatas[0], regra: null };
+
+  const degraus: string[] = [];
+  let cand = candidatas;
+
+  // D1 — diferenciação em relação à função oposta.
+  const dist = (f: Funcao) => bruto[f] - bruto[OPOSTA[f]];
+  const maxDist = Math.max(...cand.map(dist));
+  const aposD1 = cand.filter(f => dist(f) === maxDist);
+  if (aposD1.length < cand.length) {
+    degraus.push('D1: vence a função cuja oposta tem o menor escore (maior diferenciação).');
+    cand = aposD1;
+  }
+
+  // D2 — evidência convergente nos eixos comportamentais.
+  if (cand.length > 1) {
+    const afim = (f: Funcao) => (f === 'T' || f === 'S'
+      ? eixos.EST + eixos.EXE
+      : eixos.COO + eixos.EXP);
+    const maxAfim = Math.max(...cand.map(afim));
+    const aposD2 = cand.filter(f => afim(f) === maxAfim);
+    if (aposD2.length < cand.length) {
+      degraus.push('D2: desempate por evidência convergente nos eixos comportamentais.');
+      cand = aposD2;
+    }
+  }
+
+  // D3 — ordem canônica. Sempre resolve, por isso fecha a cascata.
+  if (cand.length > 1) {
+    degraus.push('D3: ordem canônica fixa (critério arbitrário de último recurso).');
+    cand = [ORDEM_CANONICA.find(f => cand.includes(f))!];
+  }
+
+  return { vencedora: cand[0], regra: degraus.join(' ') };
+}
+
+/**
+ * Regras de determinação do perfil.
+ * Atitude: maior bruto. E+I é ímpar por construção do banco, logo não há empate
+ *   — `audit:itens` falha se o peso total de atitude virar par.
+ * Função dominante: maior bruto; empate resolvido por D1 → D2 → D3.
+ * Auxiliar: melhor função do OUTRO par de opostos (regra junguiana); empate
+ *   resolvido pela MESMA cascata, e declarado — ver `desempatar`.
  */
 export function determinarPerfil(escores: ReturnType<typeof calcularEscores>) {
   const b = escores.bruto;
+  const eixos = escores.eixos.bruto;
   const atitude: Atitude = b.E > b.I ? 'E' : b.I > b.E ? 'I' : 'E';
   const funcoes: Funcao[] = ['T', 'F', 'S', 'N'];
+
   const max = Math.max(...funcoes.map(f => b[f]));
   const empatadas = funcoes.filter(f => b[f] === max);
-
-  let dominante = empatadas[0];
-  let regraDesempate: string | null = null;
   const empateFuncoes = empatadas.length > 1;
+  const d = desempatar(empatadas, b, eixos);
+  const dominante = d.vencedora;
+  const regraDesempate = d.regra;
 
-  if (empateFuncoes) {
-    const dist = (f: Funcao) => b[f] - b[OPOSTA[f]];
-    const maxDist = Math.max(...empatadas.map(dist));
-    let cand = empatadas.filter(f => dist(f) === maxDist);
-    regraDesempate = 'D1: vence a função cuja oposta tem o menor escore (maior diferenciação).';
-    if (cand.length > 1) {
-      const afim = (f: Funcao) => (f === 'T' || f === 'S'
-        ? escores.eixos.bruto.EST + escores.eixos.bruto.EXE
-        : escores.eixos.bruto.COO + escores.eixos.bruto.EXP);
-      const maxAfim = Math.max(...cand.map(afim));
-      cand = cand.filter(f => afim(f) === maxAfim);
-      regraDesempate += ' D2: desempate por evidência convergente nos eixos comportamentais.';
-    }
-    if (cand.length > 1) {
-      const ordem: Funcao[] = ['T', 'S', 'F', 'N'];
-      cand = [ordem.find(f => cand.includes(f))!];
-      regraDesempate += ' D3: ordem canônica fixa (critério arbitrário de último recurso).';
-    }
-    dominante = cand[0];
-  }
-
+  /* A auxiliar vem obrigatoriamente do par de opostos que NÃO contém a
+     dominante — é a regra junguiana, não uma escolha de implementação. */
   const outroPar: Funcao[] = dominante === 'T' || dominante === 'F' ? ['S', 'N'] : ['T', 'F'];
-  const auxiliar: Funcao = b[outroPar[0]] >= b[outroPar[1]] ? outroPar[0] : outroPar[1];
+  const maxAux = Math.max(...outroPar.map(f => b[f]));
+  const empatadasAux = outroPar.filter(f => b[f] === maxAux);
+  const empateAuxiliar = empatadasAux.length > 1;
+  const dAux = desempatar(empatadasAux, b, eixos);
+  const auxiliar = dAux.vencedora;
+  const regraDesempateAuxiliar = dAux.regra;
+
   const ordemFuncoes = [...funcoes].sort((x, y) =>
-    b[y] - b[x] || (['T', 'S', 'F', 'N'].indexOf(x) - ['T', 'S', 'F', 'N'].indexOf(y)));
+    b[y] - b[x] || (ORDEM_CANONICA.indexOf(x) - ORDEM_CANONICA.indexOf(y)));
 
   return {
     atitude, atitudeMargem: Math.abs(b.E - b.I),
@@ -149,7 +207,8 @@ export function determinarPerfil(escores: ReturnType<typeof calcularEscores>) {
     ordemFuncoes,
     perfilPrincipal: perfilDe(atitude, dominante).id,
     perfilSecundario: perfilDe(atitude, auxiliar).id,
-    empateFuncoes, regraDesempate
+    empateFuncoes, regraDesempate,
+    empateAuxiliar, regraDesempateAuxiliar
   };
 }
 
@@ -208,7 +267,7 @@ export function avaliar(respostas: Resposta[]): ResultadoIndividual {
   const validas = respostasValidas(respostas).length;
 
   return {
-    versao: VERSAO_INSTRUMENTO, versaoMatriz: VERSAO_MATRIZ,
+    versao: VERSAO_INSTRUMENTO, versaoAlgoritmo: VERSAO_ALGORITMO, versaoMatriz: VERSAO_MATRIZ,
     escores, ...perfil,
     funcional, capacidadesOrdenadas, belbinOrdenado,
     top3Belbin: belbinOrdenado.slice(0, 3),

@@ -21,6 +21,7 @@ import { db } from '@/lib/sessao';
 import {
   consultarAvaliacao, gravarResposta, concluirAvaliacao, recalcular
 } from '@/lib/repo-servidor';
+import { carregarAplicacoes } from '@/lib/repo-supabase';
 
 export const dynamic = 'force-dynamic';
 
@@ -28,7 +29,8 @@ type Corpo =
   | { acao: 'consultar'; participanteId: string }
   | { acao: 'responder'; avaliacaoId: string; questaoId: string; alternativaId: string; posicaoExibida?: number }
   | { acao: 'concluir'; avaliacaoId: string }
-  | { acao: 'recalcular'; avaliacaoId: string };
+  | { acao: 'recalcular'; avaliacaoId: string }
+  | { acao: 'aplicacoes'; participanteId: string };
 
 const erro = (mensagem: string, status: number) =>
   Response.json({ erro: mensagem }, { status });
@@ -59,6 +61,13 @@ export async function POST(req: NextRequest) {
       case 'recalcular':
         if (!corpo.avaliacaoId) return erro('avaliacaoId ausente.', 400);
         return Response.json(await recalcular(s, corpo.avaliacaoId));
+
+      /* Histórico de aplicações. Não precisa da chave de pontuação, mas mora
+         aqui porque precisa da SESSÃO do servidor: `vw_aplicacoes` é
+         `security_invoker`, então é o RLS que decide o que cada pessoa vê. */
+      case 'aplicacoes':
+        if (!corpo.participanteId) return erro('participanteId ausente.', 400);
+        return Response.json(await carregarAplicacoes(s, corpo.participanteId));
 
       default:
         return erro('Ação desconhecida.', 400);

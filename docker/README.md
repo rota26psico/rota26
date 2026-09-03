@@ -25,7 +25,7 @@ docker compose logs -f app
 | `auth` | GoTrue — cria o schema `auth` e emite os JWT da sessão |
 | `rest` | PostgREST — é com ele que o `supabase-js` fala, com o RLS valendo |
 | `gateway` | nginx — junta `/auth/v1` e `/rest/v1` sob uma origem só, como o Kong |
-| `migrate` | aplica `01, 02, 03, 05, 06` e cria o administrador MASTER |
+| `migrate` | aplica `01, 02, 03, 05, 06, 07, 08, 09` e cria o administrador MASTER |
 | `app` | `next dev` |
 
 `04_demo_seed.sql` **não** é aplicado: o banco começa vazio, como em produção.

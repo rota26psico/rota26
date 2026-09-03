@@ -125,7 +125,9 @@ export async function POST() {
       funcao_auxiliar: r.funcaoAuxiliar, funcao_menos_representada: r.funcaoMenosRepresentada,
       funcao_inferior: r.funcaoInferior, perfil_principal: r.perfilPrincipal,
       perfil_secundario: r.perfilSecundario, empate_funcoes: r.empateFuncoes,
-      regra_desempate: r.regraDesempate, ordem_funcoes: r.ordemFuncoes, algoritmo_versao: r.versao
+      regra_desempate: r.regraDesempate, empate_auxiliar: r.empateAuxiliar,
+      regra_desempate_auxiliar: r.regraDesempateAuxiliar,
+      ordem_funcoes: r.ordemFuncoes, algoritmo_versao: r.versaoAlgoritmo
     });
     await adm.from('resultados_funcionais').upsert({
       avaliacao_id: avaliacaoId, eixos_bruto: r.escores.eixos.bruto, eixos: r.escores.eixos.relativo,

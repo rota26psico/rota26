@@ -26,9 +26,9 @@ import { useEffect, useState } from 'react';
 
 export function BotaoImprimir({ titulo, recorte, papel, children }: {
   titulo: string;
-  /** O que este documento cobre — "Organização", um setor, uma equipe. */
+  /** O que este documento cobre — "Organização", um setor, uma equipe, uma pessoa. */
   recorte: string;
-  papel: 'MASTER' | 'ADMIN_SETOR';
+  papel: 'MASTER' | 'ADMIN_SETOR' | 'PARTICIPANTE';
   /** O conteúdo do painel. Envolver, em vez de só preceder, é o que garante que
       os limites saiam no FIM do documento e não logo abaixo do cabeçalho. */
   children: React.ReactNode;
@@ -52,19 +52,35 @@ export function BotaoImprimir({ titulo, recorte, papel, children }: {
         <div className="si-linha">
           <span><b>Recorte:</b> {recorte}</span>
           <span><b>Emitido em:</b> {emitido || '—'}</span>
-          <span><b>Acesso:</b> {papel === 'MASTER' ? 'Administrador Master' : 'Administrador de setor'}</span>
+          <span><b>Acesso:</b> {papel === 'MASTER' ? 'Administrador Master'
+            : papel === 'ADMIN_SETOR' ? 'Administrador de setor' : 'Participante — seu próprio resultado'}</span>
         </div>
       </div>
 
       {children}
 
-      <div className="so-impressao si-limites">
-        <b>Limites de uso.</b> Documento de gestão, de acesso restrito. O instrumento está em fase
-        piloto e <b>não</b> constitui diagnóstico psicológico. Os valores são escores relativos
-        internos, não percentis populacionais. <b>Não utilizar</b> para seleção, promoção,
-        transferência ou desligamento, nem como decisão automatizada sobre pessoas. As leituras são
-        hipóteses de gestão, para verificar na convivência com a equipe.
-      </div>
+      {/* Os limites são os mesmos, mas o destinatário não: o participante imprime
+          um documento SOBRE SI, não um documento de gestão sobre terceiros.
+          Chamar o relatório dele de "acesso restrito" seria falso, e a frase
+          sobre a convivência com a equipe não é dirigida a ele. */}
+      {papel === 'PARTICIPANTE' ? (
+        <div className="so-impressao si-limites">
+          <b>Limites de uso.</b> Este documento descreve <b>tendências</b>, não capacidade, valor ou
+          adequação a cargo. O instrumento está em fase piloto e <b>não</b> constitui diagnóstico
+          psicológico. Os valores são escores relativos internos — a participação de cada polo nas suas
+          próprias 48 respostas —, <b>não</b> percentis populacionais: 70 não significa "acima de 70% das
+          pessoas". Nada aqui deve ser usado para seleção, promoção, transferência ou desligamento, nem
+          como decisão automatizada sobre você. Leia como hipótese a conferir na sua própria experiência.
+        </div>
+      ) : (
+        <div className="so-impressao si-limites">
+          <b>Limites de uso.</b> Documento de gestão, de acesso restrito. O instrumento está em fase
+          piloto e <b>não</b> constitui diagnóstico psicológico. Os valores são escores relativos
+          internos, não percentis populacionais. <b>Não utilizar</b> para seleção, promoção,
+          transferência ou desligamento, nem como decisão automatizada sobre pessoas. As leituras são
+          hipóteses de gestão, para verificar na convivência com a equipe.
+        </div>
+      )}
     </>
   );
 }

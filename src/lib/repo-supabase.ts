@@ -124,6 +124,33 @@ export async function garantirParticipante(db: DB, d: { nome: string; matricula:
       throw new Error(
         'Esta sessão já está vinculada a outro participante. ' +
         'Use "Sair" no menu e recomece — ou abra uma janela anônima.');
+
+    /**
+     * MATRÍCULA DE OUTRA SESSÃO — o caso mais comum de todos, e o que produzia
+     * a pior mensagem.
+     *
+     * `participantes_atualiza` (02_policies.sql) exige `user_id = auth.uid()`
+     * para atualizar o cadastro. Como o upsert casa por MATRÍCULA, tentar
+     * entrar com uma matrícula já cadastrada a partir de outro navegador vira um
+     * UPDATE de linha alheia — e o RLS recusa, corretamente: é essa policy que
+     * impede alguém de assumir o cadastro de um colega digitando a matrícula
+     * dele.
+     *
+     * O efeito colateral é que a pessoa que trocou de computador, limpou os
+     * cookies ou respondeu no celular também é recusada — e lia
+     * "new row violates row-level security policy", que não diz nada a ninguém.
+     * A mensagem abaixo diz o que aconteceu, por que a recusa existe e qual é o
+     * caminho. Não afrouxa nada: o vínculo continua sendo o da sessão que
+     * respondeu.
+     */
+    if (/row-level security|violates row/i.test(error.message ?? ''))
+      throw new Error(
+        `A matrícula ${matricula} já está cadastrada e vinculada ao dispositivo em que foi usada pela ` +
+        'primeira vez. Por segurança, o resultado só é aberto no mesmo navegador que respondeu — é o que ' +
+        'impede que alguém veja o resultado de um colega sabendo a matrícula dele. ' +
+        'Se você respondeu em outro computador ou apagou os dados do navegador, procure a área responsável ' +
+        'pelo instrumento: o Administrador Master consegue emitir seu relatório.');
+
     throw error;
   }
   return data.id as string;
@@ -141,6 +168,8 @@ export interface EstadoAvaliacao {
   concluida: boolean;
   resultado?: ResultadoIndividual;
   concluidaEm?: string;
+  /** Ordinal da aplicação a que este estado se refere. */
+  aplicacao?: number;
 }
 
 /** Abre a avaliação. Chamado apenas depois da confirmação do participante. */
@@ -171,18 +200,117 @@ export async function carregarMembros(db: DB, setor?: string): Promise<MembroAgr
   }));
 }
 
+export const VIEW_APLICACOES = 'vw_aplicacoes';
+
+export interface Aplicacao {
+  avaliacaoId: string;
+  participanteId: string;
+  nome: string;
+  matricula: string;
+  setor: string;
+  numero: number;
+  versao: string;
+  status: string;
+  iniciadaEm: string | null;
+  concluidaEm: string | null;
+  arquivadaEm: string | null;
+  vigente: boolean;
+  perfilPrincipal: string | null;
+  perfilSecundario: string | null;
+  respostasGravadas: number;
+}
+
+const mapaAplicacao = (x: any): Aplicacao => ({
+  avaliacaoId: x.avaliacao_id, participanteId: x.participante_id,
+  nome: x.nome, matricula: x.matricula, setor: x.setor,
+  numero: x.numero_aplicacao, versao: x.versao_codigo, status: x.status,
+  iniciadaEm: x.iniciada_em, concluidaEm: x.concluida_em, arquivadaEm: x.arquivada_em,
+  vigente: !!x.vigente,
+  perfilPrincipal: x.perfil_principal, perfilSecundario: x.perfil_secundario,
+  respostasGravadas: x.respostas_gravadas ?? 0
+});
+
+const COLUNAS_APLICACAO =
+  'avaliacao_id,participante_id,nome,matricula,setor,numero_aplicacao,versao_codigo,status,' +
+  'iniciada_em,concluida_em,arquivada_em,vigente,perfil_principal,perfil_secundario,respostas_gravadas';
+
+/**
+ * HISTÓRICO DE APLICAÇÕES DE UM PARTICIPANTE.
+ *
+ * Lê `vw_aplicacoes`, que — ao contrário de `vw_resultados` — NÃO filtra
+ * `arquivada_em`. Uma aplicação arquivada sai dos indicadores, que é o que
+ * arquivar significa, mas continua fazendo parte da história da pessoa. Sem
+ * isto, "responder de novo" apagava a leitura anterior da vista de todo mundo.
+ *
+ * Nenhum filtro por papel aqui: a view é `security_invoker` e o RLS já decide
+ * quem enxerga o quê — o participante vê as próprias, o ADMIN_SETOR as do seu
+ * setor, o MASTER todas. É a mesma escolha de `vw_resultados`.
+ */
+export async function carregarAplicacoes(db: DB, participanteId: string): Promise<Aplicacao[]> {
+  const { data, error } = await db.from(VIEW_APLICACOES)
+    .select(COLUNAS_APLICACAO)
+    .eq('participante_id', participanteId)
+    .order('numero_aplicacao', { ascending: true });
+  if (error) throw error;
+  return (data ?? []).map(mapaAplicacao);
+}
+
+/** Uma aplicação pelo id da avaliação. Devolve `null` quando o RLS não a libera. */
+export async function carregarAplicacao(db: DB, avaliacaoId: string): Promise<Aplicacao | null> {
+  const { data, error } = await db.from(VIEW_APLICACOES)
+    .select(COLUNAS_APLICACAO).eq('avaliacao_id', avaliacaoId).maybeSingle();
+  if (error) throw error;
+  return data ? mapaAplicacao(data) : null;
+}
+
+export interface RespostaRegistrada {
+  questaoId: string;
+  alternativaId: string;
+  respondidaEm: string | null;
+  posicaoExibida: number | null;
+}
+
+/**
+ * AS 48 RESPOSTAS DE UMA AVALIAÇÃO, PARA CONFERÊNCIA.
+ *
+ * SIGILO — o `select` abaixo é deliberadamente curto. A linha de `respostas`
+ * carrega também `jung`, `eixo` e `peso`, que SÃO a chave de pontuação
+ * congelada no instante da escolha. Pedir `*` aqui entregaria o gabarito das
+ * 192 alternativas a qualquer tela que exiba esta consulta — exatamente a falha
+ * que a separação `questions.ts` / `questions.server.ts` existe para impedir.
+ * O enunciado e o texto da alternativa vêm de `data/questions.ts`, que é
+ * público por desenho; o que esta função devolve é só QUAL alternativa a pessoa
+ * escolheu, não o que ela vale.
+ *
+ * Quem consegue ler: o próprio participante e o MASTER. `respostas_acesso`
+ * (02_policies.sql) nega ao ADMIN_SETOR de propósito — resposta item a item é
+ * dado sensível e só interessa à análise psicométrica.
+ */
+export async function carregarRespostas(db: DB, avaliacaoId: string): Promise<RespostaRegistrada[]> {
+  const { data, error } = await db.from('respostas')
+    .select('questao_codigo,alternativa_codigo,respondida_em,posicao_exibida')
+    .eq('avaliacao_id', avaliacaoId);
+  if (error) throw error;
+  return (data ?? []).map((x: any) => ({
+    questaoId: x.questao_codigo, alternativaId: x.alternativa_codigo,
+    respondidaEm: x.respondida_em, posicaoExibida: x.posicao_exibida
+  }));
+}
+
 export async function carregarPessoas(db: DB, setor?: string) {
   let q = db.from(VIEW_REAIS)
-    .select('nome,matricula,setor,perfil_principal,perfil_secundario,concluida_em,avaliacao_id,is_demo,eh_administrador')
+    .select('participante_id,nome,matricula,setor,perfil_principal,perfil_secundario,concluida_em,avaliacao_id,numero_aplicacao,is_demo,eh_administrador')
     .order('nome');
   if (setor) q = q.eq('setor', setor);
   const { data, error } = await q;
   if (error) throw error;
   return (data ?? []).map((x: any) => ({
+    participanteId: x.participante_id,
     nome: x.nome, matricula: x.matricula, setor: x.setor,
     perfil: x.perfil_principal, secundario: x.perfil_secundario,
     data: x.concluida_em, status: 'concluída', demo: x.is_demo,
-    ehAdministrador: !!x.eh_administrador, avaliacaoId: x.avaliacao_id
+    ehAdministrador: !!x.eh_administrador, avaliacaoId: x.avaliacao_id,
+    aplicacao: x.numero_aplicacao ?? 1
   }));
 }
 

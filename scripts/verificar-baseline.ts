@@ -1,7 +1,7 @@
 /**
  * VERIFICAÇÃO DE REGRESSÃO — itens 8 e 104 do prompt-mestre
  * ===========================================================================
- * Reexecuta EXATAMENTE os cinco conjuntos controlados e a mesma população da
+ * Reexecuta EXATAMENTE os sete conjuntos controlados e a mesma população da
  * baseline, e compara campo a campo com baseline.json.
  *
  * Qualquer divergência é falha: nesta etapa nenhuma alteração metodológica foi
@@ -53,8 +53,8 @@ function comparar(a: any, b: any, caminho: string) {
 console.log('══════════════════════════════════════════════════════════════════════════════');
 console.log(' TESTE DE REGRESSÃO CONTRA A BASELINE');
 console.log('══════════════════════════════════════════════════════════════════════════════');
-console.log(`  baseline: instrumento ${antes.versaoInstrumento} · matriz ${antes.versaoMatriz}`);
-console.log(`  atual:    instrumento ${agora.versaoInstrumento} · matriz ${agora.versaoMatriz}`);
+console.log(`  baseline: instrumento ${antes.versaoInstrumento} · algoritmo ${antes.versaoAlgoritmo} · matriz ${antes.versaoMatriz}`);
+console.log(`  atual:    instrumento ${agora.versaoInstrumento} · algoritmo ${agora.versaoAlgoritmo} · matriz ${agora.versaoMatriz}`);
 console.log('');
 
 comparar(antes.individuais, agora.individuais, 'individuais');

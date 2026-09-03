@@ -37,6 +37,28 @@ export interface Questao {
 
 export const VERSAO_INSTRUMENTO = 'v1.0-piloto';
 
+/**
+ * VERSÃO DO ALGORITMO — distinta da versão do INSTRUMENTO.
+ *
+ * `VERSAO_INSTRUMENTO` identifica o que foi perguntado: as 48 questões, as 192
+ * alternativas e a chave de pontuação. `VERSAO_ALGORITMO` identifica como as
+ * respostas foram transformadas em resultado. As duas mudam por motivos
+ * diferentes e em ritmos diferentes, e confundi-las apaga a informação de qual
+ * das duas coisas mudou.
+ *
+ *   v1.0-piloto  — cascata D1/D2/D3 aplicada só à função DOMINANTE. O empate da
+ *                  função auxiliar era resolvido em silêncio pelo primeiro
+ *                  elemento do par, sem registro.
+ *   v1.1-desempate-auxiliar — a mesma cascata passa a valer também para a função
+ *                  auxiliar, e o degrau aplicado é declarado. Autorizado
+ *                  explicitamente; ver CHANGELOG.md.
+ *
+ * O instrumento continua `v1.0-piloto`: nada do que foi perguntado mudou, então
+ * resultados das duas versões de algoritmo continuam comparáveis em tudo que
+ * não seja função auxiliar e perfil secundário.
+ */
+export const VERSAO_ALGORITMO = 'v1.1-desempate-auxiliar';
+
 export const NOME_EIXO: Record<EixoAux, string> = {
   EXP: 'Exploração', EXE: 'Execução', AUT: 'Autonomia',
   COO: 'Cooperação', FLE: 'Flexibilidade', EST: 'Estrutura'

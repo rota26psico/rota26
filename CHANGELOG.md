@@ -1,3 +1,180 @@
+# ALTERAÇÕES REALIZADAS — v3.1 ROTA26
+
+## v3.1 — desempate declarado, aplicações numeradas e resultado do participante
+
+Quatro pedidos, e a investigação mudou o enunciado de dois deles. O que foi
+efetivamente alterado está abaixo; o que foi **verificado e não precisava mudar**
+está registrado junto, porque essa também é informação.
+
+### 1 · Desempate — o que era o pedido e o que era o problema
+
+**O pedido dizia** que o sistema escolhia um dos perfis empatados "de forma
+aleatória". **Não escolhia.** A cascata D1 → D2 → D3 já era determinística
+(`src/lib/scoring.ts`), a regra aplicada já era gravada em
+`resultados.regra_desempate` e já era exibida na devolutiva. O único
+`Math.random()` do projeto está em `src/lib/v2/apuracao.ts` e sorteia apenas a
+posição (A ou B) das duas alternativas na tela do item de desempate da v2.0 —
+para permitir auditar viés de posição —, nunca o vencedor.
+
+**O problema real eram três falhas**, e juntas produziam exatamente a impressão
+relatada:
+
+1. **O empate da função AUXILIAR era mudo.** É ele que define o *perfil
+   secundário* — ou seja, é literalmente "empate entre dois perfis". Era
+   resolvido por um `>=` que devolvia o primeiro elemento do par, sem passar pela
+   cascata, sem marcar `empateFuncoes` e sem gravar regra nenhuma. Era o único
+   desempate do instrumento que o sistema não declarava, e de fora isso é
+   indistinguível de um sorteio.
+2. **O texto da regra mentia sobre D2.** O rótulo de D2 era concatenado sempre
+   que a linha rodava, inclusive quando o filtro não eliminava candidata alguma.
+   Como D2 usa a **mesma** fórmula de afinidade para T e S, e para F e N, ele é
+   estruturalmente incapaz de separar `{T,S}` e `{F,N}` — e nesses casos o banco
+   guardava "D2 foi aplicado" para um resultado decidido em D3.
+3. **A baseline não protegia a cascata.** Nos cinco conjuntos congelados,
+   `empateFuncoes` era `false` e `regraDesempate` era `null` em 100%.
+   `npm run regressao` passaria mesmo se D1, D2 e D3 fossem reescritos.
+
+**O que mudou — alteração de metodologia, autorizada explicitamente.**
+
+- A cascata foi extraída para `desempatar()` e passou a ser aplicada **nos dois
+  pontos**: função dominante e função auxiliar.
+- `regraDesempate` e o novo `regraDesempateAuxiliar` só listam degraus que
+  **efetivamente reduziram** o conjunto de candidatas.
+- Campos novos: `empateAuxiliar` e `regraDesempateAuxiliar`, no resultado, na
+  tabela `resultados`, no Excel e na devolutiva.
+- Versão do **algoritmo** separada da versão do **instrumento**:
+  `VERSAO_ALGORITMO = 'v1.1-desempate-auxiliar'`, gravada em
+  `resultados.algoritmo_versao`, que antes recebia — com o nome errado — a versão
+  do instrumento. O instrumento continua `v1.0-piloto`: nenhuma questão,
+  alternativa, peso ou chave foi tocada.
+
+**O que isso mudou nos dados, medido, não estimado.** `npm run regressao` acusou
+**4 divergências, todas do mesmo tipo**: `perfilSecundario` e `funcaoAuxiliar` em
+C1 e C2 — os dois conjuntos cujo par auxiliar `{S,N}` empata em zero e agora é
+resolvido por D2. Nada mais. Verificado no código antes e confirmado pela
+regressão depois: **`aggregate.ts` e `animais.ts` contam pelo perfil
+principal**, nunca pelo secundário, então IDF, ICF, complementaridade,
+concentração, distribuições, animais, capacidades e Belbin ficaram **idênticos** —
+IDF 84,2 · ICF 62,7 · complementaridade 100%, antes e depois.
+
+**A prova foi renovada, não apagada.** Antes de regravar `baseline.json`:
+
+- `scripts/test-algoritmo.ts` ganhou a seção **3B**, com 20 asserções que
+  exercitam D1, D2 e D3 isoladamente, nos dois pontos de aplicação, conferindo o
+  vencedor **e** o texto declarado — inclusive o caso em que D2 não resolve e o
+  texto não pode afirmar que resolveu;
+- `baseline.json` ganhou os conjuntos **C6** (empate de dominante resolvido em D1
+  e de auxiliar em D2) e **C7** (empate de auxiliar que chega a D3). Os três
+  degraus estão congelados agora.
+
+### 2 · Visualizar o teste completo
+
+Nova rota **`/dashboard/pessoas/[avaliacaoId]`**. O detalhe de uma pessoa era
+estado local do painel nominal: não tinha endereço, não podia ser recarregado,
+compartilhado nem impresso sozinho. Agora traz identificação e datas, histórico
+de aplicações, resultado recalculado das respostas brutas e — **só para o
+MASTER** — as 48 situações com a alternativa escolhida, o horário de cada
+resposta e a posição em que a alternativa foi exibida.
+
+`respostas_acesso` não foi afrouxada: o `ADMIN_SETOR` continua sem ler respostas
+item a item, e vê um aviso dizendo por quê. A folha de respostas é montada com a
+camada **pública** `data/questions.ts` cruzada com códigos de alternativa; o
+`select` de `carregarRespostas` não pede `jung`, `eixo` nem `peso`.
+`npm run test:sigilo` segue em 22/22.
+
+### 3 · Mais de uma aplicação
+
+- `avaliacoes.numero_aplicacao`, atribuído por **trigger no banco** — não em
+  `abrirAvaliacao`, que roda no navegador e é sujeito a corrida —, com
+  `unique (participante_id, numero_aplicacao)` como rede.
+- **`vw_aplicacoes`**: o histórico, incluindo arquivadas e em andamento. É o
+  oposto de `vw_resultados`, de propósito. Arquivar significa "fora dos
+  indicadores", não "inexistente", e agora isso é visível na interface.
+- **`vw_resultados` passou a ter `distinct on (participante)`**, pela conclusão
+  mais recente. `avaliacoes_cria` nunca verificou se já existe avaliação
+  concluída — o bloqueio é aplicacional —, então quem contornasse a interface
+  fazia a pessoa aparecer **duas vezes** em participantes, IDF, ICF, animais e
+  Excel. Verificado contra PostgreSQL 16 real: com duas concluídas simultâneas, a
+  view devolve uma linha. **Nenhum número muda hoje**, porque
+  `liberar_reaplicacao` arquiva a anterior; o que muda é que "sempre o último
+  resultado respondido" virou garantia estrutural.
+- `resumo_organizacional()` passou a contar **pessoas distintas**, não avaliações,
+  pelo mesmo motivo. Mantém o recorte por versão ativa introduzido em `08`.
+
+### 4 · Revisitar e baixar o próprio resultado
+
+Nova rota **`/meu-resultado`**, com o histórico de aplicações da própria pessoa e
+botão de exportar em PDF — que também foi acrescentado ao fim do percurso. O
+resultado nunca precisou ser refeito para ser lido de novo: ele é recalculado a
+partir das 48 respostas gravadas. O que faltava era um endereço.
+
+O PDF sai por `window.print()`, como o painel: sem biblioteca nova, para que o
+papel seja exatamente o que está na tela. `BotaoImprimir` passou a aceitar o
+papel `PARTICIPANTE`, com **limites de uso próprios** — quem imprime um documento
+sobre si mesmo não está imprimindo um documento de gestão sobre terceiros, e a
+folha diz isso.
+
+### Um limite do revisitar, medido e declarado
+
+Rodando o percurso completo contra a stack local, com RLS de verdade, apareceu o
+que nenhuma leitura de código tinha mostrado: **revisitar o resultado só funciona
+no navegador que respondeu**. O vínculo pessoa↔resultado é o `user_id` da sessão
+anônima, e `participantes_atualiza` exige `user_id = auth.uid()`.
+
+Isso tem um lado bom, e ele é a proteção que estava em dúvida: digitar a matrícula
+de um colega em outra sessão **não** abre o resultado dele — o banco recusa o
+UPDATE. A proteção não depende da interface.
+
+O lado ruim é quem trocou de computador, limpou os cookies ou respondeu no
+celular. Essas pessoas liam
+`new row violates row-level security policy for table "participantes"`, que não
+diz nada a ninguém. **Isso foi corrigido**: a mensagem passou a explicar o que
+aconteceu, por que a recusa existe e a quem recorrer — o Master abre
+`/dashboard/pessoas/<avaliação>` e imprime o relatório.
+
+O caminho de volta próprio (código de acesso pessoal, link por e-mail) é decisão
+de autenticação e muda o fluxo de entrada de todo mundo. Por decisão explícita de
+escopo, está registrado como **item 8 de `SUGESTOES_NAO_IMPLEMENTADAS.md`**, com
+o custo de cada saída, em vez de entrar de carona nesta entrega.
+
+### Um defeito pré-existente encontrado e NÃO corrigido
+
+Rodando o percurso apareceu que **"Anterior" permite trocar a resposta, mas o
+banco recusa a troca**: `respostas` não tem policy de UPDATE — imutabilidade
+declarada no próprio SQL — enquanto `gravarResposta` usa `upsert`. A tela passa a
+mostrar a alternativa nova e o banco mantém a antiga. Não foi corrigido porque as
+duas metades são decisões declaradas e opostas, e escolher entre elas é
+metodologia. Registrado como **item 9 de `SUGESTOES_NAO_IMPLEMENTADAS.md`**, com
+as duas saídas e o que cada uma custa. Nenhum escore muda enquanto nada for feito.
+
+### Duas correções que só apareceram rodando o app
+
+- **Datas quebravam a hidratação.** `toLocaleDateString` sem fuso usa o fuso de
+  quem executa: o servidor (UTC, em container) imprimia `03/09` e o navegador
+  `02/09` para a mesma avaliação, e o React derrubava a hidratação da página
+  inteira. Todas as telas passaram a usar `src/lib/datas.ts`, com o fuso fixo em
+  `America/Sao_Paulo` — os dois lados concordam, e o texto passa a ser o horário
+  de quem usa o instrumento, não o do servidor. O módulo mora em `lib/` e não em
+  `ui.tsx` porque aquele arquivo é `'use client'`: um Server Component que
+  importasse de lá receberia uma referência de cliente, não a função.
+- **Contraste na abertura.** O botão "Já respondi — ver meu resultado" usa
+  `.btn-sec`, que é escuro sobre claro; dentro da abertura, que é escura, o texto
+  praticamente sumia.
+
+### Ferramenta de operação
+
+`/admin/dados` ganhou **"Recalcular resultados com o algoritmo vigente"**, no
+mesmo padrão das demais operações de escrita em massa: prévia que só conta,
+confirmação literal `RECALCULAR RESULTADOS`, registro em `logs_auditoria`. Existe
+porque as telas individuais recalculam sozinhas a partir das respostas, mas os
+painéis leem a tabela `resultados`, gravada uma vez na conclusão — sem isso, uma
+mudança de algoritmo faz painel e devolutiva discordarem sem que nada esteja
+quebrado. As respostas brutas continuam intocadas e imutáveis. A policy
+`resultados_atualiza_master` (`09_aplicacoes.sql`) é a única permissão nova, e a
+chave de serviço **não** entra: a gravação usa a sessão do próprio administrador.
+
+---
+
 # ALTERAÇÕES REALIZADAS — v3.0 ROTA26
 
 Item 106 do prompt-mestre. Separado em **ADICIONADO**, **AJUSTADO**,
@@ -20,6 +197,10 @@ textos · a ordem e a estrutura conceitual dos itens · os pesos (âncoras de pe
 · a chave de pontuação Jung de cada alternativa · a matriz de pontuação funcional
 de 192 linhas · as regras de desempate D1/D2/D3 · a versão do instrumento
 (`v1.0-piloto`) e a da matriz (`v2.0`).
+
+> **Nota da v3.1.** A cascata D1/D2/D3 continua preservada tal como está descrita
+> aqui — o que mudou foi passar a **aplicá-la também à função auxiliar**, que
+> antes não passava por ela. Ver a seção da v3.1, no topo deste arquivo.
 
 **Trilha psicológica** — os 8 perfis junguianos · perfil predominante e
 secundário · os 8 animais e a associação Jung × animal · os textos de cada animal

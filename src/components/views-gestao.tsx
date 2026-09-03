@@ -10,6 +10,7 @@ import {
   Secao, FluxoComplementaridade, Vazio, Checklist, FaixaAnimais, TabelaMatriz, Totem,
   PorQue, ExplicaSigla, Glossario, CORES_FUNCAO, CORES_ATITUDE
 } from './ui';
+import { dataBR, dataHoraBR } from '../lib/datas';
 import { PERFIL_POR_ID, PERFIS, NOME_FUNCAO, NOME_ATITUDE } from '../data/profiles';
 import { CAPACIDADES, PAPEIS_BELBIN } from '../data/functional';
 import { QUESTOES, NOME_EIXO, VERSAO_INSTRUMENTO, TOTAL_QUESTOES, TOTAL_ALTERNATIVAS, TOTAL_ANCORAS } from '../data/questions';
@@ -596,7 +597,7 @@ export function TelaLeituraExecutivaIndividual({ r, dados }: {
           <div>
             <h3 style={{ fontSize: 21 }}>{dados.nome}</h3>
             <div style={{ fontSize: 12.5, color: '#7C756B' }}>
-              {dados.matricula} · {dados.setor} · {new Date(dados.data).toLocaleDateString('pt-BR')} · {r.versao}
+              {dados.matricula} · {dados.setor} · {dataBR(dados.data)} · {r.versao}
             </div>
           </div>
         </div>
@@ -643,11 +644,160 @@ export function TelaLeituraExecutivaIndividual({ r, dados }: {
   );
 }
 
+/* ══════════════ HISTÓRICO DE APLICAÇÕES E FOLHA DE RESPOSTAS ════════════ */
+
+export interface AplicacaoNaTela {
+  avaliacaoId: string;
+  numero: number;
+  versao: string;
+  status: string;
+  iniciadaEm: string | null;
+  concluidaEm: string | null;
+  arquivadaEm: string | null;
+  vigente: boolean;
+  perfilPrincipal: string | null;
+  perfilSecundario: string | null;
+  respostasGravadas: number;
+}
+
+/**
+ * A LINHA DO TEMPO DE UMA PESSOA.
+ *
+ * Uma reaplicação não apaga a leitura anterior: arquiva. Arquivada quer dizer
+ * "fora dos indicadores", não "inexistente" — as 48 respostas continuam
+ * gravadas e o resultado continua reproduzível a partir delas. Esta tabela é o
+ * lugar onde isso fica visível; sem ela, a aplicação anterior existia no banco
+ * e em lugar nenhum da interface.
+ *
+ * A linha VIGENTE é a que alimenta os painéis: a concluída mais recente e não
+ * arquivada. É sempre uma só, por pessoa.
+ */
+export function HistoricoAplicacoes({ aplicacoes, atual, onAbrir }: {
+  aplicacoes: AplicacaoNaTela[];
+  /** Qual aplicação está sendo exibida agora, para destacá-la na lista. */
+  atual?: string;
+  onAbrir?: (avaliacaoId: string) => void;
+}) {
+  if (aplicacoes.length === 0) return <Vazio titulo="Nenhuma aplicação registrada para esta pessoa." />;
+
+  return (
+    <Card titulo="Histórico de aplicações"
+      sub="Cada aplicação guarda as próprias respostas, data, horário e resultado. Nenhuma sobrescreve a anterior.">
+      <Tabela
+        colunas={['Aplicação', 'Situação', 'Iniciada em', 'Concluída em', 'Respostas', 'Perfil', 'Secundário', '']}
+        linhas={aplicacoes.map(a => [
+          <b key="n">{String(a.numero).padStart(2, '0')}</b>,
+          a.vigente
+            ? <Pill key="s" cor="var(--ok)">vigente</Pill>
+            : a.arquivadaEm
+              ? <Pill key="s">arquivada</Pill>
+              : <Pill key="s">{a.status === 'CONCLUIDA' ? 'concluída' : 'em andamento'}</Pill>,
+          dataHoraBR(a.iniciadaEm),
+          dataHoraBR(a.concluidaEm),
+          `${a.respostasGravadas} de ${TOTAL_QUESTOES}`,
+          a.perfilPrincipal ?? '—',
+          a.perfilSecundario ?? '—',
+          a.avaliacaoId === atual
+            ? <span key="a" style={{ fontSize: 12, color: '#7C756B' }}>exibindo</span>
+            : onAbrir && a.status === 'CONCLUIDA'
+              ? <button key="a" className="btn btn-sec nao-imprime" onClick={() => onAbrir(a.avaliacaoId)}>Abrir</button>
+              : <span key="a" />
+        ])} />
+      {aplicacoes.some(a => a.arquivadaEm) && (
+        <Aviso tipo="info" titulo="Sobre as aplicações arquivadas">
+          Uma aplicação arquivada não entra em nenhum indicador, relatório ou planilha — é o que arquivar
+          significa. As respostas continuam gravadas e o resultado continua reproduzível a partir delas, que é
+          por isso que ela aparece aqui.
+        </Aviso>
+      )}
+    </Card>
+  );
+}
+
+/**
+ * AS 48 SITUAÇÕES COM A ALTERNATIVA ESCOLHIDA.
+ *
+ * SIGILO — este componente NÃO mostra o polo junguiano, o eixo nem o peso de
+ * nenhuma alternativa, e não tem como mostrar: `QUESTOES` (data/questions.ts) é
+ * a camada pública, que traz só identificador, contexto, enunciado e texto. A
+ * chave de pontuação vive em `questions.server.ts` e é `server-only`; se este
+ * arquivo a importasse, o `next build` falharia. As respostas chegam por
+ * `carregarRespostas`, cujo `select` pede apenas o código da alternativa.
+ *
+ * Quem vê: o MASTER. `respostas_acesso` (02_policies.sql) nega ao ADMIN_SETOR
+ * de propósito — resposta item a item é dado sensível e só interessa à análise
+ * psicométrica. A página não renderiza este bloco para quem não é MASTER, e o
+ * RLS negaria a leitura de qualquer forma.
+ */
+export function FolhaDeRespostas({ respostas }: {
+  respostas: { questaoId: string; alternativaId: string; respondidaEm: string | null; posicaoExibida: number | null }[];
+}) {
+  const porQuestao = new Map(respostas.map(r => [r.questaoId, r]));
+  const respondidas = QUESTOES.filter(q => porQuestao.has(q.id)).length;
+
+  return (
+    <Card titulo="O teste completo, item a item"
+      sub={`${respondidas} de ${TOTAL_QUESTOES} situações respondidas. A alternativa escolhida aparece destacada.`}>
+      <Aviso tipo="limite" titulo="Rastreabilidade — acesso restrito ao Administrador Master">
+        Respostas item a item são dado sensível. Elas existem para conferência, auditoria e análise
+        psicométrica, não para leitura sobre a pessoa: uma escolha isolada não significa nada fora do conjunto
+        das 48. A alternativa escolhida está registrada com a chave de pontuação congelada no instante da
+        escolha, e é por isso que o resultado é reproduzível anos depois.
+      </Aviso>
+
+      {QUESTOES.map((q, i) => {
+        const r = porQuestao.get(q.id);
+        return (
+          <div key={q.id} className="bloco" style={{ marginBottom: 12 }}>
+            <div style={{ fontSize: 12, color: '#7C756B', marginBottom: 4 }}>
+              {String(i + 1).padStart(2, '0')} · {q.id} · {q.contexto}
+              {r?.respondidaEm && <> · respondida em {dataHoraBR(r.respondidaEm)}</>}
+              {r?.posicaoExibida != null && <> · exibida na posição {r.posicaoExibida}</>}
+            </div>
+            <p style={{ margin: '0 0 8px', fontSize: 14.5 }}>{q.enunciado}</p>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              {q.alternativas.map(a => {
+                const escolhida = r?.alternativaId === a.id;
+                return (
+                  <li key={a.id} style={{
+                    padding: '6px 10px', marginBottom: 4, borderRadius: 6, fontSize: 13.5,
+                    background: escolhida ? 'rgba(43,74,91,.09)' : 'transparent',
+                    borderLeft: `3px solid ${escolhida ? 'var(--azul)' : 'transparent'}`,
+                    fontWeight: escolhida ? 600 : 400
+                  }}>
+                    {escolhida ? '● ' : '○ '}{a.texto}
+                  </li>
+                );
+              })}
+            </ul>
+            {!r && <p style={{ margin: '6px 0 0', fontSize: 12.5, color: 'var(--limite)' }}>Sem resposta gravada para esta situação.</p>}
+          </div>
+        );
+      })}
+    </Card>
+  );
+}
+
 /* ══════════════ PESSOAS — PAINEL NOMINAL (itens 44, 45) ═════════════════ */
 
+/**
+ * Duas formas de abrir o detalhe, e as duas existem por um motivo:
+ *
+ *  · `avaliacaoId` → link para `/dashboard/pessoas/<id>`. É o caminho da
+ *    aplicação. O detalhe tem endereço próprio, então pode ser recarregado,
+ *    aberto em outra aba, enviado a quem tem permissão e impresso sozinho.
+ *  · `onAbrir` → callback. É o caminho da `dist/demo.html`, que roda tudo num
+ *    único documento sem roteador. É também o motivo de este arquivo não
+ *    importar `next/link`: a demo é montada por esbuild, sem Next, e um import
+ *    de framework aqui quebraria `npm run test:ui`.
+ */
 export function TelaPessoas({ pessoas, onAbrir }: {
-  pessoas: { nome: string; matricula: string; setor: string; perfil: string; secundario: string; data: string; status: string; demo?: boolean; ehAdministrador?: boolean }[];
-  onAbrir: (matricula: string) => void;
+  pessoas: {
+    nome: string; matricula: string; setor: string; perfil: string; secundario: string;
+    data: string; status: string; demo?: boolean; ehAdministrador?: boolean;
+    avaliacaoId?: string; aplicacao?: number;
+  }[];
+  onAbrir?: (matricula: string) => void;
 }) {
   const [f, setF] = useState('');
   const [setor, setSetor] = useState('');
@@ -678,7 +828,7 @@ export function TelaPessoas({ pessoas, onAbrir }: {
           <input placeholder="Filtrar por nome, matrícula ou animal" value={f} onChange={e => setF(e.target.value)} style={{ width: 250 }} />
         </div>
       }>
-        <Tabela colunas={['Nome', 'Matrícula', 'Setor', 'Tendência predominante', 'Secundária', 'Animal', 'Data', 'Status', '']}
+        <Tabela colunas={['Nome', 'Matrícula', 'Setor', 'Tendência predominante', 'Secundária', 'Animal', 'Data', 'Aplicação', '']}
           linhas={filtradas.map(p => {
             const perf = PERFIL_POR_ID[p.perfil as keyof typeof PERFIL_POR_ID];
             const sec = PERFIL_POR_ID[p.secundario as keyof typeof PERFIL_POR_ID];
@@ -689,9 +839,17 @@ export function TelaPessoas({ pessoas, onAbrir }: {
                 {p.ehAdministrador && <> <Pill cor="var(--bronze)">administração</Pill></>}</span>,
               p.matricula, p.setor, perf?.nomeJung ?? '—', sec?.nomeJung ?? '—',
               <Pill key="a" cor={perf?.cor}>{perf?.animal}</Pill>,
-              new Date(p.data).toLocaleDateString('pt-BR'),
-              <Pill key="s" cor="var(--bronze)">{p.status}</Pill>,
-              <button key="b" className="btn btn-sec" style={{ padding: '5px 11px', fontSize: 12.5 }} onClick={() => onAbrir(p.matricula)}>Leitura executiva</button>
+              dataBR(p.data),
+              /* O ordinal da aplicação VIGENTE. Um número acima de 1 diz, na
+                 própria listagem, que existe histórico a consultar. */
+              <Pill key="s" cor="var(--bronze)">{String(p.aplicacao ?? 1).padStart(2, '0')}</Pill>,
+              onAbrir
+                ? <button key="b" className="btn btn-sec" style={{ padding: '5px 11px', fontSize: 12.5 }}
+                    onClick={() => onAbrir(p.matricula)}>Leitura executiva</button>
+                : p.avaliacaoId
+                  ? <a key="b" className="btn btn-sec" style={{ padding: '5px 11px', fontSize: 12.5 }}
+                      href={`/dashboard/pessoas/${p.avaliacaoId}`}>Abrir</a>
+                  : <span key="b" />
             ];
           })} />
       </Card>}
@@ -849,6 +1007,14 @@ export interface PainelProducao {
   checklist: ItemChecklistUI[] | null;
   onLimparTeste: () => void;
   onLiberarReaplicacao: (matricula: string) => void;
+  /** Recálculo dos derivados com o algoritmo vigente — prévia e aplicação. */
+  onPreviaRecalculo: () => void;
+  onRecalcular: (confirmacao: string) => void;
+  previaRecalculo: {
+    total: number; avaliacoesAfetadas: number; porCampo: Record<string, number>; algoritmo: string;
+  } | null;
+  onCancelarRecalculo: () => void;
+  resultadoRecalculo: { total: number; gravados: number; completo: boolean; avaliacoesAfetadas: number } | null;
   /** Operação em curso: 'previa' | 'limpeza' | 'preparo' | 'teste' | 'reaplicacao' */
   ocupado: string | null;
   mensagem: string | null;
@@ -856,6 +1022,7 @@ export interface PainelProducao {
 }
 
 export const CONFIRMACAO_DEMO = 'LIMPAR DADOS DEMO';
+export const CONFIRMACAO_RECALCULO = 'RECALCULAR RESULTADOS';
 
 export function TelaGestaoDados({
   setores, exportar, exportando, previa, onPrevia, onConfirmar, resultadoReset, logs,
@@ -887,6 +1054,7 @@ export function TelaGestaoDados({
   const [confirmaDemo, setConfirmaDemo] = useState('');
   const [matricula, setMatricula] = useState('');
   const [matriculaRe, setMatriculaRe] = useState('');
+  const [confirmaRecalculo, setConfirmaRecalculo] = useState('');
   const [periodo, setPeriodo] = useState('');
 
   const temDemo = (producao.contagem?.participantes ?? 0) > 0 || (producao.contagem?.avaliacoes ?? 0) > 0;
@@ -1133,12 +1301,74 @@ export function TelaGestaoDados({
             </Card>
           )}
 
+          {/* Recálculo dos derivados com o algoritmo vigente.
+              Existe porque as telas individuais recalculam sempre a partir das
+              respostas, mas os PAINÉIS leem a tabela `resultados`, gravada uma
+              vez na conclusão. Quando o algoritmo muda, os dois discordam sem
+              que nada esteja quebrado. */}
+          <Card titulo="Recalcular resultados com o algoritmo vigente"
+            sub="Reprocessa os resultados gravados a partir das respostas brutas, que não são tocadas.">
+            <p style={{ fontSize: 13.5 }}>
+              As <b>respostas continuam intocadas</b> — são o dado bruto e são imutáveis. O que muda é a
+              tabela de resultados derivados, regravada a partir delas. Use quando a versão do algoritmo
+              mudar: as telas individuais já recalculam sozinhas, mas os painéis leem o valor gravado.
+            </p>
+            {!producao.previaRecalculo && !producao.resultadoRecalculo && (
+              <button className="btn btn-sec" disabled={producao.ocupado === 'recalculo'}
+                onClick={producao.onPreviaRecalculo}>
+                {producao.ocupado === 'recalculo' ? 'Analisando…' : 'Analisar o que mudaria'}
+              </button>
+            )}
+
+            {producao.previaRecalculo && !producao.resultadoRecalculo && (
+              <>
+                <Aviso tipo={producao.previaRecalculo.avaliacoesAfetadas > 0 ? 'alerta' : 'info'}
+                  titulo={producao.previaRecalculo.avaliacoesAfetadas > 0
+                    ? `${producao.previaRecalculo.avaliacoesAfetadas} avaliação(ões) mudariam de resultado`
+                    : 'Nenhum resultado mudaria'}>
+                  {producao.previaRecalculo.total} avaliação(ões) seriam reprocessadas com o algoritmo{' '}
+                  <b>{producao.previaRecalculo.algoritmo}</b>.
+                  {Object.keys(producao.previaRecalculo.porCampo).length > 0 && (
+                    <Tabela colunas={['Campo', 'Linhas que mudam']}
+                      linhas={Object.entries(producao.previaRecalculo.porCampo)
+                        .map(([campo, n]) => [campo, String(n)])} />
+                  )}
+                </Aviso>
+                <p style={{ fontSize: 13.5, marginTop: 16 }}>
+                  Para habilitar o recálculo, digite exatamente <b>{CONFIRMACAO_RECALCULO}</b>:
+                </p>
+                <input value={confirmaRecalculo} onChange={e => setConfirmaRecalculo(e.target.value)}
+                  placeholder={CONFIRMACAO_RECALCULO} />
+                <div style={{ display: 'flex', gap: 9, marginTop: 10, flexWrap: 'wrap' }}>
+                  <button className="btn"
+                    disabled={confirmaRecalculo !== CONFIRMACAO_RECALCULO || producao.ocupado === 'recalculo'}
+                    onClick={() => { producao.onRecalcular(confirmaRecalculo); setConfirmaRecalculo(''); }}>
+                    {producao.ocupado === 'recalculo' ? 'Recalculando…' : 'CONFIRMAR RECÁLCULO'}
+                  </button>
+                  <button className="btn btn-sec"
+                    onClick={() => { setConfirmaRecalculo(''); producao.onCancelarRecalculo(); }}>Cancelar</button>
+                </div>
+              </>
+            )}
+
+            {producao.resultadoRecalculo && (
+              <Aviso tipo={producao.resultadoRecalculo.completo ? 'info' : 'alerta'}
+                titulo={producao.resultadoRecalculo.completo ? 'Recálculo concluído' : 'Recálculo incompleto'}>
+                {producao.resultadoRecalculo.gravados} de {producao.resultadoRecalculo.total} resultado(s)
+                regravado(s); {producao.resultadoRecalculo.avaliacoesAfetadas} mudaram de valor.
+                {!producao.resultadoRecalculo.completo && <> Algumas linhas não puderam ser gravadas — verifique a auditoria antes de considerar a base consistente.</>}
+              </Aviso>
+            )}
+          </Card>
+
           {/* Item 17 — liberação de reaplicação */}
           <Card titulo="Liberar reaplicação de um participante"
             sub="Único caminho autorizado para que uma matrícula que já concluiu responda novamente.">
             <p style={{ fontSize: 13.5 }}>
               A avaliação anterior é <b>arquivada</b>, não apagada: as respostas continuam no banco para fins de
-              histórico e análise psicométrica, mas deixam de compor os indicadores atuais.
+              histórico e análise psicométrica, mas deixam de compor os indicadores atuais. Ela continua
+              visível na linha do tempo da pessoa, em <b>Pessoas e resultados</b>, e a nova aplicação recebe o
+              número seguinte — 02, 03, e assim por diante.
             </p>
             <div style={{ display: 'flex', gap: 9, alignItems: 'center', flexWrap: 'wrap' }}>
               <input placeholder="Matrícula" value={matriculaRe} onChange={e => setMatriculaRe(e.target.value)} style={{ width: 220 }} />
@@ -1261,7 +1491,8 @@ export function TelaGestaoDados({
               ['Amostra mínima para distribuição detalhada', `${MIN_PARTICIPANTES_INTERPRETACAO} respondentes`,
                 'Proteção de identificação em grupos pequenos'],
               ['Confirmação do reset geral', 'ZERAR RESULTADOS', 'Zona de segurança'],
-              ['Confirmação da limpeza de demonstração', CONFIRMACAO_DEMO, 'Preparar aplicação']
+              ['Confirmação da limpeza de demonstração', CONFIRMACAO_DEMO, 'Preparar aplicação'],
+              ['Confirmação do recálculo de resultados', CONFIRMACAO_RECALCULO, 'Preparar aplicação']
             ]} />
           </Card>
 
@@ -1282,7 +1513,7 @@ export function TelaGestaoDados({
           sub="Login, conclusão de avaliação, exportação, reset, limpeza DEMO e alteração de configurações">
           {logs.length ? (
             <Tabela colunas={['Data e hora', 'Usuário', 'Ação', 'Detalhe']}
-              linhas={logs.map(l => [new Date(l.data).toLocaleString('pt-BR'), l.usuario, <b key="a">{l.acao}</b>, l.detalhe])} />
+              linhas={logs.map(l => [dataHoraBR(l.data), l.usuario, <b key="a">{l.acao}</b>, l.detalhe])} />
           ) : <Vazio titulo="Nenhuma operação registrada ainda.">
                 Os eventos aparecem aqui à medida que participantes acessam, concluem avaliações e
                 administradores exportam ou administram dados.

@@ -22,9 +22,11 @@ Legenda:
 | Pesos (âncoras de peso 2) | **PRESERVAR** | `audit:itens` |
 | Chave de pontuação Jung por alternativa | **PRESERVAR** | `audit:matriz` |
 | Matriz de pontuação funcional (192 linhas) | **PRESERVAR** | `audit:matriz` |
-| Regras de desempate D1 / D2 / D3 | **PRESERVAR** | `test:algoritmo` |
+| Regras de desempate D1 / D2 / D3 (função **dominante**) | **PRESERVAR** | `test:algoritmo`, seção 3B |
+| Desempate da função **auxiliar** | **ALTERADO** — autorizado | `test:algoritmo` seção 3B · baseline C6 e C7 |
 | Os 8 perfis junguianos | **PRESERVAR** | `regressao` |
-| Perfil predominante e perfil secundário | **PRESERVAR** | `regressao` |
+| Perfil predominante | **PRESERVAR** | `regressao` |
+| Perfil secundário | **PRESERVAR**, exceto em caso de empate no par auxiliar — ver acima | `regressao` |
 | Os 8 animais e a associação Jung × animal | **PRESERVAR** | `regressao` |
 | Textos de cada animal, luz e sombra | **PRESERVAR** | inspeção de `profiles.ts` |
 | Descrições profissionais existentes | **PRESERVAR** | inspeção de `profiles.ts` |

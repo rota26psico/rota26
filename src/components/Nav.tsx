@@ -20,6 +20,9 @@ export function Nav({ papel }: { papel: 'MASTER' | 'ADMIN_SETOR' | 'PARTICIPANTE
      verdade; nenhuma foi inventada para preencher a lista. */
   const itens: [string, string][] = [
     ['/questionario', 'Minha avaliação'],
+    /* Quem já respondeu não precisa reabrir o percurso para reler o resultado.
+       A entrada vale para todos os papéis: administrador também responde. */
+    ['/meu-resultado', 'Meu resultado'],
     ['/glossario', 'Siglas']
   ];
   if (papel !== 'PARTICIPANTE') {

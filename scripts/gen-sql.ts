@@ -144,10 +144,12 @@ for (const p of participantes) {
 
   D.push(`  insert into escores (avaliacao_id, bruto, relativo) values (v_aval, ${j(r.escores.bruto)}, ${j(r.escores.relativo)});`);
   D.push(`  insert into resultados (avaliacao_id, atitude, funcao_dominante, funcao_auxiliar, funcao_menos_representada,
-    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate, ordem_funcoes, algoritmo_versao)
+    funcao_inferior, perfil_principal, perfil_secundario, empate_funcoes, regra_desempate,
+    empate_auxiliar, regra_desempate_auxiliar, ordem_funcoes, algoritmo_versao)
     values (v_aval, ${s(r.atitude)}, ${s(r.funcaoDominante)}, ${s(r.funcaoAuxiliar)}, ${s(r.funcaoMenosRepresentada)},
     ${s(r.funcaoInferior)}, ${s(r.perfilPrincipal)}, ${s(r.perfilSecundario)}, ${r.empateFuncoes}, ${s(r.regraDesempate)},
-    ARRAY[${r.ordemFuncoes.map(f => s(f)).join(',')}]::text[], ${s(VERSAO_INSTRUMENTO)});`);
+    ${r.empateAuxiliar}, ${s(r.regraDesempateAuxiliar)},
+    ARRAY[${r.ordemFuncoes.map(f => s(f)).join(',')}]::text[], ${s(r.versaoAlgoritmo)});`);
 
   D.push(`  insert into resultados_funcionais (avaliacao_id, eixos_bruto, eixos, cap_bruto, capacidades, ordem_capacidades, versao_matriz)
     values (v_aval, ${j(r.escores.eixos.bruto)}, ${j(r.escores.eixos.relativo)}, ${j(r.funcional.capacidadesBruto)}, ${j(r.funcional.capacidades)},

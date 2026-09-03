@@ -44,6 +44,8 @@ export interface EscoresFuncionais {
 
 export interface ResultadoIndividual {
   versao: string;
+  /** Versão do ALGORITMO — o que transformou as respostas em resultado. */
+  versaoAlgoritmo: string;
   versaoMatriz: string;
 
   /* ── TRILHA A ── */
@@ -57,8 +59,16 @@ export interface ResultadoIndividual {
   ordemFuncoes: Funcao[];
   perfilPrincipal: PerfilId;
   perfilSecundario: PerfilId;
+  /** Empate na função DOMINANTE, resolvido pela cascata D1 → D2 → D3. */
   empateFuncoes: boolean;
   regraDesempate: string | null;
+  /**
+   * Empate na função AUXILIAR — é ele que decide o PERFIL SECUNDÁRIO. Até
+   * `v1.0-piloto` era resolvido em silêncio; agora passa pela mesma cascata e o
+   * degrau aplicado é declarado, como já acontecia com a dominante.
+   */
+  empateAuxiliar: boolean;
+  regraDesempateAuxiliar: string | null;
 
   /* ── TRILHA B ── */
   funcional: EscoresFuncionais;

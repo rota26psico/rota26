@@ -83,6 +83,7 @@ baseline.json    prova de regressão do instrumento
 | 5 | `supabase/06_producao.sql` | `is_test`, view de dados reais, limpeza DEMO, checklist, auditoria de login e conclusão |
 | 6 | `supabase/07_papeis.sql` | Marcação `eh_administrador` nas views, trava das colunas de marcação do participante |
 | 7 | `supabase/08_reavaliacao_v2.sql` | **v2.0-reavaliacao**, inativa: `resultados_v2`, `desempates`, `vw_resultados_v2`, filtros de contrato e líder |
+| 8 | `supabase/09_aplicacoes.sql` | Aplicações numeradas (`numero_aplicacao`), histórico `vw_aplicacoes`, `vw_resultados` com uma linha por pessoa e o desempate declarado da função auxiliar |
 
 **Não executar:**
 

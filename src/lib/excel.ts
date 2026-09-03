@@ -111,13 +111,15 @@ export async function gerarExcel(
 
   const abaJung = () => aba(wb, 'Resultados Jung',
     ['ID', 'Setor', 'Perfil principal', 'Animal', 'Perfil secundário', 'Atitude', 'Função dominante', 'Função auxiliar',
-      'Função inferior', 'Empate', 'Regra de desempate',
+      'Função inferior', 'Empate na dominante', 'Regra de desempate (dominante)',
+      'Empate na auxiliar', 'Regra de desempate (auxiliar)',
       'Extroversão', 'Introversão', 'Pensamento', 'Sentimento', 'Sensação', 'Intuição'],
     dados.map(r => {
       const x = r.resultado, rel = x.escores.relativo;
       return [idDe(r), r.setor, x.perfilPrincipal, PERFIS.find(p => p.id === x.perfilPrincipal)!.animal,
         x.perfilSecundario, NOME_ATITUDE[x.atitude], NOME_FUNCAO[x.funcaoDominante], NOME_FUNCAO[x.funcaoAuxiliar],
         NOME_FUNCAO[x.funcaoInferior], x.empateFuncoes, x.regraDesempate ?? '',
+        x.empateAuxiliar, x.regraDesempateAuxiliar ?? '',
         rel.E, rel.I, rel.T, rel.F, rel.S, rel.N];
     }));
 
@@ -246,7 +248,9 @@ export async function gerarExcel(
       ['Perfil principal', 'Combinação de atitude e função dominante (Te, Ti, Fe, Fi, Se, Si, Ne, Ni)', 'Trilha psicológica'],
       ['Perfil secundário', 'Mesma atitude somada à função auxiliar, que vem do outro par de opostos', 'Regra junguiana, não conveniência'],
       ['Função inferior', 'Oposta da dominante — base da leitura de comportamento sob pressão', 'Conceito de Jung'],
-      ['Empate', 'Verdadeiro quando duas funções tiveram o mesmo escore e a regra de desempate foi acionada', 'A regra aplicada consta na coluna seguinte'],
+      ['Empate na dominante', 'Verdadeiro quando duas ou mais funções tiveram o mesmo escore e a cascata de desempate decidiu a função dominante — e portanto o perfil principal', 'A regra aplicada consta na coluna seguinte'],
+      ['Empate na auxiliar', 'Verdadeiro quando as duas funções do par auxiliar tiveram o mesmo escore e a cascata decidiu a função auxiliar — e portanto o perfil secundário', 'Até o algoritmo v1.0-piloto este empate era resolvido em silêncio, sem registro. Desde v1.1-desempate-auxiliar ele é declarado'],
+      ['Regra de desempate', 'Qual degrau da cascata resolveu: D1 diferenciação em relação à função oposta · D2 evidência convergente nos eixos comportamentais · D3 ordem canônica fixa', 'Só lista degraus que EFETIVAMENTE reduziram o conjunto de candidatas. Vazio significa que não houve empate'],
       ['Capacidades funcionais', 'Dez capacidades calculadas a partir das respostas comportamentais do participante', 'Trilha funcional — independente do perfil junguiano'],
       ['Proximidades Belbin', 'Proximidade funcional com os nove papéis, calculada a partir das respostas', 'Não corresponde ao instrumento oficial de Belbin'],
       ['IDF', 'Índice de Diversidade Funcional, 0 a 100', 'Faixas são parâmetros internos exploratórios, não normas'],

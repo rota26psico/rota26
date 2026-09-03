@@ -1,7 +1,7 @@
 /**
  * BASELINE METODOLÓGICA — itens 7, 8 e 104 do prompt-mestre
  * ===========================================================================
- * Congela o resultado produzido pela versão ATUAL do instrumento para cinco
+ * Congela o resultado produzido pela versão ATUAL do instrumento para sete
  * conjuntos controlados de 48 respostas, mais a agregação de uma população
  * fixa (IDF, ICF, complementaridade, distribuições).
  *
@@ -25,16 +25,30 @@ import { gerarParticipantes } from './simulate';
 const ARQUIVO = join(process.cwd(), 'baseline.json');
 
 /**
- * Cinco conjuntos controlados e determinísticos. As regras de escolha são
+ * Sete conjuntos controlados e determinísticos. As regras de escolha são
  * fixas e legíveis — não há aleatoriedade, e qualquer pessoa pode reproduzi-las
  * à mão a partir de src/data/questions.ts.
+ *
+ * C6 e C7 existem para cobrir uma lacuna real: até eles, NENHUM dos conjuntos
+ * congelados produzia empate (`empateFuncoes` e `empateAuxiliar` eram falsos em
+ * 100% dos casos), de modo que `npm run regressao` passaria mesmo se a cascata
+ * D1 → D2 → D3 fosse reescrita. Eles foram escolhidos por varredura das regras
+ * simples, e cada um exercita um degrau diferente:
+ *
+ *   C6 — empate de DOMINANTE resolvido em D1 (T7 F6 S7 N7) e, na mesma
+ *        avaliação, empate de AUXILIAR resolvido em D2.
+ *   C7 — empate de AUXILIAR que chega até D3, a ordem canônica. É o único
+ *        degrau declaradamente arbitrário, e por isso o que mais precisa ficar
+ *        preso por um teste.
  */
 export const CONJUNTOS: { id: string; descricao: string; escolher: (i: number) => number }[] = [
   { id: 'C1', descricao: 'Sempre a primeira alternativa apresentada', escolher: () => 0 },
   { id: 'C2', descricao: 'Sempre a segunda alternativa', escolher: () => 1 },
   { id: 'C3', descricao: 'Rotação simples: i módulo 4', escolher: i => i % 4 },
   { id: 'C4', descricao: 'Rotação invertida: 3 menos (i módulo 4)', escolher: i => 3 - (i % 4) },
-  { id: 'C5', descricao: 'Alternância por blocos de três: floor(i/3) módulo 4', escolher: i => Math.floor(i / 3) % 4 }
+  { id: 'C5', descricao: 'Alternância por blocos de três: floor(i/3) módulo 4', escolher: i => Math.floor(i / 3) % 4 },
+  { id: 'C6', descricao: 'Blocos de dois: floor(i/2) módulo 4 — empata dominante (D1) e auxiliar (D2)', escolher: i => Math.floor(i / 2) % 4 },
+  { id: 'C7', descricao: 'Blocos de quatro deslocados: (floor(i/4) + 1) módulo 4 — empate de auxiliar que chega a D3', escolher: i => (Math.floor(i / 4) + 1) % 4 }
 ];
 
 export function respostasDoConjunto(c: typeof CONJUNTOS[number]): Resposta[] {
@@ -58,6 +72,8 @@ export function retratoIndividual(r: ReturnType<typeof avaliar>) {
     ordemFuncoes: r.ordemFuncoes,
     empateFuncoes: r.empateFuncoes,
     regraDesempate: r.regraDesempate,
+    empateAuxiliar: r.empateAuxiliar,
+    regraDesempateAuxiliar: r.regraDesempateAuxiliar,
     escoresJungBruto: r.escores.bruto,
     escoresJungRelativo: r.escores.relativo,
     denominadores: r.escores.denominadores,
@@ -71,7 +87,8 @@ export function retratoIndividual(r: ReturnType<typeof avaliar>) {
     belbin: r.funcional.belbin,
     belbinOrdenado: r.belbinOrdenado,
     top3Belbin: r.top3Belbin,
-    versaoAlgoritmo: r.versao,
+    versaoInstrumento: r.versao,
+    versaoAlgoritmo: r.versaoAlgoritmo,
     versaoMatriz: r.versaoMatriz,
     respostasValidas: r.respostasValidas,
     completo: r.completo
@@ -115,7 +132,8 @@ export function montarBaseline() {
 
   return {
     geradoPor: 'scripts/baseline.ts',
-    versaoInstrumento: individuais[0].retrato.versaoAlgoritmo,
+    versaoInstrumento: individuais[0].retrato.versaoInstrumento,
+    versaoAlgoritmo: individuais[0].retrato.versaoAlgoritmo,
     versaoMatriz: individuais[0].retrato.versaoMatriz,
     totalQuestoes: QUESTOES.length,
     totalAlternativas: QUESTOES.reduce((s, q) => s + q.alternativas.length, 0),

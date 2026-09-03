@@ -8,7 +8,7 @@
 import { VERSAO_INSTRUMENTO } from '../src/data/questions';
 import { QUESTOES_COMPLETAS as QUESTOES, ALTERNATIVA_POR_ID, PESO_TOTAL_ATITUDE, PESO_TOTAL_FUNCAO } from '../src/data/questions.server';
 import { MATRIZ_PONTUACAO, LINHA_POR_ALTERNATIVA } from '../src/data/scoringMatrix';
-import { avaliar, calcularEscores, calcularFuncional, determinarPerfil, vetorDe, intensidade, type Resposta } from '../src/lib/scoring';
+import { avaliar, calcularEscores, calcularFuncional, determinarPerfil, desempatar, vetorDe, intensidade, type Resposta } from '../src/lib/scoring';
 import { analisarEquipe, compararSetores, compararComEquipe, MIN_PARTICIPANTES_INTERPRETACAO, type MembroAgregado } from '../src/lib/aggregate';
 import { gerarExcel, type RegistroExport } from '../src/lib/excel';
 import { comoVoceFunciona, luz, sombra, belbinDetalhado, contribuicaoFuncional, leituraExecutivaIndividual, blocosLeituraExecutiva } from '../src/lib/narrative';
@@ -112,6 +112,122 @@ secao('3. Invariantes de escore e matriz de pontuação');
     PAPEIS_BELBIN.every(p => avaliacoes.some(a => a.funcional.belbin[p.id] >= 50)));
   ok('rótulos de intensidade cobrem toda a escala',
     ['Muito baixa', 'Baixa', 'Moderada', 'Alta', 'Muito alta'].every(r => [0, 20, 35, 50, 70].map(intensidade).includes(r as any)));
+}
+
+/* ── 3B. CASCATA DE DESEMPATE D1 → D2 → D3 ───────────────────────────────── */
+/**
+ * A cascata decide DOIS perfis: o principal (função dominante) e o secundário
+ * (função auxiliar). Até `v1.0-piloto` a auxiliar não passava por aqui — era
+ * resolvida em silêncio, sem registro, e de fora isso era indistinguível de um
+ * sorteio. Esta seção existe para que a cascata deixe de ser código sem prova:
+ * antes dela, D1, D2 e D3 podiam ser reescritos sem que nenhum teste caísse.
+ *
+ * Cada caso confere as DUAS coisas: quem venceu e qual degrau foi declarado.
+ * O texto da regra vai para o banco e para o Excel, e é lido por gente.
+ */
+secao('3B. Cascata de desempate — D1, D2, D3 e o texto declarado');
+{
+  const bru = (T: number, F: number, S: number, N: number) => ({ E: 0, I: 0, T, F, S, N });
+  const eix = (EST: number, EXE: number, COO: number, EXP: number) =>
+    ({ EST, EXE, COO, EXP, AUT: 0, FLE: 0 } as any);
+  const neutro = eix(5, 5, 5, 5);
+
+  // Candidata única: não há degrau nenhum a declarar.
+  {
+    const d = desempatar(['T'], bru(10, 0, 0, 0), neutro);
+    ok('candidata única ⇒ nenhuma regra declarada', d.vencedora === 'T' && d.regra === null);
+  }
+
+  // D1 — vence a função cuja oposta tem o menor escore.
+  {
+    const d = desempatar(['T', 'S'], bru(10, 2, 10, 5), neutro);
+    ok('D1 resolve: oposta de T (F=2) < oposta de S (N=5) ⇒ T',
+      d.vencedora === 'T', `veio ${d.vencedora}`);
+    ok('D1 é o único degrau declarado',
+      d.regra !== null && d.regra.startsWith('D1:') && !d.regra.includes('D2') && !d.regra.includes('D3'),
+      String(d.regra));
+  }
+
+  // D2 — evidência convergente nos eixos. D1 é inerte (as duas distâncias são 5).
+  {
+    const d = desempatar(['T', 'N'], bru(10, 5, 5, 10), eix(9, 9, 1, 1));
+    ok('D2 resolve: T se apoia em Estrutura+Execução (18) contra N em Cooperação+Exploração (2) ⇒ T',
+      d.vencedora === 'T', `veio ${d.vencedora}`);
+    ok('D1 não é declarado quando não elimina ninguém',
+      d.regra !== null && d.regra.startsWith('D2:') && !d.regra.includes('D1'), String(d.regra));
+
+    const inverso = desempatar(['T', 'N'], bru(10, 5, 5, 10), eix(1, 1, 9, 9));
+    ok('D2 inverte quando os eixos invertem ⇒ N', inverso.vencedora === 'N', `veio ${inverso.vencedora}`);
+  }
+
+  // D2 é estruturalmente incapaz de separar {T,S} e {F,N}: mesma fórmula de
+  // afinidade para os dois membros. Estes casos precisam cair em D3 — e o texto
+  // NÃO pode afirmar que D2 foi aplicado.
+  {
+    const d = desempatar(['T', 'S'], bru(10, 4, 10, 4), eix(9, 9, 1, 1));
+    ok('D3 resolve {T,S}: D2 dá o mesmo valor aos dois ⇒ ordem canônica ⇒ T',
+      d.vencedora === 'T', `veio ${d.vencedora}`);
+    ok('o texto NÃO afirma D2 num caso que D2 não resolveu',
+      d.regra === 'D3: ordem canônica fixa (critério arbitrário de último recurso).', String(d.regra));
+
+    const fn = desempatar(['F', 'N'], bru(4, 10, 4, 10), eix(1, 1, 9, 9));
+    ok('D3 resolve {F,N}: ordem canônica T,S,F,N ⇒ F', fn.vencedora === 'F', `veio ${fn.vencedora}`);
+  }
+
+  // A cascata sempre termina: D3 é total sobre as quatro funções.
+  {
+    const d = desempatar(['T', 'F', 'S', 'N'], bru(6, 6, 6, 6), neutro);
+    ok('empate das quatro funções ainda resolve (D3 fecha a cascata)',
+      d.vencedora === 'T' && d.regra !== null && d.regra.includes('D3'));
+  }
+
+  // Determinismo: sem Math.random, sem sort instável, sem ordem de objeto.
+  {
+    const cem = Array.from({ length: 200 }, () =>
+      JSON.stringify(desempatar(['T', 'N'], bru(10, 5, 5, 10), eix(9, 9, 1, 1))));
+    ok('200 execuções do desempate ⇒ resultado idêntico', new Set(cem).size === 1);
+    ok('a ordem das candidatas não altera o vencedor',
+      desempatar(['N', 'T'], bru(10, 5, 5, 10), eix(9, 9, 1, 1)).vencedora
+      === desempatar(['T', 'N'], bru(10, 5, 5, 10), eix(9, 9, 1, 1)).vencedora);
+  }
+
+  /* A auxiliar passa pela MESMA cascata. Como as duas candidatas do par auxiliar
+     são opostas UMA DA OUTRA e estão empatadas, D1 é sempre inerte ali — quem
+     decide é D2, e é exatamente isso que mudou em v1.1. */
+  {
+    const escoresFake = (T: number, F: number, S: number, N: number, e: any) => ({
+      bruto: { E: 20, I: 7, T, F, S, N },
+      relativo: {} as any,
+      eixos: { bruto: e, relativo: {} as any },
+      denominadores: { atitude: 27, funcao: T + F + S + N }
+    }) as any;
+
+    const p1 = determinarPerfil(escoresFake(15, 3, 6, 6, eix(9, 9, 1, 1)));
+    ok('auxiliar: par {S,N} empatado ⇒ empate declarado, não silencioso',
+      p1.funcaoDominante === 'T' && p1.empateAuxiliar === true && p1.regraDesempateAuxiliar !== null);
+    ok('auxiliar: D2 escolhe S quando os eixos são Estrutura+Execução',
+      p1.funcaoAuxiliar === 'S' && p1.regraDesempateAuxiliar!.startsWith('D2:'),
+      `${p1.funcaoAuxiliar} · ${p1.regraDesempateAuxiliar}`);
+
+    const p2 = determinarPerfil(escoresFake(15, 3, 6, 6, eix(1, 1, 9, 9)));
+    ok('auxiliar: D2 escolhe N quando os eixos são Cooperação+Exploração',
+      p2.funcaoAuxiliar === 'N', `veio ${p2.funcaoAuxiliar}`);
+    ok('o perfil SECUNDÁRIO muda junto com a auxiliar',
+      p1.perfilSecundario !== p2.perfilSecundario,
+      `${p1.perfilSecundario} vs ${p2.perfilSecundario}`);
+
+    const p3 = determinarPerfil(escoresFake(15, 3, 8, 4, eix(1, 1, 9, 9)));
+    ok('auxiliar sem empate ⇒ nenhuma regra declarada',
+      p3.funcaoAuxiliar === 'S' && p3.empateAuxiliar === false && p3.regraDesempateAuxiliar === null);
+  }
+
+  // Coerência do par declarado, na coorte inteira.
+  ok('empate de dominante ⟺ regra de dominante declarada',
+    avaliacoes.every(a => a.empateFuncoes === (a.regraDesempate !== null)));
+  ok('empate de auxiliar ⟺ regra de auxiliar declarada',
+    avaliacoes.every(a => a.empateAuxiliar === (a.regraDesempateAuxiliar !== null)));
+  ok('nenhuma regra declarada é texto vazio',
+    avaliacoes.every(a => (a.regraDesempate ?? 'x') !== '' && (a.regraDesempateAuxiliar ?? 'x') !== ''));
 }
 
 /* ── 4. ROBUSTEZ E RETOMADA (itens 53 a 55) ──────────────────────────────── */

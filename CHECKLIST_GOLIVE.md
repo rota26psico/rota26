@@ -28,6 +28,8 @@ presume estar certo. A coluna "como conferir" diz onde olhar.
 | ☐ | `06_producao.sql` aplicado | `select * from verificar_prontidao();` |
 | ☐ | `07_papeis.sql` aplicado | `select eh_conta_administrativa(null) is not null;` |
 | ☐ | `08_reavaliacao_v2.sql` aplicado, versão **inativa** | `select codigo, ativa from versoes_instrumento;` |
+| ☐ | `09_aplicacoes.sql` aplicado | `select count(*) from vw_aplicacoes;` · `select numero_aplicacao from avaliacoes limit 1;` |
+| ☐ | `vw_resultados` devolve **uma linha por pessoa** | `select participante_id, count(*) from vw_resultados group by 1 having count(*) > 1;` — precisa vir vazio |
 | ☐ | **`04_demo_seed.sql` NÃO aplicado** | `select * from contagem_demo();` → tudo zero |
 | ☐ | **`00_stub_auth_local.sql` NÃO aplicado** | só serve para PostgreSQL local |
 | ☐ | Backups do provedor ativos | Database → Backups |

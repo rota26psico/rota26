@@ -298,7 +298,14 @@ function App() {
       setOcupadoProd(null);
     },
     onLimparTeste: () => setMsgProd('Não há registros de validação nesta pré-visualização.'),
-    onLiberarReaplicacao: (m: string) => setMsgProd(`Na aplicação real, a matrícula ${m} teria a avaliação anterior arquivada e poderia responder novamente.`)
+    onLiberarReaplicacao: (m: string) => setMsgProd(`Na aplicação real, a matrícula ${m} teria a avaliação anterior arquivada e poderia responder novamente — a nova aplicação receberia o número seguinte, e a anterior continuaria consultável no histórico.`),
+    /* Operações de servidor não têm equivalente aqui: a demo calcula tudo em
+       memória e não guarda resultado derivado nenhum para regravar. */
+    onPreviaRecalculo: () => setMsgProd('O recálculo reprocessa a tabela de resultados do banco. Não há o que recalcular nesta pré-visualização, que calcula tudo em memória a cada abertura.'),
+    onRecalcular: () => setMsgProd('Disponível apenas na aplicação real.'),
+    previaRecalculo: null,
+    onCancelarRecalculo: () => {},
+    resultadoRecalculo: null
   };
 
   const nav: [Aba, string][] = [

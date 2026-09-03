@@ -9,7 +9,7 @@
  * pode ir para o bundle sem levar o gabarito junto.
  */
 import type { ResultadoIndividual, Resposta } from './resultado';
-import type { EstadoAvaliacao } from './repo-supabase';
+import type { EstadoAvaliacao, Aplicacao } from './repo-supabase';
 
 async function chamar<T>(corpo: object): Promise<T> {
   const r = await fetch('/api/avaliacao', {
@@ -38,3 +38,11 @@ export const concluirAvaliacao = (avaliacaoId: string) =>
 
 export const recalcular = (avaliacaoId: string) =>
   chamar<ResultadoIndividual>({ acao: 'recalcular', avaliacaoId });
+
+/**
+ * O histórico de aplicações da própria pessoa. Vai pela mesma rota porque é a
+ * mesma sessão e o mesmo RLS — `vw_aplicacoes` já devolve só o que quem
+ * pergunta pode ver.
+ */
+export const listarAplicacoes = (participanteId: string) =>
+  chamar<Aplicacao[]>({ acao: 'aplicacoes', participanteId });

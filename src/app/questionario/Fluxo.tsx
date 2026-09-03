@@ -18,6 +18,7 @@ import {
   TelaIdentificacao, TelaQuestionario, TelaResultado, TelaRetomada, TelaJaConcluida
 } from '@/components/views-participante';
 import { Aviso, ErroConsulta } from '@/components/ui';
+import { BotaoImprimir } from '@/components/BotaoImprimir';
 import {
   supabaseBrowser, garantirSessao, listarSetores, garantirParticipante, validarCadastro,
   abrirAvaliacao, carregarMembros, registrarEvento, type EstadoAvaliacao
@@ -140,7 +141,7 @@ export function Fluxo() {
       )}
 
       {etapa === 'concluida' && ident && (
-        <TelaJaConcluida nome={ident.nome} data={dataConclusao}
+        <TelaJaConcluida nome={ident.nome} data={dataConclusao} aplicacao={estado?.aplicacao}
           podeVerResultado={!!resultado} onVerResultado={verResultado} />
       )}
 
@@ -150,7 +151,10 @@ export function Fluxo() {
       )}
 
       {etapa === 'result' && resultado && ident && (
-        <>
+        /* O relatório individual em PDF sai pela impressão do navegador, como o
+           painel: o papel é exatamente o que está na tela, sem uma segunda rota
+           de renderização que pudesse divergir dos números exibidos. */
+        <BotaoImprimir titulo="Seu resultado" recorte={ident.nome} papel="PARTICIPANTE">
           {estado?.situacao === 'concluida' && (
             <Aviso tipo="info" titulo="Resultado já registrado">
               Este resultado foi recalculado agora a partir das suas 48 respostas gravadas no banco.
@@ -158,7 +162,15 @@ export function Fluxo() {
           )}
           <TelaResultado r={resultado} comparacao={comparacao}
             dados={{ nome: ident.nome, setor: ident.setor, data: dataConclusao }} />
-        </>
+          <div className="nao-imprime" style={{ marginTop: 18 }}>
+            <Aviso tipo="info" titulo="Para reler isto depois">
+              Você não precisa responder de novo para ver seu resultado outra vez. Basta abrir
+              <b> Meu resultado</b> e informar os mesmos dados — ele é recalculado a partir das suas
+              respostas guardadas, e por isso é sempre o mesmo.
+            </Aviso>
+            <a className="btn btn-sec" href="/meu-resultado">Meu resultado</a>
+          </div>
+        </BotaoImprimir>
       )}
     </>
   );

@@ -49,18 +49,22 @@ type DB = ReturnType<typeof supabaseBrowser>;
  */
 export async function consultarAvaliacao(db: DB, participanteId: string): Promise<EstadoAvaliacao> {
   const { data: existentes, error } = await db.from('avaliacoes')
-    .select('id,status,concluida_em')
+    .select('id,status,concluida_em,numero_aplicacao')
     .eq('participante_id', participanteId)
     .is('arquivada_em', null)
     .order('iniciada_em', { ascending: false });
   if (error) throw error;
 
+  /* `existentes` já vem da mais recente para a mais antiga, então o `find`
+     devolve a última concluída — a mesma que `vw_resultados` considera vigente.
+     É a leitura que a pessoa deve reencontrar ao voltar. */
   const concluida = existentes?.find(a => a.status === 'CONCLUIDA');
   if (concluida) {
     const r = await recalcular(db, concluida.id);
     return {
       situacao: 'concluida', avaliacaoId: concluida.id, respostasSalvas: {}, respondidas: 48,
-      concluida: true, resultado: r, concluidaEm: concluida.concluida_em as string
+      concluida: true, resultado: r, concluidaEm: concluida.concluida_em as string,
+      aplicacao: (concluida as any).numero_aplicacao ?? 1
     };
   }
 
@@ -72,7 +76,8 @@ export async function consultarAvaliacao(db: DB, participanteId: string): Promis
     const salvas = Object.fromEntries((rs ?? []).map(x => [x.questao_codigo as string, x.alternativa_codigo as string]));
     return {
       situacao: 'em_andamento', avaliacaoId: emAndamento.id, respostasSalvas: salvas,
-      respondidas: Object.keys(salvas).length, concluida: false
+      respondidas: Object.keys(salvas).length, concluida: false,
+      aplicacao: (emAndamento as any).numero_aplicacao ?? 1
     };
   }
 
@@ -142,7 +147,9 @@ export async function concluirAvaliacao(db: DB, avaliacaoId: string): Promise<Re
     funcao_auxiliar: r.funcaoAuxiliar, funcao_menos_representada: r.funcaoMenosRepresentada,
     funcao_inferior: r.funcaoInferior, perfil_principal: r.perfilPrincipal,
     perfil_secundario: r.perfilSecundario, empate_funcoes: r.empateFuncoes,
-    regra_desempate: r.regraDesempate, ordem_funcoes: r.ordemFuncoes, algoritmo_versao: r.versao
+    regra_desempate: r.regraDesempate, empate_auxiliar: r.empateAuxiliar,
+    regra_desempate_auxiliar: r.regraDesempateAuxiliar,
+    ordem_funcoes: r.ordemFuncoes, algoritmo_versao: r.versaoAlgoritmo
   }) as any);
 
   await passo('gravar resultado funcional', () => db.from('resultados_funcionais').upsert({

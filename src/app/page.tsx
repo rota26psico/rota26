@@ -31,9 +31,15 @@ export default async function Home() {
                 Diferentes formas de perceber, decidir e contribuir constroem diferentes
                 possibilidades para uma equipe.
               </p>
-              <Link href="/questionario">
-                <button className="btn btn-marca" style={{ marginTop: 26 }}>Iniciar percurso</button>
-              </Link>
+              <div style={{ display: 'flex', gap: 10, marginTop: 26, flexWrap: 'wrap' }}>
+                <Link href="/questionario">
+                  <button className="btn btn-marca">Iniciar percurso</button>
+                </Link>
+                {/* Quem já respondeu chega aqui querendo reler, não recomeçar. */}
+                <Link href="/meu-resultado">
+                  <button className="btn btn-sec">Já respondi — ver meu resultado</button>
+                </Link>
+              </div>
             </div>
 
             <div className="selo-lugar" aria-hidden="true">
